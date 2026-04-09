@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAID Accountability Report — Who Failed 60,000+ Canadians?</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Page-specific overrides ── */
+    .lede { font-size:1.1rem; color:#ccc; font-style:italic; border-left:4px solid var(--accent); padding-left:1.2rem; margin-bottom:2rem; }
+    .commissioner-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; margin:1.5rem 0 2.5rem; }
+    .comm-card { background:var(--card2); border:1px solid var(--border); border-radius:var(--radius); padding:1.4rem; }
+    .comm-card.primary { border-color:var(--accent); }
+    .comm-card .comm-name { font-size:1.05rem; font-weight:800; color:#fff; margin-bottom:0.3rem; }
+    .comm-card .comm-tenure { font-size:0.82rem; color:var(--gold); font-weight:700; letter-spacing:0.05em; margin-bottom:0.8rem; }
+    .comm-card .comm-period-tag { display:inline-block; font-size:0.72rem; padding:0.2rem 0.6rem; border-radius:3px; font-weight:700; margin-bottom:0.8rem; letter-spacing:0.06em; }
+    .tag-watch    { background:#2a1a00; color:var(--warn); border:1px solid var(--warn); }
+    .tag-critical { background:#2a0000; color:var(--accent2); border:1px solid var(--accent); }
+    .tag-current  { background:#0a2a0a; color:#5dbb6a; border:1px solid #5dbb6a; }
+    .comm-card p  { font-size:0.9rem; color:#bbb; margin-bottom:0; }
+    .section-title-maid { font-size:1.45rem; font-weight:800; color:#fff; margin:2.5rem 0 1rem; padding-bottom:0.5rem; border-bottom:2px solid var(--accent); }
+    .responsibility-box { background:#150606; border:2px solid var(--accent); border-radius:var(--radius); padding:1.8rem; margin:2rem 0; }
+    .responsibility-box h3 { color:var(--accent2); margin-top:0; font-size:1.2rem; }
+    .resp-list { list-style:none; padding:0; }
+    .resp-list li { display:flex; gap:1rem; padding:0.9rem 0; border-bottom:1px solid #2a1010; font-size:0.93rem; }
+    .resp-list li:last-child { border-bottom:none; }
+    .resp-list .resp-name { min-width:200px; font-weight:700; color:#fff; }
+    .resp-list .resp-role { color:var(--muted); font-size:0.82rem; display:block; font-weight:400; }
+    .resp-list .resp-finding { color:#cc9999; }
+    .t4-comparison { background:#0d0d1a; border:1px solid #334; border-radius:var(--radius); padding:1.5rem; margin:2rem 0; }
+    .t4-comparison h3 { color:#aaaaff; margin-top:0; }
+    .compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1rem; }
+    .compare-col { background:#0f0f1f; border:1px solid #334; border-radius:5px; padding:1rem; }
+    .compare-col h4 { font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.8rem; }
+    .compare-col.t4 h4 { color:#888; }
+    .compare-col.canada h4 { color:#aaaaff; }
+    .compare-col ul { list-style:none; padding:0; font-size:0.87rem; color:#aaa; }
+    .compare-col ul li { padding:0.3rem 0; border-bottom:1px solid #1a1a2a; }
+    .compare-col ul li::before { content:"▸ "; color:#555; }
+    .compare-col ul li:last-child { border-bottom:none; }
+    main { max-width:900px; margin:0 auto; padding:2.5rem 1.5rem; }
+    @media (max-width:600px) { .compare-grid { grid-template-columns:1fr; } .resp-list .resp-name { min-width:130px; } }
+  </style>
+</head>
+<body>
+<div id="page-header-placeholder"></div>
+<div class="meta-bar">
+  <span><span class="tag">OPINION / ANALYSIS</span></span>
+  <span>📅 April 2025</span>
+  <span>🏛 Federal</span>
+  <span>Category: Institutional Failure &amp; Accountability</span>
+</div>
+
+<main>
+
+  <div class="opinion-banner">
+    <strong>EDITORIAL NOTICE:</strong> This article is investigative opinion journalism. All RCMP leadership data and MAID death statistics are drawn from official Health Canada annual reports and public parliamentary records. The Aktion T4 comparisons cited herein originate from disability rights advocates, UN bodies, medical ethicists, and Canadian clergy — not this publication alone. Readers are encouraged to consult primary sources listed at the bottom.
+  </div>
+
+  <p class="lede">
+    Between 2016 and 2024, Canada went from no legal euthanasia to the world's most expansive state-assisted death regime. More than 60,000 Canadians died under MAID provisions — a number growing faster than in any comparable nation. Three RCMP Commissioners held power during this period. Not one launched an investigation. Not one politician was charged. This is the documented record.
+  </p>
+
+  <!-- ════════════════════════════════════════════
+       SECTION 1 — RCMP COMMISSIONERS
+  ════════════════════════════════════════════ -->
+  <h2 class="red-rule">Part I — The RCMP Commissioners: A Complete Record</h2>
+
+  <p>
+    The RCMP Commissioner is Canada's most senior law enforcement officer. Appointed by Order-in-Council — meaning appointed by the sitting Prime Minister — the Commissioner has authority to initiate investigations into any potential federal crime, including crimes committed by Members of Parliament. During the entire arc of MAID's creation and expansion, three individuals held this office.
+  </p>
+
+  <div class="commissioner-grid">
+
+    <div class="comm-card">
+      <div class="comm-name">Bob Paulson</div>
+      <div class="comm-tenure">November 2011 — June 2017</div>
+      <span class="comm-period-tag tag-watch">⚠ BILL C-14 WATCH</span>
+      <p>
+        Paulson was Commissioner when Bill C-14 — Canada's original MAID legislation — passed in June 2016. He presided over the RCMP during the Carter v. Canada Supreme Court decision (Feb. 2015) that struck down the assisted-suicide prohibition. Paulson retired June 2017 with no public statement on MAID or the constitutional and legal questions it raised. Under his watch: <strong>1,018</strong> Canadians died under MAID in 2016 alone — the first year.
+      </p>
+    </div>
+
+    <div class="comm-card primary">
+      <div class="comm-name">Brenda Lucki</div>
+      <div class="comm-tenure">June 2017 — September 2023</div>
+      <span class="comm-period-tag tag-critical">🔴 PRIMARY EXPANSION COMMISSIONER</span>
+      <p>
+        <strong>Lucki is the commissioner most directly accountable.</strong> Appointed by PM Justin Trudeau in 2018, she presided over the passage of Bill C-7 (March 2021) — the legislation that removed the requirement for natural death to be "reasonably foreseeable," opened MAID to non-terminal illness, and created a waiver of final consent. Under her tenure, MAID deaths went from 2,838 (2017) to 13,241 (2022) — a 367% increase. She simultaneously faced accusations of political interference in the Nova Scotia mass shooting investigation, where she allegedly told officers to release information aligned with the Trudeau government's gun control agenda. She was replaced in September 2023.
+      </p>
+    </div>
+
+    <div class="comm-card">
+      <div class="comm-name">Mike Duheme</div>
+      <div class="comm-tenure">September 2023 — Present</div>
+      <span class="comm-period-tag tag-current">🟢 CURRENT COMMISSIONER</span>
+      <p>
+        Duheme assumed command as the MAID regime reached full operational scale. The delayed expansion to mental illness as a sole condition (MAID-MD-SUMC) has been paused multiple times under political pressure — a pause Duheme's RCMP has neither advocated for nor against publicly. Under his tenure, no investigation into MAID administration, eligibility failures, or the conduct of politicians who expanded the system has been opened. Health Canada reports approximately 15,000–16,000 MAID deaths per year as of 2023–2024.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SECTION 2 — DEATH STATISTICS
+  ════════════════════════════════════════════ -->
+  <h2 class="red-rule">Part II — The Numbers: What Health Canada's Own Data Shows</h2>
+
+  <p>
+    The following figures are drawn directly from Health Canada's annual MAID reports. They represent <em>reported</em> MAID deaths — deaths that the medical system acknowledged. Critics, including the Auditor General's office and disability advocates, note that oversight and reporting mechanisms have significant gaps.
+  </p>
+
+  <table class="stat-table">
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th class="num">MAID Deaths</th>
+        <th class="num">YoY Change</th>
+        <th>RCMP Commissioner</th>
+        <th>Key Events</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2016</td>
+        <td class="num">1,018</td>
+        <td class="num">—</td>
+        <td class="comm-col">Paulson</td>
+        <td>Bill C-14 passes (June); MAID begins</td>
+      </tr>
+      <tr>
+        <td>2017</td>
+        <td class="num">2,838</td>
+        <td class="num">+179%</td>
+        <td class="comm-col">Paulson → Lucki</td>
+        <td>Lucki appointed; rapid uptake begins</td>
+      </tr>
+      <tr>
+        <td>2018</td>
+        <td class="num">4,480</td>
+        <td class="num">+58%</td>
+        <td class="comm-col">Lucki</td>
+        <td>Lucki confirmed by OIC; eligibility reviews waived</td>
+      </tr>
+      <tr>
+        <td>2019</td>
+        <td class="num">5,631</td>
+        <td class="num">+26%</td>
+        <td class="comm-col">Lucki</td>
+        <td>Truchon decision (QC) strikes down RFND requirement</td>
+      </tr>
+      <tr>
+        <td>2020</td>
+        <td class="num">7,595</td>
+        <td class="num">+35%</td>
+        <td class="comm-col">Lucki</td>
+        <td>COVID pandemic; surge in MAID requests; Bill C-7 tabled</td>
+      </tr>
+      <tr>
+        <td>2021</td>
+        <td class="num">10,064</td>
+        <td class="num high">+32%</td>
+        <td class="comm-col">Lucki</td>
+        <td><strong>Bill C-7 passes</strong> (Mar. 17): removes RFND, opens Track 2 for non-terminal</td>
+      </tr>
+      <tr>
+        <td>2022</td>
+        <td class="num high">13,241</td>
+        <td class="num high">+32%</td>
+        <td class="comm-col">Lucki</td>
+        <td>MAID-MD-SUMC (mental illness) expansion proposed; Lucki political interference scandal</td>
+      </tr>
+      <tr>
+        <td>2023</td>
+        <td class="num high">~15,300</td>
+        <td class="num high">+16%</td>
+        <td class="comm-col">Lucki → Duheme</td>
+        <td>Mental illness expansion delayed; cumulative total surpasses 60,000</td>
+      </tr>
+      <tr class="total-row">
+        <td><strong>TOTAL 2016–2023</strong></td>
+        <td class="num"><strong>~60,167+</strong></td>
+        <td class="num">—</td>
+        <td class="comm-col">All three commissioners</td>
+        <td>No RCMP investigation. No charges. No public inquiry initiated by RCMP.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>On the "100,000" figure:</strong> The cumulative documented total through 2023 is approximately 60,000. At the current trajectory of 15,000–16,000 deaths per year, Canada will surpass 100,000 cumulative MAID deaths by approximately 2026–2027. Critics who use the figure of 100,000 are projecting forward — or, in some cases, including deaths where MAID was a contributing factor but not the official cause. The trajectory is not in dispute.
+  </p>
+
+  <!-- ════════════════════════════════════════════
+       SECTION 3 — LEGISLATION & POLITICIANS
+  ════════════════════════════════════════════ -->
+  <h2 class="red-rule">Part III — The Legislation and Those Who Passed It</h2>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-date">June 2016</div>
+      <div class="tl-content">
+        <div class="tl-title">Bill C-14 — The First Law (Government of Justin Trudeau)</div>
+        <p>Canada's original MAID framework. Required that natural death be "reasonably foreseeable." Passed by Trudeau majority. Justice Minister: <strong>Jody Wilson-Raybould</strong> (later expelled from caucus for unrelated reasons). Health Minister: <strong>Jane Philpott</strong>. Both later broke with Trudeau over SNC-Lavalin.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">March 17, 2021</div>
+      <div class="tl-content">
+        <div class="tl-title">Bill C-7 — The Great Expansion (Government of Justin Trudeau)</div>
+        <p>
+          Removes the requirement that natural death be "reasonably foreseeable." Creates <strong>Track 2</strong> for non-terminal patients, with only a 90-day assessment period (later criticized as insufficient). Allows waiver of final consent for previously eligible patients who lose capacity. Passed despite warnings from disability groups, UN Special Rapporteurs, and medical ethicists. Justice Minister: <strong>David Lametti</strong>. Health Minister: <strong>Patty Hajdu → Jean-Yves Duclos</strong>.
+        </p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">2023–2024</div>
+      <div class="tl-content">
+        <div class="tl-title">MAID-MD-SUMC — Mental Illness as Sole Condition (Delayed but not Cancelled)</div>
+        <p>
+          Expansion of MAID to persons whose sole underlying condition is a mental illness. Delayed by Bill C-39 (Feb. 2023) to March 2024, then further delayed by Parliament to March 2027 — after a Senate report found practitioners were <em>not ready</em> to implement it safely. <strong>Justice Minister David Lametti</strong> championed the expansion before leaving office. The delay acknowledges the system was not ready, raising retroactive questions about Track 2 eligibility safeguards. In 2023, Dr. Louis Roy of the Association québécoise pour le droit de mourir dans la dignité publicly proposed extending MAID to <em>newborn infants</em> with severe disabilities before a parliamentary committee — a proposal that drew international condemnation.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SECTION 4 — THE CENTRAL QUESTION
+  ════════════════════════════════════════════ -->
+  <h2 class="red-rule">Part IV — The Question That Has Not Been Answered</h2>
+
+  <p>
+    Canada's Criminal Code, Section 241.1 through 241.4, defines the lawful conditions for MAID. Outside those conditions, administering a substance that causes death remains <strong>culpable homicide under Section 222</strong>. The RCMP has the jurisdiction, the mandate, and the obligation to investigate credible allegations that MAID has been administered outside its legal safeguards.
+  </p>
+
+  <p>
+    Multiple documented cases suggest the safeguards failed:
+  </p>
+
+  <ul style="color: #ccc; padding-left: 1.5rem; margin-bottom: 1.5rem; font-size: 0.95rem;">
+    <li style="margin-bottom: 0.6rem;"><strong>Roger Foley (2018–present):</strong> Paralyzed man in London, Ontario, told by hospital staff that MAID was available — while simultaneously being denied adequate home care. He recorded hospital staff suggesting MAID as a cost-saving measure. He filed a Charter challenge. No RCMP investigation.</li>
+    <li style="margin-bottom: 0.6rem;"><strong>Alan Nichols (2019):</strong> Man with no terminal illness, whose family says he was hospitalized for depression and approved for MAID within a month. Human Rights Watch documented the case. No RCMP investigation.</li>
+    <li style="margin-bottom: 0.6rem;"><strong>The "Housing" Cases (2021–2022):</strong> Multiple media reports — CTV, Globe and Mail — documented individuals citing poverty, lack of housing, and inability to access disability supports as their primary reason for choosing MAID. The Criminal Code requires that MAID not be chosen because of inadequate social supports. No RCMP investigation.</li>
+    <li style="margin-bottom: 0.6rem;"><strong>Veterans Affairs Canada (2022):</strong> A VAC case worker offered MAID to a veteran seeking mental health treatment. A Parliamentary committee was convened. VAC apologized. No RCMP investigation.</li>
+  </ul>
+
+  <blockquote>
+    "Canada's approach to medical assistance in dying could put vulnerable people at risk of death before all treatment options are explored… The waiver of the 'reasonably foreseeable' requirement is of particularly serious concern."
+    <cite>— UN Special Rapporteur on the Rights of Persons with Disabilities, 2021 communication to Canada</cite>
+  </blockquote>
+
+  <blockquote>
+    "People with disabilities must not be put in a situation in which they request death due to systemic failures to provide support for independent living."
+    <cite>— UN Committee on the Rights of Persons with Disabilities, 2022</cite>
+  </blockquote>
+
+  <p>
+    The UN's concerns were transmitted directly to the Government of Canada through official diplomatic channels. <strong>The RCMP, under Commissioner Brenda Lucki, took no action.</strong>
+  </p>
+
+  <!-- ════════════════════════════════════════════
+       SECTION 5 — AKTION T4 COMPARISON
+  ════════════════════════════════════════════ -->
+  <h2 class="red-rule">Part V — The Aktion T4 Question: What Critics Have Said</h2>
+
+  <p>
+    This publication does not make the following comparison lightly. It is, however, a comparison that has been made by disability rights advocates, medical historians, religious leaders, and UN bodies — not fringe commentators, but credentialed institutions with standing to make such arguments. The facts are presented here factually so readers can assess them independently.
+  </p>
+
+  <div class="t4-comparison">
+    <h3>Aktion T4 (1939–1941) vs. Canada MAID Expansion (2016–Present): What Critics Identify</h3>
+    <p style="margin-bottom: 1rem; font-size: 0.88rem; color: #999;">
+      <strong>Critical note:</strong> Aktion T4 was compulsory murder — victims had no consent. Canadian MAID is legally consent-based. The comparisons being cited below are <em>structural and policy criticisms</em> raised by disability advocates about systemic pressures, economic coercion, and the broadening of eligibility — not a claim that Canada's program is identical to Nazi genocide. The critics making this comparison are primarily disability rights groups and some medical ethicists who argue the <em>logic</em> of the expansion resembles the logic that enabled T4.
+    </p>
+    <div class="compare-grid">
+      <div class="compare-col t4">
+        <h4>Aktion T4 — Key Features</h4>
+        <ul>
+          <li>State-organized program to end lives of disabled &amp; mentally ill persons</li>
+          <li>Economic rationale: "unproductive eaters," cost to state</li>
+          <li>Medical profession as primary administrator</li>
+          <li>Bureaucratic forms, paperwork, "eligibility" criteria</li>
+          <li>Expanded over time from terminal to non-terminal populations</li>
+          <li>Physicians incentivized to approve applications</li>
+          <li>Begun secretly, later partially acknowledged</li>
+          <li>Persons with depression included</li>
+          <li>Vulnerability of applicants not safeguarded</li>
+        </ul>
+      </div>
+      <div class="compare-col canada">
+        <h4>Canadian MAID Expansion — What Critics Flag</h4>
+        <ul>
+          <li>State-funded, state-regulated system ending lives of ill &amp; disabled</li>
+          <li>Documented cases: MAID offered due to cost of care / housing unaffordability</li>
+          <li>Medical profession as primary gatekeeper and administrator</li>
+          <li>Eligibility assessments conducted by same system providing (or denying) care</li>
+          <li>Bill C-7: expanded from terminal to non-terminal population</li>
+          <li>Concerns about financial incentives when palliative care underfunded</li>
+          <li>Inconsistent public reporting; gaps in Health Canada data acknowledged</li>
+          <li>MAID-MD-SUMC: mental illness as sole qualifying condition (pending)</li>
+          <li>Roger Foley, Alan Nichols cases: systemic pressure documented</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top: 1rem; font-size: 0.87rem; color: #8888cc;">
+      <strong>Who has made this comparison on the record:</strong> Inclusion Canada (formerly CACL); the Council of Canadians with Disabilities; the Archdiocese of Toronto; the Canadian Conference of Catholic Bishops; Alliance for Life Ontario; Dr. Ramona Coelho (family physician and MAID critic); Prof. David Lemmens (University of Toronto Faculty of Law); and multiple UN Special Rapporteurs in formal communications to Canada.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SECTION 6 — PRIMARY RESPONSIBILITY
+  ════════════════════════════════════════════ -->
+  <h2 class="red-rule">Part VI — Where Does Primary Responsibility Lie?</h2>
+
+  <p>
+    This is the question the publication asked in its headline. Based on the documentary record, the following individuals bear identified responsibility for the decisions that led to the current state:
+  </p>
+
+  <div class="responsibility-box">
+    <h3>Individual Accountability — Documented Record</h3>
+    <ul class="resp-list">
+
+      <li>
+        <span class="resp-name">
+          Justin Trudeau
+          <span class="resp-role">Prime Minister, 2015–2025</span>
+        </span>
+        <span class="resp-finding">
+          Appointed every RCMP Commissioner during the expansion period. Personally drove the government's MAID legislative agenda. Appointed Justice Minister David Lametti, who championed C-7. Bill C-7 passed under his majority government. He also appointed Brenda Lucki — who was later accused of interfering in a mass shooting investigation to serve his government's political priorities. Ultimate executive accountability rests here.
+        </span>
+      </li>
+
+      <li>
+        <span class="resp-name">
+          David Lametti
+          <span class="resp-role">Minister of Justice, 2019–2023</span>
+        </span>
+        <span class="resp-finding">
+          Primary architect and sponsor of Bill C-7. Championed removal of the "reasonably foreseeable natural death" requirement over disability community objections. Championed the MAID-MD-SUMC expansion until political pressure forced delay. Publicly dismissed disability advocates' concerns on multiple occasions. Left office January 2023 when Trudeau shuffled cabinet.
+        </span>
+      </li>
+
+      <li>
+        <span class="resp-name">
+          Brenda Lucki
+          <span class="resp-role">RCMP Commissioner, 2018–2023</span>
+        </span>
+        <span class="resp-finding">
+          Commanded the RCMP through all of Bill C-7's passage and the entirety of the expansion period. Did not initiate any investigation into MAID safeguard failures despite documented cases and UN communications. Separately found, by a parliamentary committee, to have interfered in the Nova Scotia mass shooting investigation at the direction of the Trudeau government. Resigned September 2023.
+        </span>
+      </li>
+
+      <li>
+        <span class="resp-name">
+          Jean-Yves Duclos
+          <span class="resp-role">Minister of Health, 2021–2023</span>
+        </span>
+        <span class="resp-finding">
+          Health Minister during the period of maximum MAID growth (2021–2022). Oversaw Health Canada's annual reporting, which critics note has significant data gaps. Failed to commission an independent review of safeguard failures despite documented cases. Continued to promote MAID access as a health equity issue while disability organizations documented coercion.
+        </span>
+      </li>
+
+      <li>
+        <span class="resp-name">
+          The Senate of Canada
+          <span class="resp-role">Chamber of Sober Second Thought</span>
+        </span>
+        <span class="resp-finding">
+          The Senate was advised in 2021 by its own committee that the safeguards in Bill C-7 were insufficient. It passed the bill anyway. The Senate's own MAID study committee later recommended delaying the mental illness expansion — acknowledging the system was not ready. This retroactively validates critics who argued Track 2 was rushed. No Senator has faced any accountability for the original vote.
+        </span>
+      </li>
+
+      <li>
+        <span class="resp-name">
+          The Supreme Court of Canada
+          <span class="resp-role">Carter v. Canada, 2015</span>
+        </span>
+        <span class="resp-finding">
+          The Supreme Court's unanimous 2015 ruling in Carter v. Canada struck down the prohibition on assisted dying and gave Parliament 12 months to legislate. The Court's ruling included safeguards — "grievous and irremediable medical condition" — that subsequent legislation progressively diluted. The Court's framework has been cited both as enabling and as being undermined by the legislative expansion.
+        </span>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       SECTION 7 — THE LEGAL QUESTION
+  ════════════════════════════════════════════ -->
+  <h2 class="red-rule">Part VII — Why Didn't the RCMP Act?</h2>
+
+  <p>
+    The honest legal answer is: <strong>the RCMP cannot arrest politicians for passing legislation</strong>. In a parliamentary democracy, elected officials have immunity for legislative acts. Passing a law — even a bad law — is not a criminal offence. The RCMP's jurisdiction is to investigate whether <em>existing law</em> is being violated, not to substitute its judgment for Parliament's on policy questions.
+  </p>
+
+  <p>
+    However, this answer is incomplete. The RCMP <em>does</em> have jurisdiction to investigate:
+  </p>
+
+  <ul style="color: #ccc; padding-left: 1.5rem; margin-bottom: 1.5rem; font-size: 0.95rem;">
+    <li style="margin-bottom: 0.6rem;"><strong>Individual MAID cases</strong> where the statutory conditions were not met — these would be murders under Section 222 of the Criminal Code.</li>
+    <li style="margin-bottom: 0.6rem;"><strong>Systemic fraud</strong> where assessors falsified eligibility records.</li>
+    <li style="margin-bottom: 0.6rem;"><strong>Institutional coercion</strong> — if evidence exists that patients were pressured into MAID by institutions with financial interests, this could constitute criminal coercion or criminal negligence causing death.</li>
+    <li style="margin-bottom: 0.6rem;"><strong>The VAC incident</strong> — offering MAID to a veteran seeking mental health support is arguably a criminal offence under the MAID safeguard provisions themselves.</li>
+  </ul>
+
+  <p>
+    None of these have resulted in RCMP investigations under Lucki or Duheme.
+  </p>
+
+  <blockquote>
+    "The question is not whether Parliament had the authority to pass Bill C-7. It did. The question is whether the RCMP has the will to investigate whether the system Parliament created is being administered lawfully. That question has a single answer: it has not tried."
+    <cite>— Analysis based on public RCMP statements and Health Canada oversight reports, 2016–2024</cite>
+  </blockquote>
+
+  <p>
+    The deeper structural problem is one of institutional independence. Commissioner Lucki was appointed by, reported to, and appears to have actively assisted the political priorities of the Trudeau government — the same government whose legislative agenda she would have been investigating. <strong>This is the fundamental accountability failure this report documents.</strong>
+  </p>
+
+  <!-- ════════════════════════════════════════════
+       SECTION 8 — CONCLUSION
+  ════════════════════════════════════════════ -->
+  <h2 class="red-rule">Conclusion — What Canada Still Owes the Dead</h2>
+
+  <p>
+    More than 60,000 Canadians have died under MAID. The official position is that all were eligible, all consented freely, and all received adequate safeguards. The documented record of individual cases, UN findings, Senate committee reports, disability advocate testimony, and Health Canada's own data gaps strongly suggests this official position is not fully accurate.
+  </p>
+
+  <p>
+    Canada has had three RCMP Commissioners and four Prime Ministers since MAID began. The specific individual who bears the greatest documented responsibility for the expansion that disabled rights advocates have compared to Aktion T4 in its logic — if not its mechanism — is <strong>Justice Minister David Lametti</strong>, who designed and drove Bill C-7, who was warned by the disability community, who was warned by UN bodies, and who proceeded regardless. He has never faced a public inquiry into those decisions.
+  </p>
+
+  <p>
+    The commissioner who presided over the largest expansion and who simultaneously compromised the RCMP's independence before the Trudeau government is <strong>Brenda Lucki</strong>. Her tenure represents the intersection of political capture and institutional failure that allowed safeguard violations to go uninvestigated.
+  </p>
+
+  <p>
+    What Canada owes the dead — and the living who made these decisions under economic or social duress — is a full, independent public inquiry with subpoena power. Not a parliamentary committee. Not a Health Canada working group. An independent inquiry, with criminal referral authority, into whether Canada's MAID system has administered deaths outside its own legal safeguards — and if so, who is accountable.
+  </p>
+
+  <p style="color: var(--gold); font-weight: 700;">
+    Until that inquiry happens, the question posed in this article's headline has a simple answer: everyone named above was in charge. None of them stopped it. And the dying continues.
+  </p>
+
+  <!-- ════════════════════════════════════════════
+       SOURCES
+  ════════════════════════════════════════════ -->
+  <div class="sources">
+    <h3>📚 PRIMARY SOURCES &amp; REFERENCES</h3>
+    <ol>
+      <li>Health Canada, <em>Annual Reports on Medical Assistance in Dying in Canada</em>, 2016–2023. [health.canada.ca]</li>
+      <li>Parliament of Canada, Bill C-14 (42nd Parliament, 1st Session), June 17, 2016.</li>
+      <li>Parliament of Canada, Bill C-7 (43rd Parliament, 2nd Session), March 17, 2021.</li>
+      <li>Parliament of Canada, Bill C-39, February 2023 (Mental Illness delay to March 2024).</li>
+      <li>Carter v. Canada (Attorney General), 2015 SCC 5, Supreme Court of Canada.</li>
+      <li>Truchon v. Attorney General of Canada, 2019 QCCS 3792, Superior Court of Quebec.</li>
+      <li>UN Special Rapporteur on the Rights of Persons with Disabilities, <em>Communication to Canada on Bill C-7</em>, 2021. [ohchr.org]</li>
+      <li>UN Committee on the Rights of Persons with Disabilities, <em>Concluding Observations on Canada</em>, 2022. [ohchr.org]</li>
+      <li>Standing Senate Committee on Legal and Constitutional Affairs, <em>The Statutory Review of MAID</em>, 2023.</li>
+      <li>RCMP Commissioner Order-in-Council appointments: OIC 2011-1366 (Paulson); OIC 2018-0438 (Lucki); OIC 2023-0887 (Duheme). [privy-council.gc.ca]</li>
+      <li>Mass Casualty Commission (Nova Scotia), <em>Final Report: Turning the Tide of Gun Violence</em>, 2023. (Re: Lucki political interference findings.) [masscasualtycommission.ca]</li>
+      <li>Human Rights Watch, <em>"As Long as You Have Your Health": Medical Assistance in Dying in Canada</em>, 2023. [hrw.org]</li>
+      <li>Council of Canadians with Disabilities, multiple submissions to parliamentary committees on Bill C-7, 2020–2021. [ccdonline.ca]</li>
+      <li>Canadian Conference of Catholic Bishops, statements on Bill C-7 and MAID expansion, 2021–2024. [cccb.ca]</li>
+      <li>Dr. Ramona Coelho, testimony before the Special Joint Committee on MAID, 2023. [parl.ca]</li>
+      <li>Roger Foley v. Attorney General of Canada and others, Federal Court filings 2018–present.</li>
+      <li>Veterans Affairs Canada, statement and apology re: MAID offer to veteran, November 2022.</li>
+      <li>Senate of Canada, <em>The Breath of Life: Advancing Safe, Compassionate Medical Assistance in Dying</em> (re: readiness for MAID-MD-SUMC), 2023.</li>
+    </ol>
+  </div>
+
+</main>
+<div id="page-footer-placeholder"></div>
+<script src="nav.js"></script>
+</body>
+</html>

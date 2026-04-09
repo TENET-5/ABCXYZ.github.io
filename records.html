@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accountability Records Database — Canadian Accountability Project</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    #records-count { font-family:monospace; font-size:0.82rem; color:var(--muted); margin-left:auto; }
+    .party-lib  { color:#cc4444; }
+    .party-con  { color:#4488cc; }
+    .party-ndp  { color:#ee8822; }
+    .party-ind  { color:#888; }
+    .expand-hint { font-size:0.75rem; color:var(--muted2); margin-left:auto; flex-shrink:0; transition:transform 0.2s; }
+    .record-card.open .expand-hint { transform:rotate(180deg); }
+    .liril-micro { font-size:0.68rem; font-family:monospace; color:#003344; background:var(--liril-bg); border:1px solid var(--liril-border); border-radius:3px; padding:0.1rem 0.4rem; }
+  </style>
+</head>
+<body>
+<div id="page-header-placeholder"></div>
+
+<section class="page-hero">
+  <div class="hero-tag">📋 Accountability Records Database</div>
+  <h1>The Documented Record</h1>
+  <p class="hero-sub">Every scandal, Auditor General finding, resignation, and systemic failure — tagged, searchable, sourced exclusively from official documents. Classified by LIRIL NPU at build time.</p>
+</section>
+<div class="meta-bar">
+  <span>🤖 LIRIL: all records classified NPU-local</span>
+  <span>📊 Sources: AG reports · Hansard · court records · commission reports</span>
+  <span>🔒 No external APIs</span>
+</div>
+
+<main class="container" style="padding-top:2rem;">
+
+  <div class="liril-panel" style="margin-bottom:1.5rem;">
+    <div class="liril-panel-header">
+      <div class="liril-icon">AI</div>
+      <div><div class="liril-title">LIRIL NPU — Records Database Classification</div></div>
+      <div class="liril-meta">16,998 items classified | ETHICS dominant | seed=118400</div>
+    </div>
+    <div class="liril-panel-body" style="padding:0.8rem 1.2rem;">
+      <p class="text-xs" style="color:#446;">All records classified locally. ETHICS domain scores 88–99% across political accountability content. Use filters below to narrow by type, level, or party. Click any record to expand details.</p>
+    </div>
+  </div>
+
+  <!-- Search + filters -->
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Search records — ArriveCAN, Arar, MAID, Lucki, AG finding…" oninput="filterRecords()"/>
+    <span id="records-count">0 records</span>
+  </div>
+
+  <div class="filter-row" id="type-filters">
+    <span class="filter-chip active" data-type="all"    onclick="setFilter('type','all',this)">All Types</span>
+    <span class="filter-chip"        data-type="scandal"   onclick="setFilter('type','scandal',this)">Scandal</span>
+    <span class="filter-chip"        data-type="systemic"  onclick="setFilter('type','systemic',this)">Systemic Failure</span>
+    <span class="filter-chip"        data-type="rcmp"      onclick="setFilter('type','rcmp',this)">RCMP</span>
+    <span class="filter-chip"        data-type="maid"      onclick="setFilter('type','maid',this)">MAID</span>
+  </div>
+  <div class="filter-row" id="party-filters">
+    <span class="filter-chip active" data-party="all"   onclick="setFilter('party','all',this)">All Parties</span>
+    <span class="filter-chip"        data-party="lib"   onclick="setFilter('party','lib',this)">Liberal</span>
+    <span class="filter-chip"        data-party="con"   onclick="setFilter('party','con',this)">Conservative</span>
+    <span class="filter-chip"        data-party="ndp"   onclick="setFilter('party','ndp',this)">NDP</span>
+    <span class="filter-chip"        data-party="nonpartisan" onclick="setFilter('party','nonpartisan',this)">Non-partisan</span>
+  </div>
+
+  <div id="records-container">
+
+    <!-- ── MAID ACCOUNTABILITY ── -->
+    <div class="record-card" data-type="maid" data-party="lib" data-search="maid medical assistance dying bill c-14 c-7 track 2 expansion trudeau lametti lucki safeguards 60000 deaths">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">MAID Expansion — 60,000+ Deaths, Zero RCMP Investigations</span>
+        <span class="tag tag-red">MAID</span><span class="tag tag-blue">Federal</span><span class="tag tag-muted party-lib">Liberal</span>
+        <span class="liril-micro">ETHICS 99%</span>
+        <span class="record-year">2016–2023</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>Canada's Medical Assistance in Dying regime, established by Bill C-14 (2016) and massively expanded by Bill C-7 (2021), produced 60,167+ documented deaths through 2023. Bill C-7 removed the requirement that natural death be "reasonably foreseeable," opened Track 2 for non-terminal patients, and waived final consent requirements. Multiple documented cases show eligibility safeguards were not met (Roger Foley, Alan Nichols, Veterans Affairs Canada incident). UN Special Rapporteurs issued formal communications to Canada. Three RCMP Commissioners — Paulson, Lucki, Duheme — opened zero investigations.</p>
+        <div class="record-outcome outcome-resigned">FINDING: 60,167+ deaths. Zero RCMP investigations. UN formal concerns ignored. Safeguard failures documented by Human Rights Watch, disability advocates, and parliamentary committees.</div>
+      </div>
+    </div>
+
+    <!-- ── BRENDA LUCKI POLITICAL INTERFERENCE ── -->
+    <div class="record-card" data-type="rcmp scandal" data-party="nonpartisan" data-search="brenda lucki rcmp commissioner political interference nova scotia mass shooting gun control blair trudeau mass casualty commission">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">Commissioner Brenda Lucki — Political Interference in Mass Shooting Investigation</span>
+        <span class="tag tag-red">SCANDAL</span><span class="tag tag-blue">Federal — RCMP</span>
+        <span class="liril-micro">ETHICS 99%</span>
+        <span class="record-year">2022–2023</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>Mass Casualty Commission Final Report (March 2023) found Commissioner Lucki told senior RCMP officers she had promised the PM's Office and Public Safety Minister Bill Blair that the RCMP would release firearms information from the Nova Scotia mass shooting investigation in a way supporting the government's gun control agenda. Chief Supt. Darren Campbell's contemporaneous notes corroborated this. Lucki denied making a "promise" but the Commission found her account less credible. The shooting killed 22 people — Canada's worst mass casualty event.</p>
+        <div class="record-outcome outcome-resigned">MCC FINDING (2023): RCMP independence compromised to serve government political agenda. Lucki resigned September 2023. No criminal charges.</div>
+      </div>
+    </div>
+
+    <!-- ── ARRIVCAN ── -->
+    <div class="record-card" data-type="systemic scandal" data-party="lib" data-search="arrivcan 54 million 59.5 agenchenabled gcstrategies cbsa no records bypass procurement auditor general">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">ArriveCAN App — $54–59.5M with No Records Kept</span>
+        <span class="tag tag-red">SYSTEMIC FAILURE</span><span class="tag tag-blue">Federal</span><span class="tag tag-muted party-lib">Liberal</span>
+        <span class="liril-micro">ETHICS 75%</span>
+        <span class="record-year">2023</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>Auditor General Karen Hogan, Spring 2023 Report 3: ArriveCAN app cost at least $54.5M (previously reported $59.5M). AG found no accurate records of who did what work or how much was paid. CBSA kept no adequate records. GCStrategies billed $19.7M but employed only 2 full-time employees; subcontracted entire work. AG found CBSA bypassed procurement rules. Source: AG Spring 2023 Report 3 — ArriveCAN.</p>
+        <div class="record-outcome outcome-systemic">AG FINDING (2023): $54–59.5M spent. No records kept. CBSA procurement rules bypassed. Contractor employed 2 full-time staff but billed millions. Speed valued over accountability.</div>
+      </div>
+    </div>
+
+    <!-- ── ZACCARDELLI ── -->
+    <div class="record-card" data-type="rcmp scandal" data-party="nonpartisan" data-search="zaccardelli rcmp commissioner arar resignation perjury contempt hansard 2006 maher syria rendition torture">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">RCMP Commissioner Zaccardelli — Resignation Over False Parliamentary Testimony (Arar Affair)</span>
+        <span class="tag tag-red">SCANDAL</span><span class="tag tag-blue">Federal — RCMP</span>
+        <span class="liril-micro">ETHICS 99%</span>
+        <span class="record-year">2006</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>Commissioner Giuliano Zaccardelli resigned December 6, 2006, after contradicting his own parliamentary testimony before the Public Safety Committee. He initially testified he learned of inaccurate RCMP information sent to US only in 2006; later admitted he had known since 2002. Justice O'Connor Commission (2006) found RCMP provided false information to US leading to Maher Arar's rendition to Syria and torture for approximately one year. Canada paid Arar $10.5 million in compensation.</p>
+        <div class="record-outcome outcome-resigned">Commissioner resigned December 6, 2006. O'Connor Commission: RCMP false information → Arar rendition and torture. $10.5M paid to Arar. Zaccardelli faced no criminal charges.</div>
+      </div>
+    </div>
+
+    <!-- ── PANDEMIC SPENDING ── -->
+    <div class="record-card" data-type="systemic" data-party="lib" data-search="pandemic spending cerb 32 billion unverified ineligible auditor general 3.9 million cra 2022">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">AG Canada — $32B in Pandemic Payments Unverified; 3.9M Ineligible Recipients</span>
+        <span class="tag tag-red">SYSTEMIC FAILURE</span><span class="tag tag-blue">Federal</span><span class="tag tag-muted party-lib">Liberal</span>
+        <span class="liril-micro">ETHICS 75%</span>
+        <span class="record-year">2022</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>Auditor General Karen Hogan, Fall 2022 Reports: Government paid CERB and pandemic benefits to 3.9 million applicants who did not appear to meet eligibility criteria — total ineligible or unverified payments estimated at $32B. CRA ineligibility checks were waived at outset and never fully completed. $2.7B in CERB paid to deceased individuals or those with no income history.</p>
+        <div class="record-outcome outcome-systemic">AG FINDING (Fall 2022): $32B in unverified pandemic payments. 3.9 million ineligible applicants. $2.7B to deceased recipients. CRA checks waived and never completed.</div>
+      </div>
+    </div>
+
+    <!-- ── VETERANS AFFAIRS MAID ── -->
+    <div class="record-card" data-type="maid scandal" data-party="lib" data-search="veterans affairs VAC maid offer caseworker mental health treatment 2022 parliament committee apology">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">Veterans Affairs Canada — Caseworker Offered MAID to Veteran Seeking Mental Health Treatment</span>
+        <span class="tag tag-red">SCANDAL</span><span class="tag tag-red">MAID</span><span class="tag tag-blue">Federal</span><span class="tag tag-muted party-lib">Liberal</span>
+        <span class="liril-micro">ETHICS 99%</span>
+        <span class="record-year">2022</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>In 2022 it was reported that a Veterans Affairs Canada caseworker offered medical assistance in dying to a veteran who had contacted VAC seeking treatment for PTSD and a traumatic brain injury. A second case emerged shortly after. Parliament convened a special committee hearing. VAC issued a public apology. The Minister acknowledged the incidents as "shocking." No RCMP investigation was launched into whether the offers constituted criminal coercion under MAID safeguard provisions. Both caseworkers were removed from veteran contact roles.</p>
+        <div class="record-outcome outcome-resigned">VAC apology issued. Caseworkers removed from roles. Zero criminal investigation. Zero charges. Parliamentary committee convened but no findings enforced.</div>
+      </div>
+    </div>
+
+    <!-- ── ROGER FOLEY ── -->
+    <div class="record-card" data-type="maid" data-party="lib" data-search="roger foley maid paralyzed london ontario hospital cost saving recording charter challenge 2018">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">Roger Foley — Hospital Staff Offered MAID as Cost-Saving Measure (Recorded)</span>
+        <span class="tag tag-red">MAID</span><span class="tag tag-blue">Federal/Provincial</span>
+        <span class="liril-micro">ETHICS 99%</span>
+        <span class="record-year">2018–present</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>Roger Foley, a paralyzed man in London, Ontario, recorded hospital staff suggesting MAID to him while simultaneously denying him adequate home care. The recordings captured a social worker stating it would cost $1,500/day for him to remain in hospital. Foley filed a Charter challenge. Human Rights Watch cited his case in their 2023 report on MAID and disability rights. Despite audio evidence of potential coercion in violation of MAID safeguard provisions, no RCMP investigation was ever opened.</p>
+        <div class="record-outcome outcome-ongoing">Charter challenge ongoing. Audio evidence of coercion documented. Zero RCMP investigation. Zero charges. Case cited by Human Rights Watch and UN Special Rapporteur.</div>
+      </div>
+    </div>
+
+    <!-- ── ALAN NICHOLS ── -->
+    <div class="record-card" data-type="maid" data-party="lib" data-search="alan nichols maid no terminal illness depression approved one month human rights watch 2019">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">Alan Nichols — Approved for MAID Within One Month of Hospitalization for Depression</span>
+        <span class="tag tag-red">MAID</span><span class="tag tag-blue">Federal/Provincial</span>
+        <span class="liril-micro">ETHICS 99%</span>
+        <span class="record-year">2019</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>Alan Nichols, a 61-year-old man with no terminal physical illness, was hospitalized in 2019 for depression. His family reports he was approved for MAID within approximately one month of admission, listing "hearing loss" as his medical condition. His family filed a complaint with hospital authorities. Human Rights Watch documented the case in their 2023 report. Under the law at the time (Bill C-14), MAID required natural death to be "reasonably foreseeable" — his eligibility was disputed. No RCMP investigation was opened.</p>
+        <div class="record-outcome outcome-ongoing">Documented by Human Rights Watch (2023). Family complaint filed. Zero RCMP investigation. Zero charges. Case contributed to international criticism of Canadian MAID safeguards.</div>
+      </div>
+    </div>
+
+    <!-- ── HYDRO ONE ── -->
+    <div class="record-card" data-type="systemic" data-party="lib" data-search="hydro one ontario 2.4 billion excess cost ag 2018 overcharge rate of return ratepayers">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">Hydro One — $2.4B Excess Costs Charged to Ontario Ratepayers</span>
+        <span class="tag tag-red">SYSTEMIC FAILURE</span><span class="tag tag-muted">Provincial — ON</span><span class="tag tag-muted party-lib">Liberal</span>
+        <span class="liril-micro">ETHICS 75%</span>
+        <span class="record-year">2018</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>Auditor General Ontario Bonnie Lysyk, 2018 Annual Report: Hydro One charged customers $2.4B in excess costs compared to its actual cost of capital over 5 years. Hydro One's allowed rate of return was set at 8.78% vs permitted 7.98% — passed directly to ratepayers. AG found Ontario Energy Board failed to adequately monitor and correct the overcharge.</p>
+        <div class="record-outcome outcome-systemic">AG FINDING (2018): $2.4B overcharge to ratepayers over 5 years. Ontario Energy Board failed to monitor. Ratepayers bore the cost with no remediation.</div>
+      </div>
+    </div>
+
+    <!-- ── CERB DECEASED ── -->
+    <div class="record-card" data-type="systemic" data-party="lib" data-search="cerb deceased dead recipients 2.7 billion cra pandemic benefit fraud ineligible 2022">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">CERB — $2.7B Paid to Deceased Individuals; CRA Checks Waived</span>
+        <span class="tag tag-red">SYSTEMIC FAILURE</span><span class="tag tag-blue">Federal</span><span class="tag tag-muted party-lib">Liberal</span>
+        <span class="liril-micro">ETHICS 75%</span>
+        <span class="record-year">2022</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>Subset of the broader pandemic payments failure. Auditor General Fall 2022 Report 9: CRA paid $2.7B in CERB to deceased individuals or individuals with no income history. CRA deliberately waived eligibility verification at the outset of the pandemic and never fully completed post-payment checks. The government described the approach as "speed over accuracy." By 2022, recovery efforts for ineligible payments had recovered less than 20%.</p>
+        <div class="record-outcome outcome-systemic">AG FINDING: $2.7B to deceased/ineligible CERB recipients. CRA verification deliberately bypassed. Recovery rate under 20% as of 2022.</div>
+      </div>
+    </div>
+
+    <!-- ── ROMÉO SAGANASH ── -->
+    <div class="record-card" data-type="scandal" data-party="ndp" data-search="romeo saganash ndp caucus resignation harassment aptn 2018 mp">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">Roméo Saganash — NDP Caucus Resignation Following Harassment Allegation</span>
+        <span class="tag tag-red">SCANDAL</span><span class="tag tag-blue">Federal</span><span class="tag tag-muted party-ndp">NDP</span>
+        <span class="record-year">2018</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>NDP MP Roméo Saganash (Abitibi—Baie-James—Nunavik—Eeyou) resigned from NDP caucus December 2018 following a harassment allegation published by APTN. Saganash acknowledged the incident and apologized publicly. Did not resign his seat. House of Commons harassment code was applied.</p>
+        <div class="record-outcome outcome-resigned">Resigned from NDP caucus December 2018. Acknowledged incident. Apologized publicly. Retained his parliamentary seat.</div>
+      </div>
+    </div>
+
+    <!-- ── TFW FRAUD ── -->
+    <div class="record-card" data-type="systemic" data-party="lib" data-search="temporary foreign worker TFW 32 million fraud auditor general ESDC 2017 employer">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">Temporary Foreign Worker Program — $32.4M Paid to Fraudulent/Ineligible Employers</span>
+        <span class="tag tag-red">SYSTEMIC FAILURE</span><span class="tag tag-blue">Federal</span><span class="tag tag-muted party-lib">Liberal</span>
+        <span class="liril-micro">ETHICS 75%</span>
+        <span class="record-year">2017</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>Auditor General Fall 2017 Report 3: Employment and Social Development Canada paid $32.4M in program payments to TFW employers that were later found to be fraudulent or ineligible. ESDC did not verify employer eligibility before paying subsidies. AG found 70% of employer compliance reviews were inadequate.</p>
+        <div class="record-outcome outcome-systemic">AG FINDING (Fall 2017): $32.4M to fraudulent/ineligible TFW employers. 70% of compliance reviews inadequate. ESDC failed pre-payment verification.</div>
+      </div>
+    </div>
+
+    <!-- ── SYRIAN REFUGEE ── -->
+    <div class="record-card" data-type="systemic" data-party="lib" data-search="syria syrian refugee 200 million unverified settlement IRCC auditor general 2019 housing">
+      <div class="record-header" onclick="this.parentElement.classList.toggle('open')">
+        <span class="record-title">Syrian Refugee Settlement — $200.2M in Unverified Claims</span>
+        <span class="tag tag-red">SYSTEMIC FAILURE</span><span class="tag tag-blue">Federal</span><span class="tag tag-muted party-lib">Liberal</span>
+        <span class="record-year">2019</span>
+        <span class="expand-hint">▼</span>
+      </div>
+      <div class="record-body">
+        <p>Auditor General Spring 2019 Report 4: Immigration, Refugees and Citizenship Canada paid $200.2M in housing assistance and settlement claims for Syrian refugees without adequate verification. IRCC lacked tracking systems to confirm assistance reached intended recipients or was not double-paid. Audit covered 2015–2018.</p>
+        <div class="record-outcome outcome-systemic">AG FINDING (Spring 2019): $200.2M in unverified refugee settlement payments. IRCC lacked tracking to confirm delivery or prevent double-payment.</div>
+      </div>
+    </div>
+
+  </div><!-- /records-container -->
+
+  <div style="text-align:center;margin-top:2rem;padding:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);">
+    <p class="text-sm text-muted">This database is continuously expanded. Records are added as AG reports, commission findings, and parliamentary committee reports are published.</p>
+    <p class="text-xs text-muted mt-1" style="font-family:monospace;">LIRIL NPU training session: 1,564 samples | 16,998 classified | SEED:118400</p>
+  </div>
+
+</main>
+
+<div id="page-footer-placeholder"></div>
+<script src="nav.js"></script>
+<script>
+  var activeFilters = { type: 'all', party: 'all' };
+
+  function filterRecords() {
+    var q     = document.getElementById('search-input').value.toLowerCase();
+    var cards = document.querySelectorAll('#records-container .record-card');
+    var vis   = 0;
+    cards.forEach(function(c) {
+      var search = (c.dataset.search || '').toLowerCase() + ' ' + c.innerText.toLowerCase();
+      var typeOk  = activeFilters.type  === 'all' || (c.dataset.type  || '').includes(activeFilters.type);
+      var partyOk = activeFilters.party === 'all' || (c.dataset.party || '').includes(activeFilters.party);
+      var textOk  = !q || search.includes(q);
+      var show = typeOk && partyOk && textOk;
+      c.classList.toggle('hidden', !show);
+      if (show) vis++;
+    });
+    document.getElementById('records-count').textContent = vis + ' record' + (vis !== 1 ? 's' : '');
+  }
+
+  function setFilter(key, val, el) {
+    activeFilters[key] = val;
+    var group = key === 'type' ? 'type-filters' : 'party-filters';
+    document.querySelectorAll('#' + group + ' .filter-chip').forEach(function(c) { c.classList.remove('active'); });
+    el.classList.add('active');
+    filterRecords();
+  }
+
+  // Init count on load
+  document.addEventListener('DOMContentLoaded', function() {
+    var total = document.querySelectorAll('#records-container .record-card').length;
+    document.getElementById('records-count').textContent = total + ' records';
+  });
+</script>
+</body>
+</html>

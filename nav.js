@@ -11,6 +11,7 @@
     sator_row: 3,
     sator_word: "OPERA",
     last_classify_ts: 1775762162,
+    total_samples_trained: 1727,
     gpu0_util: 44,
     gpu1_util: 26,
     nats_status: "connected",
@@ -19,6 +20,9 @@
       "Political Failure":      { domain: "ETHICS",     confidence: 0.75, device: "CPU",  method: "keyword_override", npu_original: "REASONING" },
       "Disability/Ethics":      { domain: "ETHICS",     confidence: 0.99, device: "NPU",  method: "keyword-decisive" },
       "Legal/Criminal":         { domain: "ETHICS",     confidence: 0.80, device: "NPU",  method: "keyword-decisive" },
+      "ArriveCAN/AG Findings":  { domain: "ETHICS",     confidence: 0.99, device: "NPU",  method: "keyword-decisive" },
+      "CERB Pandemic Spending": { domain: "ETHICS",     confidence: 0.99, device: "NPU",  method: "keyword-decisive" },
+      "Zaccardelli/Arar":       { domain: "ETHICS",     confidence: 0.99, device: "NPU",  method: "keyword-decisive" },
     },
     route: { agent: "nemoclaw", domain: "ETHICS", fallback_from: "kyre" }
   };

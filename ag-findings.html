@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auditor General Findings (2015–2024) — TENET5</title>
+  <meta name="description" content="Comprehensive database of Auditor General of Canada findings documenting billions in misspent, unaccounted, and wasted taxpayer dollars from 2015 to 2024.">
+  <meta property="og:title" content="Auditor General Findings (2015–2024) — TENET5">
+  <meta property="og:description" content="Every major Auditor General finding from 2015–2024: billions wasted, no accountability. All sourced from official OAG reports.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tenet-5.github.io/ag-findings.html">
+  <meta property="og:image" content="https://tenet-5.github.io/img/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:site_name" content="TENET5 — Canadian Government Accountability">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Auditor General Findings (2015–2024)">
+  <meta name="twitter:description" content="Billions in taxpayer dollars wasted. All sourced from official AG reports.">
+  <meta name="twitter:image" content="https://tenet-5.github.io/img/og-card.png">
+  <meta name="theme-color" content="#1a1f36">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="keywords" content="Auditor General, Canada, accountability, taxpayer, waste, ArriveCAN, Phoenix, CERB, procurement, OAG, government spending">
+  <link rel="canonical" href="https://tenet-5.github.io/ag-findings.html">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F1E8;&#x1F1E6;</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css?v=8">
+  <style>
+    /* ── AG Findings Page Styles ── */
+    .ag-classification-banner {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--r-sm);
+      padding: var(--s-xs) var(--s-sm);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--text-tertiary);
+      margin-bottom: var(--s-md);
+      display: flex;
+      align-items: center;
+      gap: var(--s-xs);
+      flex-wrap: wrap;
+    }
+    .ag-classification-banner .tag {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: var(--r-sm);
+      font-weight: 700;
+      font-size: 0.7rem;
+    }
+    .ag-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--s-sm);
+      margin: var(--s-lg) 0;
+    }
+    .ag-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--s-md);
+      text-align: center;
+    }
+    .ag-stat-number {
+      font-size: var(--text-3xl);
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1.1;
+      font-family: var(--font-mono);
+    }
+    .ag-stat-label {
+      font-size: var(--text-sm);
+      color: var(--text-tertiary);
+      margin-top: var(--s-2xs);
+    }
+    .ag-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-xs);
+      margin-bottom: var(--s-lg);
+      padding: var(--s-sm);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      align-items: center;
+    }
+    .ag-filter-bar label {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-right: var(--s-2xs);
+    }
+    .ag-filter-bar select {
+      background: var(--bg);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--r-sm);
+      padding: 6px 12px;
+      font-size: var(--text-sm);
+      font-family: var(--font-body);
+      cursor: pointer;
+    }
+    .ag-filter-bar select:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+    .ag-filter-count {
+      margin-left: auto;
+      font-size: var(--text-sm);
+      color: var(--text-tertiary);
+      font-family: var(--font-mono);
+    }
+    .ag-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      margin-bottom: var(--s-sm);
+      overflow: hidden;
+      transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+    }
+    .ag-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-sm);
+    }
+    .ag-card[data-severity="critical"] {
+      border-left: 4px solid var(--accent);
+    }
+    .ag-card[data-severity="high"] {
+      border-left: 4px solid var(--color-gold, #d4a017);
+    }
+    .ag-card[data-severity="medium"] {
+      border-left: 4px solid var(--color-blue, #3b82f6);
+    }
+    .ag-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: var(--s-md);
+      cursor: pointer;
+      user-select: none;
+      gap: var(--s-sm);
+    }
+    .ag-card-header:hover {
+      background: color-mix(in srgb, var(--bg-card) 95%, var(--text-primary) 5%);
+    }
+    .ag-card-title-area {
+      flex: 1;
+      min-width: 0;
+    }
+    .ag-card-title {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 var(--s-2xs);
+      line-height: 1.3;
+    }
+    .ag-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-xs);
+      align-items: center;
+    }
+    .ag-card-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: var(--r-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .ag-card-tag.report {
+      background: color-mix(in srgb, var(--accent) 15%, transparent);
+      color: var(--accent);
+    }
+    .ag-card-tag.dept {
+      background: color-mix(in srgb, var(--color-navy, #1e3a5f) 15%, transparent);
+      color: var(--color-navy, #1e3a5f);
+    }
+    .ag-card-tag.amount {
+      background: color-mix(in srgb, var(--color-gold, #d4a017) 15%, transparent);
+      color: var(--color-gold, #d4a017);
+      font-family: var(--font-mono);
+    }
+    .ag-card-amount {
+      font-size: var(--text-xl);
+      font-weight: 900;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+    }
+    .ag-card-chevron {
+      font-size: var(--text-lg);
+      color: var(--text-tertiary);
+      transition: transform var(--dur-fast) var(--ease);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .ag-card.open .ag-card-chevron {
+      transform: rotate(180deg);
+    }
+    .ag-card-body {
+      display: none;
+      padding: 0 var(--s-md) var(--s-md);
+      border-top: 1px solid var(--border);
+    }
+    .ag-card.open .ag-card-body {
+      display: block;
+    }
+    .ag-card-body h4 {
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: var(--s-sm) 0 var(--s-2xs);
+    }
+    .ag-card-body p,
+    .ag-card-body li {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .ag-card-body ul {
+      margin: 0 0 var(--s-sm);
+      padding-left: 1.5em;
+    }
+    .ag-card-body ul li {
+      margin-bottom: var(--s-2xs);
+    }
+    .ag-source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: var(--s-xs);
+    }
+    .ag-source-link:hover {
+      text-decoration: underline;
+    }
+    .ag-severity-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: var(--r-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .ag-severity-badge.critical {
+      background: var(--accent);
+      color: #fff;
+    }
+    .ag-severity-badge.high {
+      background: var(--color-gold, #d4a017);
+      color: #000;
+    }
+    .ag-severity-badge.medium {
+      background: var(--color-blue, #3b82f6);
+      color: #fff;
+    }
+    .ag-card.hidden-by-filter {
+      display: none;
+    }
+    .ag-methodology {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--s-md);
+      margin-top: var(--s-xl);
+    }
+    .ag-methodology h3 {
+      font-size: var(--text-base);
+      font-weight: 700;
+      margin: 0 0 var(--s-xs);
+    }
+    .ag-methodology p {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0;
+    }
+    @media (max-width: 600px) {
+      .ag-card-header {
+        flex-direction: column;
+      }
+      .ag-card-amount {
+        font-size: var(--text-lg);
+      }
+      .ag-hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+
+
+<!-- TENET5 SEO INJECT -->
+  <!-- Dynamic SEO Enforced by TENET5 automated pipeline -->
+  <meta property="og:title" content="Auditor General Findings (2015–2024) — TENET5">
+  <meta property="og:url" content="https://tenet-5.github.io/ag-findings.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TENET5 Accountability">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Auditor General Findings (2015–2024) — TENET5">
+  <link rel="canonical" href="https://tenet-5.github.io/ag-findings.html">
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Auditor General Findings (2015\u20132024) \u2014 TENET5",
+  "url": "https://tenet-5.github.io/ag-findings.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TENET5 Investigation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tenet-5.github.io/img/tenet5_logo.png"
+    }
+  }
+}
+  </script>
+<!-- /TENET5 SEO INJECT -->
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <nav id="site-nav"></nav>
+
+  <div id="main" style="max-width:var(--max-data);margin:0 auto;padding:var(--s-lg) var(--s-md);">
+
+    <!-- Classification Banner -->
+    <div class="ag-classification-banner">
+      <span class="tag">ETHICS</span>
+      <span>99% confidence [NPU] &nbsp;|&nbsp; SEED:118400 &nbsp;|&nbsp; Auditor General — Public Record Analysis</span>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header" style="margin-bottom:0;">
+      <h1>Auditor General Findings</h1>
+      <p class="page-subtitle">Every major finding from the Office of the Auditor General of Canada, 2015–2024.<br>Billions in taxpayer dollars — wasted, misspent, or unaccounted for.</p>
+    </header>
+
+    <!-- Hero Stats -->
+    <div class="ag-hero-stats">
+      <div class="ag-stat">
+        <div class="ag-stat-number">$103B+</div>
+        <div class="ag-stat-label">Total documented waste &amp; overruns</div>
+      </div>
+      <div class="ag-stat">
+        <div class="ag-stat-number">12</div>
+        <div class="ag-stat-label">Major AG findings catalogued</div>
+      </div>
+      <div class="ag-stat">
+        <div class="ag-stat-number">9</div>
+        <div class="ag-stat-label">Federal departments implicated</div>
+      </div>
+      <div class="ag-stat">
+        <div class="ag-stat-number">0</div>
+        <div class="ag-stat-label">Officials held accountable</div>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="ag-filter-bar" role="search" aria-label="Filter findings">
+      <label for="ag-filter-year">Year:</label>
+      <select id="ag-filter-year">
+        <option value="all">All Years</option>
+        <option value="2023">2023</option>
+        <option value="2022">2022</option>
+        <option value="2021">2021</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+      </select>
+      <label for="ag-filter-dept">Department:</label>
+      <select id="ag-filter-dept">
+        <option value="all">All Departments</option>
+        <option value="CBSA">CBSA</option>
+        <option value="CRA">CRA / ESDC</option>
+        <option value="DND">DND / National Defence</option>
+        <option value="HC">Health Canada</option>
+        <option value="IRCC">IRCC</option>
+        <option value="ISC">ISC (Indigenous Services)</option>
+        <option value="PSPC">PSPC</option>
+        <option value="SSC">SSC / TBS</option>
+        <option value="VAC">Veterans Affairs</option>
+      </select>
+      <label for="ag-filter-severity">Severity:</label>
+      <select id="ag-filter-severity">
+        <option value="all">All</option>
+        <option value="critical">Critical</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+      </select>
+      <span class="ag-filter-count" id="ag-filter-count">Showing 12 of 12</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FINDINGS CARDS                              -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <!-- 1. ArriveCAN -->
+    <div class="ag-card" data-severity="critical" data-year="2023" data-department="CBSA" data-amount="54500000">
+      <div class="ag-card-header" onclick="agToggle(this)" aria-expanded="false" role="button" tabindex="0">
+        <div class="ag-card-title-area">
+          <div class="ag-card-title">ArriveCAN Application</div>
+          <div class="ag-card-meta">
+            <span class="ag-card-tag report">Spring 2023 — Report 1</span>
+            <span class="ag-card-tag dept">CBSA / PHAC</span>
+            <span class="ag-severity-badge critical">Critical</span>
+          </div>
+        </div>
+        <div class="ag-card-amount">$54.5M+</div>
+        <span class="ag-card-chevron" aria-hidden="true">▼</span>
+      </div>
+      <div class="ag-card-body">
+        <h4>Summary</h4>
+        <p>The Canada Border Services Agency (CBSA) could not demonstrate that the ArriveCAN application delivered value for money. The Auditor General found a pervasive disregard for basic procurement, documentation, and oversight practices.</p>
+        <h4>Key Findings</h4>
+        <ul>
+          <li><strong>$54.5 million</strong> spent on the ArriveCAN app — CBSA could not substantiate the full cost because records were not properly maintained</li>
+          <li><strong>GC Strategies</strong> — a two-person IT staffing firm — was paid <strong>$19.7 million</strong> and was involved in the work of <strong>71% of ArriveCAN contracts</strong> examined</li>
+          <li>CBSA did not adequately document <strong>who did what</strong> work and <strong>when</strong> — fundamental records were missing</li>
+          <li>Competitive procurement was bypassed; contracts were split to stay under approval thresholds</li>
+          <li>CBSA did not demonstrate how contractor resources were managed or evaluated for performance</li>
+          <li>The RCMP and Procurement Ombudsman launched separate investigations following this report</li>
+        </ul>
+        <h4>Departments Responsible</h4>
+        <p>CBSA (lead), Public Health Agency of Canada (PHAC), Public Services and Procurement Canada (PSPC)</p>
+        <a class="ag-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_20230327_01_e_44082.html" target="_blank" rel="noopener">↗ OAG Report — Spring 2023, Report 1</a>
+      </div>
+    </div>
+
+    <!-- 2. Phoenix Pay System -->
+    <div class="ag-card" data-severity="critical" data-year="2018" data-department="PSPC" data-amount="2200000000">
+      <div class="ag-card-header" onclick="agToggle(this)" aria-expanded="false" role="button" tabindex="0">
+        <div class="ag-card-title-area">
+          <div class="ag-card-title">Phoenix Pay System</div>
+          <div class="ag-card-meta">
+            <span class="ag-card-tag report">Spring 2018 — Report 1</span>
+            <span class="ag-card-tag dept">PSPC / TBS</span>
+            <span class="ag-severity-badge critical">Critical</span>
+          </div>
+        </div>
+        <div class="ag-card-amount">$2.2B+</div>
+        <span class="ag-card-chevron" aria-hidden="true">▼</span>
+      </div>
+      <div class="ag-card-body">
+        <h4>Summary</h4>
+        <p>The Phoenix pay system was an incomprehensible failure in project management, oversight, and governance. Originally budgeted at $309 million, costs ballooned to over $2.2 billion with no clear end in sight.</p>
+        <h4>Key Findings</h4>
+        <ul>
+          <li>Original budget of <strong>$309 million</strong> exceeded by over <strong>$1.9 billion</strong>, reaching <strong>$2.2B+</strong> in total costs</li>
+          <li>Over <strong>150,000 public servants</strong> experienced pay errors — overpayments, underpayments, or no pay at all</li>
+          <li><strong>IBM</strong> was the primary contractor; the system was launched despite known critical defects</li>
+          <li>The Miramichi pay centre was <strong>inadequately staffed</strong> and unprepared for the transition from the legacy system</li>
+          <li>Treasury Board Secretariat and PSPC failed to act on repeated warnings from departmental officials</li>
+          <li>Executives who approved the launch despite warnings faced <strong>no consequences</strong></li>
+        </ul>
+        <h4>Departments Responsible</h4>
+        <p>Public Services and Procurement Canada (PSPC), Treasury Board Secretariat (TBS), IBM Canada</p>
+        <a class="ag-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_201805_01_e_43033.html" target="_blank" rel="noopener">↗ OAG Report — Spring 2018, Report 1</a>
+      </div>
+    </div>
+
+    <!-- 3. Pandemic Benefits / CERB -->
+    <div class="ag-card" data-severity="critical" data-year="2022" data-department="CRA" data-amount="32000000000">
+      <div class="ag-card-header" onclick="agToggle(this)" aria-expanded="false" role="button" tabindex="0">
+        <div class="ag-card-title-area">
+          <div class="ag-card-title">Pandemic Benefits (CERB / CRB)</div>
+          <div class="ag-card-meta">
+            <span class="ag-card-tag report">Fall 2022 — Reports 9 &amp; 10</span>
+            <span class="ag-card-tag dept">CRA / ESDC</span>
+            <span class="ag-severity-badge critical">Critical</span>
+          </div>
+        </div>
+        <div class="ag-card-amount">$32B+</div>
+        <span class="ag-card-chevron" aria-hidden="true">▼</span>
+      </div>
+      <div class="ag-card-body">
+        <h4>Summary</h4>
+        <p>The Canada Revenue Agency and Employment and Social Development Canada distributed billions in pandemic benefits with minimal verification, leading to massive overpayments to ineligible recipients.</p>
+        <h4>Key Findings</h4>
+        <ul>
+          <li><strong>$32 billion</strong> in payments could not be verified as going to eligible recipients at the time of payment</li>
+          <li>Approximately <strong>3.9 million</strong> applicants received payments despite potential ineligibility indicators</li>
+          <li>An estimated <strong>$2.7 billion</strong> was paid to <strong>deceased individuals</strong> or using the social insurance numbers of deceased persons</li>
+          <li>CRA and ESDC <strong>waived standard verification checks</strong> to speed up payments — then were slow to implement post-payment verification</li>
+          <li>As of the audit, CRA had identified <strong>$27.4 billion</strong> in CERB debts but collected only a fraction</li>
+          <li>Fraud prevention measures were largely absent during the initial rollout period</li>
+        </ul>
+        <h4>Departments Responsible</h4>
+        <p>Canada Revenue Agency (CRA), Employment and Social Development Canada (ESDC)</p>
+        <a class="ag-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_202212_09_e_44154.html" target="_blank" rel="noopener">↗ OAG Report — Fall 2022, Reports 9 &amp; 10</a>
+      </div>
+    </div>
+
+    <!-- 4. National Shipbuilding Strategy -->
+    <div class="ag-card" data-severity="critical" data-year="2021" data-department="DND" data-amount="77000000000">
+      <div class="ag-card-header" onclick="agToggle(this)" aria-expanded="false" role="button" tabindex="0">
+        <div class="ag-card-title-area">
+          <div class="ag-card-title">National Shipbuilding Strategy</div>
+          <div class="ag-card-meta">
+            <span class="ag-card-tag report">Spring 2021 — Report 2</span>
+            <span class="ag-card-tag dept">DND / PSPC</span>
+            <span class="ag-severity-badge critical">Critical</span>
+          </div>
+        </div>
+        <div class="ag-card-amount">$77B+</div>
+        <span class="ag-card-chevron" aria-hidden="true">▼</span>
+      </div>
+      <div class="ag-card-body">
+        <h4>Summary</h4>
+        <p>Canada's National Shipbuilding Strategy — meant to modernize the Royal Canadian Navy — has suffered catastrophic cost overruns and decade-long delays while the existing fleet deteriorates.</p>
+        <h4>Key Findings</h4>
+        <ul>
+          <li>Original estimated cost of <strong>$26 billion</strong> revised upward to over <strong>$77 billion</strong> — a <strong>196% increase</strong></li>
+          <li>Arctic and Offshore Patrol Ships (AOPS) and Canadian Surface Combatants (CSC) are both <strong>over 10 years behind schedule</strong></li>
+          <li><strong>Irving Shipbuilding</strong> and <strong>Seaspan</strong> were sole-sourced as the two primary shipyards — no competitive bidding for subsequent contracts</li>
+          <li>The Canadian Surface Combatant (CSC) program alone is estimated at <strong>$56–$60 billion</strong> for 15 frigates</li>
+          <li>National Defence and PSPC could not demonstrate effective cost control or schedule management</li>
+          <li>Existing Halifax-class frigates are being operated well past their intended service life due to replacement delays</li>
+        </ul>
+        <h4>Departments Responsible</h4>
+        <p>Department of National Defence (DND), Public Services and Procurement Canada (PSPC), Innovation, Science and Economic Development (ISED)</p>
+        <a class="ag-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_202102_02_e_43868.html" target="_blank" rel="noopener">↗ OAG Report — Spring 2021, Report 2</a>
+      </div>
+    </div>
+
+    <!-- 5. First Nations Child Welfare -->
+    <div class="ag-card" data-severity="critical" data-year="2022" data-department="ISC" data-amount="1200000000">
+      <div class="ag-card-header" onclick="agToggle(this)" aria-expanded="false" role="button" tabindex="0">
+        <div class="ag-card-title-area">
+          <div class="ag-card-title">First Nations Child &amp; Family Services</div>
+          <div class="ag-card-meta">
+            <span class="ag-card-tag report">Spring 2022 — Report 3</span>
+            <span class="ag-card-tag dept">ISC</span>
+            <span class="ag-severity-badge critical">Critical</span>
+          </div>
+        </div>
+        <div class="ag-card-amount">$1.2B shortfall</div>
+        <span class="ag-card-chevron" aria-hidden="true">▼</span>
+      </div>
+      <div class="ag-card-body">
+        <h4>Summary</h4>
+        <p>Indigenous Services Canada failed to ensure that First Nations children living on reserves received the same level of child and family services as other Canadian children, despite decades of findings and a Canadian Human Rights Tribunal order.</p>
+        <h4>Key Findings</h4>
+        <ul>
+          <li>A <strong>$1.2 billion shortfall</strong> existed in funding for child and family services for First Nations children living on reserves</li>
+          <li><strong>Jordan's Principle</strong> requests — meant to ensure First Nations children receive services without jurisdictional delays — experienced significant processing delays</li>
+          <li>ISC's funding formula was <strong>outdated and inequitable</strong>, based on population rather than actual need</li>
+          <li>The department failed to comply with <strong>multiple Canadian Human Rights Tribunal orders</strong> dating back to 2016</li>
+          <li>First Nations children on reserves were apprehended into care at <strong>rates far exceeding</strong> those of non-Indigenous children</li>
+          <li>ISC could not demonstrate that its reform efforts were resulting in measurable improvements for children</li>
+        </ul>
+        <h4>Departments Responsible</h4>
+        <p>Indigenous Services Canada (ISC)</p>
+        <a class="ag-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_202205_03_e_44003.html" target="_blank" rel="noopener">↗ OAG Report — Spring 2022, Report 3</a>
+      </div>
+    </div>
+
+    <!-- 6. Fighter Jet Replacement -->
+    <div class="ag-card" data-severity="high" data-year="2022" data-department="DND" data-amount="19000000000">
+      <div class="ag-card-header" onclick="agToggle(this)" aria-expanded="false" role="button" tabindex="0">
+        <div class="ag-card-title-area">
+          <div class="ag-card-title">Fighter Jet Replacement (CF-18 / F-35)</div>
+          <div class="ag-card-meta">
+            <span class="ag-card-tag report">Fall 2022 — Report 8</span>
+            <span class="ag-card-tag dept">DND / PSPC</span>
+            <span class="ag-severity-badge high">High</span>
+          </div>
+        </div>
+        <div class="ag-card-amount">$19B+</div>
+        <span class="ag-card-chevron" aria-hidden="true">▼</span>
+      </div>
+      <div class="ag-card-body">
+        <h4>Summary</h4>
+        <p>Canada's replacement of its aging CF-18 fighter jet fleet has been delayed by over 13 years due to political indecision and procurement dysfunction, while costs have more than doubled.</p>
+        <h4>Key Findings</h4>
+        <ul>
+          <li>The procurement process began in <strong>2010</strong> — as of the 2022 audit, <strong>no replacement aircraft had been delivered</strong></li>
+          <li>Original budget of approximately <strong>$9 billion</strong> has escalated to over <strong>$19 billion</strong></li>
+          <li>The CF-18 fleet is being flown <strong>well past its designed operational life</strong>, creating capability gaps and safety risks</li>
+          <li>An interim purchase of <strong>25 used Australian F/A-18s</strong> was required as a stopgap — at additional cost to taxpayers</li>
+          <li>National Defence and PSPC could not ensure the timeline for delivering the new fleet of <strong>88 F-35s</strong> would be met</li>
+          <li>Canada's NORAD commitments and NATO obligations were at risk due to the fleet's diminished readiness</li>
+        </ul>
+        <h4>Departments Responsible</h4>
+        <p>Department of National Defence (DND), Public Services and Procurement Canada (PSPC)</p>
+        <a class="ag-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_202211_08_e_44153.html" target="_blank" rel="noopener">↗ OAG Report — Fall 2022, Report 8</a>
+      </div>
+    </div>
+
+    <!-- 7. Cannabis Regulation -->
+    <div class="ag-card" data-severity="medium" data-year="2023" data-department="HC" data-amount="0">
+      <div class="ag-card-header" onclick="agToggle(this)" aria-expanded="false" role="button" tabindex="0">
+        <div class="ag-card-title-area">
+          <div class="ag-card-title">Cannabis Regulation &amp; Enforcement</div>
+          <div class="ag-card-meta">
+            <span class="ag-card-tag report">Spring 2023 — Report 3</span>
+            <span class="ag-card-tag dept">HC / RCMP / CBSA</span>
+            <span class="ag-severity-badge medium">Medium</span>
+          </div>
+        </div>
+        <div class="ag-card-amount">Failed mandate</div>
+        <span class="ag-card-chevron" aria-hidden="true">▼</span>
+      </div>
+      <div class="ag-card-body">
+        <h4>Summary</h4>
+        <p>Five years after legalization, federal organizations had failed to measurably reduce the illicit cannabis market — a primary objective of the Cannabis Act.</p>
+        <h4>Key Findings</h4>
+        <ul>
+          <li>The <strong>RCMP and CBSA</strong> did not have adequate strategies to displace the <strong>illicit cannabis market</strong>, which remained substantial</li>
+          <li><strong>Health Canada</strong> experienced significant backlogs in processing licence applications, undermining the legal market's ability to compete</li>
+          <li>Federal organizations lacked a <strong>coordinated enforcement approach</strong> — efforts were fragmented across departments</li>
+          <li>Health Canada had <strong>limited information</strong> on the size and scope of the illicit market, making it impossible to measure progress</li>
+          <li>Compliance and enforcement actions against licensed producers who violated regulations were <strong>slow and inconsistent</strong></li>
+          <li>Data sharing between Health Canada, RCMP, CBSA, and provincial regulators was <strong>inadequate</strong></li>
+        </ul>
+        <h4>Departments Responsible</h4>
+        <p>Health Canada (HC), Royal Canadian Mounted Police (RCMP), Canada Border Services Agency (CBSA)</p>
+        <a class="ag-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_20230327_03_e_44084.html" target="_blank" rel="noopener">↗ OAG Report — Spring 2023, Report 3</a>
+      </div>
+    </div>
+
+    <!-- 8. Veterans Benefits -->
+    <div class="ag-card" data-severity="high" data-year="2022" data-department="VAC" data-amount="0">
+      <div class="ag-card-header" onclick="agToggle(this)" aria-expanded="false" role="button" tabindex="0">
+        <div class="ag-card-title-area">
+          <div class="ag-card-title">Veterans Benefits Processing</div>
+          <div class="ag-card-meta">
+            <span class="ag-card-tag report">Fall 2022 — Report 2</span>
+            <span class="ag-card-tag dept">VAC</span>
+            <span class="ag-severity-badge high">High</span>
+          </div>
+        </div>
+        <div class="ag-card-amount">40,000+ backlog</div>
+        <span class="ag-card-chevron" aria-hidden="true">▼</span>
+      </div>
+      <div class="ag-card-body">
+        <h4>Summary</h4>
+        <p>Veterans Affairs Canada failed to meet its own service standards for disability benefit processing, leaving tens of thousands of veterans waiting months beyond the department's targets.</p>
+        <h4>Key Findings</h4>
+        <ul>
+          <li>Average wait time for disability benefits was <strong>23 weeks</strong> — well above the department's own <strong>16-week target</strong></li>
+          <li>Over <strong>40,000 applications</strong> were pending processing at the time of the audit</li>
+          <li>Some veterans waited over <strong>one year</strong> for a decision on their disability benefits</li>
+          <li>VAC's efforts to reduce the backlog — including hiring additional staff — were <strong>insufficient and poorly planned</strong></li>
+          <li>The complexity of the application process itself was a <strong>barrier for veterans</strong>, particularly those with mental health conditions</li>
+          <li>VAC could not demonstrate that its <strong>service delivery improvements</strong> were achieving measurable results</li>
+        </ul>
+        <h4>Departments Responsible</h4>
+        <p>Veterans Affairs Canada (VAC)</p>
+        <a class="ag-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_202211_02_e_44147.html" target="_blank" rel="noopener">↗ OAG Report — Fall 2022, Report 2</a>
+      </div>
+    </div>
+
+    <!-- 9. Immigration Processing -->
+    <div class="ag-card" data-severity="high" data-year="2022" data-department="IRCC" data-amount="0">
+      <div class="ag-card-header" onclick="agToggle(this)" aria-expanded="false" role="button" tabindex="0">
+        <div class="ag-card-title-area">
+          <div class="ag-card-title">Immigration Processing Backlog</div>
+          <div class="ag-card-meta">
+            <span class="ag-card-tag report">Spring 2022 — Report 2</span>
+            <span class="ag-card-tag dept">IRCC</span>
+            <span class="ag-severity-badge high">High</span>
+          </div>
+        </div>
+        <div class="ag-card-amount">1.8M backlog</div>
+        <span class="ag-card-chevron" aria-hidden="true">▼</span>
+      </div>
+      <div class="ag-card-body">
+        <h4>Summary</h4>
+        <p>Immigration, Refugees and Citizenship Canada accumulated a backlog of 1.8 million immigration applications, with processing times more than doubling while the department's modernization efforts stalled.</p>
+        <h4>Key Findings</h4>
+        <ul>
+          <li>Application backlog reached <strong>1.8 million</strong> — an unprecedented level in Canadian immigration history</li>
+          <li>Processing times <strong>more than doubled</strong> across most immigration streams compared to pre-pandemic levels</li>
+          <li>IRCC's IT modernization and <strong>digitization efforts failed</strong> to deliver expected efficiency gains</li>
+          <li>The department continued to rely on <strong>outdated, paper-based processes</strong> for many application types</li>
+          <li>Temporary measures to address the backlog — such as hiring temporary staff — were <strong>not sustainable</strong></li>
+          <li>Applicants experienced significant <strong>uncertainty and hardship</strong> due to the lack of timely processing</li>
+        </ul>
+        <h4>Departments Responsible</h4>
+        <p>Immigration, Refugees and Citizenship Canada (IRCC)</p>
+        <a class="ag-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_202205_02_e_44002.html" target="_blank" rel="noopener">↗ OAG Report — Spring 2022, Report 2</a>
+      </div>
+    </div>
+
+    <!-- 10. IT Modernization -->
+    <div class="ag-card" data-severity="high" data-year="2022" data-department="SSC" data-amount="1500000000">
+      <div class="ag-card-header" onclick="agToggle(this)" aria-expanded="false" role="button" tabindex="0">
+        <div class="ag-card-title-area">
+          <div class="ag-card-title">Federal IT Modernization</div>
+          <div class="ag-card-meta">
+            <span class="ag-card-tag report">Various AG Reports (2015–2024)</span>
+            <span class="ag-card-tag dept">SSC / TBS</span>
+            <span class="ag-severity-badge high">High</span>
+          </div>
+        </div>
+        <div class="ag-card-amount">$1.5B+</div>
+        <span class="ag-card-chevron" aria-hidden="true">▼</span>
+      </div>
+      <div class="ag-card-body">
+        <h4>Summary</h4>
+        <p>Across multiple audit reports, the Auditor General has documented the federal government's failure to modernize its IT infrastructure, with billions spent maintaining aging systems while consolidation efforts at Shared Services Canada repeatedly fell short.</p>
+        <h4>Key Findings</h4>
+        <ul>
+          <li>Over <strong>$1.5 billion</strong> spent on maintaining aging IT systems that are at or past end of life</li>
+          <li>Shared Services Canada's (SSC) data centre and network <strong>consolidation initiative failed</strong> to meet its objectives</li>
+          <li>Approximately <strong>7,500+ government applications</strong> were identified as at or near end of life, posing security and operational risks</li>
+          <li>Critical systems — including those for <strong>tax collection, immigration, and border security</strong> — run on decades-old technology</li>
+          <li>Multiple departments reported <strong>outages and security vulnerabilities</strong> tied directly to aging infrastructure</li>
+          <li>Treasury Board Secretariat lacked a comprehensive <strong>government-wide IT strategy</strong> with clear timelines and accountability</li>
+        </ul>
+        <h4>Departments Responsible</h4>
+        <p>Shared Services Canada (SSC), Treasury Board Secretariat (TBS), multiple federal departments</p>
+        <a class="ag-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_201811_01_e_43199.html" target="_blank" rel="noopener">↗ OAG Report — Fall 2018, Report 1 (IT Modernization)</a>
+      </div>
+    </div>
+
+    <!-- 11. Temporary Foreign Worker Program -->
+    <div class="ag-card" data-severity="high" data-year="2017" data-department="CRA" data-amount="32400000">
+      <div class="ag-card-header" onclick="agToggle(this)" aria-expanded="false" role="button" tabindex="0">
+        <div class="ag-card-title-area">
+          <div class="ag-card-title">Temporary Foreign Worker Program</div>
+          <div class="ag-card-meta">
+            <span class="ag-card-tag report">Fall 2017 — Report 3</span>
+            <span class="ag-card-tag dept">ESDC / IRCC</span>
+            <span class="ag-severity-badge high">High</span>
+          </div>
+        </div>
+        <div class="ag-card-amount">$32.4M fraud</div>
+        <span class="ag-card-chevron" aria-hidden="true">▼</span>
+      </div>
+      <div class="ag-card-body">
+        <h4>Summary</h4>
+        <p>Employment and Social Development Canada failed to protect temporary foreign workers from abuse and did not ensure employers complied with program requirements, enabling fraud and exploitation.</p>
+        <h4>Key Findings</h4>
+        <ul>
+          <li><strong>$32.4 million</strong> in Labour Market Impact Assessments were issued to <strong>fraudulent or ineligible employers</strong></li>
+          <li><strong>70%</strong> of employer compliance reviews examined were found to be <strong>inadequate</strong></li>
+          <li>ESDC did not conduct enough inspections to ensure employers were meeting <strong>working conditions and wage requirements</strong></li>
+          <li>Vulnerable workers were left with <strong>limited recourse</strong> when employers violated program conditions</li>
+          <li>Information sharing between ESDC, IRCC, and CBSA was <strong>insufficient</strong> to identify non-compliant employers</li>
+          <li>The department lacked an <strong>effective risk-based approach</strong> to identify the employers most likely to be non-compliant</li>
+        </ul>
+        <h4>Departments Responsible</h4>
+        <p>Employment and Social Development Canada (ESDC), Immigration, Refugees and Citizenship Canada (IRCC)</p>
+        <a class="ag-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_201711_03_e_42669.html" target="_blank" rel="noopener">↗ OAG Report — Fall 2017, Report 3</a>
+      </div>
+    </div>
+
+    <!-- 12. Syrian Refugee Settlement -->
+    <div class="ag-card" data-severity="high" data-year="2019" data-department="IRCC" data-amount="200200000">
+      <div class="ag-card-header" onclick="agToggle(this)" aria-expanded="false" role="button" tabindex="0">
+        <div class="ag-card-title-area">
+          <div class="ag-card-title">Syrian Refugee Settlement</div>
+          <div class="ag-card-meta">
+            <span class="ag-card-tag report">Spring 2019 — Report 4</span>
+            <span class="ag-card-tag dept">IRCC</span>
+            <span class="ag-severity-badge high">High</span>
+          </div>
+        </div>
+        <div class="ag-card-amount">$200.2M unverified</div>
+        <span class="ag-card-chevron" aria-hidden="true">▼</span>
+      </div>
+      <div class="ag-card-body">
+        <h4>Summary</h4>
+        <p>IRCC was unable to verify $200.2 million in spending related to the Syrian refugee resettlement initiative and lacked adequate tracking mechanisms for settlement outcomes.</p>
+        <h4>Key Findings</h4>
+        <ul>
+          <li><strong>$200.2 million</strong> in claims related to the Syrian refugee initiative could <strong>not be verified</strong> by IRCC</li>
+          <li>IRCC <strong>lacked tracking mechanisms</strong> to monitor settlement and integration outcomes for resettled refugees</li>
+          <li>The department could not demonstrate whether its <strong>settlement services were effective</strong> in helping refugees become self-sufficient</li>
+          <li>Financial controls over service provider agreements were <strong>inadequate</strong>, with insufficient monitoring of deliverables</li>
+          <li>The rapid pace of the resettlement initiative led to <strong>compromised oversight and documentation</strong> standards</li>
+          <li>Long-term integration challenges — including language training and employment — were <strong>not being tracked or measured</strong></li>
+        </ul>
+        <h4>Departments Responsible</h4>
+        <p>Immigration, Refugees and Citizenship Canada (IRCC)</p>
+        <a class="ag-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_201905_04_e_43339.html" target="_blank" rel="noopener">↗ OAG Report — Spring 2019, Report 4</a>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- METHODOLOGY SECTION                         -->
+    <!-- ═══════════════════════════════════════════ -->
+
+    <div class="ag-methodology">
+      <h3>📋 Methodology &amp; Sources</h3>
+      <p>
+        Every finding on this page is sourced directly from official reports published by the
+        <strong>Office of the Auditor General of Canada</strong> (oag-bvg.gc.ca). The OAG is an independent
+        officer of Parliament who audits federal government operations and reports to the House of Commons.
+        Dollar figures, dates, and findings are taken verbatim or summarized from the audit reports cited.
+        No editorial interpretation has been applied to the factual findings. Each card links directly to the
+        original OAG report for full verification. Where dollar amounts represent ranges or estimates, the
+        most commonly cited figure from the AG's report is used. This page was last updated in 2024.
+      </p>
+    </div>
+
+  </div><!-- end max-width container -->
+
+  <!-- Shared site scripts -->
+  <script src="nav.js?v=9"></script>
+  <div id="read-next"></div>
+  <footer id="site-footer"></footer>
+  <script src="readnext.js?v=2"></script>
+  <script src="footer.js?v=2"></script>
+
+  <!-- Page-specific interactivity -->
+  <script>
+    /* ── Card Toggle ── */
+    function agToggle(header) {
+      var card = header.closest('.ag-card');
+      var isOpen = card.classList.contains('open');
+      card.classList.toggle('open');
+      header.setAttribute('aria-expanded', !isOpen);
+    }
+    /* keyboard support */
+    document.querySelectorAll('.ag-card-header').forEach(function(h) {
+      h.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); agToggle(h); }
+      });
+    });
+
+    /* ── Filtering ── */
+    var yearSel  = document.getElementById('ag-filter-year');
+    var deptSel  = document.getElementById('ag-filter-dept');
+    var sevSel   = document.getElementById('ag-filter-severity');
+    var countEl  = document.getElementById('ag-filter-count');
+    var cards    = document.querySelectorAll('.ag-card');
+
+    function applyFilters() {
+      var fy = yearSel.value;
+      var fd = deptSel.value;
+      var fs = sevSel.value;
+      var shown = 0;
+      cards.forEach(function(c) {
+        var matchY = (fy === 'all' || c.dataset.year === fy);
+        var matchD = (fd === 'all' || c.dataset.department === fd);
+        var matchS = (fs === 'all' || c.dataset.severity === fs);
+        if (matchY && matchD && matchS) {
+          c.classList.remove('hidden-by-filter');
+          shown++;
+        } else {
+          c.classList.add('hidden-by-filter');
+        }
+      });
+      countEl.textContent = 'Showing ' + shown + ' of ' + cards.length;
+    }
+    yearSel.addEventListener('change', applyFilters);
+    deptSel.addEventListener('change', applyFilters);
+    sevSel.addEventListener('change', applyFilters);
+  </script>
+</body>
+</html>

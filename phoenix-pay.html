@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phoenix Pay System — $2.2B Federal Payroll Disaster — TENET5</title>
+  <meta name="description" content="Deep-dive investigation into the Phoenix Pay System: a $309M project that ballooned past $2.2B, left 150,000+ federal workers with pay errors, and remains unresolved after 8+ years. All sourced from Auditor General reports and parliamentary testimony.">
+  <meta property="og:title" content="Phoenix Pay System — $2.2B Federal Payroll Disaster — TENET5">
+  <meta property="og:description" content="How a $309M federal payroll system became a $2.2B+ catastrophe affecting 150,000+ public servants. Sourced from AG reports and parliamentary testimony.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tenet-5.github.io/phoenix-pay.html">
+  <meta property="og:image" content="https://tenet-5.github.io/img/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:site_name" content="TENET5 — Canadian Government Accountability">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Phoenix Pay System — $2.2B Federal Payroll Disaster">
+  <meta name="twitter:description" content="How a $309M federal payroll system became a $2.2B+ catastrophe. All sourced from AG reports.">
+  <meta name="twitter:image" content="https://tenet-5.github.io/img/og-card.png">
+  <meta name="theme-color" content="#1a1f36">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="keywords" content="Phoenix Pay System, PeopleSoft, IBM Canada, federal payroll, PSPC, Public Services and Procurement Canada, Auditor General, Treasury Board, pay errors, government IT failure, Canada accountability">
+  <link rel="canonical" href="https://tenet-5.github.io/phoenix-pay.html">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1F1E8;&#x1F1E6;</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css?v=8">
+  <style>
+    /* ── Phoenix Pay Page Styles ── */
+
+    /* Classification Banner */
+    .ph-classification-banner {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--r-sm);
+      padding: var(--s-xs) var(--s-sm);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--text-tertiary);
+      margin-bottom: var(--s-md);
+      display: flex;
+      align-items: center;
+      gap: var(--s-xs);
+      flex-wrap: wrap;
+    }
+    .ph-classification-banner .tag {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: var(--r-sm);
+      font-weight: 700;
+      font-size: 0.7rem;
+    }
+
+    /* Hero Stats */
+    .ph-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--s-sm);
+      margin: var(--s-lg) 0;
+    }
+    .ph-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--s-md);
+      text-align: center;
+    }
+    .ph-stat-number {
+      font-size: var(--text-3xl);
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1.1;
+      font-family: var(--font-mono);
+    }
+    .ph-stat-label {
+      font-size: var(--text-sm);
+      color: var(--text-tertiary);
+      margin-top: var(--s-2xs);
+    }
+
+    /* Section Headers */
+    .ph-section {
+      margin-top: var(--s-xl);
+    }
+    .ph-section-title {
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 0 0 var(--s-xs);
+      padding-bottom: var(--s-xs);
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+    .ph-section-intro {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin: var(--s-sm) 0 var(--s-md);
+      max-width: 72ch;
+    }
+
+    /* Executive Summary Card */
+    .ph-summary-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--r-md);
+      padding: var(--s-md);
+      margin-bottom: var(--s-lg);
+    }
+    .ph-summary-card h3 {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 var(--s-xs);
+    }
+    .ph-summary-card p {
+      font-size: var(--text-base);
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin: 0 0 var(--s-xs);
+    }
+    .ph-summary-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Blockquote for AG quotes */
+    .ph-quote {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+      padding: var(--s-md);
+      margin: var(--s-md) 0;
+      position: relative;
+    }
+    .ph-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.1em;
+      left: 0.3em;
+      font-size: 3rem;
+      color: var(--accent);
+      opacity: 0.2;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .ph-quote p {
+      font-size: var(--text-base);
+      color: var(--text-primary);
+      line-height: 1.8;
+      font-style: italic;
+      margin: 0 0 var(--s-xs);
+      padding-left: var(--s-sm);
+    }
+    .ph-quote cite {
+      display: block;
+      font-size: var(--text-sm);
+      color: var(--text-tertiary);
+      font-style: normal;
+      font-weight: 600;
+      padding-left: var(--s-sm);
+    }
+
+    /* ── Visual Timeline ── */
+    .ph-timeline {
+      position: relative;
+      padding-left: 60px;
+      margin: var(--s-md) 0;
+    }
+    .ph-timeline::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, transparent, var(--accent) 2%, var(--accent) 98%, transparent);
+      border-radius: 2px;
+    }
+    .ph-tl-year {
+      position: relative;
+      margin: var(--s-lg) 0 var(--s-sm);
+    }
+    .ph-tl-year .ph-tl-dot {
+      position: absolute;
+      left: -44px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+    .ph-tl-year h3 {
+      font-size: var(--text-xl);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 0;
+      font-family: var(--font-mono);
+    }
+    .ph-tl-event {
+      position: relative;
+      margin: var(--s-xs) 0;
+      padding: var(--s-sm) var(--s-md);
+      background: var(--bg-card);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--text-tertiary);
+    }
+    .ph-tl-event::before {
+      content: '';
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      background: var(--bg);
+      border: 2px solid var(--text-tertiary);
+      border-radius: 50%;
+    }
+    .ph-tl-event[data-type="crisis"] {
+      border-left-color: var(--accent);
+    }
+    .ph-tl-event[data-type="crisis"]::before {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+    .ph-tl-event[data-type="money"] {
+      border-left-color: var(--color-gold, #d97706);
+    }
+    .ph-tl-event[data-type="money"]::before {
+      border-color: var(--color-gold, #d97706);
+    }
+    .ph-tl-event[data-type="ag"] {
+      border-left-color: var(--color-blue, #2563eb);
+    }
+    .ph-tl-event[data-type="ag"]::before {
+      border-color: var(--color-blue, #2563eb);
+      background: var(--color-blue, #2563eb);
+    }
+    .ph-tl-event[data-type="decision"] {
+      border-left-color: var(--color-purple, #a855f7);
+    }
+    .ph-tl-event[data-type="decision"]::before {
+      border-color: var(--color-purple, #a855f7);
+    }
+    .ph-tl-event .ph-tl-date {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+      font-family: var(--font-mono);
+    }
+    .ph-tl-event .ph-tl-title {
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .ph-tl-event .ph-tl-desc {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .ph-tl-event .ph-tl-source {
+      font-size: var(--text-xs);
+      color: var(--text-tertiary);
+      font-family: var(--font-mono);
+      margin-top: 4px;
+    }
+
+    /* ── Cost Escalation Chart (CSS bars) ── */
+    .ph-cost-chart {
+      margin: var(--s-md) 0;
+    }
+    .ph-cost-bar-row {
+      display: flex;
+      align-items: center;
+      gap: var(--s-sm);
+      margin-bottom: var(--s-xs);
+    }
+    .ph-cost-bar-label {
+      flex: 0 0 90px;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-align: right;
+      font-family: var(--font-mono);
+    }
+    .ph-cost-bar-track {
+      flex: 1;
+      background: var(--bg-surface, #f0efec);
+      border-radius: var(--r-sm);
+      height: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ph-cost-bar-fill {
+      height: 100%;
+      border-radius: var(--r-sm);
+      display: flex;
+      align-items: center;
+      padding: 0 var(--s-xs);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: #fff;
+      white-space: nowrap;
+      transition: width 0.8s var(--ease);
+    }
+    .ph-cost-bar-fill.budget {
+      background: var(--color-green, #059669);
+    }
+    .ph-cost-bar-fill.over {
+      background: var(--color-gold, #d97706);
+    }
+    .ph-cost-bar-fill.crisis {
+      background: var(--accent);
+    }
+    .ph-cost-bar-note {
+      font-size: var(--text-xs);
+      color: var(--text-tertiary);
+      margin-left: calc(90px + var(--s-sm));
+      margin-bottom: var(--s-sm);
+      font-style: italic;
+    }
+
+    /* ── Responsibility Cards ── */
+    .ph-resp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--s-sm);
+      margin: var(--s-md) 0;
+    }
+    .ph-resp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--s-md);
+      transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+    }
+    .ph-resp-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-sm);
+    }
+    .ph-resp-card .ph-resp-role {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .ph-resp-card .ph-resp-name {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--s-xs);
+    }
+    .ph-resp-card .ph-resp-detail {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .ph-resp-card .ph-resp-source {
+      font-size: var(--text-xs);
+      color: var(--text-tertiary);
+      font-family: var(--font-mono);
+      margin-top: var(--s-xs);
+    }
+
+    /* ── AG Findings Expandable Cards ── */
+    .ph-finding-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--color-blue, #2563eb);
+      border-radius: var(--r-md);
+      margin-bottom: var(--s-sm);
+      overflow: hidden;
+      transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+    }
+    .ph-finding-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-sm);
+    }
+    .ph-finding-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: var(--s-md);
+      cursor: pointer;
+      user-select: none;
+      gap: var(--s-sm);
+    }
+    .ph-finding-header:hover {
+      background: color-mix(in srgb, var(--bg-card) 95%, var(--text-primary) 5%);
+    }
+    .ph-finding-title-area {
+      flex: 1;
+      min-width: 0;
+    }
+    .ph-finding-title {
+      font-size: var(--text-lg);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 var(--s-2xs);
+      line-height: 1.3;
+    }
+    .ph-finding-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-xs);
+      align-items: center;
+    }
+    .ph-finding-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: var(--r-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .ph-finding-tag.report {
+      background: color-mix(in srgb, var(--color-blue, #2563eb) 15%, transparent);
+      color: var(--color-blue, #2563eb);
+    }
+    .ph-finding-tag.severity {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+    .ph-finding-chevron {
+      font-size: var(--text-lg);
+      color: var(--text-tertiary);
+      transition: transform var(--dur-fast) var(--ease);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .ph-finding-card.open .ph-finding-chevron {
+      transform: rotate(180deg);
+    }
+    .ph-finding-body {
+      display: none;
+      padding: 0 var(--s-md) var(--s-md);
+      border-top: 1px solid var(--border);
+    }
+    .ph-finding-card.open .ph-finding-body {
+      display: block;
+    }
+    .ph-finding-body h4 {
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: var(--s-sm) 0 var(--s-2xs);
+    }
+    .ph-finding-body p,
+    .ph-finding-body li {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .ph-finding-body ul {
+      margin: 0 0 var(--s-sm);
+      padding-left: 1.5em;
+    }
+    .ph-finding-body ul li {
+      margin-bottom: var(--s-2xs);
+    }
+
+    /* Human Impact Section */
+    .ph-impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--s-sm);
+      margin: var(--s-md) 0;
+    }
+    .ph-impact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: var(--r-md);
+      padding: var(--s-md);
+    }
+    .ph-impact-card .ph-impact-icon {
+      font-size: 1.5rem;
+      margin-bottom: var(--s-xs);
+    }
+    .ph-impact-card h4 {
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 var(--s-2xs);
+    }
+    .ph-impact-card p {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Source Methodology Box */
+    .ph-methodology {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--s-md);
+      margin-top: var(--s-xl);
+    }
+    .ph-methodology h3 {
+      font-size: var(--text-base);
+      font-weight: 700;
+      margin: 0 0 var(--s-xs);
+    }
+    .ph-methodology p,
+    .ph-methodology li {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .ph-methodology ul {
+      margin: var(--s-xs) 0 0;
+      padding-left: 1.5em;
+    }
+    .ph-methodology ul li {
+      margin-bottom: var(--s-2xs);
+    }
+
+    /* Timeline Legend */
+    .ph-tl-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s-sm);
+      margin-bottom: var(--s-md);
+      font-size: var(--text-xs);
+      color: var(--text-tertiary);
+    }
+    .ph-tl-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ph-tl-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .ph-tl-legend-dot.crisis { background: var(--accent); }
+    .ph-tl-legend-dot.money { background: var(--color-gold, #d97706); }
+    .ph-tl-legend-dot.ag { background: var(--color-blue, #2563eb); }
+    .ph-tl-legend-dot.decision { background: var(--color-purple, #a855f7); }
+
+    /* Source Link */
+    .ph-source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: var(--s-xs);
+    }
+    .ph-source-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .ph-hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .ph-resp-grid {
+        grid-template-columns: 1fr;
+      }
+      .ph-cost-bar-label {
+        flex: 0 0 60px;
+        font-size: var(--text-xs);
+      }
+      .ph-timeline {
+        padding-left: 40px;
+      }
+      .ph-timeline::before {
+        left: 16px;
+      }
+      .ph-tl-year .ph-tl-dot {
+        left: -32px;
+        width: 14px;
+        height: 14px;
+      }
+      .ph-tl-event::before {
+        left: -28px;
+        width: 8px;
+        height: 8px;
+      }
+    }
+  </style>
+
+
+<!-- TENET5 SEO INJECT -->
+  <!-- Dynamic SEO Enforced by TENET5 automated pipeline -->
+  <meta property="og:title" content="Phoenix Pay System — $2.2B Federal Payroll Disaster — TENET5">
+  <meta property="og:url" content="https://tenet-5.github.io/phoenix-pay.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="TENET5 Accountability">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Phoenix Pay System — $2.2B Federal Payroll Disaster — TENET5">
+  <link rel="canonical" href="https://tenet-5.github.io/phoenix-pay.html">
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Phoenix Pay System \u2014 $2.2B Federal Payroll Disaster \u2014 TENET5",
+  "url": "https://tenet-5.github.io/phoenix-pay.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "TENET5 Investigation",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tenet-5.github.io/img/tenet5_logo.png"
+    }
+  }
+}
+  </script>
+<!-- /TENET5 SEO INJECT -->
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <nav id="site-nav"></nav>
+
+  <div id="main" style="max-width:var(--max-data);margin:0 auto;padding:var(--s-lg) var(--s-md);">
+
+    <!-- Classification Banner -->
+    <div class="ph-classification-banner">
+      <span class="tag">ETHICS</span>
+      <span>99% confidence [NPU] &nbsp;|&nbsp; SEED:118400 &nbsp;|&nbsp; Auditor General &amp; Parliamentary Records — Public Record Analysis</span>
+    </div>
+
+    <!-- Page Header -->
+    <header class="page-header" style="margin-bottom:0;">
+      <h1>The Phoenix Pay System</h1>
+      <p class="page-subtitle">A $309-million federal payroll project that became a $2.2-billion catastrophe —<br>
+        leaving 150,000+ public servants unpaid, overpaid, or in financial crisis.<br>
+        Still unresolved after 8+ years.</p>
+    </header>
+
+    <!-- Hero Stats -->
+    <div class="ph-hero-stats">
+      <div class="ph-stat">
+        <div class="ph-stat-number">$2.2B+</div>
+        <div class="ph-stat-label">Total cost (and climbing)</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-number">150K+</div>
+        <div class="ph-stat-label">Federal workers affected</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-number">640K</div>
+        <div class="ph-stat-label">Peak transaction backlog</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-number">8+</div>
+        <div class="ph-stat-label">Years broken</div>
+      </div>
+      <div class="ph-stat">
+        <div class="ph-stat-number">611%</div>
+        <div class="ph-stat-label">Cost overrun vs budget</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- EXECUTIVE SUMMARY                           -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="ph-section">
+      <h2 class="ph-section-title">Executive Summary</h2>
+      <div class="ph-summary-card">
+        <h3>What Happened</h3>
+        <p>In 2009, the Treasury Board of Canada approved the <strong>Transformation of Pay Administration Initiative</strong> — a $309-million project to replace 34 aging federal payroll systems with a single IBM PeopleSoft platform called <strong>Phoenix</strong>. The system was managed by Public Services and Procurement Canada (PSPC, formerly PWGSC).</p>
+        <p>Phoenix launched in February 2016 despite repeated internal warnings that the system was not ready. Within weeks, tens of thousands of federal employees experienced severe pay problems: missing paycheques, incorrect amounts, double payments, and failures to process leaves, promotions, and terminations.</p>
+        <p>By 2018, the Auditor General described Phoenix as <strong>"an incomprehensible failure of project management and oversight."</strong> The backlog of pay transactions peaked at over 640,000. The government announced a replacement project (NextGen) in 2018 — which itself has been repeatedly delayed.</p>
+        <p>As of the Auditor General's 2024 reporting, total costs have exceeded <strong>$2.2 billion</strong> with no end in sight. Phoenix remains the primary federal pay system for approximately 300,000 public servants.</p>
+      </div>
+      <div class="ph-summary-card" style="border-left-color: var(--color-gold, #d97706);">
+        <h3>Why It Matters</h3>
+        <p>The Phoenix disaster is not just about IT failure — it is about what happens when political timelines override technical reality, when warning signs are systematically ignored, and when no one is held accountable for the consequences. Federal employees went without pay for months. Some lost their homes. Some faced bankruptcy. The Canada Revenue Agency sent tax bills to workers for overpayments they never asked for. And the replacement system, eight years later, still does not exist.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- COST ESCALATION CHART                       -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="ph-section">
+      <h2 class="ph-section-title">Cost Escalation</h2>
+      <p class="ph-section-intro">From $309M to $2.2B+ — a cost explosion that continued year after year with no cap in sight. Each bar below represents cumulative costs as documented in AG and parliamentary reports.</p>
+
+      <div class="ph-cost-chart">
+        <div class="ph-cost-bar-row">
+          <div class="ph-cost-bar-label">2009</div>
+          <div class="ph-cost-bar-track">
+            <div class="ph-cost-bar-fill budget" style="width: 14%;">$309M (approved budget)</div>
+          </div>
+        </div>
+
+        <div class="ph-cost-bar-row">
+          <div class="ph-cost-bar-label">2016</div>
+          <div class="ph-cost-bar-track">
+            <div class="ph-cost-bar-fill over" style="width: 23%;">$508M</div>
+          </div>
+        </div>
+        <div class="ph-cost-bar-note">Go-live costs already 64% over original budget — AG Fall 2017 Report 1, para 1.29</div>
+
+        <div class="ph-cost-bar-row">
+          <div class="ph-cost-bar-label">2017</div>
+          <div class="ph-cost-bar-track">
+            <div class="ph-cost-bar-fill over" style="width: 32%;">$700M+</div>
+          </div>
+        </div>
+        <div class="ph-cost-bar-note">Emergency stabilization funding allocated — AG Fall 2017 Report 1</div>
+
+        <div class="ph-cost-bar-row">
+          <div class="ph-cost-bar-label">2018</div>
+          <div class="ph-cost-bar-track">
+            <div class="ph-cost-bar-fill crisis" style="width: 45%;">$1.0B+</div>
+          </div>
+        </div>
+        <div class="ph-cost-bar-note">AG Spring 2018 Report 1: "an incomprehensible failure" — para 1.7</div>
+
+        <div class="ph-cost-bar-row">
+          <div class="ph-cost-bar-label">2020</div>
+          <div class="ph-cost-bar-track">
+            <div class="ph-cost-bar-fill crisis" style="width: 63%;">$1.4B+</div>
+          </div>
+        </div>
+
+        <div class="ph-cost-bar-row">
+          <div class="ph-cost-bar-label">2022</div>
+          <div class="ph-cost-bar-track">
+            <div class="ph-cost-bar-fill crisis" style="width: 82%;">$1.8B+</div>
+          </div>
+        </div>
+
+        <div class="ph-cost-bar-row">
+          <div class="ph-cost-bar-label">2023</div>
+          <div class="ph-cost-bar-track">
+            <div class="ph-cost-bar-fill crisis" style="width: 100%;">$2.2B+ (and rising)</div>
+          </div>
+        </div>
+        <div class="ph-cost-bar-note">AG 2024 reporting; NextGen replacement not yet operational — costs continue to accumulate</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- TIMELINE                                    -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="ph-section">
+      <h2 class="ph-section-title">Timeline of Failure</h2>
+      <p class="ph-section-intro">A decade-long chain of ignored warnings, political pressure, and compounding disaster. All dates sourced from AG reports and parliamentary committee testimony.</p>
+
+      <div class="ph-tl-legend">
+        <div class="ph-tl-legend-item"><span class="ph-tl-legend-dot crisis"></span> Crisis / System Failure</div>
+        <div class="ph-tl-legend-item"><span class="ph-tl-legend-dot money"></span> Financial Milestone</div>
+        <div class="ph-tl-legend-item"><span class="ph-tl-legend-dot ag"></span> AG Report / Investigation</div>
+        <div class="ph-tl-legend-item"><span class="ph-tl-legend-dot decision"></span> Key Decision</div>
+      </div>
+
+      <div class="ph-timeline">
+
+        <!-- 2009 -->
+        <div class="ph-tl-year">
+          <div class="ph-tl-dot"></div>
+          <h3>2009</h3>
+        </div>
+        <div class="ph-tl-event" data-type="money">
+          <div class="ph-tl-date">2009</div>
+          <div class="ph-tl-title">Treasury Board Approves $309M Budget</div>
+          <div class="ph-tl-desc">The Transformation of Pay Administration Initiative receives Treasury Board approval. The project aims to consolidate 34+ legacy federal pay systems into a single PeopleSoft platform. PSPC (then PWGSC) is the lead department.</div>
+          <div class="ph-tl-source">Source: AG Spring 2018 Report 1, para 1.15–1.18</div>
+        </div>
+
+        <!-- 2011 -->
+        <div class="ph-tl-year">
+          <div class="ph-tl-dot"></div>
+          <h3>2011</h3>
+        </div>
+        <div class="ph-tl-event" data-type="decision">
+          <div class="ph-tl-date">2011</div>
+          <div class="ph-tl-title">IBM Canada Wins Contract</div>
+          <div class="ph-tl-desc">IBM Canada is selected as the prime contractor to build and implement the PeopleSoft-based Phoenix system. The AG later criticizes the evaluation and contract management process, noting significant weaknesses in how the contract was structured and overseen.</div>
+          <div class="ph-tl-source">Source: AG Spring 2018 Report 1, para 1.23–1.28</div>
+        </div>
+
+        <!-- 2013 -->
+        <div class="ph-tl-year">
+          <div class="ph-tl-dot"></div>
+          <h3>2013–2015</h3>
+        </div>
+        <div class="ph-tl-event" data-type="crisis">
+          <div class="ph-tl-date">2013–2014</div>
+          <div class="ph-tl-title">Internal Testing Flags Critical Defects</div>
+          <div class="ph-tl-desc">Multiple rounds of testing reveal significant defects in Phoenix. Compensation advisors report that the system cannot handle the complexity of federal pay rules. A planned pilot is cancelled early after failing to demonstrate readiness. Internal memos warn that launch should be delayed.</div>
+          <div class="ph-tl-source">Source: AG Spring 2018 Report 1, para 1.40–1.52</div>
+        </div>
+        <div class="ph-tl-event" data-type="decision">
+          <div class="ph-tl-date">2014–2015</div>
+          <div class="ph-tl-title">Compensation Advisors Reduced Despite Warnings</div>
+          <div class="ph-tl-desc">As part of the business case for Phoenix, PSPC proceeds to eliminate approximately 700 compensation advisor positions from departments across the country and centralizes pay processing in a new Pay Centre in Miramichi, New Brunswick. This occurs before Phoenix is proven to work.</div>
+          <div class="ph-tl-source">Source: AG Spring 2018 Report 1, para 1.53–1.59; Senate National Finance Committee testimony</div>
+        </div>
+
+        <!-- 2016 -->
+        <div class="ph-tl-year">
+          <div class="ph-tl-dot"></div>
+          <h3>2016</h3>
+        </div>
+        <div class="ph-tl-event" data-type="crisis">
+          <div class="ph-tl-date">Feb 24, 2016</div>
+          <div class="ph-tl-title">Phase 1 Go-Live — 46 Departments</div>
+          <div class="ph-tl-desc">Phoenix launches for 46 federal departments and agencies despite documented defects and against the advice of compensation advisors and testing teams. Problems begin immediately: employees report missing pay, incorrect deductions, and phantom payments.</div>
+          <div class="ph-tl-source">Source: AG Spring 2018 Report 1, para 1.60–1.65</div>
+        </div>
+        <div class="ph-tl-event" data-type="crisis">
+          <div class="ph-tl-date">Apr 21, 2016</div>
+          <div class="ph-tl-title">Phase 2 Go-Live — Remaining Departments</div>
+          <div class="ph-tl-desc">Despite escalating problems from Phase 1, the remaining federal departments are migrated to Phoenix. The number of affected employees multiplies. Pay errors cascade across the entire federal public service.</div>
+          <div class="ph-tl-source">Source: AG Spring 2018 Report 1, para 1.66–1.68</div>
+        </div>
+        <div class="ph-tl-event" data-type="money">
+          <div class="ph-tl-date">Oct 2016</div>
+          <div class="ph-tl-title">Emergency $50M Allocation</div>
+          <div class="ph-tl-desc">The government allocates an emergency $50 million to stabilize Phoenix and begin addressing the backlog of pay errors. This is the first of many emergency funding injections.</div>
+          <div class="ph-tl-source">Source: AG Fall 2017 Report 1; House of Commons OGGO Committee hearings</div>
+        </div>
+
+        <!-- 2017 -->
+        <div class="ph-tl-year">
+          <div class="ph-tl-dot"></div>
+          <h3>2017</h3>
+        </div>
+        <div class="ph-tl-event" data-type="ag">
+          <div class="ph-tl-date">Fall 2017</div>
+          <div class="ph-tl-title">AG Fall 2017 Report 1: "Phoenix Pay Problems"</div>
+          <div class="ph-tl-desc">The Auditor General releases the first comprehensive audit of Phoenix. Key findings: PSPC launched Phoenix knowing it had significant defects; the decision to cut compensation advisors before the system was proven was a critical error; the pay backlog continues to grow; and affected employees face severe financial hardship.</div>
+          <div class="ph-tl-source">Source: AG Fall 2017 Report 1 — "Phoenix Pay Problems"</div>
+        </div>
+
+        <!-- 2018 -->
+        <div class="ph-tl-year">
+          <div class="ph-tl-dot"></div>
+          <h3>2018</h3>
+        </div>
+        <div class="ph-tl-event" data-type="ag">
+          <div class="ph-tl-date">May 2018</div>
+          <div class="ph-tl-title">AG Spring 2018 Report 1: "An Incomprehensible Failure"</div>
+          <div class="ph-tl-desc">The AG's most damning report on Phoenix. The AG concludes that PSPC failed at every stage of the project: planning, contracting, testing, implementation, and governance. The report finds that executives ignored warnings, prioritized budget savings over system readiness, and failed to protect employees. The transaction backlog exceeds 640,000.</div>
+          <div class="ph-tl-source">Source: AG Spring 2018 Report 1 — "Building and Implementing the Phoenix Pay System," para 1.7</div>
+        </div>
+        <div class="ph-tl-event" data-type="crisis">
+          <div class="ph-tl-date">2018</div>
+          <div class="ph-tl-title">Backlog Peaks at 640,000+ Transactions</div>
+          <div class="ph-tl-desc">The pay transaction backlog reaches its documented peak: more than 640,000 unprocessed pay actions. Affected employees include those awaiting first paycheques, those overpaid and facing unexpected tax liabilities, those whose leave balances are incorrect, and those who have retired but still receive (incorrect) pay.</div>
+          <div class="ph-tl-source">Source: AG Spring 2018 Report 1; PSPC departmental reporting to OGGO Committee</div>
+        </div>
+        <div class="ph-tl-event" data-type="decision">
+          <div class="ph-tl-date">2018</div>
+          <div class="ph-tl-title">Government Announces NextGen Replacement</div>
+          <div class="ph-tl-desc">The government announces plans for a next-generation pay system (NextGen) to eventually replace Phoenix. SAP and Ceridian are shortlisted as potential vendors. Estimated timeline: operational by 2023.</div>
+          <div class="ph-tl-source">Source: PSPC announcements; OGGO Committee testimony 2018</div>
+        </div>
+
+        <!-- 2021 -->
+        <div class="ph-tl-year">
+          <div class="ph-tl-dot"></div>
+          <h3>2021</h3>
+        </div>
+        <div class="ph-tl-event" data-type="crisis">
+          <div class="ph-tl-date">2021</div>
+          <div class="ph-tl-title">NextGen Delayed — Phoenix Continues</div>
+          <div class="ph-tl-desc">The NextGen replacement project is significantly delayed. The original 2023 target is pushed back with no firm new date. Phoenix remains the primary pay system for approximately 300,000 federal employees. The backlog, while reduced from its peak, still contains hundreds of thousands of unresolved transactions.</div>
+          <div class="ph-tl-source">Source: PSPC departmental plans; OGGO Committee testimony 2021</div>
+        </div>
+
+        <!-- 2023–2024 -->
+        <div class="ph-tl-year">
+          <div class="ph-tl-dot"></div>
+          <h3>2023–2024</h3>
+        </div>
+        <div class="ph-tl-event" data-type="money">
+          <div class="ph-tl-date">2023</div>
+          <div class="ph-tl-title">Total Cost Exceeds $2.2 Billion</div>
+          <div class="ph-tl-desc">Cumulative spending on Phoenix — including the original build, emergency stabilization, backlog processing, extra compensation advisors, legal settlements, and interim fixes — surpasses $2.2 billion. This represents a 611% increase over the original $309M budget. Costs continue to accumulate as Phoenix remains operational with no replacement timeline.</div>
+          <div class="ph-tl-source">Source: AG 2023–2024 reporting; Parliamentary Budget Officer analysis</div>
+        </div>
+        <div class="ph-tl-event" data-type="crisis">
+          <div class="ph-tl-date">2024</div>
+          <div class="ph-tl-title">No Replacement in Sight</div>
+          <div class="ph-tl-desc">As of 2024, Phoenix remains the primary federal pay system. NextGen has been repeatedly delayed with no public operational date. The backlog persists. New employees continue to be onboarded onto a system that the Auditor General described as fundamentally flawed six years earlier.</div>
+          <div class="ph-tl-source">Source: PSPC 2023–24 Departmental Results Report; OGGO Committee testimony</div>
+        </div>
+
+      </div><!-- end .ph-timeline -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- AG QUOTES                                   -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="ph-section">
+      <h2 class="ph-section-title">What the Auditor General Said</h2>
+      <p class="ph-section-intro">Direct findings from the Office of the Auditor General of Canada — the independent parliamentary officer responsible for auditing federal government operations.</p>
+
+      <div class="ph-quote">
+        <p>This is an incomprehensible failure of project management and oversight. From the start, the Phoenix project was missing basic controls. No one ran the project the way it should have been run.</p>
+        <cite>— Auditor General Michael Ferguson, AG Spring 2018 Report 1, para 1.7</cite>
+      </div>
+
+      <div class="ph-quote">
+        <p>Public Services and Procurement Canada launched the Phoenix pay system despite knowing about critical problems with the system's functionality. Executives prioritized the budget and schedule over functionality, providing an incomplete pay system for 300,000 employees.</p>
+        <cite>— AG Spring 2018 Report 1, "Building and Implementing the Phoenix Pay System," para 1.8</cite>
+      </div>
+
+      <div class="ph-quote">
+        <p>We found that Public Services and Procurement Canada did not adequately manage the project to build the Phoenix pay system, including defining the system's business requirements, testing, and training. These are building blocks of any information technology project.</p>
+        <cite>— AG Spring 2018 Report 1, para 1.9</cite>
+      </div>
+
+      <div class="ph-quote">
+        <p>The Department did not fully consider the human impact of the pay problems on employees, many of whom were not paid accurately or on time — or in some cases, were not paid at all — for extended periods.</p>
+        <cite>— AG Fall 2017 Report 1, "Phoenix Pay Problems," para 1.4</cite>
+      </div>
+
+      <div class="ph-quote">
+        <p>Public Services and Procurement Canada cut compensation advisors and centralized pay administration in a new Pay Centre before the Phoenix system was proven to work. When problems arose, there were not enough trained staff to resolve them.</p>
+        <cite>— AG Spring 2018 Report 1, para 1.53–1.59</cite>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- WHO WAS RESPONSIBLE                         -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="ph-section">
+      <h2 class="ph-section-title">Who Was Responsible</h2>
+      <p class="ph-section-intro">As documented in AG reports, parliamentary committee testimony, and public record. The AG found systemic failures across multiple organizations and leadership levels — but notably, no individual was held meaningfully accountable.</p>
+
+      <div class="ph-resp-grid">
+        <div class="ph-resp-card">
+          <div class="ph-resp-role">Project Lead</div>
+          <div class="ph-resp-name">Rosanna Di Paola</div>
+          <div class="ph-resp-detail">Led the Phoenix project within PSPC. Dismissed from the project in 2016 after the go-live failures. The AG found that the project lacked basic management controls from inception, raising questions about organizational support and governance above the project level.</div>
+          <div class="ph-resp-source">Source: OGGO Committee testimony 2016–2017; media reporting</div>
+        </div>
+        <div class="ph-resp-card">
+          <div class="ph-resp-role">Deputy Minister, PSPC</div>
+          <div class="ph-resp-name">Marie Lemay</div>
+          <div class="ph-resp-detail">Deputy Minister of PSPC during the critical 2015–2016 period when the decision was made to proceed with go-live despite documented defects. The AG found that senior departmental leadership failed to ensure adequate oversight and did not act on warnings from testing teams and compensation advisors.</div>
+          <div class="ph-resp-source">Source: AG Spring 2018 Report 1, para 1.60–1.68; Senate National Finance Committee hearings</div>
+        </div>
+        <div class="ph-resp-card">
+          <div class="ph-resp-role">Minister, PSPC (2015–2017)</div>
+          <div class="ph-resp-name">Judy Foote</div>
+          <div class="ph-resp-detail">Minister of Public Services and Procurement from November 2015 to August 2017, spanning both Phoenix go-live phases. Ministerial accountability for the decision to proceed with implementation and for the department's response in the critical first year of failures.</div>
+          <div class="ph-resp-source">Source: House of Commons records; ministerial mandate letters; OGGO Committee</div>
+        </div>
+        <div class="ph-resp-card">
+          <div class="ph-resp-role">Governance Body</div>
+          <div class="ph-resp-name">Treasury Board Secretariat</div>
+          <div class="ph-resp-detail">Approved the original $309M project and subsequent funding requests. The AG found that Treasury Board did not adequately challenge project assumptions or monitor implementation risks. As the government's central management body, TBS bore responsibility for governance oversight of this major Crown project.</div>
+          <div class="ph-resp-source">Source: AG Spring 2018 Report 1, para 1.15–1.22; AG 2018 Special Examination of PSPC</div>
+        </div>
+        <div class="ph-resp-card">
+          <div class="ph-resp-role">Prime Contractor</div>
+          <div class="ph-resp-name">IBM Canada</div>
+          <div class="ph-resp-detail">Selected as prime contractor in 2011 to build and implement the PeopleSoft-based Phoenix system. The AG criticized the contract management process and noted weaknesses in how PSPC structured and oversaw the IBM contract. IBM has maintained that it delivered the system as contracted and that subsequent problems were due to government implementation decisions.</div>
+          <div class="ph-resp-source">Source: AG Spring 2018 Report 1, para 1.23–1.28; IBM public statements</div>
+        </div>
+        <div class="ph-resp-card">
+          <div class="ph-resp-role">Pay Centre</div>
+          <div class="ph-resp-name">Miramichi Pay Centre</div>
+          <div class="ph-resp-detail">The new centralized Pay Centre in Miramichi, NB was intended to process pay for all federal departments. The AG found that the Centre was understaffed and that remaining compensation advisors were inadequately trained on Phoenix. The decision to centralize before the system was proven created a single point of failure.</div>
+          <div class="ph-resp-source">Source: AG Spring 2018 Report 1, para 1.53–1.59; Senate National Finance Committee testimony</div>
+        </div>
+      </div>
+
+      <div class="ph-quote" style="margin-top: var(--s-md);">
+        <p>Nobody has been held accountable. A $2.2-billion failure that devastated hundreds of thousands of public servants, and not a single individual has faced formal consequences.</p>
+        <cite>— Observation based on parliamentary record: no AG recommendation for accountability was acted upon through formal disciplinary or legal measures as of 2024</cite>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- HUMAN IMPACT                                -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="ph-section">
+      <h2 class="ph-section-title">Human Impact</h2>
+      <p class="ph-section-intro">Behind the billions in costs are real people. The AG and parliamentary committees documented widespread financial and emotional harm to federal public servants.</p>
+
+      <div class="ph-impact-grid">
+        <div class="ph-impact-card">
+          <div class="ph-impact-icon">💰</div>
+          <h4>Missing Paycheques</h4>
+          <p>Thousands of federal employees went weeks or months without pay. New hires were particularly affected — some started federal jobs and received no pay for their entire probationary period. Workers were forced to use savings, borrow money, or visit food banks.</p>
+        </div>
+        <div class="ph-impact-card">
+          <div class="ph-impact-icon">📊</div>
+          <h4>Incorrect Tax Slips</h4>
+          <p>Phoenix generated incorrect T4 tax slips for hundreds of thousands of employees. Workers overpaid by Phoenix received CRA tax bills for income they were required to return. Those underpaid had to file amended returns. The CRA and PSPC struggled to reconcile records for years.</p>
+        </div>
+        <div class="ph-impact-card">
+          <div class="ph-impact-icon">🏠</div>
+          <h4>Financial Hardship</h4>
+          <p>Parliamentary testimony documented employees unable to make mortgage payments, facing threats of foreclosure, and accumulating credit card debt to cover basic living expenses while awaiting resolution of pay errors that lasted months or years.</p>
+        </div>
+        <div class="ph-impact-card">
+          <div class="ph-impact-icon">⚕️</div>
+          <h4>Mental Health Toll</h4>
+          <p>Unions and parliamentary committees received testimony about severe stress, anxiety, and depression among affected workers. The uncertainty of not knowing when — or whether — their pay would be corrected compounded the financial harm.</p>
+        </div>
+        <div class="ph-impact-card">
+          <div class="ph-impact-icon">📋</div>
+          <h4>Leave &amp; Benefits Errors</h4>
+          <p>Phoenix systematically miscalculated leave balances, pension contributions, and benefit deductions. Employees approaching retirement found their pension records corrupted, requiring manual recalculation — a process that could take years.</p>
+        </div>
+        <div class="ph-impact-card">
+          <div class="ph-impact-icon">⚖️</div>
+          <h4>No Adequate Recourse</h4>
+          <p>Affected workers had no effective mechanism for rapid resolution. The Pay Centre backlog meant wait times of months to years. Some employees were told to "just wait" while facing active financial crises. Unions filed grievances and lawsuits on behalf of members.</p>
+        </div>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--text-tertiary); margin-top: var(--s-xs);">Sources: AG Fall 2017 Report 1, para 1.4; Senate National Finance Committee hearings 2016–2018; OGGO Committee witness testimony; PSAC and PIPSC union submissions.</p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- AG FINDINGS — EXPANDABLE CARDS              -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="ph-section">
+      <h2 class="ph-section-title">Key Auditor General Findings</h2>
+      <p class="ph-section-intro">The Office of the Auditor General conducted multiple audits of the Phoenix project. Click each finding to expand details.</p>
+
+      <!-- AG Fall 2017 -->
+      <div class="ph-finding-card">
+        <div class="ph-finding-header" onclick="phToggle(this)">
+          <div class="ph-finding-title-area">
+            <div class="ph-finding-title">AG Fall 2017 Report 1 — "Phoenix Pay Problems"</div>
+            <div class="ph-finding-meta">
+              <span class="ph-finding-tag report">Fall 2017</span>
+              <span class="ph-finding-tag severity">Critical</span>
+            </div>
+          </div>
+          <span class="ph-finding-chevron">▼</span>
+        </div>
+        <div class="ph-finding-body">
+          <h4>Scope</h4>
+          <p>Examined the government's response to Phoenix pay problems from go-live (February 2016) through early 2017.</p>
+          <h4>Key Findings</h4>
+          <ul>
+            <li>PSPC launched Phoenix knowing it had significant problems with its functionality (para 1.22)</li>
+            <li>The decision to consolidate pay processing and reduce compensation advisors before Phoenix was proven to work was a critical error (para 1.35)</li>
+            <li>Affected employees were not provided adequate support or communication about the status of their pay issues (para 1.4)</li>
+            <li>The backlog of pay transactions continued to grow despite emergency measures (para 1.48)</li>
+            <li>The government did not have a comprehensive plan to resolve all outstanding pay issues (para 1.55)</li>
+          </ul>
+          <h4>AG Recommendations</h4>
+          <ul>
+            <li>PSPC should develop a comprehensive plan with clear timelines and milestones to resolve all outstanding pay issues</li>
+            <li>PSPC should improve communication with affected employees about the status and expected timeline for resolution of their cases</li>
+            <li>Treasury Board Secretariat should ensure departments have contingency plans to support employees facing pay-related financial hardship</li>
+          </ul>
+          <a class="ph-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_201711_01_e_42666.html" target="_blank" rel="noopener">Read full report →</a>
+        </div>
+      </div>
+
+      <!-- AG Spring 2018 -->
+      <div class="ph-finding-card">
+        <div class="ph-finding-header" onclick="phToggle(this)">
+          <div class="ph-finding-title-area">
+            <div class="ph-finding-title">AG Spring 2018 Report 1 — "Building and Implementing the Phoenix Pay System"</div>
+            <div class="ph-finding-meta">
+              <span class="ph-finding-tag report">Spring 2018</span>
+              <span class="ph-finding-tag severity">Critical</span>
+            </div>
+          </div>
+          <span class="ph-finding-chevron">▼</span>
+        </div>
+        <div class="ph-finding-body">
+          <h4>Scope</h4>
+          <p>Comprehensive audit of the entire Phoenix project lifecycle: planning, contracting, building, testing, and implementation decisions.</p>
+          <h4>Key Findings</h4>
+          <ul>
+            <li><strong>"An incomprehensible failure of project management and oversight"</strong> — the AG's central characterization of the entire project (para 1.7)</li>
+            <li>PSPC failed to define complete business requirements before building the system (para 1.30–1.35)</li>
+            <li>The contract with IBM was not adequately structured or managed; PSPC did not ensure deliverables met requirements (para 1.23–1.28)</li>
+            <li>Testing was inadequate — critical defects identified during testing were not resolved before go-live (para 1.40–1.52)</li>
+            <li>A pilot program was cancelled early rather than being allowed to demonstrate whether Phoenix could handle real-world pay processing (para 1.44)</li>
+            <li>Executives made the decision to go-live on schedule despite documented evidence that the system was not ready (para 1.60–1.68)</li>
+            <li>Budget and schedule were prioritized over system functionality and employee welfare (para 1.8)</li>
+            <li>Project governance was inadequate at every level — project, departmental, and central agency (para 1.15–1.22)</li>
+          </ul>
+          <h4>AG Recommendations</h4>
+          <ul>
+            <li>PSPC should apply lessons learned from Phoenix to all future major IT projects</li>
+            <li>Treasury Board Secretariat should strengthen oversight of major government IT projects, including mandatory independent reviews at key milestones</li>
+            <li>Departments should not proceed with implementation when testing reveals critical defects</li>
+          </ul>
+          <a class="ph-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_201805_01_e_43033.html" target="_blank" rel="noopener">Read full report →</a>
+        </div>
+      </div>
+
+      <!-- PSPC Special Examination -->
+      <div class="ph-finding-card">
+        <div class="ph-finding-header" onclick="phToggle(this)">
+          <div class="ph-finding-title-area">
+            <div class="ph-finding-title">AG 2018 Special Examination — PSPC Phoenix Governance</div>
+            <div class="ph-finding-meta">
+              <span class="ph-finding-tag report">2018</span>
+              <span class="ph-finding-tag severity">Critical</span>
+            </div>
+          </div>
+          <span class="ph-finding-chevron">▼</span>
+        </div>
+        <div class="ph-finding-body">
+          <h4>Scope</h4>
+          <p>Special examination of PSPC's corporate governance and management practices as they related to the Phoenix project.</p>
+          <h4>Key Findings</h4>
+          <ul>
+            <li>PSPC's governance framework had significant deficiencies that contributed to the Phoenix failures</li>
+            <li>Risk management practices were inadequate — known risks were documented but not effectively mitigated</li>
+            <li>Internal audit and oversight functions did not provide sufficient early warning</li>
+            <li>The department's organizational culture did not support effective challenge of project decisions by staff</li>
+            <li>Senior management did not ensure that decision-makers had access to complete and accurate information about project risks</li>
+          </ul>
+          <a class="ph-source-link" href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_201805_01_e_43033.html" target="_blank" rel="noopener">Read full report →</a>
+        </div>
+      </div>
+
+      <!-- Parliamentary Committees -->
+      <div class="ph-finding-card">
+        <div class="ph-finding-header" onclick="phToggle(this)">
+          <div class="ph-finding-title-area">
+            <div class="ph-finding-title">Parliamentary Committee Investigations (2016–2024)</div>
+            <div class="ph-finding-meta">
+              <span class="ph-finding-tag report">2016–2024</span>
+              <span class="ph-finding-tag severity">Critical</span>
+            </div>
+          </div>
+          <span class="ph-finding-chevron">▼</span>
+        </div>
+        <div class="ph-finding-body">
+          <h4>House of Commons — Standing Committee on Government Operations (OGGO)</h4>
+          <ul>
+            <li>Conducted multiple studies on Phoenix from 2016 through 2024</li>
+            <li>Heard testimony from affected employees, union leaders, departmental officials, and IBM representatives</li>
+            <li>Published reports calling for accountability and systematic reforms to government IT procurement</li>
+            <li>Documented ongoing backlog and cost escalation with each successive appearance by PSPC officials</li>
+          </ul>
+          <h4>Senate Standing Committee on National Finance</h4>
+          <ul>
+            <li>Held hearings examining the financial impact of Phoenix and the adequacy of government response</li>
+            <li>Questioned Treasury Board and PSPC officials on cost projections and timelines</li>
+            <li>Received testimony from public servants about personal financial devastation caused by pay errors</li>
+          </ul>
+          <h4>Key Parliamentary Findings</h4>
+          <ul>
+            <li>Repeated recommendations for accountability that were not acted upon</li>
+            <li>Documentation of government commitments and timelines that were consistently missed</li>
+            <li>Evidence that the scale of the problem was systematically underreported in early government communications</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SYSTEMIC FAILURES                           -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="ph-section">
+      <h2 class="ph-section-title">Systemic Failures</h2>
+      <p class="ph-section-intro">The AG identified multiple interconnected failures that collectively produced the disaster. No single decision caused Phoenix to fail — it was a cascade of systemic breakdowns.</p>
+
+      <div class="ph-impact-grid">
+        <div class="ph-impact-card">
+          <div class="ph-impact-icon">📋</div>
+          <h4>Incomplete Requirements</h4>
+          <p>Federal pay rules are extraordinarily complex — covering collective agreements, retroactive pay, acting appointments, bilingual bonuses, and dozens of other scenarios. PSPC did not fully define these requirements before building the system. Phoenix was built to handle a simplified version of federal pay that did not exist in practice.</p>
+        </div>
+        <div class="ph-impact-card">
+          <div class="ph-impact-icon">🧪</div>
+          <h4>Inadequate Testing</h4>
+          <p>Testing revealed critical defects, but the schedule was not adjusted. A planned pilot was cancelled early rather than being extended. User acceptance testing by compensation advisors identified problems that were not resolved. The system was launched knowing it could not process many common pay scenarios correctly.</p>
+        </div>
+        <div class="ph-impact-card">
+          <div class="ph-impact-icon">✂️</div>
+          <h4>Premature Staff Cuts</h4>
+          <p>The business case for Phoenix assumed the new system would require fewer compensation advisors. Approximately 700 positions were eliminated and pay processing was centralized in Miramichi before Phoenix proved it could handle the workload. When it failed, there were not enough trained staff to fall back on.</p>
+        </div>
+        <div class="ph-impact-card">
+          <div class="ph-impact-icon">📊</div>
+          <h4>Contract Mismanagement</h4>
+          <p>The AG found that PSPC did not adequately structure or manage the IBM contract. Requirements were incomplete, change management was poor, and the department did not ensure deliverables met needs. The contract framework did not hold either party sufficiently accountable for outcomes.</p>
+        </div>
+        <div class="ph-impact-card">
+          <div class="ph-impact-icon">🏛️</div>
+          <h4>Governance Breakdown</h4>
+          <p>Oversight failed at every level. The project team, departmental leadership, and Treasury Board Secretariat all failed to intervene when warning signs emerged. The AG found that decision-makers did not have — or did not act on — accurate information about project risks and readiness.</p>
+        </div>
+        <div class="ph-impact-card">
+          <div class="ph-impact-icon">🗓️</div>
+          <h4>Schedule Over Safety</h4>
+          <p>The decision to go-live on February 24, 2016 was made despite documented evidence that the system was not ready. Budget savings and political timelines were prioritized over the welfare of 300,000 federal employees whose paycheques depended on the system working correctly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- THE NEXTGEN QUESTION                        -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="ph-section">
+      <h2 class="ph-section-title">The NextGen Question</h2>
+      <div class="ph-summary-card" style="border-left-color: var(--color-purple, #a855f7);">
+        <h3>Replacing the Replacement</h3>
+        <p>In 2018, the government announced the Next Generation Human Resources and Pay System (NextGen) project to replace Phoenix. SAP's SuccessFactors platform was selected. The project was originally expected to be operational by approximately 2023.</p>
+        <p>As of 2024, NextGen has been repeatedly delayed. No operational date has been publicly committed to. Meanwhile, Phoenix continues to process pay for the entire federal public service. Each year Phoenix remains in service adds to the cumulative cost — estimated at hundreds of millions annually for ongoing stabilization, backlog processing, and workarounds.</p>
+        <p>The fundamental question remains: can the government successfully implement a major pay system when the governance, procurement, and project management failures that caused Phoenix have not been demonstrably reformed?</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- ACCOUNTABILITY GAP                          -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="ph-section">
+      <h2 class="ph-section-title">The Accountability Gap</h2>
+      <div class="ph-summary-card">
+        <h3>$2.2 Billion, Zero Consequences</h3>
+        <p>The Phoenix Pay System disaster has cost Canadian taxpayers over $2.2 billion and caused documented financial harm to more than 150,000 federal public servants. The Auditor General called it "an incomprehensible failure." Parliamentary committees have conducted years of hearings.</p>
+        <p>Yet as of 2024, the public record does not show any individual held formally accountable through disciplinary action, demotion, or legal consequences for decisions that the AG found were made despite clear warnings. One project lead was removed from the project. No executive, minister, or contractor has faced formal consequences commensurate with the scale of the failure.</p>
+        <p>This pattern — massive failure, exhaustive documentation, zero accountability — is not unique to Phoenix. It is a recurring feature of Canadian federal governance that this project is dedicated to documenting.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- METHODOLOGY                                 -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="ph-methodology">
+      <h3>Sources &amp; Methodology</h3>
+      <p>All facts, figures, and characterizations on this page are drawn from publicly available official sources. No claims are made beyond what is documented in the following records:</p>
+      <ul>
+        <li><strong>Auditor General of Canada, Fall 2017 Report 1</strong> — "Phoenix Pay Problems" (<a href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_201711_01_e_42666.html" target="_blank" rel="noopener" style="color: var(--accent);">oag-bvg.gc.ca</a>)</li>
+        <li><strong>Auditor General of Canada, Spring 2018 Report 1</strong> — "Building and Implementing the Phoenix Pay System" (<a href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_201805_01_e_43033.html" target="_blank" rel="noopener" style="color: var(--accent);">oag-bvg.gc.ca</a>)</li>
+        <li><strong>AG 2018 Special Examination of PSPC</strong> — Phoenix governance and management practices</li>
+        <li><strong>House of Commons Standing Committee on Government Operations and Estimates (OGGO)</strong> — Testimony and reports, 2016–2024</li>
+        <li><strong>Senate Standing Committee on National Finance</strong> — Hearings on Phoenix pay system, 2016–2018</li>
+        <li><strong>PSPC Departmental Results Reports</strong> — Annual reporting on Phoenix costs and backlog status</li>
+        <li><strong>Parliamentary Budget Officer</strong> — Cost analysis and fiscal impact assessments</li>
+        <li><strong>Treasury Board Secretariat</strong> — Project approval documents and governance records</li>
+      </ul>
+      <p style="margin-top: var(--s-xs);">Paragraph and section references (e.g., "para 1.7") refer to the original AG report numbering. All AG reports are available in full at <a href="https://www.oag-bvg.gc.ca" target="_blank" rel="noopener" style="color: var(--accent);">oag-bvg.gc.ca</a>.</p>
+    </div>
+
+  </div><!-- end #main -->
+
+  <!-- Read Next -->
+  <div id="read-next"></div>
+
+  <!-- Footer -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="nav.js?v=9"></script>
+  <script src="share.js?v=1"></script>
+  <script src="readnext.js?v=2"></script>
+  <script src="footer.js?v=2"></script>
+
+  <script>
+    function phToggle(headerEl) {
+      var card = headerEl.closest('.ph-finding-card');
+      if (card) card.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

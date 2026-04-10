@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050810" />
+  <meta name="description" content="Foreign interference in Canadian elections — the documented record. NSICOP, Hogue Commission, PRC operations, Indian government ops, and the government's non-response." />
+  <title>Foreign Interference in Canadian Elections | ABCXYZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Design token fallbacks ── */
+    :root {
+      --accent:        #c41e3a;
+      --gold:          #facc15;
+      --blue:          #60a5fa;
+      --green:         #39ff14;
+      --purple:        #c084fc;
+      --text:          #e8e8ec;
+      --text2:         #b0b4c0;
+      --muted:         #7a7f90;
+      --radius:        12px;
+      --shadow-glass:  0 8px 32px rgba(0,0,0,.55);
+      --backdrop-card: blur(18px) saturate(1.4);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      background: #050810;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 65vw 45vh at 10% 15%,  rgba(196,30,58,.09)  0%, transparent 70%),
+        radial-gradient(ellipse 55vw 50vh at 90% 80%,  rgba(96,165,250,.06) 0%, transparent 70%),
+        radial-gradient(ellipse 45vw 35vh at 60% 5%,   rgba(192,132,252,.05)0%, transparent 70%),
+        radial-gradient(ellipse 40vw 40vh at 25% 90%,  rgba(250,204,21,.04) 0%, transparent 70%),
+        radial-gradient(ellipse 30vw 30vh at 78% 30%,  rgba(196,30,58,.05)  0%, transparent 70%);
+      z-index: 0;
+    }
+
+    /* ── Glass utilities ── */
+    .glass {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.09);
+      backdrop-filter: var(--backdrop-card);
+      -webkit-backdrop-filter: var(--backdrop-card);
+      border-radius: var(--radius);
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: var(--backdrop-card);
+      -webkit-backdrop-filter: var(--backdrop-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-glass);
+      padding: 1.5rem;
+    }
+
+    .glass-panel {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+
+    .glass-stat {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+
+    .glass-row {
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+    }
+
+    .glass-stat-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+    }
+
+    .glass-card-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    }
+
+    /* ── Layout ── */
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 5rem;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 3.5rem 1rem 3rem;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: .68rem;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .75rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.6rem, 4.5vw, 2.9rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: .75rem;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero-sub {
+      font-size: .85rem;
+      color: var(--text2);
+      max-width: 720px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .5rem;
+      margin-top: 1.25rem;
+    }
+
+    /* ── Section ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    .section-header h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: .04em;
+    }
+
+    .section-label {
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .5rem;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,.07);
+      margin: 2.5rem 0;
+    }
+
+    /* ── Stat cards ── */
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: .3rem;
+    }
+
+    .stat-label {
+      font-size: .7rem;
+      color: var(--text2);
+      line-height: 1.45;
+    }
+
+    .stat-sub {
+      font-size: .63rem;
+      color: var(--muted);
+      margin-top: .25rem;
+    }
+
+    /* ── Colour aliases ── */
+    .c-accent  { color: var(--accent);  }
+    .c-gold    { color: var(--gold);    }
+    .c-blue    { color: var(--blue);    }
+    .c-green   { color: var(--green);   }
+    .c-purple  { color: var(--purple);  }
+    .c-muted   { color: var(--muted);   }
+    .c-text2   { color: var(--text2);   }
+    .c-text    { color: var(--text);    }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      border-radius: 4px;
+      padding: .25rem .65rem;
+      white-space: nowrap;
+    }
+
+    .badge-none {
+      background: rgba(196,30,58,.15);
+      border: 1px solid rgba(196,30,58,.3);
+      color: #f87171;
+    }
+
+    .badge-partial {
+      background: rgba(250,204,21,.12);
+      border: 1px solid rgba(250,204,21,.3);
+      color: var(--gold);
+    }
+
+    .badge-done {
+      background: rgba(57,255,20,.10);
+      border: 1px solid rgba(57,255,20,.25);
+      color: var(--green);
+    }
+
+    .badge-blue {
+      background: rgba(96,165,250,.12);
+      border: 1px solid rgba(96,165,250,.3);
+      color: var(--blue);
+    }
+
+    .badge-purple {
+      background: rgba(192,132,252,.12);
+      border: 1px solid rgba(192,132,252,.3);
+      color: var(--purple);
+    }
+
+    .badge-warning {
+      background: rgba(251,146,60,.12);
+      border: 1px solid rgba(251,146,60,.3);
+      color: #fb923c;
+    }
+
+    /* ── Timeline ── */
+    .timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5.5rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(196,30,58,.45) 8%,
+        rgba(196,30,58,.3) 40%,
+        rgba(250,204,21,.3) 65%,
+        rgba(96,165,250,.3) 88%,
+        transparent 100%
+      );
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 5rem 1.5rem 1fr;
+      gap: 0 1.25rem;
+      padding: .85rem 0;
+      position: relative;
+    }
+
+    .tl-date {
+      font-size: .68rem;
+      color: var(--muted);
+      text-align: right;
+      padding-top: .15rem;
+      letter-spacing: .03em;
+    }
+
+    .tl-dot {
+      display: flex;
+      justify-content: center;
+      padding-top: .35rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tl-dot::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid #050810;
+      box-shadow: 0 0 8px rgba(196,30,58,.6);
+    }
+
+    .tl-dot.dot-gold::after  { background: var(--gold);   box-shadow: 0 0 8px rgba(250,204,21,.5); }
+    .tl-dot.dot-blue::after  { background: var(--blue);   box-shadow: 0 0 8px rgba(96,165,250,.5); }
+    .tl-dot.dot-green::after { background: var(--green);  box-shadow: 0 0 8px rgba(57,255,20,.5);  }
+    .tl-dot.dot-purple::after{ background: var(--purple); box-shadow: 0 0 8px rgba(192,132,252,.5);}
+
+    .tl-content { padding-top: .05rem; }
+
+    .tl-title {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: .25rem;
+    }
+
+    .tl-body {
+      font-size: .78rem;
+      color: var(--text2);
+      line-height: 1.65;
+    }
+
+    /* ── Key actors table ── */
+    .actor-table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.09);
+    }
+
+    .actor-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .78rem;
+    }
+
+    .actor-table thead th {
+      background: rgba(255,255,255,.06);
+      color: var(--text2);
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      font-size: .63rem;
+      padding: .75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+      white-space: nowrap;
+    }
+
+    .actor-table tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      transition: background .15s;
+    }
+
+    .actor-table tbody tr:last-child { border-bottom: none; }
+    .actor-table tbody tr:hover { background: rgba(255,255,255,.03); }
+
+    .actor-table td {
+      padding: .75rem 1rem;
+      color: var(--text);
+      vertical-align: top;
+    }
+
+    .actor-table td.actor-name {
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap;
+      min-width: 180px;
+    }
+
+    .actor-table td.actor-role {
+      color: var(--text2);
+      min-width: 160px;
+      white-space: nowrap;
+    }
+
+    .actor-table td.actor-detail {
+      color: var(--text2);
+      line-height: 1.55;
+      min-width: 280px;
+    }
+
+    /* ── Finding block ── */
+    .finding-block {
+      border-left: 3px solid var(--accent);
+      padding: .9rem 1.25rem;
+      background: rgba(196,30,58,.05);
+      border-radius: 0 8px 8px 0;
+      margin-bottom: .75rem;
+    }
+
+    .finding-block.fb-gold   { border-color: var(--gold);   background: rgba(250,204,21,.05); }
+    .finding-block.fb-blue   { border-color: var(--blue);   background: rgba(96,165,250,.05); }
+    .finding-block.fb-green  { border-color: var(--green);  background: rgba(57,255,20,.04);  }
+    .finding-block.fb-purple { border-color: var(--purple); background: rgba(192,132,252,.05);}
+
+    .finding-block-title {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .35rem;
+    }
+
+    .finding-block-body {
+      font-size: .78rem;
+      color: var(--text2);
+      line-height: 1.65;
+    }
+
+    /* ── Quote block ── */
+    .quote-block {
+      border-left: 3px solid rgba(255,255,255,.2);
+      padding: .85rem 1.25rem;
+      margin: 1rem 0;
+      background: rgba(255,255,255,.025);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .quote-block blockquote {
+      font-size: .82rem;
+      color: var(--text);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: .35rem;
+    }
+
+    .quote-block cite {
+      font-size: .7rem;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* ── Law section ── */
+    .law-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(96,165,250,.18);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .law-card-title {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: .4rem;
+    }
+
+    .law-card-ref {
+      font-size: .68rem;
+      color: var(--muted);
+      margin-bottom: .6rem;
+      letter-spacing: .05em;
+    }
+
+    .law-card-body {
+      font-size: .79rem;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+
+    .law-card-apply {
+      margin-top: .6rem;
+      font-size: .76rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .law-card-apply strong { color: var(--accent); }
+
+    /* ── Warning banner ── */
+    .warn-banner {
+      background: rgba(196,30,58,.08);
+      border: 1px solid rgba(196,30,58,.25);
+      border-radius: var(--radius);
+      padding: 1rem 1.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .warn-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: .05rem; }
+
+    .warn-text {
+      font-size: .8rem;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+
+    .warn-text strong { color: var(--text); }
+
+    /* ── Info banner ── */
+    .info-banner {
+      background: rgba(96,165,250,.07);
+      border: 1px solid rgba(96,165,250,.2);
+      border-radius: var(--radius);
+      padding: 1rem 1.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .info-banner .warn-text { font-size: .8rem; color: var(--text2); line-height: 1.7; }
+    .info-banner .warn-text strong { color: var(--text); }
+
+    /* ── Source list ── */
+    .source-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .source-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      font-size: .78rem;
+      color: var(--text2);
+      line-height: 1.55;
+    }
+
+    .source-list li::before {
+      content: '→';
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: .05rem;
+      font-size: .75rem;
+    }
+
+    .source-list a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .source-list a:hover {
+      color: var(--text);
+      text-decoration: underline;
+    }
+
+    /* ── CTA block ── */
+    .cta-block {
+      background: rgba(196,30,58,.07);
+      border: 1px solid rgba(196,30,58,.2);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      text-align: center;
+    }
+
+    .cta-block h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .65rem;
+    }
+
+    .cta-block p {
+      font-size: .82rem;
+      color: var(--text2);
+      line-height: 1.75;
+      max-width: 600px;
+      margin: 0 auto .75rem;
+    }
+
+    .cta-block .demand-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      text-align: left;
+      max-width: 540px;
+      margin: .75rem auto 0;
+    }
+
+    .cta-block .demand-list li {
+      font-size: .78rem;
+      color: var(--text2);
+      line-height: 1.55;
+      display: flex;
+      gap: .6rem;
+    }
+
+    .cta-block .demand-list li::before {
+      content: '▸';
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── Two-col layout ── */
+    .two-col {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    /* ── Pill nav / TOC ── */
+    .toc-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 2rem;
+    }
+
+    .toc-nav a {
+      font-size: .68rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      padding: .3rem .75rem;
+      border-radius: 20px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      color: var(--text2);
+      text-decoration: none;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+
+    .toc-nav a:hover {
+      background: rgba(196,30,58,.12);
+      border-color: rgba(196,30,58,.35);
+      color: var(--text);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .timeline::before { left: 4.5rem; }
+      .tl-item { grid-template-columns: 4rem 1.25rem 1fr; }
+      .glass-card-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 420px) {
+      .timeline::before { display: none; }
+      .tl-item { grid-template-columns: 0 0 1fr; }
+      .tl-date, .tl-dot { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ══════════════════════════════════
+       HERO
+  ══════════════════════════════════ -->
+  <header class="hero">
+    <p class="hero-eyebrow">ABCXYZ · National Security · Documented Record</p>
+    <h1>Foreign Interference in<br><span>Canadian Elections</span></h1>
+    <p class="hero-sub">
+      How the People's Republic of China, India, Pakistan, and Iran conducted influence operations
+      targeting Canadian democracy — and how the Trudeau government knew, minimized, and failed to act.
+      Based entirely on public record: NSICOP, Hogue Commission, CSIS testimony, and parliamentary hearings.
+    </p>
+    <div class="hero-badges">
+      <span class="badge badge-none">⚠ NSICOP: Enduring &amp; Escalating Threat</span>
+      <span class="badge badge-blue">Hogue Commission 2023–2024</span>
+      <span class="badge badge-purple">4 Foreign States Named</span>
+      <span class="badge badge-warning">0 Criminal Charges</span>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc-nav" aria-label="Sections">
+    <a href="#stats">Key Stats</a>
+    <a href="#nsicop">NSICOP Report</a>
+    <a href="#hogue">Hogue Commission</a>
+    <a href="#prc">China's Operation</a>
+    <a href="#india">India's Operation</a>
+    <a href="#trudeau">What Trudeau Knew</a>
+    <a href="#c70">Bill C-70</a>
+    <a href="#criminal">Criminal Code</a>
+    <a href="#actors">Key Actors</a>
+    <a href="#sources">Sources &amp; Action</a>
+  </nav>
+
+  <!-- ══════════════════════════════════
+       SECTION 1: STATS
+  ══════════════════════════════════ -->
+  <section id="stats">
+    <div class="section-label">By the Numbers</div>
+    <div class="glass-stat-grid" style="margin-bottom:2rem;">
+
+      <div class="glass-stat">
+        <div class="stat-value c-accent">2</div>
+        <div class="stat-label">Federal elections<br>found to be affected</div>
+        <div class="stat-sub">2019 &amp; 2021 federal elections</div>
+      </div>
+
+      <div class="glass-stat">
+        <div class="stat-value c-gold">11</div>
+        <div class="stat-label">Electoral ridings<br>targeted in 2021</div>
+        <div class="stat-sub">Hogue Commission finding</div>
+      </div>
+
+      <div class="glass-stat">
+        <div class="stat-value c-blue">4</div>
+        <div class="stat-label">Foreign states<br>named by NSICOP</div>
+        <div class="stat-sub">PRC · India · Pakistan · Iran</div>
+      </div>
+
+      <div class="glass-stat">
+        <div class="stat-value c-purple">0</div>
+        <div class="stat-label">Criminal charges<br>laid as of 2024</div>
+        <div class="stat-sub">Despite confirmed operations</div>
+      </div>
+
+      <div class="glass-stat">
+        <div class="stat-value c-accent">1</div>
+        <div class="stat-label">Assassination on<br>Canadian soil confirmed</div>
+        <div class="stat-sub">Hardeep Singh Nijjar, June 2023</div>
+      </div>
+
+      <div class="glass-stat">
+        <div class="stat-value c-gold">≥11</div>
+        <div class="stat-label">MPs flagged to<br>CSIS or in NSICOP report</div>
+        <div class="stat-sub">Wittingly or unwittingly assisting</div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ══════════════════════════════════
+       SECTION 2: NSICOP
+  ══════════════════════════════════ -->
+  <section id="nsicop">
+    <div class="section-header">
+      <span class="section-icon">🔐</span>
+      <h2>The NSICOP Report — June 2024</h2>
+    </div>
+
+    <div class="warn-banner" style="margin-bottom:1.25rem;">
+      <span class="warn-icon">⚠</span>
+      <div class="warn-text">
+        <strong>What is NSICOP?</strong> The National Security and Intelligence Committee of Parliamentarians
+        is a committee of MPs and Senators with top-secret security clearance that reviews classified
+        national security and intelligence files. Unlike most committees, it sees raw CSIS and CSE intelligence.
+        Its reports are reviewed by the PM before public release — sections may be redacted.
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="finding-block" style="margin-bottom:.75rem;">
+          <div class="finding-block-title">Core Conclusion</div>
+          <div class="finding-block-body">
+            Foreign interference is <em style="color:var(--text);">"an enduring and escalating threat to Canadian democracy."</em>
+            The report found that interference activities are not isolated incidents but a systematic, multi-year campaign
+            by several foreign states with long-term strategic objectives inside Canada.
+          </div>
+        </div>
+
+        <div class="finding-block fb-gold">
+          <div class="finding-block-title">MPs Found Complicit</div>
+          <div class="finding-block-body">
+            Several unnamed Members of Parliament were found to have <em style="color:var(--text);">"wittingly or unwittingly"</em>
+            assisted foreign states. NSICOP concluded some MPs actively passed information to foreign missions,
+            attended foreign government-funded events, and provided access in exchange for electoral support.
+            Names are classified and were not publicly released.
+          </div>
+        </div>
+
+        <div class="finding-block fb-blue">
+          <div class="finding-block-title">CSIS Briefings Ignored</div>
+          <div class="finding-block-body">
+            CSIS briefed the Prime Minister, the Clerk of the Privy Council, and senior officials on foreign
+            interference on multiple occasions. The report found that government action in response was
+            minimal and that the intelligence was not acted upon at the level the threat demanded.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="finding-block fb-purple">
+          <div class="finding-block-title">Liberal Nomination Races Targeted</div>
+          <div class="finding-block-body">
+            CSIS warned the Liberal Party of Canada that at least one nomination race had been targeted
+            by foreign state interference — with foreign consulate officials directing funds and
+            community organizers to influence the outcome. The warning was received and ignored.
+          </div>
+        </div>
+
+        <div class="finding-block">
+          <div class="finding-block-title">Foreign States Named</div>
+          <div class="finding-block-body">
+            The report explicitly names: <strong style="color:var(--text);">People's Republic of China (PRC)</strong>,
+            <strong style="color:var(--text);">India</strong>, <strong style="color:var(--text);">Pakistan</strong>,
+            and <strong style="color:var(--text);">Iran</strong> as conducting foreign interference operations
+            targeting Canada's political system, diaspora communities, and democratic institutions.
+          </div>
+        </div>
+
+        <div class="quote-block">
+          <blockquote>"The government treated foreign interference as a partisan political issue rather than a national security threat."</blockquote>
+          <cite>— NSICOP Report, June 2024</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ══════════════════════════════════
+       SECTION 3: HOGUE COMMISSION
+  ══════════════════════════════════ -->
+  <section id="hogue">
+    <div class="section-header">
+      <span class="section-icon">⚖️</span>
+      <h2>The Hogue Commission — Public Inquiry 2023–2024</h2>
+    </div>
+
+    <div class="info-banner" style="margin-bottom:1.25rem;">
+      <span class="warn-icon" style="font-size:1.1rem;">ℹ</span>
+      <div class="warn-text">
+        <strong>The Commission:</strong> Justice Marie-Josée Hogue of the Quebec Court of Appeal was appointed
+        to lead the Public Inquiry into Foreign Interference in Federal Electoral Processes and Democratic Institutions.
+        The inquiry held public hearings across 2023–2024, heard from CSIS, RCMP, PMO, PCO, political party officials,
+        academics, and diaspora community members. Its mandate covered the 2019 and 2021 elections.
+      </div>
+    </div>
+
+    <div class="glass-card-grid">
+
+      <div class="glass-card">
+        <div class="section-label">Core Finding</div>
+        <p style="font-size:.83rem; color:var(--text); font-weight:600; margin-bottom:.6rem;">
+          "Foreign interference activities did occur" — in both elections
+        </p>
+        <p style="font-size:.78rem; color:var(--text2); line-height:1.65;">
+          Justice Hogue concluded that foreign interference activities took place during both the 2019 and 2021
+          federal elections. While she stopped short of saying the overall election results were illegitimate,
+          she found specific ridings were materially affected and that the total impact may never be fully measurable.
+        </p>
+      </div>
+
+      <div class="glass-card">
+        <div class="section-label">PRC Strategic Objective</div>
+        <p style="font-size:.83rem; color:var(--text); font-weight:600; margin-bottom:.6rem;">
+          Prevent Conservative government — sustain Liberal/NDP power
+        </p>
+        <p style="font-size:.78rem; color:var(--text2); line-height:1.65;">
+          Beijing's documented goal was to prevent a Conservative majority or minority government, which
+          it assessed as more hawkish on Taiwan, Hong Kong, and human rights. PRC preferred the Liberals and
+          viewed the NDP under Singh as more favourable. Interference was calibrated toward this end.
+        </p>
+      </div>
+
+      <div class="glass-card">
+        <div class="section-label">11 Ridings — 2021 Election</div>
+        <p style="font-size:.83rem; color:var(--text); font-weight:600; margin-bottom:.6rem;">
+          Targeted ridings with large Chinese-Canadian diaspora populations
+        </p>
+        <p style="font-size:.78rem; color:var(--text2); line-height:1.65;">
+          CSIS identified 11 ridings in the 2021 election that were specifically targeted by PRC
+          interference operations. These were predominantly urban ridings in the Greater Toronto Area
+          and Metro Vancouver with large Chinese-Canadian communities. PRC consulate officials were
+          directed to mobilize diaspora voters and fund preferred candidates' campaigns indirectly.
+        </p>
+      </div>
+
+      <div class="glass-card">
+        <div class="section-label">Han Dong — Don Valley North (Liberal)</div>
+        <p style="font-size:.83rem; color:var(--accent); font-weight:600; margin-bottom:.6rem;">
+          CSIS concluded he had undisclosed relationship with Chinese officials
+        </p>
+        <p style="font-size:.78rem; color:var(--text2); line-height:1.65;">
+          CSIS assessed that Han Dong had an undisclosed relationship with People's Republic of China officials
+          and that he passed information to them. He reportedly advised PRC consulate officials on how to handle
+          detained Canadians Michael Kovrig and Michael Spavor. Han Dong denied the allegations and resigned
+          from the Liberal caucus in March 2023, sitting as an independent. He also sued Global News for defamation.
+          He did not recontest his seat in the 2025 election.
+        </p>
+      </div>
+
+      <div class="glass-card">
+        <div class="section-label">Michael Chan — Ontario Politics</div>
+        <p style="font-size:.83rem; color:var(--gold); font-weight:600; margin-bottom:.6rem;">
+          CSIS flagged repeated concerns about PRC contacts
+        </p>
+        <p style="font-size:.78rem; color:var(--text2); line-height:1.65;">
+          Michael Chan, former Ontario cabinet minister and York Region politician, was repeatedly flagged
+          by CSIS for his alleged ties to PRC officials and the Toronto consulate. CSIS concerns dated back
+          years and were reportedly raised with Ontario Liberal leadership. Chan denied any improper conduct.
+          The commission heard testimony regarding his role in PRC-connected diaspora networks.
+        </p>
+      </div>
+
+      <div class="glass-card">
+        <div class="section-label">WeChat Operations</div>
+        <p style="font-size:.83rem; color:var(--purple); font-weight:600; margin-bottom:.6rem;">
+          Pro-Beijing messaging targeting Chinese-Canadian communities
+        </p>
+        <p style="font-size:.78rem; color:var(--text2); line-height:1.65;">
+          Evidence before the commission documented coordinated WeChat campaigns targeting Chinese-Canadian
+          diaspora groups. Pro-Beijing messaging amplified support for specific Liberal candidates while
+          spreading disinformation about Conservative candidates, including false claims about racism and
+          anti-Chinese policies. WeChat's server infrastructure in China enables PRC censorship and monitoring
+          of diaspora communities.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ══════════════════════════════════
+       SECTION 4: PRC OPERATION
+  ══════════════════════════════════ -->
+  <section id="prc">
+    <div class="section-header">
+      <span class="section-icon">🇨🇳</span>
+      <h2>China's Operation — PRC Diaspora Mobilization</h2>
+    </div>
+
+    <div class="glass-panel" style="margin-bottom:1.5rem;">
+      <p class="section-label">Overview</p>
+      <p style="font-size:.82rem; color:var(--text2); line-height:1.75;">
+        The People's Republic of China ran the most sophisticated and documented foreign interference
+        operation in Canadian electoral history. It combined diplomatic networks (consulates), PRC-linked
+        community organizations, social media (particularly WeChat), diaspora pressure, candidate funding,
+        and intelligence collection — all coordinated toward preventing a Conservative government and
+        maintaining preferred policy positions on Taiwan, Tibet, Hong Kong, and bilateral trade.
+      </p>
+    </div>
+
+    <div class="two-col" style="margin-bottom:1.25rem;">
+      <div>
+        <div class="finding-block fb-blue" style="margin-bottom:.75rem;">
+          <div class="finding-block-title">Consulate Direction to Mobilize Diaspora</div>
+          <div class="finding-block-body">
+            PRC consulates in Toronto and Vancouver were documented directing community liaisons to mobilize
+            Chinese-Canadian voters for preferred candidates. CSIS intercepts included consulate officials
+            coordinating bussing of voters, attending events for targeted candidates, and tracking electoral
+            outcomes riding by riding.
+          </div>
+        </div>
+
+        <div class="finding-block fb-gold">
+          <div class="finding-block-title">Indirect Campaign Finance</div>
+          <div class="finding-block-body">
+            Evidence presented to Hogue documented PRC-linked networks providing indirect financial support
+            to preferred candidates through community fundraising events, donations routed through
+            intermediaries, and in-kind support. This circumvented Canada Elections Act rules on
+            foreign national donations.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="finding-block" style="margin-bottom:.75rem;">
+          <div class="finding-block-title">Intelligence Collection on Diaspora</div>
+          <div class="finding-block-body">
+            PRC consulates maintained surveillance of Chinese-Canadian community members, tracking
+            political activity, donations, and loyalty. Community members with family in China were
+            pressured to support PRC objectives. CSIS documented coercive tactics including threats
+            against family members in China.
+          </div>
+        </div>
+
+        <div class="finding-block fb-purple">
+          <div class="finding-block-title">2019 Election: Nomination Targeting</div>
+          <div class="finding-block-body">
+            In the 2019 election cycle, PRC-linked operatives interfered in Liberal nomination races
+            to ensure preferred candidates won nominations in key ridings. CSIS warned the Liberal
+            Party — the warning was received but no corrective action was taken to investigate or
+            disqualify affected candidates.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ══════════════════════════════════
+       SECTION 5: INDIA OPERATION
+  ══════════════════════════════════ -->
+  <section id="india">
+    <div class="section-header">
+      <span class="section-icon">🇮🇳</span>
+      <h2>India's Operation — Sikh Diaspora Surveillance &amp; Political Pressure</h2>
+    </div>
+
+    <div class="warn-banner" style="margin-bottom:1.5rem;">
+      <span class="warn-icon">⚠</span>
+      <div class="warn-text">
+        <strong>State-Sanctioned Murder on Canadian Soil:</strong> On June 18, 2023, Hardeep Singh Nijjar —
+        a Canadian citizen and Sikh community leader in Surrey, BC — was shot dead in the parking lot of
+        the Guru Nanak Sikh Gurdwara. CSIS and the RCMP concluded that agents of the Indian government were
+        responsible. This is the most serious confirmed act of foreign state violence on Canadian territory
+        in modern history.
+      </div>
+    </div>
+
+    <div class="glass-card-grid" style="margin-bottom:1.25rem;">
+
+      <div class="glass-card">
+        <div class="section-label">Nijjar Assassination</div>
+        <p style="font-size:.82rem; color:var(--text2); line-height:1.7; margin-bottom:.75rem;">
+          Hardeep Singh Nijjar, 45, was designated by India as a "terrorist" for his advocacy of a Sikh
+          homeland (Khalistan). CSIS had intelligence indicating Indian government involvement and briefed
+          PM Trudeau before Trudeau's public statement in Parliament on September 18, 2023, accusing India
+          of "potential" involvement.
+        </p>
+        <p style="font-size:.78rem; color:var(--text2); line-height:1.65;">
+          India denied any involvement and expelled Canadian diplomats in retaliation. Canada expelled
+          Indian High Commissioner Sanjay Kumar Verma and several Indian diplomats. Three Indian nationals
+          were charged by the RCMP with first-degree murder in 2023. India continued to deny state involvement.
+        </p>
+        <div style="margin-top:.75rem; display:flex; gap:.5rem; flex-wrap:wrap;">
+          <span class="badge badge-none">Confirmed: State actor responsible</span>
+          <span class="badge badge-blue">3 charged with murder</span>
+        </div>
+      </div>
+
+      <div class="glass-card">
+        <div class="section-label">Sikh Diaspora Surveillance</div>
+        <p style="font-size:.82rem; color:var(--text2); line-height:1.7; margin-bottom:.75rem;">
+          NSICOP found that India ran systematic surveillance of Sikh-Canadians, particularly those
+          with Khalistan sympathies. Indian consulates in Canada monitored community members, reported
+          on their activities to New Delhi, and used informants inside community organizations.
+        </p>
+        <p style="font-size:.78rem; color:var(--text2); line-height:1.65;">
+          CSIS assessed that community members were intimidated, surveilled, and in some cases threatened
+          with consequences to family members in India. The surveillance extended to political activities,
+          donations to advocacy groups, and attendance at community events.
+        </p>
+      </div>
+
+      <div class="glass-card">
+        <div class="section-label">Political Candidate Influence</div>
+        <p style="font-size:.82rem; color:var(--text2); line-height:1.7; margin-bottom:.75rem;">
+          NSICOP and CSIS flagged concerns about Indian government ties to nominated candidates in
+          multiple parties, including Conservative candidates with alleged connections to Indian consulate
+          networks. India's goal was to ensure no pro-Khalistan or India-critical politicians gained power.
+        </p>
+        <p style="font-size:.78rem; color:var(--text2); line-height:1.65;">
+          <strong style="color:var(--text);">Prabmeet Sarkaria</strong> (Ontario PC cabinet minister) was
+          among names CSIS flagged for Indian government connections. Reports indicated Indian consulate
+          officials tracked his career and maintained contact with his network.
+        </p>
+      </div>
+
+      <div class="glass-card">
+        <div class="section-label">Diplomatic Fallout</div>
+        <div class="timeline" style="margin-top:.5rem;">
+          <div class="tl-item">
+            <span class="tl-date">Jun 2023</span>
+            <span class="tl-dot"></span>
+            <div class="tl-content">
+              <div class="tl-title">Nijjar assassinated in Surrey, BC</div>
+              <div class="tl-body">Shot outside Guru Nanak Sikh Gurdwara. CSIS briefs Trudeau on Indian involvement.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <span class="tl-date">Sep 2023</span>
+            <span class="tl-dot dot-gold"></span>
+            <div class="tl-content">
+              <div class="tl-title">Trudeau accuses India in Parliament</div>
+              <div class="tl-body">PM states "credible allegations" of Indian government involvement — unprecedented public accusation.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <span class="tl-date">Oct 2023</span>
+            <span class="tl-dot dot-blue"></span>
+            <div class="tl-content">
+              <div class="tl-title">Tit-for-tat diplomat expulsions</div>
+              <div class="tl-body">India expels Canadian diplomats; Canada expels Indian High Commissioner Sanjay Kumar Verma.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <span class="tl-date">2023</span>
+            <span class="tl-dot dot-green"></span>
+            <div class="tl-content">
+              <div class="tl-title">Three charged with murder</div>
+              <div class="tl-body">RCMP charges three Indian nationals. India denies state involvement. Extradition unlikely.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ══════════════════════════════════
+       SECTION 6: WHAT TRUDEAU KNEW
+  ══════════════════════════════════ -->
+  <section id="trudeau">
+    <div class="section-header">
+      <span class="section-icon">📋</span>
+      <h2>What Trudeau Knew — and When</h2>
+    </div>
+
+    <div class="warn-banner" style="margin-bottom:1.5rem;">
+      <span class="warn-icon">⚠</span>
+      <div class="warn-text">
+        <strong>The Central Question:</strong> Did the Prime Minister and his senior staff receive intelligence
+        warnings about foreign interference and fail to act? The answer, established by sworn testimony before
+        the Hogue Commission and NSICOP's classified review, is <strong>yes</strong>. The question of why
+        remains contested — incompetence, partisanship, or both.
+      </div>
+    </div>
+
+    <div class="timeline" style="margin-bottom:1.5rem;">
+
+      <div class="tl-item">
+        <span class="tl-date">2019</span>
+        <span class="tl-dot"></span>
+        <div class="tl-content">
+          <div class="tl-title">CSIS warns Liberal Party about nomination interference</div>
+          <div class="tl-body">
+            CSIS briefed Liberal Party officials that at least one nomination race had been targeted
+            by PRC operatives. No investigation was conducted. The affected nomination proceeded.
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <span class="tl-date">Oct 2019</span>
+        <span class="tl-dot dot-gold"></span>
+        <div class="tl-content">
+          <div class="tl-title">2019 federal election — interference documented but not disclosed</div>
+          <div class="tl-body">
+            Hogue Commission found interference occurred in 2019. Trudeau government did not publicly
+            acknowledge the extent of foreign interference during or after the election.
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <span class="tl-date">2021</span>
+        <span class="tl-dot dot-blue"></span>
+        <div class="tl-content">
+          <div class="tl-title">CSIS briefs PM Trudeau on PRC interference — pre-election</div>
+          <div class="tl-body">
+            Multiple CSIS briefings to the PM and Privy Council Office documented the scope of PRC
+            operations. The National Security and Intelligence Adviser (NSIA) flagged concerns.
+            Trudeau received and acknowledged the briefings. No action was taken before the election.
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <span class="tl-date">Sep 2021</span>
+        <span class="tl-dot dot-gold"></span>
+        <div class="tl-content">
+          <div class="tl-title">2021 federal election — 11 ridings actively targeted</div>
+          <div class="tl-body">
+            Election proceeds. CSIS documents real-time interference in 11 ridings. PRC consulate
+            officials are operationally active. Results in several ridings are assessed as potentially
+            affected. Government wins minority. No public disclosure follows.
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <span class="tl-date">2022</span>
+        <span class="tl-dot"></span>
+        <div class="tl-content">
+          <div class="tl-title">Global News &amp; Globe and Mail report CSIS intelligence</div>
+          <div class="tl-body">
+            Investigative reporting forces the government's hand. Reports detail PRC targeting of
+            ridings, Han Dong allegations, and the government's failure to act. Trudeau government
+            initially dismisses reports as "inaccurate."
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <span class="tl-date">2022</span>
+        <span class="tl-dot dot-purple"></span>
+        <div class="tl-content">
+          <div class="tl-title">Katie Telford (Chief of Staff) testifies — she knew</div>
+          <div class="tl-body">
+            Under oath before a parliamentary committee, Chief of Staff Katie Telford confirmed she
+            was aware of CSIS intelligence on foreign interference. She maintained the government
+            acted appropriately. Critics noted that no meaningful action was documented.
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <span class="tl-date">Mar 2023</span>
+        <span class="tl-dot dot-gold"></span>
+        <div class="tl-content">
+          <div class="tl-title">David Johnston appointed Special Rapporteur — then resigns</div>
+          <div class="tl-body">
+            Former Governor General David Johnston was appointed to review foreign interference.
+            Critics immediately noted Johnston's connections to the Desmarais family (Power Corporation),
+            major Liberal donors, whose foundation had employed him. Johnston initially recommended
+            against a public inquiry. He resigned in June 2023 after sustained conflict-of-interest criticism.
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <span class="tl-date">Sep 2023</span>
+        <span class="tl-dot dot-blue"></span>
+        <div class="tl-content">
+          <div class="tl-title">Hogue Commission announced — public inquiry finally ordered</div>
+          <div class="tl-body">
+            After Johnston's resignation and sustained political pressure, PM Trudeau announced
+            Justice Hogue would lead a full public inquiry. The inquiry's terms of reference covered
+            2019 and 2021 elections.
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <span class="tl-date">Jun 2024</span>
+        <span class="tl-dot dot-green"></span>
+        <div class="tl-content">
+          <div class="tl-title">NSICOP report released — MPs found complicit</div>
+          <div class="tl-body">
+            NSICOP's classified assessment is made public (partially). Multiple unnamed MPs found to
+            have assisted foreign states. CSIS director David Vigneault calls interference an
+            "existential threat" in testimony.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="quote-block">
+      <blockquote>"Some members of Parliament — whether wittingly or unwittingly — were, or attempted to be, cultivated by foreign states, and some were directly involved in activities that advanced the interests of a foreign state."</blockquote>
+      <cite>— NSICOP Special Report on Foreign Interference, June 2024</cite>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ══════════════════════════════════
+       SECTION 7: BILL C-70
+  ══════════════════════════════════ -->
+  <section id="c70">
+    <div class="section-header">
+      <span class="section-icon">📜</span>
+      <h2>Bill C-70 — The Legislative Response (2024)</h2>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="glass-card">
+          <div class="section-label">What Bill C-70 Does</div>
+          <div style="display:flex; flex-direction:column; gap:.6rem; margin-top:.25rem;">
+            <div class="glass-row">
+              <p style="font-size:.78rem; color:var(--text); font-weight:600; margin-bottom:.2rem;">
+                <span class="c-green">✓</span> Foreign Influence Transparency Registry
+              </p>
+              <p style="font-size:.75rem; color:var(--text2); line-height:1.55;">
+                Individuals and organizations acting on behalf of foreign principals in relation to
+                political or governmental processes must register. Modelled on the US FARA system.
+              </p>
+            </div>
+            <div class="glass-row">
+              <p style="font-size:.78rem; color:var(--text); font-weight:600; margin-bottom:.2rem;">
+                <span class="c-green">✓</span> New Criminal Offences for Foreign Interference
+              </p>
+              <p style="font-size:.75rem; color:var(--text2); line-height:1.55;">
+                Creates specific Criminal Code offences for clandestine or deceptive conduct at the
+                direction of a foreign principal to influence democratic processes. Maximum 14-year sentences.
+              </p>
+            </div>
+            <div class="glass-row">
+              <p style="font-size:.78rem; color:var(--text); font-weight:600; margin-bottom:.2rem;">
+                <span class="c-green">✓</span> CSIS Information-Sharing Expanded
+              </p>
+              <p style="font-size:.75rem; color:var(--text2); line-height:1.55;">
+                Expands CSIS's ability to share threat information with a broader range of entities
+                including political parties and candidates — addressing the gap where CSIS knew
+                but couldn't warn directly.
+              </p>
+            </div>
+            <div class="glass-row">
+              <p style="font-size:.78rem; color:var(--text); font-weight:600; margin-bottom:.2rem;">
+                <span class="c-green">✓</span> Passed with Broad Support
+              </p>
+              <p style="font-size:.75rem; color:var(--text2); line-height:1.55;">
+                Bill C-70 passed the House of Commons with support from Liberals, Conservatives,
+                NDP, and Bloc — unusually rapid passage signalling cross-party consensus on the threat.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="glass-card">
+          <div class="section-label">Criticisms &amp; Gaps</div>
+          <div style="display:flex; flex-direction:column; gap:.6rem; margin-top:.25rem;">
+            <div class="glass-row">
+              <p style="font-size:.78rem; color:var(--text); font-weight:600; margin-bottom:.2rem;">
+                <span class="c-accent">✗</span> Broad Exemptions in Registry
+              </p>
+              <p style="font-size:.75rem; color:var(--text2); line-height:1.55;">
+                Unlike the US FARA, C-70's registry contains numerous exemptions — including for
+                academic, cultural, and religious activities — that critics argue create large loopholes
+                for exactly the channels PRC uses for interference.
+              </p>
+            </div>
+            <div class="glass-row">
+              <p style="font-size:.78rem; color:var(--text); font-weight:600; margin-bottom:.2rem;">
+                <span class="c-accent">✗</span> No Retroactive Accountability
+              </p>
+              <p style="font-size:.75rem; color:var(--text2); line-height:1.55;">
+                The legislation does not address past conduct. MPs identified in NSICOP's report face no
+                legal consequence under the new law. Documented interference from 2019 and 2021
+                receives no criminal accountability.
+              </p>
+            </div>
+            <div class="glass-row">
+              <p style="font-size:.78rem; color:var(--text); font-weight:600; margin-bottom:.2rem;">
+                <span class="c-accent">✗</span> Enforcement Mechanism Weak
+              </p>
+              <p style="font-size:.75rem; color:var(--text2); line-height:1.55;">
+                Critics note the registry relies on self-disclosure, with enforcement dependent on
+                RCMP investigation capacity and political will to prosecute. The RCMP has historically
+                been under-resourced for foreign interference investigations.
+              </p>
+            </div>
+            <div class="glass-row">
+              <p style="font-size:.78rem; color:var(--text); font-weight:600; margin-bottom:.2rem;">
+                <span class="c-accent">✗</span> No Diaspora Coercion Remedy
+              </p>
+              <p style="font-size:.75rem; color:var(--text2); line-height:1.55;">
+                The bill does not create specific protections or remedies for diaspora Canadians
+                who are coerced, surveilled, or intimidated by foreign state actors — the most
+                pervasive form of interference documented by CSIS.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ══════════════════════════════════
+       SECTION 8: CRIMINAL CODE
+  ══════════════════════════════════ -->
+  <section id="criminal">
+    <div class="section-header">
+      <span class="section-icon">⚖️</span>
+      <h2>Criminal Code Analysis — Applicable Provisions</h2>
+    </div>
+
+    <div class="info-banner" style="margin-bottom:1.5rem;">
+      <span class="warn-icon" style="font-size:1.1rem;">ℹ</span>
+      <div class="warn-text">
+        <strong>Note:</strong> The following is a summary of existing Criminal Code provisions potentially
+        applicable to the documented conduct. As of 2024, no charges have been laid against any Canadian
+        political figure for foreign interference-related conduct. Whether the evidence meets criminal
+        standards beyond reasonable doubt is a legal determination for prosecutors. This is public legal analysis.
+      </div>
+    </div>
+
+    <div class="law-card">
+      <div class="law-card-title">Section 46 — Treason</div>
+      <div class="law-card-ref">Criminal Code of Canada, RSC 1985, c C-46, s 46</div>
+      <div class="law-card-body">
+        A person commits treason who communicates, or makes available to an agent of a state other
+        than Canada, military or scientific information or any sketch, plan, model, article, note or
+        document of a nature that he knows or ought to know may be used by that state for a purpose
+        prejudicial to the safety or defence of Canada. Also applies to one who conspires with a foreign
+        state to commit acts intended to cause Canada embarrassment or to assist a foreign state in
+        military operations against Canada.
+      </div>
+      <div class="law-card-apply">
+        <strong>Potential application:</strong> NSICOP found MPs passed information to foreign
+        state officials. If that information was of a nature prejudicial to Canada's security or
+        democratic processes, s.46 is potentially applicable. Prosecution would require proving
+        the accused knew the purpose was prejudicial. Maximum sentence: 14 years.
+      </div>
+    </div>
+
+    <div class="law-card">
+      <div class="law-card-title">Section 16 — High Treason</div>
+      <div class="law-card-ref">Criminal Code of Canada, RSC 1985, c C-46, s 16</div>
+      <div class="law-card-body">
+        Every one commits high treason who, in Canada, levies war against Canada or does any act preparatory
+        thereto, or assists an enemy at war with Canada, or delivers Canada or any of its armed forces to a
+        foreign power, or uses force or violence to overthrow the government of Canada, a province, or
+        territory, or conspires with any person to do any of those things.
+      </div>
+      <div class="law-card-apply">
+        <strong>Potential application:</strong> Less directly applicable to the documented conduct than s.46
+        unless the foreign interference was designed to overthrow or fundamentally alter the outcome of
+        democratic government by force or threat. The documented operations — while severe — fall primarily
+        under s.46, not high treason. Maximum sentence: Life imprisonment.
+      </div>
+    </div>
+
+    <div class="law-card">
+      <div class="law-card-title">Section 282.1–282.5 — Foreign Interference (Bill C-70, 2024)</div>
+      <div class="law-card-ref">Criminal Code of Canada, as amended by An Act respecting foreign interference (2024)</div>
+      <div class="law-card-body">
+        New offences created by Bill C-70 include: (a) committing an act of foreign interference —
+        clandestine or deceptive conduct, at the direction of or in association with a foreign state,
+        intended to influence a democratic process, impede law enforcement, or harm a person for
+        exercising democratic rights; (b) registrable conduct before registration.
+      </div>
+      <div class="law-card-apply">
+        <strong>Potential application:</strong> Directly applicable to documented conduct including WeChat
+        disinformation campaigns, consulate-directed voter mobilization, and any future documented clandestine
+        foreign principal relationships with political figures. Not retroactive to pre-2024 conduct.
+        Maximum: 14 years.
+      </div>
+    </div>
+
+    <div class="law-card">
+      <div class="law-card-title">Section 423.1 — Intimidation of Justice System Participants</div>
+      <div class="law-card-ref">Criminal Code of Canada, RSC 1985, c C-46, s 423.1</div>
+      <div class="law-card-body">
+        Prohibits conduct intended to provoke a state of fear in a person associated with the justice
+        system, government, or in a journalist, for the purpose of impeding them in the performance of
+        their duties or retaliating against them. Applies to threats and intimidation.
+      </div>
+      <div class="law-card-apply">
+        <strong>Potential application:</strong> Indian government surveillance and intimidation of
+        Sikh-Canadians, including threats to their family members in India, could constitute intimidation
+        of persons exercising Canadian rights. The Nijjar assassination is first-degree murder under s.235 —
+        charges were laid against three individuals but not against Indian state officials.
+      </div>
+    </div>
+
+    <div class="law-card">
+      <div class="law-card-title">Canada Elections Act — Foreign National Contributions</div>
+      <div class="law-card-ref">Canada Elections Act, SC 2000, c 9, s 331</div>
+      <div class="law-card-body">
+        It is an offence for a foreign national to make a contribution to a registered party, electoral
+        district association, candidate, leadership contestant, or nomination contestant. It is also an
+        offence to circumvent this prohibition by using Canadian intermediaries to funnel foreign funds.
+      </div>
+      <div class="law-card-apply">
+        <strong>Potential application:</strong> Evidence before Hogue of PRC-linked indirect financial
+        support to candidates could constitute offences under s.331 and related provisions. Elections Canada
+        and the Commissioner of Canada Elections have investigatory authority. No charges have been laid
+        related to documented PRC-linked campaign finance interference.
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ══════════════════════════════════
+       SECTION 9: KEY ACTORS
+  ══════════════════════════════════ -->
+  <section id="actors">
+    <div class="section-header">
+      <span class="section-icon">👤</span>
+      <h2>Key Actors — Roles and CSIS Assessments</h2>
+    </div>
+
+    <div class="actor-table-wrap">
+      <table class="actor-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Status / CSIS Assessment</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="actor-name">Justin Trudeau</td>
+            <td class="actor-role">Prime Minister of Canada</td>
+            <td><span class="badge badge-warning">Briefed — Minimal Action</span></td>
+            <td class="actor-detail">Received multiple CSIS briefings on foreign interference before and after the 2021 election. Hogue Commission and NSICOP found the government response was inadequate. Appointed David Johnston as rapporteur — later resigned in conflict scandal. Announced Hogue inquiry only after sustained public pressure.</td>
+          </tr>
+          <tr>
+            <td class="actor-name">Katie Telford</td>
+            <td class="actor-role">Chief of Staff to PM Trudeau</td>
+            <td><span class="badge badge-warning">Confirmed Aware</span></td>
+            <td class="actor-detail">Testified under oath before a parliamentary committee that she was aware of CSIS intelligence on foreign interference. Maintained government acted appropriately. Opposition accused her of misleading Parliament by minimizing the extent of documented inaction.</td>
+          </tr>
+          <tr>
+            <td class="actor-name">Han Dong</td>
+            <td class="actor-role">Former Liberal MP, Don Valley North</td>
+            <td><span class="badge badge-none">CSIS: Undisclosed PRC Relationship</span></td>
+            <td class="actor-detail">CSIS concluded Han Dong had an undisclosed relationship with PRC officials and passed information to them. Allegedly advised PRC consulate on handling of detained Canadians Kovrig and Spavor. Resigned Liberal caucus March 2023. Sued Global News for defamation. Did not re-seek election in 2025.</td>
+          </tr>
+          <tr>
+            <td class="actor-name">Michael Chan</td>
+            <td class="actor-role">Former Ontario Cabinet Minister</td>
+            <td><span class="badge badge-none">CSIS: Repeated PRC Concerns</span></td>
+            <td class="actor-detail">CSIS repeatedly flagged concerns about Michael Chan's contacts with PRC officials and the Toronto consulate over multiple years. Concerns were reportedly raised with Ontario Liberal leadership. Chan denied any improper conduct. His role in PRC-connected diaspora community networks was examined at the Hogue Commission.</td>
+          </tr>
+          <tr>
+            <td class="actor-name">Jenny Kwan</td>
+            <td class="actor-role">NDP MP, Vancouver East</td>
+            <td><span class="badge badge-blue">PRC Target — Told 3 Years Later</span></td>
+            <td class="actor-detail">CSIS warned Jenny Kwan that she had been targeted by the PRC for foreign interference — but did not tell her until three years after the fact. The delay illustrates the systematic failure to warn targeted politicians. Kwan has been vocal about the failures of intelligence sharing with Parliament.</td>
+          </tr>
+          <tr>
+            <td class="actor-name">David Johnston</td>
+            <td class="actor-role">Former Governor General; Special Rapporteur 2023</td>
+            <td><span class="badge badge-warning">Resigned — Conflict of Interest</span></td>
+            <td class="actor-detail">Appointed by Trudeau as Special Rapporteur on foreign interference. Initial report recommended against a public inquiry. Critics immediately noted Johnston's longtime personal friendship with Trudeau, and his connection to the Desmarais family (Power Corporation — major Liberal donors) through the Pierre Elliott Trudeau Foundation. Johnston resigned June 2023.</td>
+          </tr>
+          <tr>
+            <td class="actor-name">Morris Rosenberg</td>
+            <td class="actor-role">National Security and Intelligence Committee</td>
+            <td><span class="badge badge-warning">Recused — Donor Conflict</span></td>
+            <td class="actor-detail">Was chair of the Pierre Elliott Trudeau Foundation, which received a controversial $140,000 donation linked to Chinese government-connected donors. Rosenberg recused himself from Foundation work related to the donation and later resigned from the Foundation. The donation controversy highlighted the PRC's use of philanthropic channels for influence.</td>
+          </tr>
+          <tr>
+            <td class="actor-name">Prabmeet Sarkaria</td>
+            <td class="actor-role">Ontario PC Cabinet Minister</td>
+            <td><span class="badge badge-blue">CSIS: Indian Govt Contacts Flagged</span></td>
+            <td class="actor-detail">CSIS flagged concerns about Sarkaria's connections to Indian government networks. Reports indicated Indian consulate officials monitored his political career. Sarkaria denied improper conduct. His case is part of the broader pattern of Indian government surveillance and networking with Canadian politicians of South Asian heritage.</td>
+          </tr>
+          <tr>
+            <td class="actor-name">David Vigneault</td>
+            <td class="actor-role">CSIS Director (2017–2024)</td>
+            <td><span class="badge badge-done">Testified Publicly</span></td>
+            <td class="actor-detail">CSIS Director who presided over the period of documented interference. Testified before Parliament and at the Hogue Commission. Publicly stated that foreign interference is an "existential threat" to Canadian democracy. Confirmed CSIS had briefed the government on multiple occasions with minimal response.</td>
+          </tr>
+          <tr>
+            <td class="actor-name">Hardeep Singh Nijjar</td>
+            <td class="actor-role">Sikh community leader, Surrey BC</td>
+            <td><span class="badge badge-none">Assassinated — Indian Govt Responsible</span></td>
+            <td class="actor-detail">Canadian citizen. Head of Guru Nanak Sikh Gurdwara in Surrey. Designated a terrorist by India for Khalistan advocacy. Assassinated June 18, 2023 in the gurdwara parking lot. CSIS and RCMP confirmed Indian state agents responsible. Three Indian nationals charged with first-degree murder. India denied state involvement.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ══════════════════════════════════
+       SECTION 10: SOURCES & CTA
+  ══════════════════════════════════ -->
+  <section id="sources">
+
+    <div class="cta-block" style="margin-bottom:2rem;">
+      <h3>Why This Matters — And What Must Happen</h3>
+      <p>
+        Foreign states are operating inside Canada's democratic system — targeting diaspora communities,
+        cultivating MPs, funding candidates, and assassinating critics on Canadian soil. The documented
+        government response has been denial, delay, and minimal action. Accountability requires
+        informed citizens demanding it.
+      </p>
+      <ul class="demand-list">
+        <li>Full public release of NSICOP findings including the names of compromised MPs</li>
+        <li>RCMP criminal investigation into documented s.46 treason and campaign finance offences</li>
+        <li>Strengthening of Bill C-70 to remove exemptions and add retroactive provisions</li>
+        <li>Mandatory CSIS briefings to all party leaders within 30 days of identifying threats to MPs</li>
+        <li>Independent review of all federal nomination contests in targeted ridings (2015–2023)</li>
+        <li>Sanctions and visa restrictions on Indian and PRC officials identified in interference operations</li>
+        <li>Full diplomatic accountability for the Nijjar assassination — including ICC referral consideration</li>
+      </ul>
+    </div>
+
+    <div class="section-header">
+      <span class="section-icon">📚</span>
+      <h2>Primary Sources &amp; Further Reading</h2>
+    </div>
+
+    <div class="glass-card-grid">
+
+      <div class="glass-card">
+        <p class="section-label" style="margin-bottom:.75rem;">Official Reports</p>
+        <ul class="source-list">
+          <li>
+            <span>NSICOP Special Report on Foreign Interference in Canada's Democratic Processes and Institutions (June 2024) — Parliament of Canada</span>
+          </li>
+          <li>
+            <span>Public Inquiry into Foreign Interference — Commission Report, Justice Marie-Josée Hogue (2024)</span>
+          </li>
+          <li>
+            <span>NSICOP Annual Reports 2019–2023 — Parliament of Canada</span>
+          </li>
+          <li>
+            <span>David Johnston Special Rapporteur Report (May 2023) — Government of Canada</span>
+          </li>
+          <li>
+            <span>Bill C-70, An Act Respecting Foreign Interference — Parliament of Canada (2024)</span>
+          </li>
+          <li>
+            <span>CSIS Public Report 2022 — Canadian Security Intelligence Service</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="glass-card">
+        <p class="section-label" style="margin-bottom:.75rem;">Investigative Journalism</p>
+        <ul class="source-list">
+          <li>
+            <span>Global News investigative series: "Beijing's Hand" — Sam Cooper, 2022–2023</span>
+          </li>
+          <li>
+            <span>The Globe and Mail: Robert Fife &amp; Steven Chase reporting on CSIS leaks and Han Dong, 2022–2023</span>
+          </li>
+          <li>
+            <span>Globe and Mail: Coverage of Trudeau Foundation donation from PRC-linked donors, 2023</span>
+          </li>
+          <li>
+            <span>Toronto Star: Coverage of Hogue Commission hearings, 2023–2024</span>
+          </li>
+          <li>
+            <span>National Post: Commentary and editorial on Johnston conflict of interest, 2023</span>
+          </li>
+          <li>
+            <span>Globe and Mail: "How India killed Hardeep Singh Nijjar" — investigative coverage, 2023–2024</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="glass-card">
+        <p class="section-label" style="margin-bottom:.75rem;">Parliamentary Record</p>
+        <ul class="source-list">
+          <li>
+            <span>House of Commons Standing Committee on Procedure and House Affairs (PROC) — Foreign Interference hearings, 2022–2023</span>
+          </li>
+          <li>
+            <span>House of Commons Special Committee on Canada-China Relations — testimony transcripts, 2020–2022</span>
+          </li>
+          <li>
+            <span>Senate Committee on National Security, Defence and Veterans Affairs — CSIS testimony, 2023–2024</span>
+          </li>
+          <li>
+            <span>Hansard — PM Trudeau statement on Nijjar assassination, September 18, 2023</span>
+          </li>
+          <li>
+            <span>Katie Telford testimony, PROC, April 2023</span>
+          </li>
+          <li>
+            <span>David Vigneault testimony, Senate National Security Committee, 2024</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div style="margin-top:2rem;" class="glass-panel">
+      <p class="section-label">Disclaimer</p>
+      <p style="font-size:.75rem; color:var(--muted); line-height:1.65;">
+        This page presents documented public record from official government reports, commission findings,
+        CSIS public testimony, and verified investigative journalism. Allegations against named individuals
+        that have not been proven in court are presented as CSIS assessments or commission findings,
+        not as proven fact. Han Dong has denied CSIS allegations and has launched defamation litigation.
+        Michael Chan has denied CSIS allegations. Prabmeet Sarkaria has denied improper conduct.
+        This page does not constitute legal advice. All sources are publicly available Canadian government documents.
+      </p>
+    </div>
+
+  </section>
+
+</div><!-- /page-wrapper -->
+
+<script src="nav.js"></script>
+</body>
+</html>

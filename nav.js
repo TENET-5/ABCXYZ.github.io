@@ -83,10 +83,10 @@
     <div>
       <h4>Infrastructure</h4>
       <ul>
-        <li><span style="color:#444">LIRIL NPU — Local, no API</span></li>
-        <li><span style="color:#444">NemoClaw GPU0/GPU1 RTX 5070 Ti</span></li>
-        <li><span style="color:#444">NATS mesh — 127.0.0.1:4223</span></li>
-        <li><span style="color:#444">SEED: 118400 | TICK: 118.4Hz</span></li>
+        <li><span style="color:rgba(255,255,255,0.45)">LIRIL NPU — Local, no API</span></li>
+        <li><span style="color:rgba(255,255,255,0.45)">NemoClaw GPU0/GPU1 RTX 5070 Ti</span></li>
+        <li><span style="color:rgba(255,255,255,0.45)">NATS mesh — 127.0.0.1:4223</span></li>
+        <li><span style="color:rgba(255,255,255,0.45)">SEED: 118400 | TICK: 118.4Hz</span></li>
       </ul>
     </div>
   </div>

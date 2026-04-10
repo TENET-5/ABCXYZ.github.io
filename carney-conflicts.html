@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050810" />
+  <meta name="description" content="Mark Carney and Brookfield Asset Management — a deep dive into Canada's most consequential conflict of interest. $10T in managed assets, a $50B fund pitch, and a PM who refuses an independent blind trust." />
+  <title>Carney–Brookfield Conflicts | ABCXYZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --accent:        #c41e3a;
+      --gold:          #facc15;
+      --blue:          #60a5fa;
+      --green:         #39ff14;
+      --purple:        #c084fc;
+      --text:          #e8e8ec;
+      --text2:         #b0b4c0;
+      --muted:         #7a7f90;
+      --radius:        12px;
+      --shadow-glass:  0 8px 32px rgba(0,0,0,.55);
+      --backdrop-card: blur(18px) saturate(1.4);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      background: #050810;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 65vw 45vh at 5%  10%,  rgba(196,30,58,.09)   0%, transparent 70%),
+        radial-gradient(ellipse 55vw 55vh at 90% 85%,  rgba(96,165,250,.07)  0%, transparent 70%),
+        radial-gradient(ellipse 40vw 30vh at 55%  5%,  rgba(192,132,252,.05) 0%, transparent 70%),
+        radial-gradient(ellipse 35vw 45vh at 15% 80%,  rgba(250,204,21,.04)  0%, transparent 70%);
+      z-index: 0;
+    }
+    .glass {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.09);
+      backdrop-filter: var(--backdrop-card);
+      -webkit-backdrop-filter: var(--backdrop-card);
+      border-radius: var(--radius);
+    }
+    .glass-card {
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: var(--backdrop-card);
+      -webkit-backdrop-filter: var(--backdrop-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-glass);
+      padding: 1.5rem;
+    }
+    .glass-panel {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+    }
+    .glass-stat {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+    .glass-row {
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+    }
+    .glass-stat-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    }
+    .glass-card-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    }
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      margin-bottom: 2.5rem;
+    }
+    .hero-eyebrow {
+      font-size: .7rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .75rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: .75rem;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub {
+      font-size: .85rem;
+      color: var(--text2);
+      max-width: 720px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.7;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .5rem;
+      margin-top: 1.25rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.25rem;
+    }
+    .section-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .section-header h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: .04em;
+    }
+    .section-label {
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .5rem;
+    }
+    .section-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,.07);
+      margin: 2.5rem 0;
+    }
+    .stat-value {
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: .3rem;
+    }
+    .stat-label { font-size: .7rem; color: var(--text2); line-height: 1.4; }
+    .stat-sub   { font-size: .63rem; color: var(--muted); margin-top: .25rem; }
+    .c-accent  { color: var(--accent);  }
+    .c-gold    { color: var(--gold);    }
+    .c-blue    { color: var(--blue);    }
+    .c-green   { color: var(--green);   }
+    .c-purple  { color: var(--purple);  }
+    .c-muted   { color: var(--muted);   }
+    .c-text2   { color: var(--text2);   }
+    .c-text    { color: var(--text);    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      border-radius: 4px;
+      padding: .25rem .65rem;
+      white-space: nowrap;
+    }
+    .badge-red    { background: rgba(196,30,58,.15);   border: 1px solid rgba(196,30,58,.3);   color: #f87171; }
+    .badge-gold   { background: rgba(250,204,21,.12);  border: 1px solid rgba(250,204,21,.3);  color: var(--gold); }
+    .badge-blue   { background: rgba(96,165,250,.12);  border: 1px solid rgba(96,165,250,.3);  color: var(--blue); }
+    .badge-green  { background: rgba(57,255,20,.10);   border: 1px solid rgba(57,255,20,.25);  color: var(--green); }
+    .badge-purple { background: rgba(192,132,252,.12); border: 1px solid rgba(192,132,252,.3); color: var(--purple); }
+    .badge-muted  { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);color: var(--text2); }
+    .section-block { margin-bottom: 2rem; }
+    .body-text { font-size: .83rem; color: var(--text2); line-height: 1.75; }
+    .body-text + .body-text { margin-top: .75rem; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+    .bullet-list li {
+      font-size: .82rem;
+      color: var(--text2);
+      line-height: 1.6;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .bullet-list li::before { content: 'bb'; position: absolute; left: 0; color: var(--accent); font-size: .75rem; top: .05em; }
+    .bullet-list li.gold::before   { color: var(--gold);   }
+    .bullet-list li.blue::before   { color: var(--blue);   }
+    .bullet-list li.green::before  { color: var(--green);  }
+    .bullet-list li.purple::before { color: var(--purple); }
+    .bullet-list li.muted::before  { color: var(--muted);  }
+    .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 4.5rem; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(196,30,58,.4) 10%, rgba(196,30,58,.4) 90%, transparent);
+    }
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      gap: 1rem;
+      padding: .85rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      align-items: start;
+    }
+    .timeline-row:last-child { border-bottom: none; }
+    .timeline-year { font-size: .72rem; font-weight: 700; color: var(--accent); text-align: right; padding-right: 1rem; line-height: 1.4; padding-top: .1rem; }
+    .timeline-content { font-size: .82rem; color: var(--text2); line-height: 1.6; }
+    .timeline-content strong { color: var(--text); font-weight: 600; }
+    .quote-block {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      background: rgba(196,30,58,.06);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 1.25rem 0;
+    }
+    .quote-text { font-size: .88rem; color: var(--text); line-height: 1.7; font-style: italic; }
+    .quote-attr { font-size: .72rem; color: var(--muted); margin-top: .5rem; }
+    .alert-box {
+      display: flex;
+      gap: .85rem;
+      align-items: flex-start;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      border: 1px solid;
+    }
+    .alert-box.alert-red  { background: rgba(196,30,58,.08);  border-color: rgba(196,30,58,.25);  }
+    .alert-box.alert-gold { background: rgba(250,204,21,.07);  border-color: rgba(250,204,21,.25); }
+    .alert-box.alert-blue { background: rgba(96,165,250,.07);  border-color: rgba(96,165,250,.25); }
+    .alert-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .05rem; }
+    .alert-content { font-size: .82rem; color: var(--text2); line-height: 1.65; }
+    .alert-content strong { color: var(--text); }
+    .data-table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    .data-table th {
+      font-size: .67rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted); font-weight: 600; padding: .65rem .75rem;
+      text-align: left; border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .data-table td {
+      padding: .65rem .75rem; color: var(--text2);
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      line-height: 1.5; vertical-align: top;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(255,255,255,.025); }
+    .source-card { display: flex; flex-direction: column; gap: .45rem; }
+    .source-card-title { font-size: .82rem; font-weight: 600; color: var(--text); }
+    .source-card-desc  { font-size: .75rem; color: var(--text2); line-height: 1.55; }
+    .source-card-meta  { font-size: .68rem; color: var(--muted); }
+    .cta-demands { display: flex; flex-direction: column; gap: .6rem; max-width: 640px; margin: 0 auto 1.75rem; }
+    .surge-bar-wrap { display: flex; flex-direction: column; gap: .6rem; }
+    .surge-row-label { display: flex; justify-content: space-between; align-items: center; font-size: .78rem; color: var(--text2); margin-bottom: .25rem; }
+    .surge-row-label span:last-child { font-weight: 700; color: var(--text); }
+    .bar-track  { height: 10px; background: rgba(255,255,255,.06); border-radius: 99px; overflow: hidden; }
+    .bar-fill   { height: 100%; border-radius: 99px; }
+    .bar-accent { background: var(--accent); }
+    .bar-gold   { background: var(--gold);   }
+    .bar-blue   { background: var(--blue);   }
+    @media (max-width: 640px) {
+      .timeline::before { left: 3.5rem; }
+      .timeline-row { grid-template-columns: 3.5rem 1fr; }
+      .glass-card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div id="page-header-placeholder"></div>
+
+  <div class="page-wrapper">
+
+    <!-- HERO -->
+    <header class="hero">
+      <p class="hero-eyebrow">&#9878; Accountability &middot; Conflict of Interest &middot; Public Record</p>
+      <h1>Mark Carney &amp;<br><span>Brookfield</span> Asset Management</h1>
+      <p class="hero-sub">
+        A Prime Minister who chaired the board of a $10-trillion asset manager, designed the global
+        climate-disclosure rules that created demand for its flagship fund, pitched that fund to Ottawa while
+        serving as senior economic adviser &mdash; and then became PM with 100+ mandatory recusals and
+        no independent oversight.
+      </p>
+      <div class="hero-badges">
+        <span class="badge badge-red">&#9888; Active Conflict</span>
+        <span class="badge badge-gold">$50B Maple Fund</span>
+        <span class="badge badge-blue">TCFD Regulatory Capture</span>
+        <span class="badge badge-purple">WEF Alignment</span>
+        <span class="badge badge-muted">COI Act s.21</span>
+        <span class="badge badge-muted">0 Formal Investigations</span>
+      </div>
+    </header>
+
+    <!-- STATS -->
+    <section class="section-block" aria-label="Key statistics">
+      <div class="section-label">Key Figures</div>
+      <div class="glass-stat-grid">
+        <div class="glass-stat">
+          <div class="stat-value c-accent">$10T</div>
+          <div class="stat-label">Brookfield Managed Assets</div>
+          <div class="stat-sub">Partner &amp; managed AUM, 2024</div>
+        </div>
+        <div class="glass-stat">
+          <div class="stat-value c-gold">100+</div>
+          <div class="stat-label">Required Recusals</div>
+          <div class="stat-sub">Named entities on Carney&rsquo;s screen list</div>
+        </div>
+        <div class="glass-stat">
+          <div class="stat-value c-accent">95%</div>
+          <div class="stat-label">Portfolio Unscreened</div>
+          <div class="stat-sub">Brookfield companies outside screen</div>
+        </div>
+        <div class="glass-stat">
+          <div class="stat-value c-blue">$50B</div>
+          <div class="stat-label">Maple Fund Pitch</div>
+          <div class="stat-sub">Brookfield proposal, Sept 2024</div>
+        </div>
+        <div class="glass-stat">
+          <div class="stat-value c-gold">$10B</div>
+          <div class="stat-label">Federal Money Requested</div>
+          <div class="stat-sub">Government ask in Maple Fund pitch</div>
+        </div>
+        <div class="glass-stat">
+          <div class="stat-value c-muted">0</div>
+          <div class="stat-label">Formal Investigations</div>
+          <div class="stat-sub">Ethics Commissioner &mdash; as of 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION 1 -->
+    <section class="section-block" id="brookfield-profile">
+      <div class="section-header">
+        <span class="section-icon">&#127970;</span>
+        <h2>1 &mdash; Who Is Brookfield Asset Management</h2>
+      </div>
+      <div class="glass-card" style="margin-bottom:1rem;">
+        <div class="glass-stat-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-bottom:1.25rem;">
+          <div class="glass-panel">
+            <div class="section-label">Headquarters</div>
+            <div style="font-size:.84rem;color:var(--text);">Toronto, Canada</div>
+            <div style="font-size:.72rem;color:var(--muted);margin-top:.2rem;">Bermuda-registered | NYSE &amp; TSX listed</div>
+          </div>
+          <div class="glass-panel">
+            <div class="section-label">Direct AUM</div>
+            <div style="font-size:.84rem;color:var(--text);">$1 Trillion+</div>
+            <div style="font-size:.72rem;color:var(--muted);margin-top:.2rem;">$10T+ including partner / managed assets</div>
+          </div>
+          <div class="glass-panel">
+            <div class="section-label">CEO</div>
+            <div style="font-size:.84rem;color:var(--text);">Bruce Flatt</div>
+            <div style="font-size:.72rem;color:var(--muted);margin-top:.2rem;">Carney: board chair 2020&ndash;2024</div>
+          </div>
+          <div class="glass-panel">
+            <div class="section-label">Flagship Climate Fund</div>
+            <div style="font-size:.84rem;color:var(--text);">BGTF &mdash; $15B</div>
+            <div style="font-size:.72rem;color:var(--muted);margin-top:.2rem;">Brookfield Global Transition Fund</div>
+          </div>
+        </div>
+        <ul class="bullet-list">
+          <li class="blue">Sectors: real estate, infrastructure, renewables, private equity, credit</li>
+          <li class="gold">Carney served as board chair from 2020 until his elevation to Prime Minister in 2025</li>
+          <li>The BGTF invests in climate-transition assets &mdash; the exact sector Carney championed at the BOE, TCFD, and the UN</li>
+          <li class="muted">Co-investors: BlackRock, CPP, CDPQ, OMERS, PSP &mdash; major Canadian pension funds also subject to federal policy decisions Carney controls</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION 2 -->
+    <section class="section-block" id="maple-fund">
+      <div class="section-header">
+        <span class="section-icon">&#128181;</span>
+        <h2>2 &mdash; The $50 Billion Maple Fund (The Core Conflict)</h2>
+      </div>
+      <div class="alert-box alert-red" style="margin-bottom:1.25rem;">
+        <span class="alert-icon">&#128680;</span>
+        <div class="alert-content">
+          <strong>The smoking gun:</strong> In September 2024, while Mark Carney was serving as PM
+          Trudeau&rsquo;s senior economic adviser, Brookfield Asset Management pitched a $50B
+          &ldquo;Maple Fund&rdquo; to Ottawa &mdash; requesting $10B in federal government money and
+          $36B from Canadian pension funds. Carney was still Brookfield board chair.
+        </div>
+      </div>
+      <div class="glass-card-grid" style="margin-bottom:1.25rem;">
+        <div class="glass-card">
+          <div class="section-label" style="margin-bottom:.75rem;">The Pitch (Sept 2024)</div>
+          <ul class="bullet-list">
+            <li class="gold">$50B total fund size &mdash; described as a &ldquo;Maple Fund&rdquo; for Canadian institutional capital</li>
+            <li class="gold">$10B requested directly from the federal government</li>
+            <li class="gold">$36B requested from Canadian pension funds (CPP, CDPQ, OMERS, PSP)</li>
+            <li class="blue">Investment targets: housing, data centres, nuclear energy, telecommunications</li>
+            <li class="muted">Source: <em>The Logic</em>, leaked Brookfield pitch document</li>
+          </ul>
+        </div>
+        <div class="glass-card">
+          <div class="section-label" style="margin-bottom:.75rem;">What Happened Next</div>
+          <ul class="bullet-list">
+            <li>Carney becomes Liberal leader and Prime Minister in early 2025</li>
+            <li class="gold">The same fund architecture &mdash; housing, clean energy, data infrastructure &mdash; becomes the backbone of his Growth Plan</li>
+            <li class="blue">Canada Growth Fund and Canada Infrastructure Bank repurposed to channel public money into exactly these sectors</li>
+            <li class="gold">Carney still holds deferred BGTF compensation worth potentially <strong style="color:var(--text);">tens of millions</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="quote-block">
+        <p class="quote-text">&ldquo;PM Carney has as many financial conflicts as Trump &mdash; and the Ethics Commissioner is doing nothing about it.&rdquo;</p>
+        <p class="quote-attr">&mdash; Duff Conacher, Democracy Watch, 2025</p>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION 3 -->
+    <section class="section-block" id="ethics-screen">
+      <div class="section-header">
+        <span class="section-icon">&#128371;</span>
+        <h2>3 &mdash; The Ethics Screen Problem</h2>
+      </div>
+      <div class="alert-box alert-gold" style="margin-bottom:1.25rem;">
+        <span class="alert-icon">&#9888;&#65039;</span>
+        <div class="alert-content">
+          <strong>A blind trust is not independent oversight.</strong> Carney still <em>owns</em> the assets
+          &mdash; he just cannot direct them. The screen is administered by his own political staff, not an
+          independent officer of Parliament. Neither administrator knows the specific assets held in the BGTF.
+        </div>
+      </div>
+      <div class="glass-card-grid" style="margin-bottom:1.25rem;">
+        <div class="glass-card">
+          <div class="section-label" style="margin-bottom:.75rem;">How the Screen Works</div>
+          <ul class="bullet-list">
+            <li>Screen administered by Chief of Staff + Privy Council Clerk &mdash; political appointees, not independent officers</li>
+            <li class="gold">Neither administrator has visibility into specific BGTF portfolio companies</li>
+            <li class="gold">Screen applied only <strong style="color:var(--text);">6 times</strong> after <strong style="color:var(--text);">13 flagged</strong> potential conflicts &mdash; 7 remain unresolved</li>
+            <li class="gold">95% of Brookfield&rsquo;s portfolio companies are NOT covered by the screen</li>
+            <li>Must recuse from 100+ named entities &mdash; but the network extends far beyond that list</li>
+          </ul>
+        </div>
+        <div class="glass-card">
+          <div class="section-label" style="margin-bottom:.75rem;">Legal Framework</div>
+          <ul class="bullet-list">
+            <li class="blue">COI Act s.21: must recuse from any decision that could affect financial interests</li>
+            <li class="blue">COI Act s.27: recusal list must be filed with Ethics Commissioner</li>
+            <li class="gold">Carney still entitled to deferred BGTF compensation &mdash; amount not publicly disclosed</li>
+            <li class="gold">Democratic accountability requires <em>real-time</em> public disclosure of recusals, not a static list</li>
+            <li class="muted">Criminal Code s.122: breach of trust by public officer (theoretical upper bound)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="glass-panel">
+        <div class="section-label" style="margin-bottom:.85rem;">Screen Coverage vs. Brookfield&rsquo;s Actual Footprint</div>
+        <div class="surge-bar-wrap">
+          <div>
+            <div class="surge-row-label"><span>Named entities on recusal list</span><span>100+ entities</span></div>
+            <div class="bar-track"><div class="bar-fill bar-blue" style="width:20%;"></div></div>
+          </div>
+          <div>
+            <div class="surge-row-label"><span>Brookfield portfolio screened</span><span>~5%</span></div>
+            <div class="bar-track"><div class="bar-fill bar-gold" style="width:5%;"></div></div>
+          </div>
+          <div>
+            <div class="surge-row-label"><span>Flagged conflicts resolved by screen</span><span>6 of 13</span></div>
+            <div class="bar-track"><div class="bar-fill bar-accent" style="width:46%;"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION 4 -->
+    <section class="section-block" id="tcfd">
+      <div class="section-header">
+        <span class="section-icon">&#128203;</span>
+        <h2>4 &mdash; TCFD: Regulatory Capture in Plain Sight</h2>
+      </div>
+      <div class="glass-panel" style="margin-bottom:1.25rem;">
+        <div class="section-label" style="margin-bottom:.85rem;">What Is TCFD?</div>
+        <p class="body-text">
+          The <strong style="color:var(--text);">Task Force on Climate-related Financial Disclosures</strong> was
+          established by the Financial Stability Board in 2015 to create standardised requirements for how
+          companies disclose climate-related financial risk. Carney chaired TCFD from 2015 to 2020,
+          simultaneously serving as Governor of the Bank of England.
+        </p>
+        <p class="body-text" style="margin-top:.75rem;">
+          TCFD recommendations were adopted voluntarily, then mandated: G7 nations formally adopted TCFD in
+          2021; Canada incorporated mandatory TCFD reporting from 2022 onward. The effect: every major public
+          company must now pay for green-transition compliance &mdash; creating massive demand for exactly the
+          products Brookfield&rsquo;s BGTF sells.
+        </p>
+      </div>
+      <div class="glass-card" style="margin-bottom:1.25rem;">
+        <div class="section-label" style="margin-bottom:1rem;">The Regulatory Capture Timeline</div>
+        <div class="timeline">
+          <div class="timeline-row">
+            <div class="timeline-year">2015</div>
+            <div class="timeline-content"><strong>Carney chairs TCFD</strong> &mdash; appointed chair while Governor of the Bank of England. Designs the mandatory climate-disclosure framework.</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-year">2015&ndash;20</div>
+            <div class="timeline-content"><strong>TCFD framework developed</strong> &mdash; recommendations drafted, piloted, iterated. Carney publicly champions the framework at G7, UN, and Davos.</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-year">2020</div>
+            <div class="timeline-content"><strong>Carney joins Brookfield board as chair</strong> &mdash; BGTF is announced. Fund thesis: invest in green-transition assets that benefit from TCFD-driven compliance demand.</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-year">2021</div>
+            <div class="timeline-content"><strong>G7 formally adopts TCFD</strong> &mdash; rules Carney designed become mandatory for trillions in global capital. Green finance demand explodes. BGTF positioned to capture inflows.</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-year">2022+</div>
+            <div class="timeline-content"><strong>Canada mandates TCFD</strong> &mdash; Carney remains Brookfield board chair while advising Trudeau. Federal disclosure rules create compliance market for BGTF-style investments.</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-content"><strong>Maple Fund pitch filed</strong> &mdash; Brookfield pitches $50B fund to Ottawa. Carney advising Trudeau. BGTF deferred compensation still outstanding.</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-year">2025</div>
+            <div class="timeline-content"><strong>Carney becomes Prime Minister</strong> &mdash; with direct policy authority over the very regulatory environment his former fund depends on.</div>
+          </div>
+        </div>
+      </div>
+      <div class="alert-box alert-red">
+        <span class="alert-icon">&#128260;</span>
+        <div class="alert-content">
+          <strong>Regulatory capture &mdash; the full loop:</strong> Design the disclosure rules &rarr; create
+          compliance demand &rarr; invest in the compliant assets &rarr; join the board of the firm that profits
+          &rarr; become Prime Minister with authority over both the regulations and the public money being
+          requested. Every step is documented in the public record.
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION 5 -->
+    <section class="section-block" id="wef-davos">
+      <div class="section-header">
+        <span class="section-icon">&#127758;</span>
+        <h2>5 &mdash; WEF and Davos</h2>
+      </div>
+      <div class="glass-card-grid">
+        <div class="glass-card">
+          <div class="section-label" style="margin-bottom:.75rem;">Carney&rsquo;s WEF Profile</div>
+          <ul class="bullet-list">
+            <li class="purple">World Economic Forum Young Global Leader alumnus</li>
+            <li class="purple">Attended Davos annually as BOC governor (2008&ndash;2013), BOE governor (2013&ndash;2020), and Brookfield board chair (2020&ndash;2024)</li>
+            <li>Davos 2020: championed &ldquo;net zero transition&rdquo; &mdash; the exact investment thesis of the BGTF</li>
+            <li class="gold">WEF Great Reset (2020): co-featured with Klaus Schwab; advocated &ldquo;stakeholder capitalism&rdquo; as WEF doctrine</li>
+            <li class="muted">WEF policy agenda &mdash; green transition, carbon markets, ESG mandates &mdash; directly mirrors Brookfield&rsquo;s BGTF thesis</li>
+          </ul>
+        </div>
+        <div class="glass-card">
+          <div class="section-label" style="margin-bottom:.75rem;">Policy Alignment</div>
+          <ul class="bullet-list">
+            <li class="blue">WEF &ldquo;Great Reset&rdquo; calls for carbon pricing, climate disclosure, and ESG-oriented public investment</li>
+            <li class="blue">TCFD is a WEF-adjacent initiative; both promoted by the same network of central bankers and asset managers</li>
+            <li class="purple">Carney&rsquo;s Davos speeches consistently aligned with Brookfield&rsquo;s investment pitch for green infrastructure</li>
+            <li class="gold">Schwab &amp; Carney co-authored framing of &ldquo;stakeholder capitalism&rdquo; &mdash; the doctrine behind ESG investing</li>
+            <li class="muted">The feedback loop: WEF pushes policy &rarr; policy creates green-finance demand &rarr; Brookfield profits from that demand</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION 6 -->
+    <section class="section-block" id="lobbying">
+      <div class="section-header">
+        <span class="section-icon">&#128202;</span>
+        <h2>6 &mdash; The Lobbying Forensics</h2>
+      </div>
+      <div class="glass-card" style="margin-bottom:1.25rem;">
+        <div class="section-label" style="margin-bottom:1rem;">Brookfield in the Federal Lobbying Registry (2018&ndash;2024)</div>
+        <div class="surge-bar-wrap" style="margin-bottom:1.25rem;">
+          <div>
+            <div class="surge-row-label"><span>Registered Brookfield entities</span><span>6 entities</span></div>
+            <div class="bar-track"><div class="bar-fill bar-blue" style="width:30%;"></div></div>
+          </div>
+          <div>
+            <div class="surge-row-label"><span>Total registered communications (2018&ndash;2024)</span><span>120 comms</span></div>
+            <div class="bar-track"><div class="bar-fill bar-blue" style="width:60%;"></div></div>
+          </div>
+          <div>
+            <div class="surge-row-label"><span>NorthRiver Midstream comms &mdash; 2022</span><span>12 comms</span></div>
+            <div class="bar-track"><div class="bar-fill bar-gold" style="width:12%;"></div></div>
+          </div>
+          <div>
+            <div class="surge-row-label"><span>NorthRiver Midstream comms &mdash; 2023 (+375%)</span><span>57 comms</span></div>
+            <div class="bar-track"><div class="bar-fill bar-accent" style="width:57%;"></div></div>
+          </div>
+        </div>
+        <div class="alert-box alert-gold">
+          <span class="alert-icon">&#128197;</span>
+          <div class="alert-content">
+            <strong>2023 = peak lobbying intensity:</strong> the same year Carney was actively advising PM Trudeau
+            on economic policy, and the same year the $50B Maple Fund was pitched to Ottawa. The 375% surge
+            in NorthRiver communications is not coincidental.
+          </div>
+        </div>
+      </div>
+      <div class="glass-card">
+        <div class="section-label" style="margin-bottom:.85rem;">Key Data Points</div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr><th>Date</th><th>Item</th><th>Significance</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color:var(--accent);font-weight:600;white-space:nowrap;">April 2026</td>
+                <td>NorthRiver (Brookfield subsidiary) filed a lobbying contact with PM Carney <em>directly</em></td>
+                <td style="color:#f87171;">PM personally lobbied by his former portfolio company</td>
+              </tr>
+              <tr>
+                <td style="color:var(--blue);font-weight:600;white-space:nowrap;">2021&ndash;2022</td>
+                <td>Government of Canada paid $16.3M in contracts to Brookfield-network entities</td>
+                <td style="color:var(--text2);">Federal money already flowing to Carney&rsquo;s employer&rsquo;s network before he became PM</td>
+              </tr>
+              <tr>
+                <td style="color:var(--gold);font-weight:600;white-space:nowrap;">March 2026</td>
+                <td>Carney appointed ex-BlackRock executive as Deputy Minister of International Trade</td>
+                <td style="color:var(--text2);">BlackRock is a major co-investor in Brookfield vehicles</td>
+              </tr>
+              <tr>
+                <td style="color:var(--purple);font-weight:600;white-space:nowrap;">2022&ndash;2023</td>
+                <td>NorthRiver lobbying surge: 12 &rarr; 57 communications (+375%)</td>
+                <td style="color:#f87171;">Coincides exactly with Carney advising Trudeau + Maple Fund pitch year</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION 7 -->
+    <section class="section-block" id="coi-act">
+      <div class="section-header">
+        <span class="section-icon">&#9878;&#65039;</span>
+        <h2>7 &mdash; Conflict of Interest Act Analysis</h2>
+      </div>
+      <div class="glass-card" style="margin-bottom:1.25rem;">
+        <div class="section-label" style="margin-bottom:.85rem;">Relevant Statutory Provisions</div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr><th>Provision</th><th>Requirement</th><th>Carney Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color:var(--blue);font-weight:600;white-space:nowrap;">COI Act s.6</td>
+                <td>Public office holder cannot have private interests that constitute a conflict</td>
+                <td><span class="badge badge-gold">Contested &mdash; deferred BGTF compensation outstanding</span></td>
+              </tr>
+              <tr>
+                <td style="color:var(--blue);font-weight:600;white-space:nowrap;">COI Act s.21</td>
+                <td>Must recuse from ALL decisions that might benefit financial interests</td>
+                <td><span class="badge badge-red">Partial compliance &mdash; 95% of portfolio unscreened</span></td>
+              </tr>
+              <tr>
+                <td style="color:var(--blue);font-weight:600;white-space:nowrap;">COI Act s.27</td>
+                <td>Recusal list must be filed with Ethics Commissioner</td>
+                <td><span class="badge badge-gold">Filed &mdash; but incomplete, not updated in real time</span></td>
+              </tr>
+              <tr>
+                <td style="color:var(--muted);font-weight:600;white-space:nowrap;">Lobbying Act</td>
+                <td>5-year cooling-off period for former ministers lobbying government</td>
+                <td><span class="badge badge-muted">N/A &mdash; applies in the reverse direction here</span></td>
+              </tr>
+              <tr>
+                <td style="color:var(--muted);font-weight:600;white-space:nowrap;">Crim. Code s.122</td>
+                <td>Breach of trust by public officer</td>
+                <td><span class="badge badge-muted">Not alleged &mdash; theoretical upper bound</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="glass-card-grid">
+        <div class="glass-card">
+          <div class="section-label" style="margin-bottom:.75rem;">Complaints Filed</div>
+          <ul class="bullet-list">
+            <li class="blue">Democracy Watch &mdash; filed complaint with Ethics Commissioner re: Carney&rsquo;s Brookfield interests and the Maple Fund pitch</li>
+            <li class="blue">NDP &mdash; filed formal complaint; pending before Ethics Commissioner</li>
+            <li class="gold">Both complaints remain pending as of mid-2026; no investigation launched</li>
+            <li class="gold">Ethics Commissioner has not initiated any proactive investigation</li>
+          </ul>
+        </div>
+        <div class="glass-card">
+          <div class="section-label" style="margin-bottom:.75rem;">Why This Matters</div>
+          <ul class="bullet-list">
+            <li>Carney has direct authority over the Canada Infrastructure Bank, Canada Growth Fund, and federal climate policy</li>
+            <li class="gold">These are exactly the instruments the $50B Maple Fund pitch proposed to deploy</li>
+            <li class="blue">His deferred BGTF compensation creates a direct financial stake in how Ottawa deploys green-infrastructure capital</li>
+            <li class="gold">The conflict is structural, ongoing, and worth potentially tens of millions &mdash; not a one-time transaction</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- SECTION 8 -->
+    <section class="section-block" id="action-sources">
+      <div class="section-header">
+        <span class="section-icon">&#128226;</span>
+        <h2>8 &mdash; Demands &amp; Sources</h2>
+      </div>
+
+      <div class="glass-card" style="margin-bottom:1.5rem;">
+        <div style="text-align:center;padding:1rem 0 1.25rem;">
+          <h3 style="font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.75rem;">What Accountability Requires</h3>
+          <p style="font-size:.83rem;color:var(--text2);line-height:1.7;max-width:640px;margin:0 auto 1.5rem;">
+            These are not partisan demands &mdash; they are the minimum standards any Prime Minister with
+            Carney&rsquo;s financial entanglements must meet to serve the public interest.
+          </p>
+          <div class="cta-demands">
+            <div class="glass-row">
+              <span class="badge badge-red" style="flex-shrink:0;">01</span>
+              <span style="font-size:.82rem;color:var(--text2);">
+                <strong style="color:var(--text);">Independent blind trust</strong> &mdash; administered by an arm&rsquo;s-length officer, not political staff. The current screen is insufficient.
+              </span>
+            </div>
+            <div class="glass-row">
+              <span class="badge badge-gold" style="flex-shrink:0;">02</span>
+              <span style="font-size:.82rem;color:var(--text2);">
+                <strong style="color:var(--text);">Ethics Commissioner investigation</strong> &mdash; proactive, not waiting on complaints. The Maple Fund pitch alone warrants a formal inquiry.
+              </span>
+            </div>
+            <div class="glass-row">
+              <span class="badge badge-blue" style="flex-shrink:0;">03</span>
+              <span style="font-size:.82rem;color:var(--text2);">
+                <strong style="color:var(--text);">Public recusal log updated daily</strong> &mdash; Canadians are entitled to know, in real time, every decision from which the PM has recused himself and why.
+              </span>
+            </div>
+            <div class="glass-row">
+              <span class="badge badge-purple" style="flex-shrink:0;">04</span>
+              <span style="font-size:.82rem;color:var(--text2);">
+                <strong style="color:var(--text);">Full BGTF compensation disclosure</strong> &mdash; amount, conditions, and timeline must be made public before any federal green-finance policy is enacted.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-bottom:1rem;">Primary Sources &amp; Further Reading</div>
+      <div class="glass-card-grid">
+
+        <div class="glass-card source-card">
+          <div class="source-card-title">&#128308; The Logic &mdash; Maple Fund Leak</div>
+          <div class="source-card-desc">Original reporting on the leaked Brookfield pitch document. First to reveal the $50B Maple Fund proposal submitted to Ottawa in September 2024 while Carney was Trudeau&rsquo;s economic adviser.</div>
+          <div class="source-card-meta">thelogic.co &middot; Investigative</div>
+        </div>
+
+        <div class="glass-card source-card">
+          <div class="source-card-title">&#128240; Globe and Mail &mdash; COI Coverage</div>
+          <div class="source-card-desc">Ongoing coverage of the ethics screen mechanics, the recusal list, and the gap between the screen&rsquo;s scope and the actual breadth of Brookfield&rsquo;s portfolio.</div>
+          <div class="source-card-meta">theglobeandmail.com &middot; National</div>
+        </div>
+
+        <div class="glass-card source-card">
+          <div class="source-card-title">&#128211; The Walrus &mdash; Regulatory Capture</div>
+          <div class="source-card-desc">Long-form analysis of Carney&rsquo;s role in TCFD, the journey from rule-designer to beneficiary, and what &ldquo;stakeholder capitalism&rdquo; means for Canadian public finance.</div>
+          <div class="source-card-meta">thewalrus.ca &middot; Long-form</div>
+        </div>
+
+        <div class="glass-card source-card">
+          <div class="source-card-title">&#128250; CBC News &mdash; Ethics Screen Reporting</div>
+          <div class="source-card-desc">Coverage of the Democracy Watch and NDP complaints, the Ethics Commissioner&rsquo;s non-response, and the mechanics of the conflict-of-interest screen as applied to Carney.</div>
+          <div class="source-card-meta">cbc.ca &middot; Public Broadcaster</div>
+        </div>
+
+        <div class="glass-card source-card">
+          <div class="source-card-title">&#9889; Ricochet &mdash; Lobbying Data</div>
+          <div class="source-card-desc">Data-driven reporting on Brookfield&rsquo;s federal lobbying activity, the NorthRiver surge, and the direct lobbying contact filed against PM Carney in April 2026.</div>
+          <div class="source-card-meta">ricochet.media &middot; Independent</div>
+        </div>
+
+        <div class="glass-card source-card">
+          <div class="source-card-title">&#128200; BNN Bloomberg &mdash; BAM Financials</div>
+          <div class="source-card-desc">Brookfield Asset Management financial filings, AUM disclosures, and BGTF fund structure. Background on deferred compensation arrangements for board members.</div>
+          <div class="source-card-meta">bnnbloomberg.ca &middot; Financial</div>
+        </div>
+
+        <div class="glass-card source-card">
+          <div class="source-card-title">&#128269; CarneyWatch.ca</div>
+          <div class="source-card-desc">Independent tracker documenting Carney&rsquo;s conflict of interest disclosures, recusal log gaps, Brookfield connections, and policy decisions that intersect with his financial interests.</div>
+          <div class="source-card-meta">carneywatch.ca &middot; Independent tracker</div>
+        </div>
+
+        <div class="glass-card source-card">
+          <div class="source-card-title">&#128225; Juno News &mdash; TCFD Analysis</div>
+          <div class="source-card-desc">Detailed breakdown of the TCFD regulatory chain: from Carney&rsquo;s chairmanship to global mandates, to the specific market structures that benefit Brookfield&rsquo;s transition fund.</div>
+          <div class="source-card-meta">junonews.com &middot; Analysis</div>
+        </div>
+
+        <div class="glass-card source-card">
+          <div class="source-card-title">&#127963; Lobbying Commissioner Registry</div>
+          <div class="source-card-desc">Federal lobbying registry data. Primary source for Brookfield-entity registrations, communication logs, NorthRiver filing details, and the April 2026 PM contact record.</div>
+          <div class="source-card-meta">lobbycanada.gc.ca &middot; Official</div>
+        </div>
+
+        <div class="glass-card source-card">
+          <div class="source-card-title">&#9878;&#65039; Ethics Commissioner Hearings</div>
+          <div class="source-card-desc">Parliamentary testimony and published correspondence from the Office of the Conflict of Interest and Ethics Commissioner regarding the Carney recusal list and pending complaints.</div>
+          <div class="source-card-meta">ciec-ccie.ogg.ca &middot; Official</div>
+        </div>
+
+      </div>
+    </section>
+
+  </div><!-- /.page-wrapper -->
+
+  <div id="page-footer-placeholder"></div>
+  <script src="nav.js"></script>
+</body>
+</html>

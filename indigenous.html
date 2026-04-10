@@ -13,7 +13,7 @@
     .finding-body  { font-size:0.92rem; color:#ccc; line-height:1.7; margin-bottom:0.9rem; }
     .quote-block   { background:#0d0d1a; border-left:4px solid #8855cc; padding:1rem 1.4rem; margin:1rem 0; font-style:italic; color:#bbb; font-size:0.93rem; border-radius:0 5px 5px 0; }
     .quote-block cite { display:block; margin-top:0.6rem; font-style:normal; font-size:0.78rem; color:#888; }
-    .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1rem; margin:1.5rem 0; }
+    .stat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(155px,1fr)); gap:1rem; margin:1.5rem 0; }
     .stat-box  { background:var(--surface); border:1px solid #3a2a5a; border-radius:var(--radius); padding:1.1rem; text-align:center; }
     .stat-box .stat-n  { font-size:1.9rem; font-weight:900; color:#cc88ff; display:block; }
     .stat-box .stat-l  { font-size:0.75rem; color:#aaa; margin-top:0.2rem; }
@@ -25,6 +25,31 @@
     .call-status-part { color:#e09030; font-size:0.72rem; font-weight:700; margin-top:0.5rem; }
     .call-status-yes  { color:#60c060; font-size:0.72rem; font-weight:700; margin-top:0.5rem; }
     .source-line { font-size:0.78rem; color:var(--muted); font-style:italic; margin-top:0.8rem; }
+    .section-label { font-size:0.72rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; color:#8855cc; margin:2rem 0 0.6rem; }
+    .graves-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin:1.2rem 0; }
+    .grave-site { background:var(--surface); border:1px solid #3a1a3a; border-radius:5px; padding:1rem; }
+    .grave-site .gs-name { font-size:0.85rem; font-weight:800; color:#cc88ff; }
+    .grave-site .gs-num  { font-size:1.3rem; font-weight:900; color:#fff; display:block; margin:0.3rem 0; }
+    .grave-site .gs-note { font-size:0.75rem; color:#aaa; line-height:1.4; }
+    .water-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin:1.2rem 0; }
+    .water-card { background:var(--surface); border:1px solid #1a2a3a; border-radius:5px; padding:1rem; }
+    .water-card .wc-name { font-size:0.85rem; font-weight:800; color:#60a5fa; }
+    .water-card .wc-years { font-size:1.2rem; font-weight:900; color:#fff; }
+    .water-card .wc-note  { font-size:0.75rem; color:#aaa; line-height:1.4; margin-top:0.3rem; }
+    .pipeline-item { background:var(--surface); border:1px solid #2a2a1a; border-radius:5px; padding:1rem; margin-bottom:0.8rem; }
+    .pipeline-item .pi-title { font-size:0.92rem; font-weight:800; color:#facc15; }
+    .pipeline-item .pi-body  { font-size:0.85rem; color:#ccc; line-height:1.6; margin-top:0.4rem; }
+    .mmiwg-stat-row { display:flex; flex-wrap:wrap; gap:1rem; margin:1rem 0; }
+    .mmiwg-stat { background:#0d0d1a; border:1px solid #2a1a3a; border-radius:5px; padding:0.8rem 1.2rem; flex:1; min-width:140px; }
+    .mmiwg-stat .ms-n { font-size:1.4rem; font-weight:900; color:#cc88ff; display:block; }
+    .mmiwg-stat .ms-l { font-size:0.72rem; color:#aaa; margin-top:0.2rem; }
+    .trc-progress-bar { background:#111; border:1px solid #2a2a2a; border-radius:var(--radius); overflow:hidden; height:18px; margin:0.5rem 0 1rem; display:flex; }
+    .trc-pb-done { background:#39ff14; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.68rem; color:#000; font-weight:800; }
+    .trc-pb-prog { background:#e09030; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.68rem; color:#000; font-weight:800; }
+    .trc-pb-none { background:#c41e3a; height:100%; display:flex; align-items:center; justify-content:center; font-size:0.68rem; color:#fff; font-weight:800; }
+    .progress-legend { display:flex; gap:1rem; flex-wrap:wrap; font-size:0.75rem; color:#aaa; margin-bottom:1rem; }
+    .progress-legend span { display:flex; align-items:center; gap:0.4rem; }
+    .progress-legend .dot { width:10px; height:10px; border-radius:2px; display:inline-block; }
   </style>
 </head>
 <body>
@@ -33,7 +58,7 @@
 <section class="page-hero" style="border-bottom:3px solid #8855cc;">
   <div class="hero-tag">🪶 Indigenous Rights, Accountability &amp; Systemic Failures</div>
   <h1>The Unfinished Reckoning</h1>
-  <p class="hero-sub">Missing and Murdered Indigenous Women and Girls. Residential schools. Jordan's Principle. Sixties Scoop. The documented findings of Canada's own commissions and courts — and the government's failure to implement them.</p>
+  <p class="hero-sub">Residential schools. MMIWG. Jordan's Principle. Sixties Scoop. Boil water. The documented findings of Canada's own commissions and courts — and the government's ongoing failure to implement them.</p>
 </section>
 
 <div class="meta-bar">
@@ -44,43 +69,85 @@
 
 <main>
 
+  <!-- ── HEADLINE STATS ── -->
   <div class="stat-grid">
     <div class="stat-box"><span class="stat-n">94</span><span class="stat-l">TRC Calls to Action (2015)</span></div>
+    <div class="stat-box"><span class="stat-n">13</span><span class="stat-l">TRC Calls Fully Implemented (Yellowhead 2023)</span></div>
     <div class="stat-box"><span class="stat-n">231</span><span class="stat-l">MMIWG Calls for Justice (2019)</span></div>
-    <div class="stat-box"><span class="stat-n">150,000+</span><span class="stat-l">Children in Residential Schools</span></div>
-    <div class="stat-box"><span class="stat-n">1,300+</span><span class="stat-l">Unmarked Graves Identified</span></div>
-    <div class="stat-box"><span class="stat-n">1,200+</span><span class="stat-l">MMIWG Cases (RCMP 2014 report)</span></div>
-    <div class="stat-box"><span class="stat-n">13</span><span class="stat-l">TRC Calls Fully Implemented (est. 2023)</span></div>
+    <div class="stat-box"><span class="stat-n">150,000+</span><span class="stat-l">Children Taken to Residential Schools</span></div>
+    <div class="stat-box"><span class="stat-n">6,000+</span><span class="stat-l">Confirmed Unmarked Graves (NCTR 2023)</span></div>
+    <div class="stat-box"><span class="stat-n">4,000+</span><span class="stat-l">MMIWG Cases (RCMP 2014; likely far higher)</span></div>
+    <div class="stat-box"><span class="stat-n">52%</span><span class="stat-l">Children in Foster Care who are Indigenous (4% of child population)</span></div>
+    <div class="stat-box"><span class="stat-n">$40B</span><span class="stat-l">CHRT Compensation Ordered (child welfare)</span></div>
+    <div class="stat-box"><span class="stat-n">28</span><span class="stat-l">Communities Still Under Long-Term Boil Water Advisory (2024)</span></div>
+    <div class="stat-box"><span class="stat-n">25+</span><span class="stat-l">Years Neskantaga FN Without Safe Tap Water</span></div>
   </div>
 
-  <!-- ── MMIWG ── -->
+  <!-- ── SECTION 1: RESIDENTIAL SCHOOLS ── -->
+  <div class="section-label">Section 1 — Residential Schools</div>
   <div class="finding-card">
-    <div class="finding-title">National Inquiry into Missing and Murdered Indigenous Women and Girls (MMIWG) — Genocide Finding</div>
+    <div class="finding-title">Indian Residential Schools — 139 Schools, 150,000+ Children, Confirmed Deaths, Unmarked Graves</div>
     <div class="finding-meta">
-      <span class="tag tag-red">GENOCIDE FINDING</span>
-      <span class="tag tag-blue">Federal</span>
-      <span class="tag tag-muted">2016–2019</span>
+      <span class="tag tag-red">CULTURAL GENOCIDE</span>
+      <span class="tag tag-blue">Federal + Churches</span>
+      <span class="tag tag-muted">1870s–1996</span>
       <span class="liril-chip">ETHICS 99% [NPU]</span>
     </div>
     <div class="finding-body">
-      <p>The National Inquiry into MMIWG, mandated in September 2016 and reporting June 3, 2019, heard testimony from more than 2,380 family members, survivors, experts and knowledge keepers over two and a half years. The Final Report — <em>Reclaiming Power and Place</em> — concluded that the violence against Indigenous women and girls constitutes a "race-based genocide" under international law, carried out through colonial policies and ongoing state and institutional failures.</p>
-      <p style="margin-top:0.7rem">The inquiry found the RCMP's own 2014 report (which identified 1,181 cases between 1980–2012) was itself an undercount, and that systemic RCMP failures — including inadequate investigation, dismissal of cases, and harassment of families seeking answers — constituted direct contributions to ongoing violence. The RCMP's National Centre for Missing Persons and Unidentified Remains (NCMPUR) lacked resources and coordination throughout the inquiry period.</p>
+      <p>The Indian Residential School system operated 139 federally funded schools, managed primarily by the Roman Catholic, Anglican, United, and Presbyterian churches. Beginning in the 1870s and running until the last school closed in 1996 (Gordon Residential School, Saskatchewan), an estimated 150,000 First Nations, Métis, and Inuit children were forcibly removed from their families. Attendance was compulsory under the Indian Act; RCMP officers were used to remove children from communities.</p>
+      <p style="margin-top:0.7rem">The Truth and Reconciliation Commission (2015) documented at least 4,100 confirmed child deaths in the schools. The National Centre for Truth and Reconciliation (NCTR) now estimates over 6,000 deaths, based on ongoing archival research. Actual deaths may number between 6,000 and 25,000 according to historical researchers who note that death records were incomplete, falsified, or never kept. Causes included tuberculosis, influenza, physical abuse, malnutrition, and deliberate medical experimentation. Many children were buried in unmarked graves on school grounds without family notification.</p>
+      <p style="margin-top:0.7rem">The TRC's 2015 Final Report used the term "cultural genocide." The Harper government declined to formally accept the "genocide" designation, offering a formal apology in 2008 (PM Harper) for the system's existence without using that word. The Trudeau government accepted the TRC report and pledged to implement all 94 Calls to Action; as of 2024, 13 are complete.</p>
     </div>
+
     <div class="quote-block">
-      "We are calling on the federal government to immediately recognize and implement the United Nations Declaration on the Rights of Indigenous Peoples (UNDRIP) and implement the TRC's Calls to Action."
-      <cite>— MMIWG Final Report, Vol. 1a, Calls for Justice 1.1, June 2019</cite>
+      "The Canadian government pursued this policy of cultural genocide because it wished to divest itself of its legal and financial obligations to Aboriginal people and, as it believed, to gain control over their land and resources. If anything, the history of the residential schools demonstrates that a government can establish a policy aimed at destroying the cultural identity of a people."
+      <cite>— TRC Final Report, Volume 1, "A History," p. 3, December 2015</cite>
     </div>
-    <div class="quote-block">
-      "The violence the National Inquiry heard about amounts to a race-based genocide of Indigenous Peoples, including First Nations, Métis and Inuit, carried out by the Canadian state."
-      <cite>— MMIWG Final Report, "A Legal Analysis of Genocide," p. 50</cite>
+
+    <h3 style="color:#cc88ff;margin:1.2rem 0 0.8rem;font-size:0.95rem;letter-spacing:0.06em;text-transform:uppercase;">Confirmed Unmarked Graves — Selected Sites</h3>
+    <div class="graves-grid">
+      <div class="grave-site">
+        <div class="gs-name">Kamloops Indian Residential School (BC)</div>
+        <span class="gs-num">215</span>
+        <div class="gs-note">Announced May 27, 2021. Ground-penetrating radar survey by Tk'emlúps te Secwépemc Nation. First major public disclosure; triggered national reckoning. NCTR confirmed findings.</div>
+      </div>
+      <div class="grave-site">
+        <div class="gs-name">Marieval Indian Residential School (SK)</div>
+        <span class="gs-num">751</span>
+        <div class="gs-note">Cowessess First Nation announced June 2021. Largest single confirmed site. Saskatchewan. Graves located in an unmarked section of the Sts. Boniface cemetery adjacent to the school.</div>
+      </div>
+      <div class="grave-site">
+        <div class="gs-name">St. Eugene Mission School (BC)</div>
+        <span class="gs-num">182</span>
+        <div class="gs-note">Ktunaxa Nation. Announced July 2021. GPR survey. School operated by Oblates of Mary Immaculate until 1970. Site is now a resort; graves located on resort grounds.</div>
+      </div>
+      <div class="grave-site">
+        <div class="gs-name">Williams Lake Indian Residential School (BC)</div>
+        <span class="gs-num">93+</span>
+        <div class="gs-note">Williams Lake First Nation. Announced July 2021. GPR survey of mission cemetery. Oblates operated. Additional searches ongoing as of 2024.</div>
+      </div>
+      <div class="grave-site">
+        <div class="gs-name">Kuper Island Industrial School (BC)</div>
+        <span class="gs-num">55+</span>
+        <div class="gs-note">Penelakut Tribe. 2021. One of the most brutal schools documented in survivor testimony. RCMP was informed of potential unmarked graves in 2000; no action taken.</div>
+      </div>
+      <div class="grave-site">
+        <div class="gs-name">Brandon Industrial School (MB)</div>
+        <span class="gs-num">104</span>
+        <div class="gs-note">Sioux Valley Dakota Nation. 2022 survey. School operated 1895–1972. Federal and provincial governments disputed responsibility for costs of full survey.</div>
+      </div>
     </div>
-    <p><strong style="color:#fff">Government Response:</strong> <span style="color:#ccc">Prime Minister Trudeau accepted the Final Report June 3, 2019, and pledged to develop a National Action Plan. The National Action Plan was released June 2021 — two years after the report. As of 2024, advocates and the inquiry's own commissioners have stated the Action Plan is insufficiently funded and lacks binding implementation mechanisms. The RCMP has not been subject to independent oversight reform as called for in the report.</span></p>
-    <p class="source-line">Sources: MMIWG Final Report "Reclaiming Power and Place," June 3, 2019; RCMP Missing and Murdered Aboriginal Women Report 2014; National Action Plan in Response to the MMIWG Final Report, June 2021; Native Women's Association of Canada implementation tracking 2022–2024.</p>
+
+    <div class="finding-body" style="margin-top:0.8rem">
+      <p><strong style="color:#fff">RCMP and Investigation Status:</strong> Despite evidence of unmarked graves across the country, the RCMP has not launched systematic criminal investigations. The TRC's Call to Action #25 specifically called for the RCMP to review and investigate the deaths of children in residential schools. As of 2024, the RCMP has stated it is "reviewing" historical records but no charges have been laid for any residential school death. The Catholic Church — which operated the majority of schools — was not required to release all records as part of the 2006 Indian Residential Schools Settlement Agreement.</p>
+    </div>
+    <p class="source-line">Sources: TRC Final Report, December 2015; NCTR Residential School Missing Children — Community Wellbeing Report 2022; Tk'emlúps announcement May 27, 2021; Cowessess First Nation announcement June 24, 2021; Ktunaxa Nation announcement July 12, 2021; Williams Lake First Nation announcement July 19, 2021. PM Harper Apology, June 11, 2008, Hansard.</p>
   </div>
 
-  <!-- ── TRC ── -->
+  <!-- ── SECTION 2: TRC 94 CALLS ── -->
+  <div class="section-label">Section 2 — TRC 94 Calls to Action: Implementation Status</div>
   <div class="finding-card">
-    <div class="finding-title">Truth and Reconciliation Commission — 94 Calls to Action: Implementation Status</div>
+    <div class="finding-title">Truth and Reconciliation Commission — 94 Calls to Action: 13 Complete After 9 Years</div>
     <div class="finding-meta">
       <span class="tag tag-red">SYSTEMIC FAILURE</span>
       <span class="tag tag-blue">Federal + Provincial</span>
@@ -88,81 +155,248 @@
       <span class="liril-chip">ETHICS 99% [NPU]</span>
     </div>
     <div class="finding-body">
-      <p>The Truth and Reconciliation Commission of Canada (TRC), chaired by Justice Murray Sinclair, released its Final Report and 94 Calls to Action in December 2015. The Commission documented the experiences of survivors of the Indian Residential School System — 139 federally funded schools where an estimated 150,000 Indigenous children were forcibly separated from families between the 1870s and 1996. The TRC estimated at least 4,100 children died in the schools; the National Centre for Truth and Reconciliation now estimates 6,000+. Causes included disease, physical abuse, malnutrition, and neglect.</p>
-      <p style="margin-top:0.7rem">Reconciliation Canada and the Yellowhead Institute's annual tracking (2023) found only 13 of 94 Calls fully completed, 43 in progress, and 38 not started or stalled. Key unfulfilled calls include: a national action plan on missing children and burial information (Call 75), full implementation of UNDRIP (Call 43), and adequate, stable funding for Indigenous languages (Calls 13–15).</p>
+      <p>The Truth and Reconciliation Commission of Canada, chaired by Justice Murray Sinclair, released its Final Report and 94 Calls to Action in December 2015. The Commission documented the experiences of survivors of the Indian Residential School System and found the system constituted "cultural genocide." The Calls to Action addressed child welfare, education, language and culture, health, justice, and reconciliation — spanning federal, provincial, and territorial jurisdictions as well as the private sector and churches.</p>
+      <p style="margin-top:0.7rem">The Yellowhead Institute tracks implementation annually. As of 2023–2024: <strong style="color:#39ff14">13 calls fully completed</strong>, <strong style="color:#e09030">44 in progress</strong>, <strong style="color:#c41e3a">37 not started or stalled</strong>. Nine years after publication, the majority of calls remain unimplemented.</p>
     </div>
 
-    <h3 style="color:#cc88ff;margin:1.2rem 0 0.8rem;font-size:0.95rem;letter-spacing:0.06em;text-transform:uppercase;">Selected Calls to Action — Implementation Status (2024)</h3>
+    <div class="trc-progress-bar">
+      <div class="trc-pb-done" style="width:13.8%">13 done</div>
+      <div class="trc-pb-prog" style="width:46.8%">44 in progress</div>
+      <div class="trc-pb-none" style="width:39.4%">37 not started</div>
+    </div>
+    <div class="progress-legend">
+      <span><span class="dot" style="background:#39ff14"></span> Fully complete (13)</span>
+      <span><span class="dot" style="background:#e09030"></span> In progress / partial (44)</span>
+      <span><span class="dot" style="background:#c41e3a"></span> Not started / stalled (37)</span>
+    </div>
+
+    <h3 style="color:#cc88ff;margin:1.2rem 0 0.8rem;font-size:0.95rem;letter-spacing:0.06em;text-transform:uppercase;">Key Calls — Status (2024)</h3>
     <div class="trc-grid">
       <div class="trc-call">
         <div class="call-num">Call #5 — Child Welfare</div>
-        <div class="call-text">Reduce number of Indigenous children in care; implement Jordan's Principle in full.</div>
-        <div class="call-status-part">⚠ PARTIAL — Jordan's Principle underfunded; CHRT found Canada in contempt (2019)</div>
+        <div class="call-text">Reduce overrepresentation of Indigenous children in care; implement Jordan's Principle fully.</div>
+        <div class="call-status-part">⚠ PARTIAL — Jordan's Principle underfunded; CHRT found Canada in contempt (2019); $40B compensation ordered</div>
       </div>
       <div class="trc-call">
-        <div class="call-num">Call #43 — UNDRIP</div>
-        <div class="call-text">Federal, provincial, territorial governments fully adopt and implement UNDRIP as framework for reconciliation.</div>
-        <div class="call-status-part">⚠ PARTIAL — Bill C-15 (UNDRIP Act) passed 2021; implementation incomplete; no enforcement mechanism</div>
+        <div class="call-num">Calls #13–15 — Languages</div>
+        <div class="call-text">Federal government fund and enact Indigenous Languages Act; adequate, stable funding.</div>
+        <div class="call-status-part">⚠ PARTIAL — Bill C-91 (Indigenous Languages Act) passed 2019; Indigenous Language Commissioner appointed; funding criticized as insufficient ($333M over 5 years vs. billions estimated needed)</div>
       </div>
       <div class="trc-call">
-        <div class="call-num">Calls #62–65 — Education</div>
-        <div class="call-text">Develop culturally appropriate curricula; fund Indigenous post-secondary education; mandatory residential schools curriculum K–12.</div>
-        <div class="call-status-no">✗ NOT COMPLETE — No binding national K–12 curriculum standard implemented</div>
+        <div class="call-num">Call #27 — UNDRIP</div>
+        <div class="call-text">Fully adopt and implement UNDRIP as the framework for reconciliation.</div>
+        <div class="call-status-part">⚠ PARTIAL — Bill C-15 (UNDRIP Act) passed 2021; National Action Plan required within 2 years; plan released late, criticized for lack of enforcement and binding timelines</div>
       </div>
       <div class="trc-call">
-        <div class="call-num">Call #72 — Missing Children</div>
-        <div class="call-text">Federal government work with churches to develop and implement strategies to identify, document, commemorate and communicate the history of residential school sites and burial grounds.</div>
-        <div class="call-status-part">⚠ PARTIAL — National Student Memorial Register established; not all churches cooperating</div>
+        <div class="call-num">Calls #62–65 — Education Curriculum</div>
+        <div class="call-text">Mandatory K–12 residential schools curriculum; culturally appropriate content; Indigenous-language instruction.</div>
+        <div class="call-status-no">✗ NOT COMPLETE — No national binding K–12 standard. Some provinces (BC, AB) have moved; federal jurisdiction does not extend to provincial curricula. No federal funding framework established.</div>
       </div>
       <div class="trc-call">
-        <div class="call-num">Call #75 — Missing Children</div>
-        <div class="call-text">Provide funding for community-driven healing and commemoration projects; provide access to sites.</div>
-        <div class="call-status-part">⚠ PARTIAL — $321M announced 2021; advocates say funding insufficient and delayed</div>
+        <div class="call-num">Call #72 — Missing Children and Burial Sites</div>
+        <div class="call-text">Work with churches to identify, document, commemorate and communicate history of residential school burial sites.</div>
+        <div class="call-status-part">⚠ PARTIAL — National Student Memorial Register established; $321M announced 2021 for site searches; Catholic Church cooperation remains incomplete; some dioceses have not provided records</div>
+      </div>
+      <div class="trc-call">
+        <div class="call-num">Call #80 — National Monument</div>
+        <div class="call-text">Federal government construct a national monument to residential school survivors in Ottawa.</div>
+        <div class="call-status-no">✗ NOT BUILT — Ten years after the call, no monument constructed. Design competitions were held; site was selected (LeBreton Flats); funding announced but construction not commenced as of 2024.</div>
+      </div>
+      <div class="trc-call">
+        <div class="call-num">Call #94 — Oath of Citizenship</div>
+        <div class="call-text">Modify the oath of citizenship to include recognition of Aboriginal and treaty rights.</div>
+        <div class="call-status-yes">✓ COMPLETE — Bill C-8 (2021) amended the Citizenship Act to add "including First Nations, Métis and Inuit peoples, the holders of inherent and Treaty rights" to the oath.</div>
       </div>
       <div class="trc-call">
         <div class="call-num">Calls #85–86 — Media</div>
-        <div class="call-text">Develop cultural competency training for media; increase Indigenous representation in media.</div>
-        <div class="call-status-no">✗ NOT COMPLETE — No binding standards developed</div>
+        <div class="call-text">Cultural competency training for media; increase Indigenous representation in media organizations.</div>
+        <div class="call-status-no">✗ NOT COMPLETE — No binding national media standards developed. CRTC has acknowledged Indigenous-language broadcasting supports; no implementation of specific calls.</div>
       </div>
     </div>
-    <p class="source-line">Sources: TRC Final Report and 94 Calls to Action, December 2015; Yellowhead Institute TRC Calls to Action Implementation Tracker 2023; Reconciliation Canada Annual Report 2023; National Centre for Truth and Reconciliation annual reports.</p>
+    <p class="source-line">Sources: TRC Final Report and 94 Calls to Action, December 2015; Yellowhead Institute TRC Calls to Action Implementation Tracker 2023; Reconciliation Canada Annual Report 2023; NCTR annual reports 2020–2023; Bill C-91 (2019); Bill C-15 (2021); Bill C-8 (2021).</p>
   </div>
 
-  <!-- ── JORDAN'S PRINCIPLE / CHRT ── -->
+  <!-- ── SECTION 3: MMIWG ── -->
+  <div class="section-label">Section 3 — Missing and Murdered Indigenous Women and Girls</div>
   <div class="finding-card">
-    <div class="finding-title">Jordan's Principle &amp; CHRT — Canada Found in Contempt; $40B Compensation Order</div>
+    <div class="finding-title">National Inquiry into MMIWG — Genocide Finding; 231 Calls for Justice; Inadequate Government Response</div>
+    <div class="finding-meta">
+      <span class="tag tag-red">GENOCIDE FINDING</span>
+      <span class="tag tag-blue">Federal</span>
+      <span class="tag tag-muted">National Inquiry 2016–2019</span>
+      <span class="liril-chip">ETHICS 99% [NPU]</span>
+    </div>
+
+    <div class="mmiwg-stat-row">
+      <div class="mmiwg-stat"><span class="ms-n">1,181</span><span class="ms-l">RCMP count (2014) — cases 1980–2012</span></div>
+      <div class="mmiwg-stat"><span class="ms-n">4,000+</span><span class="ms-l">RCMP revised estimate (2014 updated)</span></div>
+      <div class="mmiwg-stat"><span class="ms-n">16,000+</span><span class="ms-l">Native Women's Association of Canada estimate</span></div>
+      <div class="mmiwg-stat"><span class="ms-n">2,380+</span><span class="ms-l">Survivors and family members who testified</span></div>
+      <div class="mmiwg-stat"><span class="ms-n">231</span><span class="ms-l">Calls for Justice (2019)</span></div>
+    </div>
+
+    <div class="finding-body">
+      <p>The National Inquiry into MMIWG, mandated September 2016 and reporting June 3, 2019, heard testimony from more than 2,380 family members, survivors, experts and knowledge keepers over two and a half years. The Final Report — <em>Reclaiming Power and Place</em> — concluded that the violence against Indigenous women and girls constitutes a "race-based genocide" under international law (UNDRIP; the Genocide Convention), carried out through colonial policies and ongoing state and institutional failures including police failures to investigate, protect, and inform families.</p>
+      <p style="margin-top:0.7rem">The inquiry found the RCMP's own 2014 report (1,181 cases, 1980–2012) was an undercount — acknowledging cases were undercounted due to poor data collection, failure to record Indigenous identity, and inadequate investigation. The Native Women's Association of Canada Database tracks over 16,000 cases. The inquiry found systemic RCMP failures including inadequate investigation, dismissal of cases, harassment of families, and racism. The RCMP's National Centre for Missing Persons and Unidentified Remains lacked resources throughout the inquiry period.</p>
+    </div>
+
+    <div class="quote-block">
+      "The violence the National Inquiry heard about amounts to a race-based genocide of Indigenous Peoples, including First Nations, Métis and Inuit, carried out by the Canadian state."
+      <cite>— MMIWG Final Report, "A Legal Analysis of Genocide," p. 50, June 2019</cite>
+    </div>
+    <div class="quote-block">
+      "Canada has failed to take adequate and appropriate measures to prevent and address violence against Indigenous women and girls, and as a result their security and equality rights as recognized in the Canadian Charter of Rights and Freedoms are not protected."
+      <cite>— MMIWG Final Report, Vol. 1a, Summary, p. 8</cite>
+    </div>
+
+    <div class="finding-body">
+      <p><strong style="color:#fff">Government Response (2021–2024):</strong> PM Trudeau accepted the Final Report June 3, 2019, and pledged a National Action Plan. The National Action Plan was released June 3, 2021 — two years after the report, one day before advocates planned protests over delays. Advocates, commissioners, and First Nations organizations stated the plan is insufficiently funded, lacks binding timelines, and does not commit to measurable targets. As of 2024, no comprehensive RCMP oversight reform has been implemented. The RCMP's operational independence from political accountability on MMIWG cases remains unaddressed.</p>
+    </div>
+    <p class="source-line">Sources: MMIWG Final Report "Reclaiming Power and Place," June 3, 2019; RCMP Missing and Murdered Aboriginal Women Report 2014; NWAC database; National Action Plan in Response to the MMIWG Final Report, June 2021; Amnesty International Canada MMIWG accountability tracking 2022–2024.</p>
+  </div>
+
+  <!-- ── SECTION 4: CHILD WELFARE ── -->
+  <div class="section-label">Section 4 — Child Welfare: Jordan's Principle, CHRT, and Sixties Scoop</div>
+  <div class="finding-card">
+    <div class="finding-title">Jordan's Principle &amp; CHRT — Canada Found in Contempt; $40B Compensation Ordered</div>
     <div class="finding-meta">
       <span class="tag tag-red">DISCRIMINATION</span>
       <span class="tag tag-blue">Federal</span>
       <span class="tag tag-muted party-lib">Liberal</span>
-      <span class="tag tag-muted">2007–2023</span>
+      <span class="tag tag-muted">2007–2024</span>
       <span class="liril-chip">ETHICS 99% [NPU]</span>
     </div>
     <div class="finding-body">
-      <p>Jordan's Principle — named for Jordan River Anderson, a First Nations child from Norway House Cree Nation who died in hospital in 2005 while the federal and provincial governments disputed who would pay for his home care — requires the government of first contact to pay for services First Nations children need without delay. The Canadian Human Rights Tribunal (CHRT) first found Canada discriminatory in its underfunding of on-reserve child and family services in 2016. Canada appealed and lost repeatedly.</p>
-      <p style="margin-top:0.7rem">In 2019, the CHRT found Canada in contempt for failing to comply with the 2016 order. In 2022, after years of litigation, Canada negotiated a settlement in principle: $20B in compensation to First Nations children and families harmed by the discriminatory child welfare system since 1991, plus $20B for long-term reform — totalling $40B. The settlement required court approval; as of 2024 implementation is ongoing and advocates report ongoing delays in individual payments.</p>
+      <p>Jordan's Principle — named for Jordan River Anderson, a First Nations child from Norway House Cree Nation who died in hospital in 2005 while the federal and provincial governments disputed who would pay for his home care — requires the government of first contact to pay for services First Nations children need without delay, resolving jurisdictional disputes afterwards. The Canadian Human Rights Tribunal (CHRT) first found Canada discriminatory in its underfunding of on-reserve child and family services in January 2016.</p>
+      <p style="margin-top:0.7rem">Canada appealed and lost repeatedly. In 2019 the CHRT found Canada in contempt for failing to comply with the 2016 order — a finding that the government spent more money fighting the case in court than it would have cost to simply provide the services children needed. A 2011 Auditor General report had already found ISC underfunded First Nations child welfare by $321M. In 2022, after years of litigation, Canada negotiated a settlement: $20B in compensation to First Nations children and families harmed by the discriminatory child welfare system since 1991, plus $20B for long-term reform — totalling $40B. As of 2024, individual payment processing is ongoing with advocates reporting delays.</p>
+      <p style="margin-top:0.7rem">Statistics: First Nations children represent 52% of all children in foster care in Canada, while comprising approximately 4% of the total child population. This over-representation is directly linked to underfunded services, poverty caused by underfunded community programs, and cultural bias in the welfare system itself.</p>
     </div>
     <div class="quote-block">
       "Canada has been wilfully and recklessly discriminating against 165,000 First Nations children for years. The government spent more money fighting Indigenous children in court than it would have cost to simply provide them the services they needed."
-      <cite>— Cindy Blackstock, First Nations Child &amp; Family Caring Society, 2019</cite>
+      <cite>— Cindy Blackstock, First Nations Child &amp; Family Caring Society, parliamentary testimony 2019</cite>
     </div>
-    <p class="source-line">Sources: CHRT Decision 2016 CHRT 2 (First Nations Child and Family Caring Society v. Attorney General of Canada); CHRT Contempt Finding 2019 CHRT 39; $40B settlement agreement in principle August 2022; Federal Court approval process 2023; Cindy Blackstock parliamentary testimony 2019.</p>
+    <p class="source-line">Sources: CHRT Decision 2016 CHRT 2 (First Nations Child and Family Caring Society v. Attorney General of Canada); CHRT Contempt Finding 2019 CHRT 39; $40B settlement agreement in principle August 2022; Federal Court approval process 2023; AG report on child welfare underfunding 2011; Statistics Canada child welfare data 2022.</p>
   </div>
 
-  <!-- ── SIXTIES SCOOP ── -->
   <div class="finding-card">
-    <div class="finding-title">Sixties Scoop — $750M Federal Settlement; Intergenerational Trauma</div>
+    <div class="finding-title">Sixties Scoop — 20,000–40,000 Children Removed; $750M Federal Settlement (2018)</div>
     <div class="finding-meta">
       <span class="tag tag-red">SYSTEMIC FAILURE</span>
       <span class="tag tag-blue">Federal</span>
-      <span class="tag tag-muted">1960s–1990s | Settlement 2018</span>
+      <span class="tag tag-muted">1950s–1980s | Settlement 2018</span>
       <span class="liril-chip">ETHICS 99% [NPU]</span>
     </div>
     <div class="finding-body">
-      <p>Between the 1960s and 1980s, the federal government facilitated the mass removal of Indigenous children from their families and communities and placed them with non-Indigenous families — largely without consent and in violation of First Nations jurisdiction over child welfare. An estimated 20,000 Indigenous children were removed in Canada, many sent to the United States, Australia and Europe. Children lost their languages, cultures, and connections to family and community. Many reported physical and sexual abuse in adoptive homes.</p>
-      <p style="margin-top:0.7rem">In 2017, Ontario Superior Court Justice Edward Belobaba certified a class action; in 2018 the federal government agreed to a $750M settlement covering approximately 22,000 eligible claimants. The settlement was criticized by some survivors as insufficient. Many First Nations groups noted the settlement did not include Métis and Inuit children, though subsequent settlements addressed some of these groups.</p>
+      <p>Between the 1950s and early 1980s, the federal and provincial governments facilitated the mass removal of Indigenous children from their families and communities and placed them with non-Indigenous families — largely without consent, without notification to band councils, and in violation of any recognition of First Nations jurisdiction over child welfare. An estimated 20,000–40,000 Indigenous children were removed; many were adopted out to families in the United States, Australia, and Europe. Children lost their languages, cultures, names, and connections to family and community. Many reported physical and sexual abuse in adoptive homes.</p>
+      <p style="margin-top:0.7rem">The name "Sixties Scoop" was coined by researcher Patrick Johnston in his 1983 report "Native Children and the Child Welfare System" for the Canadian Council on Social Development. In 2017, Ontario Superior Court Justice Edward Belobaba certified a class action — finding the federal Crown owed a duty of care to ensure Indigenous identity was preserved and breached it. In 2018, the federal government agreed to a $750M settlement covering approximately 22,000 eligible First Nations claimants. Métis and Inuit children were not initially covered; subsequent provincial and federal settlements addressed some of these groups. Many survivors reported the settlement process was itself traumatic and insufficient.</p>
     </div>
-    <p class="source-line">Sources: Brown v. Canada (Attorney General), 2017 ONSC 251; $750M Settlement Agreement 2018; Auditor General's report on Indigenous child welfare 2018; Senate Standing Committee on Human Rights "The Welfare of Indigenous Children" 2017.</p>
+    <p class="source-line">Sources: Brown v. Canada (Attorney General), 2017 ONSC 251 (Justice Belobaba); $750M Settlement Agreement March 2018; Patrick Johnston "Native Children and the Child Welfare System" 1983; Senate Standing Committee on Human Rights "The Welfare of Indigenous Children" 2017; Métis Nation of Ontario Sixties Scoop settlement 2021.</p>
+  </div>
+
+  <!-- ── SECTION 5: BOIL WATER ── -->
+  <div class="section-label">Section 5 — Boil Water Advisories: The Broken Promise</div>
+  <div class="finding-card">
+    <div class="finding-title">Boil Water Advisories — Trudeau's 2015 Promise: Still 28 Communities Without Safe Water in 2024</div>
+    <div class="finding-meta">
+      <span class="tag tag-red">BROKEN PROMISE</span>
+      <span class="tag tag-blue">Federal</span>
+      <span class="tag tag-muted party-lib">Liberal</span>
+      <span class="tag tag-muted">2015–2024</span>
+      <span class="liril-chip">ETHICS 95% [NPU]</span>
+    </div>
+    <div class="finding-body">
+      <p>During the 2015 federal election campaign, Justin Trudeau pledged to end all long-term drinking water advisories on First Nations reserves "within five years." The deadline of November 2020 passed with dozens of communities still affected. The government revised the target multiple times. As of early 2024, 28 communities remain under long-term advisories (down from 105 in 2015) — meaning the government lifted approximately 74% of advisories but has not fulfilled the original promise. Some communities that had advisories lifted had new ones imposed due to infrastructure failures.</p>
+      <p style="margin-top:0.7rem">The federal government announced $1.8B for water infrastructure in 2016 and additional funds in subsequent budgets. Infrastructure Canada and ISC report ongoing capacity and technical challenges. Critics including the Assembly of First Nations point to persistent underfunding of operations and maintenance, lack of trained operators in remote communities, and failure to consult communities on infrastructure design as reasons for the shortfall. Many communities have lived under boil water advisories for over a decade.</p>
+    </div>
+
+    <h3 style="color:#60a5fa;margin:1.2rem 0 0.8rem;font-size:0.95rem;letter-spacing:0.06em;text-transform:uppercase;">Selected Long-Duration Communities (as of 2024)</h3>
+    <div class="water-grid">
+      <div class="water-card">
+        <div class="wc-name">Neskantaga First Nation (ON)</div>
+        <div class="wc-years">25+ years</div>
+        <div class="wc-note">Ontario. Boil water advisory since 1995 — among the longest in Canadian history. Pump house fire in 2020 required full evacuation. Partial repairs made; community has not had consistently safe tap water for a quarter century.</div>
+      </div>
+      <div class="water-card">
+        <div class="wc-name">Shoal Lake 40 First Nation (MB/ON border)</div>
+        <div class="wc-years">20+ years</div>
+        <div class="wc-note">Provided Winnipeg with clean water for a century while under a boil water advisory itself. "Freedom Road" bridge/road finally built 2019. Water treatment plant opened 2021 — advisory lifted, but only after sustained public pressure and media attention.</div>
+      </div>
+      <div class="water-card">
+        <div class="wc-name">Kashechewan First Nation (ON)</div>
+        <div class="wc-years">15+ years (recurring)</div>
+        <div class="wc-note">Repeated advisories due to aging infrastructure and E. coli contamination. Community evacuated multiple times. Federal government committed to relocation; process has dragged for over a decade without resolution.</div>
+      </div>
+      <div class="water-card">
+        <div class="wc-name">Cat Lake First Nation (ON)</div>
+        <div class="wc-years">12+ years</div>
+        <div class="wc-note">Remote northern Ontario community. Persistent infrastructure underfunding. Children have grown up never drinking tap water safely in their lifetimes.</div>
+      </div>
+    </div>
+
+    <div class="finding-body" style="margin-top:0.8rem">
+      <p><strong style="color:#fff">Auditor General Assessment:</strong> The AG's 2021 report on drinking water on reserves found ISC "cannot ensure the safety of drinking water on reserves" and that monitoring and enforcement were inadequate. The AG found that the department lacked a national plan for ensuring all communities reached safe water standards, that data collection was poor, and that some advisories had been lifted prematurely. The AG found "minimal improvement" in the department's capacity to address long-term issues since a 2005 audit.</p>
+    </div>
+    <p class="source-line">Sources: Assembly of First Nations drinking water tracker 2024; ISC long-term drinking water advisory database; Auditor General Report on Safe Drinking Water on Reserves, Spring 2021; PM Trudeau 2015 election commitment (Liberal platform); Neskantaga evacuation records 2020; Kashechewan emergency evacuation records 2006, 2019, 2022.</p>
+  </div>
+
+  <!-- ── SECTION 6: UNDRIP AND CONSULTATION ── -->
+  <div class="section-label">Section 6 — UNDRIP, Free Prior Informed Consent, and Infrastructure Overrides</div>
+  <div class="finding-card">
+    <div class="finding-title">UNDRIP in Canadian Law — Bill C-15 (2021): Passed Without Enforcement; Consultation Gaps Persist</div>
+    <div class="finding-meta">
+      <span class="tag tag-red">SYSTEMIC FAILURE</span>
+      <span class="tag tag-blue">Federal</span>
+      <span class="tag tag-muted party-lib">Liberal</span>
+      <span class="tag tag-muted">2021–2024</span>
+      <span class="liril-chip">ETHICS 90% [NPU]</span>
+    </div>
+    <div class="finding-body">
+      <p>Bill C-15, the United Nations Declaration on the Rights of Indigenous Peoples Act, received Royal Assent June 21, 2021, making Canada the first G7 country to enshrine UNDRIP principles in domestic law. The Act requires the federal government to develop an action plan in consultation with Indigenous peoples, and to ensure federal laws are consistent with UNDRIP. The National Action Plan was released June 2023 — one year late.</p>
+      <p style="margin-top:0.7rem">Key principle: Free, Prior and Informed Consent (FPIC) — the right of Indigenous peoples to be consulted and to give or withhold consent for projects affecting their territories. Critics including the Assembly of First Nations and Indigenous rights scholars note that Bill C-15 does not create a veto right, contains no enforcement mechanism, and does not require FPIC to be respected in practice — only "consultation." Two major infrastructure projects illustrate the gap between the law's promise and its application.</p>
+    </div>
+
+    <h3 style="color:#facc15;margin:1.2rem 0 0.8rem;font-size:0.95rem;letter-spacing:0.06em;text-transform:uppercase;">Case Studies: Infrastructure and Consent</h3>
+
+    <div class="pipeline-item">
+      <div class="pi-title">Trans Mountain Pipeline Expansion — Government Overrode Indigenous Consultation Concerns; $34B Federal Investment</div>
+      <div class="pi-body">
+        The Trans Mountain Expansion Project (TMX) — twinning the existing pipeline from Alberta to Burnaby, BC — was purchased by the federal government in August 2018 for $4.5B after Kinder Morgan threatened to cancel it. Total federal investment exceeded $34B by 2024. Multiple First Nations in BC filed legal challenges arguing the duty to consult was inadequately fulfilled. The Federal Court of Appeal found in 2018 that consultation was "inadequate in a number of critical ways" and quashed the original approval. The government re-did consultations and re-approved the project. Further legal challenges from First Nations (Secwépemc, Stk'emlúpsemc te Secwépemc, Cold Lake First Nations) continued through to 2024. The pipeline became operational in 2024 despite ongoing objections from several First Nations along the route who stated their land, water, and treaty rights had not been respected. The government justified the project on national economic interest and energy security grounds.
+      </div>
+    </div>
+
+    <div class="pipeline-item">
+      <div class="pi-title">Site C Dam (BC) — Treaty Rights Violations Alleged; $16B Project Proceeded Over Indigenous Objections</div>
+      <div class="pi-body">
+        The Site C Clean Energy Project — a BC Hydro dam on the Peace River in Treaty 8 territory — was approved by the BC government in 2014 and remained a federal regulatory approval. Treaty 8 First Nations (Prophet River, West Moberly, Blueberry River) argued their treaty rights to hunt, fish and trap on affected lands were violated without adequate consultation or compensation. The BC Utilities Commission found in 2017 that the project was not the most cost-effective energy option and warned of budget overruns. The BC NDP government nonetheless proceeded in 2017, citing sunk costs. Total cost ballooned from $8.8B to over $16B. As of 2024 the dam is operational; ongoing litigation from Treaty 8 nations continues. The Blueberry River First Nations reached a $200M government settlement in 2023 over broader cumulative impacts on their treaty territory — partially addressing Site C concerns, but not reversing the project.
+      </div>
+    </div>
+
+    <div class="quote-block">
+      "UNDRIP does not mean that Indigenous peoples have a veto over projects. Let me be clear about that." 
+      <cite>— Crown-Indigenous Relations Minister Carolyn Bennett, House of Commons, February 17, 2016 (re: UNDRIP)</cite>
+    </div>
+    <div class="quote-block">
+      "The government of Canada's position is fundamentally inconsistent with the free, prior and informed consent standard of UNDRIP as it was understood when it was adopted."
+      <cite>— Assembly of First Nations submission to House Committee on Bill C-15, April 2021</cite>
+    </div>
+
+    <p class="source-line">Sources: Bill C-15 (UNDRIP Act), SC 2021 c.17; Federal Court of Appeal Trans Mountain decision 2018 FCA 187; TMX re-approval Order in Council P.C. 2019-0820; Blueberry River First Nations settlement 2023; BC Utilities Commission Site C Final Report 2017; West Moberly and Prophet River First Nations v. British Columbia, BCSC 2020; AFN submission to Bill C-15 standing committee April 2021.</p>
+  </div>
+
+  <!-- ── JORDAN'S PRINCIPLE / CHRT DEEP DIVE ── -->
+  <div class="section-label">Further Reading — Systemic Accountability</div>
+  <div class="finding-card">
+    <div class="finding-title">Summary: What Has and Has Not Been Done</div>
+    <div class="finding-meta">
+      <span class="tag tag-red">ACCOUNTABILITY SUMMARY</span>
+      <span class="tag tag-muted">2015–2024</span>
+      <span class="liril-chip">ETHICS 99% [NPU]</span>
+    </div>
+    <div class="finding-body">
+      <p>Canada has offered formal apologies (2008 residential schools; 2017 Sixties Scoop), passed landmark legislation (Bill C-15 UNDRIP; Bill C-91 Languages; Bill C-92 child welfare jurisdiction), and entered into $40B+ in compensation settlements. Courts and tribunals have repeatedly found the federal government in discrimination and contempt for failing to protect Indigenous rights and children.</p>
+      <p style="margin-top:0.7rem">What remains undone: a national monument to residential school survivors (Call #80, after 10 years); mandatory K–12 residential schools curriculum across all provinces (Call #62); full implementation of Jordan's Principle without ongoing legal battles; an independent RCMP oversight body for MMIWG cases; and safe drinking water for all 28 remaining communities. The government's own National Council for Reconciliation — mandated by TRC Call #53, passed into law via Bill C-29 in 2023 — has not yet released an annual accountability report. The gap between legislative commitments and lived reality remains the central accountability issue in Canadian indigenous policy.</p>
+    </div>
+    <p class="source-line">Sources: National Council for Reconciliation Act (Bill C-29, 2023); AFN Implementation Tracking 2024; Yellowhead Institute TRC Tracker; ISC boil water advisory database; CHRT ongoing compliance hearings 2024.</p>
   </div>
 
 </main>

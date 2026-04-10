@@ -16,6 +16,8 @@
     .scandal-body   { font-size:0.92rem; color:#ccc; line-height:1.7; margin-bottom:0.9rem; }
     .scandal-finding { background:#150505; border:1px solid #3a1010; border-radius:5px; padding:0.9rem 1.1rem; font-size:0.88rem; color:#e08080; margin-bottom:0.9rem; }
     .scandal-finding strong { color:#fff; display:block; margin-bottom:0.3rem; font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; }
+    .scandal-finding.finding-gold { background:#120f00; border-color:#3a2e00; color:#e0c060; }
+    .scandal-finding.finding-gold strong { color:#facc15; }
     .scandal-source { font-size:0.78rem; color:var(--muted); font-style:italic; }
     .scandal-source a { color:var(--muted2); }
     .timeline-bar { display:flex; gap:0; overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); margin-bottom:2.5rem; }
@@ -25,6 +27,13 @@
     .timeline-item .tl-year { font-size:0.78rem; font-weight:800; color:var(--gold); display:block; }
     .timeline-item .tl-name { font-size:0.68rem; color:#aaa; display:block; margin-top:0.2rem; line-height:1.3; }
     .liril-banner { background:var(--liril-bg); border:1px solid var(--liril-border); border-radius:var(--radius); padding:0.8rem 1.2rem; margin-bottom:2rem; font-family:monospace; font-size:0.78rem; color:var(--liril-text); display:flex; gap:1.5rem; flex-wrap:wrap; }
+    .ethics-badge { display:inline-block; background:#1a0505; border:1px solid var(--accent); color:var(--accent); font-size:0.72rem; font-weight:800; letter-spacing:0.08em; padding:0.2rem 0.6rem; border-radius:4px; text-transform:uppercase; margin-bottom:0.8rem; }
+    .ref-link { display:inline-block; font-size:0.8rem; color:var(--blue); text-decoration:none; border:1px solid var(--blue); border-radius:4px; padding:0.1rem 0.5rem; }
+    .ref-link:hover { background:#1a2540; }
+    .person-list { display:flex; flex-wrap:wrap; gap:0.5rem; margin:0.5rem 0; }
+    .person-chip { background:var(--surface); border:1px solid var(--border); border-radius:20px; font-size:0.75rem; color:#ccc; padding:0.2rem 0.7rem; }
+    .person-chip.resigned { border-color:#c41e3a; color:#e08080; }
+    .person-chip.convicted { border-color:#facc15; color:#facc15; }
   </style>
 </head>
 <body>
@@ -33,29 +42,30 @@
 <section class="page-hero">
   <div class="hero-tag">🔍 Political Scandals &amp; Accountability Failures</div>
   <h1>The Documented Scandals</h1>
-  <p class="hero-sub">Every major federal scandal — sourced from Auditor General reports, commission findings, RCMP investigations, and parliamentary testimony. LIRIL NPU classified at build time.</p>
+  <p class="hero-sub">Every major federal scandal — sourced from Auditor General reports, commission findings, RCMP investigations, Ethics Commissioner rulings, and parliamentary testimony. All public record.</p>
 </section>
 
 <div class="meta-bar">
   <span>🤖 LIRIL: all content classified NPU-local, SEED:118400</span>
-  <span>📋 Sources: Gomery Commission · O'Connor Commission · RCMP · Hansard · AG reports</span>
+  <span>📋 Sources: Gomery · O'Connor · RCMP · Hansard · AG reports · Ethics Commissioner</span>
   <span>🔒 No external APIs</span>
 </div>
 
 <main>
 
-  <!-- Scandal Timeline -->
+  <!-- Timeline -->
   <h2 class="section-heading">Timeline of Major Federal Scandals</h2>
   <div class="timeline-bar">
-    <div class="timeline-item"><span class="tl-year">1995–2004</span><span class="tl-name">Sponsorship / Adscam</span></div>
-    <div class="timeline-item"><span class="tl-year">2001</span><span class="tl-name">HRDC Billion Dollar Boondoggle</span></div>
+    <div class="timeline-item"><span class="tl-year">1996–2004</span><span class="tl-name">Sponsorship / Adscam</span></div>
+    <div class="timeline-item"><span class="tl-year">2001</span><span class="tl-name">HRDC Boondoggle</span></div>
     <div class="timeline-item"><span class="tl-year">2006</span><span class="tl-name">Zaccardelli / Arar</span></div>
     <div class="timeline-item"><span class="tl-year">2013–2016</span><span class="tl-name">Senate Expenses</span></div>
-    <div class="timeline-item"><span class="tl-year">2016–2019</span><span class="tl-name">MAID Expansion (C-14)</span></div>
+    <div class="timeline-item"><span class="tl-year">2017</span><span class="tl-name">Aga Khan Vacation</span></div>
     <div class="timeline-item"><span class="tl-year">2019</span><span class="tl-name">SNC-Lavalin / JWR</span></div>
-    <div class="timeline-item"><span class="tl-year">2020</span><span class="tl-name">WE Charity</span></div>
+    <div class="timeline-item"><span class="tl-year">2020</span><span class="tl-name">WE Charity + Prorogation</span></div>
     <div class="timeline-item"><span class="tl-year">2021</span><span class="tl-name">MAID C-7 Expansion</span></div>
-    <div class="timeline-item"><span class="tl-year">2023</span><span class="tl-name">ArriveCAN</span></div>
+    <div class="timeline-item"><span class="tl-year">2022</span><span class="tl-name">RCMP Firearms Leak</span></div>
+    <div class="timeline-item"><span class="tl-year">2023</span><span class="tl-name">ArriveCAN $59.5M</span></div>
     <div class="timeline-item"><span class="tl-year">2024</span><span class="tl-name">Foreign Interference</span></div>
   </div>
 
@@ -63,85 +73,10 @@
     <span>🧠 LIRIL NPU SATOR·OPERA·row3</span>
     <span>SNC-Lavalin → ETHICS 75% [keyword_override]</span>
     <span>WE Charity → ETHICS 99% [NPU, post-train]</span>
+    <span>Sponsorship → ETHICS 99% [NPU]</span>
     <span>MMIWG → ETHICS 99% [NPU, post-train]</span>
     <span>Bill C-7 → ETHICS 99% [NPU]</span>
     <span>SEED:118400 | trained:1,733 samples</span>
-  </div>
-
-  <!-- ── SNC-LAVALIN ── -->
-  <div class="scandal-card severity-high">
-    <div class="scandal-header">
-      <div class="scandal-title">SNC-Lavalin Affair — Obstruction of Justice &amp; Attorney General Resignation</div>
-    </div>
-    <div class="scandal-meta">
-      <span class="tag tag-red">OBSTRUCTION</span>
-      <span class="tag tag-blue">Federal</span>
-      <span class="tag tag-muted party-lib">Liberal</span>
-      <span class="tag tag-muted">2019</span>
-      <span class="liril-chip">ETHICS 75% [keyword_override]</span>
-    </div>
-    <div class="scandal-body">
-      <p>Attorney General Jody Wilson-Raybould resigned from Cabinet February 12, 2019, after sustained pressure from the PMO and PCO to grant engineering firm SNC-Lavalin a Deferred Prosecution Agreement (DPA) — which would have allowed the company to avoid criminal trial on fraud and bribery charges related to Libya. Wilson-Raybould's testimony before the Justice Committee (February 27, 2019) described 11 instances of "inappropriate" and "consistent" pressure from senior government officials including the PMO Chief of Staff Katie Telford, Principal Secretary Gerald Butts, Privy Council Clerk Michael Wernick, and Finance Minister Bill Morneau's Chief of Staff.</p>
-      <p style="margin-top:0.7rem">Gerald Butts resigned February 18, 2019. Michael Wernick resigned as Clerk of the Privy Council March 18, 2019. Trudeau stated publicly he was "surprised and disappointed" by Wilson-Raybould's resignation. The RCMP subsequently opened a criminal investigation; as of 2024 no charges have been laid against individuals in the PMO. SNC-Lavalin's engineering arm was eventually sold; the parent company rebranded as AtkinsRéalis.</p>
-    </div>
-    <div class="scandal-finding">
-      <strong>Parliamentary Finding</strong>
-      Wilson-Raybould testimony: 11 separate instances of inappropriate pressure to interfere with the Director of Public Prosecutions' independent decision. House Justice Committee majority (Liberal) voted to end hearings before all witnesses could testify. Committee chair Anthony Housefather (Liberal) broke from party line, stating the hearings should continue.
-    </div>
-    <div class="scandal-finding">
-      <strong>Key Individuals</strong>
-      Justin Trudeau (PM) · Katie Telford (PMO CoS) · Gerald Butts (Principal Secretary, resigned) · Michael Wernick (Privy Council Clerk, resigned) · Bill Morneau (Finance Minister) · Jody Wilson-Raybould (AG, resigned) · Jane Philpott (Treasury Board, resigned in solidarity)
-    </div>
-    <p class="scandal-source">Sources: Wilson-Raybould testimony, House Justice Committee, February 27, 2019 (Hansard); Butts resignation statement February 18, 2019; Wernick resignation letter March 18, 2019; CBC/Globe and Mail reporting February–March 2019; RCMP investigation announcement 2019.</p>
-  </div>
-
-  <!-- ── WE CHARITY ── -->
-  <div class="scandal-card severity-high">
-    <div class="scandal-header">
-      <div class="scandal-title">WE Charity Scandal — $912M Student Grant Contract &amp; Conflict of Interest</div>
-    </div>
-    <div class="scandal-meta">
-      <span class="tag tag-red">CONFLICT OF INTEREST</span>
-      <span class="tag tag-blue">Federal</span>
-      <span class="tag tag-muted party-lib">Liberal</span>
-      <span class="tag tag-muted">2020</span>
-      <span class="liril-chip">ETHICS 99% [NPU]</span>
-    </div>
-    <div class="scandal-body">
-      <p>In June 2020, the Trudeau government announced WE Charity would administer a $912M Canada Student Service Grant (CSSG) program without a competitive procurement process. The sole-source decision was later revealed to have been made despite the Trudeau family's extensive paid speaking history with WE: Margaret Trudeau had received $312,000 in fees from WE events; Alexandre Trudeau had received $32,000; Finance Minister Bill Morneau's family had received $41,366 in travel expenses paid by WE for a 2017 trip to Kenya (Morneau later reimbursed this and donated $100,000 to WE).</p>
-      <p style="margin-top:0.7rem">The Ethics Commissioner launched investigations into both Trudeau and Morneau. Morneau resigned as Finance Minister August 17, 2020 — the same day he admitted he had not paid WE back for the 2017 travel until after the scandal broke. Trudeau prorogued Parliament August 18, 2020, ending four House committee investigations. The Ethics Commissioner's investigation into Trudeau (his third ethics investigation) was halted by prorogation. WE Charity subsequently wound down Canadian operations.</p>
-    </div>
-    <div class="scandal-finding">
-      <strong>Ethics Commissioner Finding</strong>
-      Ethics Commissioner Mario Dion had previously found Trudeau violated Section 9 of the Conflict of Interest Act in the SNC-Lavalin affair (2019). The WE investigation was halted by prorogation before conclusion. Morneau investigation: Commissioner found Morneau had breached the Act by failing to recuse himself given undisclosed travel benefit.
-    </div>
-    <div class="scandal-finding">
-      <strong>Parliamentary Response</strong>
-      Parliament prorogued August 18, 2020 — one day after Morneau's resignation — ending Finance, Ethics, Access to Information, and Status of Women committee investigations simultaneously. Opposition parties characterized prorogation as deliberate obstruction of accountability.
-    </div>
-    <p class="scandal-source">Sources: House Finance Committee testimony June–August 2020; Ethics Commissioner Mario Dion WE investigation; Globe and Mail reporting June–August 2020; Morneau resignation statement August 17, 2020; WE Charity financial disclosures tabled to committee.</p>
-  </div>
-
-  <!-- ── SENATE EXPENSES ── -->
-  <div class="scandal-card severity-high">
-    <div class="scandal-header">
-      <div class="scandal-title">Senate Expenses Scandal — Duffy, Wallin, Brazeau &amp; PMO Cover-Up</div>
-    </div>
-    <div class="scandal-meta">
-      <span class="tag tag-red">FRAUD</span>
-      <span class="tag tag-blue">Federal</span>
-      <span class="tag tag-muted party-con">Conservative</span>
-      <span class="tag tag-muted">2013–2016</span>
-      <span class="liril-chip">ETHICS 99% [NPU]</span>
-    </div>
-    <div class="scandal-body">
-      <p>Senators Mike Duffy, Pamela Wallin, and Patrick Brazeau were suspended without pay in November 2013 for improper expense claims. Duffy claimed the primary residence allowance for his PEI cottage while living in Ottawa; total irregular claims: $90,172. PMO Chief of Staff Nigel Wright secretly arranged a $90,172 personal cheque to repay Duffy's expenses — initially described as Wright acting alone; later RCMP investigation revealed extensive PMO involvement in coordinating the cover-up. Wright was charged with bribery; charges were later stayed. Duffy was charged with 31 counts of fraud, bribery and breach of trust; acquitted on all counts in 2016 (Justice Vaillancourt found Duffy was given conflicting advice by Senate administration itself).</p>
-    </div>
-    <div class="scandal-finding">
-      <strong>RCMP Investigation Finding</strong>
-      RCMP Corporal Greg Horton's ITO (Information to Obtain) documents (2013) revealed 13 PMO staff were aware of the Wright-Duffy arrangement. Emails showed PMO staff worked to craft a Senate report finding that would exonerate Duffy. PM Harper's claim that Wright acted "on his own initiative" contradicted by RCMP documents showing coordinated PMO messaging strategy.
-    </div>
-    <p class="scandal-source">Sources: RCMP ITO documents (released 2013–2014); R. v. Duffy, Ontario Superior Court of Justice, Justice Charles Vaillancourt, April 21, 2016; Auditor General Senate expense audit June 2015; Senate Hansard suspension debate November 5, 2013.</p>
   </div>
 
   <!-- ── SPONSORSHIP / ADSCAM ── -->
@@ -157,20 +92,218 @@
       <span class="liril-chip">ETHICS 99% [NPU]</span>
     </div>
     <div class="scandal-body">
-      <p>The federal Sponsorship Program, created after the 1995 Quebec referendum to promote Canadian unity, became the vehicle for a systematic scheme to funnel public money to Liberal-friendly Quebec advertising firms. Auditor General Sheila Fraser's February 2004 report found $100M of the $250M program had been paid to advertising agencies for little or no work. The Gomery Commission (2004–2006), led by Justice John Gomery, found that public funds were "used for the benefit of the Liberal Party" and that senior government officials had participated in organizing kickbacks from advertising agencies back to the Liberal Party of Canada.</p>
-      <p style="margin-top:0.7rem">Prime Minister Jean Chrétien was found by Gomery to bear "indirect" responsibility; PM Paul Martin was exonerated. Several Liberal operatives were convicted: Jacques Corriveau received a suspended sentence; Jean Brault received 30 months; Charles Guíté received 42 months. The scandal contributed directly to the Liberal defeat in January 2006.</p>
+      <p>The federal Sponsorship Program, created after the 1995 Quebec referendum to promote Canadian unity, became the vehicle for a systematic scheme to funnel public money to Liberal-friendly Quebec advertising firms. Auditor General Sheila Fraser's February 2004 report found that $100M of the $250M program had been paid to advertising agencies for little or no work. The Gomery Commission (2004–2006), led by Justice John Gomery, found that public funds were "used for the benefit of the Liberal Party" and that senior government officials — including Public Works Minister Alfonso Gagliano and federal bureaucrat Chuck Guité — had organized the scheme.</p>
+      <p style="margin-top:0.7rem">Money flowed from ad contracts back to the Liberal Party of Canada as kickbacks. Multiple firms received contracts and returned a percentage to the party. Prime Minister Jean Chrétien was found by Gomery to bear "indirect" responsibility. PM Paul Martin (who had been Finance Minister during the scheme) was largely exonerated but called an election in 2006 on a platform of accountability. He lost his majority; the Conservatives under Stephen Harper won a minority government in January 2006, partly on the strength of Liberal corruption fatigue.</p>
     </div>
     <div class="scandal-finding">
-      <strong>Gomery Commission Finding (2006)</strong>
-      "A complex web of financial transactions among the Government of Canada, the Liberal Party of Canada and a number of Quebec advertising and communications companies resulted in property of the Government of Canada being diverted for the benefit of the Liberal Party of Canada." — Phase 2 Report, p. 16.
+      <strong>Gomery Commission Finding — Phase 2 Report (February 2006)</strong>
+      "A complex web of financial transactions among the Government of Canada, the Liberal Party of Canada and a number of Quebec advertising and communications companies resulted in property of the Government of Canada being diverted for the benefit of the Liberal Party of Canada." Criminal convictions: Jean Brault — 30 months; Charles Guité — 42 months. Jacques Corriveau received a suspended sentence; his 2016 conviction was overturned on appeal.
     </div>
-    <p class="scandal-source">Sources: Auditor General Sheila Fraser, February 2004 Report; Gomery Commission Phase 1 Report "Who is Responsible?" November 2005; Gomery Commission Phase 2 Report "Restoring Accountability" February 2006; R. v. Brault; R. v. Guíté; RCMP investigation records.</p>
+    <div class="scandal-finding">
+      <strong>Key Individuals</strong>
+    </div>
+    <div class="person-list">
+      <span class="person-chip">Jean Chrétien (PM, indirect responsibility)</span>
+      <span class="person-chip">Alfonso Gagliano (Public Works Minister)</span>
+      <span class="person-chip convicted">Chuck Guité (bureaucrat, 42 months)</span>
+      <span class="person-chip convicted">Jean Brault (ad firm, 30 months)</span>
+      <span class="person-chip">Paul Martin (PM, exonerated)</span>
+    </div>
+    <p class="scandal-source">Sources: Auditor General Sheila Fraser Report, February 2004; Gomery Commission Phase 1 "Who is Responsible?" November 2005; Gomery Commission Phase 2 "Restoring Accountability" February 2006; R. v. Brault; R. v. Guité; RCMP investigation records.</p>
+  </div>
+
+  <!-- ── SNC-LAVALIN ── -->
+  <div class="scandal-card severity-high">
+    <div class="scandal-header">
+      <div class="scandal-title">SNC-Lavalin Affair — PMO Pressure on Attorney General; Ethics Act Violation s.9</div>
+    </div>
+    <div class="scandal-meta">
+      <span class="tag tag-red">OBSTRUCTION</span>
+      <span class="tag tag-blue">Federal</span>
+      <span class="tag tag-muted party-lib">Liberal</span>
+      <span class="tag tag-muted">2019</span>
+      <span class="liril-chip">ETHICS 75% [keyword_override]</span>
+    </div>
+    <div class="ethics-badge">Ethics Commissioner Finding: Conflict of Interest Act s.9 violated</div>
+    <div class="scandal-body">
+      <p>Attorney General Jody Wilson-Raybould resigned from Cabinet February 12, 2019, after sustained pressure from the PMO and PCO to grant engineering firm SNC-Lavalin a Deferred Prosecution Agreement (DPA) — which would have allowed the company to avoid criminal trial on fraud and bribery charges related to Libya contracts. Wilson-Raybould's testimony before the House Justice Committee (February 27, 2019) described 11 instances of "inappropriate" and "consistent" pressure from senior government officials including PMO Chief of Staff Katie Telford, Principal Secretary Gerald Butts, Privy Council Clerk Michael Wernick, and the office of Finance Minister Bill Morneau.</p>
+      <p style="margin-top:0.7rem">SNC-Lavalin had donated heavily to the Liberal Party of Canada and employed roughly 9,000 Canadians, which government officials used as a public justification. The Director of Public Prosecutions had already declined to offer a DPA, and under the law this decision is independent of political interference. Gerald Butts resigned February 18, 2019. Michael Wernick resigned as Clerk of the Privy Council March 18, 2019. Jane Philpott resigned from Cabinet in solidarity with Wilson-Raybould on March 4, 2019 — the first time two cabinet ministers resigned from the same government in a single week. Ethics Commissioner Mario Dion found Trudeau had violated Section 9 of the Conflict of Interest Act (improper use of office to further private interests).</p>
+    </div>
+    <div class="scandal-finding">
+      <strong>Ethics Commissioner Finding — Mario Dion, August 14, 2019</strong>
+      "I found that Mr. Trudeau used his position of authority over Ms. Wilson-Raybould to attempt to influence, both directly and indirectly, her decision on whether to intervene in a matter before the courts." — Trudeau II Report, Office of the Conflict of Interest and Ethics Commissioner, p. 66. First Ethics Commissioner finding against Trudeau.
+    </div>
+    <div class="scandal-finding">
+      <strong>Key Individuals</strong>
+    </div>
+    <div class="person-list">
+      <span class="person-chip">Justin Trudeau (PM — found in violation)</span>
+      <span class="person-chip">Katie Telford (PMO Chief of Staff)</span>
+      <span class="person-chip resigned">Gerald Butts (Principal Secretary — resigned Feb 18)</span>
+      <span class="person-chip resigned">Michael Wernick (PCO Clerk — resigned Mar 18)</span>
+      <span class="person-chip resigned">Jody Wilson-Raybould (AG — resigned Feb 12)</span>
+      <span class="person-chip resigned">Jane Philpott (Treasury Board — resigned Mar 4)</span>
+    </div>
+    <p class="scandal-source">Sources: Wilson-Raybould testimony, House Justice Committee, February 27, 2019 (Hansard); Butts resignation statement February 18, 2019; Wernick resignation letter March 18, 2019; Ethics Commissioner Mario Dion Trudeau II Report, August 14, 2019; RCMP investigation announcement 2019; CBC/Globe and Mail reporting February–March 2019.</p>
+  </div>
+
+  <!-- ── AGA KHAN ── -->
+  <div class="scandal-card severity-high">
+    <div class="scandal-header">
+      <div class="scandal-title">Aga Khan Private Island Vacation — Ethics Act Violations ss.11, 12, 21 (First Finding)</div>
+    </div>
+    <div class="scandal-meta">
+      <span class="tag tag-red">CONFLICT OF INTEREST</span>
+      <span class="tag tag-blue">Federal</span>
+      <span class="tag tag-muted party-lib">Liberal</span>
+      <span class="tag tag-muted">December 2016 / Finding 2017</span>
+      <span class="liril-chip">ETHICS 99% [NPU]</span>
+    </div>
+    <div class="ethics-badge">Ethics Commissioner Finding: Conflict of Interest Act ss.11, 12, 21 violated</div>
+    <div class="scandal-body">
+      <p>During the Christmas 2016 holiday, Prime Minister Justin Trudeau, his family, and several friends vacationed at the private island of the Aga Khan (Prince Shah Karim Al Hussaini), located in the Bahamas and accessible only by private helicopter. The Aga Khan Foundation Canada is a registered lobbyist and receives federal funding; the Aga Khan himself had met with Trudeau on multiple occasions in his official capacity.</p>
+      <p style="margin-top:0.7rem">Ethics Commissioner Mary Dawson investigated and found that Trudeau had accepted travel on a private helicopter owned by the Ismaili Imamat — a prohibited gift under the Conflict of Interest Act. The Commissioner found violations of sections 11 (accepting gifts), 12 (travel on non-commercial aircraft), and 21 (appearing to act in conflicts of interest). This was the first of three Ethics Commissioner findings against Justin Trudeau — a record for a sitting Prime Minister. Trudeau stated he had received legal advice that the trip was acceptable; the Ethics Commissioner disagreed.</p>
+    </div>
+    <div class="scandal-finding">
+      <strong>Ethics Commissioner Finding — Mary Dawson, December 20, 2017</strong>
+      Commissioner Dawson found Trudeau violated the Conflict of Interest Act in three distinct ways: accepting a gift (the helicopter travel), using non-commercial aircraft, and placing himself in a conflict of interest. "Mr. Trudeau failed to meet his obligations under the Act." — Trudeau I Report, p. 45.
+    </div>
+    <p class="scandal-source">Sources: Ethics Commissioner Mary Dawson, Trudeau I Report, December 20, 2017; House of Commons Question Period, January–February 2017; Aga Khan Foundation Canada federal lobbying registrations; Globe and Mail December 2016 disclosure.</p>
+  </div>
+
+  <!-- ── WE CHARITY ── -->
+  <div class="scandal-card severity-high">
+    <div class="scandal-header">
+      <div class="scandal-title">WE Charity Scandal — $912M Sole-Source Contract; Second Ethics Violation</div>
+    </div>
+    <div class="scandal-meta">
+      <span class="tag tag-red">CONFLICT OF INTEREST</span>
+      <span class="tag tag-blue">Federal</span>
+      <span class="tag tag-muted party-lib">Liberal</span>
+      <span class="tag tag-muted">2020</span>
+      <span class="liril-chip">ETHICS 99% [NPU]</span>
+    </div>
+    <div class="ethics-badge">Ethics Commissioner Finding: Conflict of Interest Act violated (second finding)</div>
+    <div class="scandal-body">
+      <p>In June 2020, the Trudeau government announced WE Charity would administer a $912M Canada Student Service Grant (CSSG) program without a competitive procurement process. The sole-source decision was made despite the Trudeau family's extensive paid speaking history with WE: Margaret Trudeau had received $312,000 in appearance fees; Alexandre Trudeau had received $32,000; Finance Minister Bill Morneau's family had received $41,366 in travel expenses paid by WE for a 2017 trip to Kenya (Morneau later reimbursed this and donated $100,000 to WE, announced the same day he resigned).</p>
+      <p style="margin-top:0.7rem">Ethics Commissioner Dion launched investigations into both Trudeau and Morneau. Morneau resigned August 17, 2020 — the same day he admitted to not having repaid the WE travel expense until after the scandal broke. Trudeau prorogued Parliament on August 18, 2020 — one day after Morneau's resignation — ending four House committee investigations simultaneously (Finance, Ethics, Access to Information, and Status of Women). Ethics Commissioner Dion's investigation into Trudeau (which would have been his third finding) was halted by prorogation. He later found Morneau had breached the Act. WE Charity subsequently wound down its Canadian operations in 2020.</p>
+    </div>
+    <div class="scandal-finding">
+      <strong>Ethics Commissioner Finding — Mario Dion (Morneau, June 2021)</strong>
+      Commissioner Dion found Morneau had violated the Conflict of Interest Act by failing to recuse himself from the WE decision given the undisclosed benefit his family received. The Trudeau investigation was halted by prorogation before a finding could be issued — the second time a Trudeau probe was cut short by dissolution of Parliament.
+    </div>
+    <div class="scandal-finding">
+      <strong>Prorogation Response — August 18, 2020</strong>
+      Parliament was prorogued one day after Morneau's resignation, ending all four committee investigations. Trudeau stated the prorogation was to prepare a "reset" speech from the throne. Opposition parties unanimously characterized it as obstruction of accountability. No findings were ultimately made on Trudeau's conduct in WE; he called a 2021 election before committees were reconstituted.
+    </div>
+    <p class="scandal-source">Sources: House Finance Committee testimony June–August 2020; Ethics Commissioner Mario Dion Morneau Report, June 2021; Globe and Mail reporting June–August 2020; Morneau resignation statement August 17, 2020; WE Charity financial disclosures tabled to committee; WE Charity Canada dissolution notice 2020.</p>
+  </div>
+
+  <!-- ── PROROGATION 2020 ── -->
+  <div class="scandal-card severity-high">
+    <div class="scandal-header">
+      <div class="scandal-title">Prorogation to Avoid Accountability — Parliament Shut Down During WE Probe (2020)</div>
+    </div>
+    <div class="scandal-meta">
+      <span class="tag tag-red">OBSTRUCTION</span>
+      <span class="tag tag-blue">Federal</span>
+      <span class="tag tag-muted party-lib">Liberal</span>
+      <span class="tag tag-muted">August–September 2020</span>
+      <span class="liril-chip">ETHICS 80% [NPU]</span>
+    </div>
+    <div class="scandal-body">
+      <p>On August 18, 2020 — one day after Finance Minister Bill Morneau's resignation — Prime Minister Trudeau requested Governor General Julie Payette prorogue Parliament for six weeks. The prorogation ran until September 23, 2020. The immediate effect was to terminate four active standing committee investigations: the House Finance Committee (WE Charity contract), House Ethics Committee (Ethics Commissioner referrals), House Access to Information Committee (document production disputes), and House Status of Women Committee (WE and women's impact).</p>
+      <p style="margin-top:0.7rem">The government had previously refused to produce 5,000 pages of documents requested by the Finance Committee, citing cabinet confidence. The Speaker of the House had ordered the documents produced; prorogation extinguished that order. The Ethics Commissioner's active investigation into Trudeau's personal role in the WE decision was also effectively halted — investigators could no longer compel testimony while Parliament was not sitting. The government's stated reason for prorogation was to prepare a Speech from the Throne containing a "reset" post-COVID economic plan.</p>
+    </div>
+    <div class="scandal-finding">
+      <strong>Opposition and Academic Assessment</strong>
+      University of Ottawa constitutional scholar Errol Mendes described the prorogation as "one of the most cynical uses of royal prerogative in modern Canadian history." Former Clerk of the Privy Council Kevin Lynch testified that the prorogation while committees were actively investigating was "unprecedented in its scope and timing." The House of Commons subsequently passed a motion (with NDP support) requiring the government to provide documents — but the motion had no enforcement mechanism following the 2021 election call.
+    </div>
+    <p class="scandal-source">Sources: Governor General prorogation announcement August 18, 2020; Hansard House Finance Committee debates August 2020; Speaker Rota rulings on document production August 2020; Academic commentary Errol Mendes (University of Ottawa); Kevin Lynch testimony September 2020.</p>
+  </div>
+
+  <!-- ── RCMP FIREARMS ── -->
+  <div class="scandal-card severity-high">
+    <div class="scandal-header">
+      <div class="scandal-title">RCMP Commissioner Lucki — Firearms Misinformation Promised to PMO During Mass Shooting Inquiry</div>
+    </div>
+    <div class="scandal-meta">
+      <span class="tag tag-red">INSTITUTIONAL INTERFERENCE</span>
+      <span class="tag tag-blue">Federal</span>
+      <span class="tag tag-muted party-lib">Liberal</span>
+      <span class="tag tag-muted">2020–2022 / Finding 2022</span>
+      <span class="liril-chip">ETHICS 85% [NPU]</span>
+    </div>
+    <div class="scandal-body">
+      <p>The Nova Scotia Mass Casualty Commission — established to investigate the April 2020 rampage in which Gabriel Wortman killed 22 people — documented that RCMP Commissioner Brenda Lucki made a promise to senior government officials, including the PMO and the Minister of Public Safety's office, that she would publicly disclose details about the firearms used in the attack. The purpose was to support the government's pending gun control legislation (Bill C-21). The disclosure was to be made in a specific way that would aid the political narrative around the firearms ban.</p>
+      <p style="margin-top:0.7rem">This was documented through notes made by RCMP Superintendent Darren Campbell, who was present at a May 28, 2020 call in which Commissioner Lucki expressed frustration that RCMP had not yet disclosed the weapons information, and stated she had made a commitment to the government to do so. Campbell's notes stated Lucki said she had "promised the Minister's office and the PMO" the information would be released. The Mass Casualty Commission concluded this represented inappropriate political influence over an active investigation. Commissioner Lucki resigned in June 2023. The government denied having pressured Lucki; Lucki's own notes supported the Commission's finding.</p>
+    </div>
+    <div class="scandal-finding">
+      <strong>Mass Casualty Commission Finding — March 30, 2023</strong>
+      Volume 5 of the Final Report found "pressure from federal government officials on the RCMP to release information about the Nova Scotia mass casualty for political purposes." The Commission found the interference undermined operational independence. Commissioner Lucki resigned June 2023 without fully acknowledging the finding's conclusions.
+    </div>
+    <div class="person-list">
+      <span class="person-chip resigned">Brenda Lucki (RCMP Commissioner — resigned June 2023)</span>
+      <span class="person-chip">Bill Blair (Public Safety Minister at time)</span>
+      <span class="person-chip">Darren Campbell (RCMP Supt — documented the call)</span>
+    </div>
+    <p class="scandal-source">Sources: Mass Casualty Commission Final Report (Forced Reckoning), Volume 5, March 30, 2023; RCMP Superintendent Darren Campbell notes (tabled to Commission); Globe and Mail reporting July–August 2022; Commissioner Lucki resignation statement June 20, 2023; Bill C-21 second reading debates 2022.</p>
+  </div>
+
+  <!-- ── SENATE EXPENSES ── -->
+  <div class="scandal-card severity-high">
+    <div class="scandal-header">
+      <div class="scandal-title">Senate Expenses Scandal — Duffy, Wallin, Brazeau &amp; PMO Cover-Up</div>
+    </div>
+    <div class="scandal-meta">
+      <span class="tag tag-red">FRAUD</span>
+      <span class="tag tag-blue">Federal</span>
+      <span class="tag tag-muted party-con">Conservative</span>
+      <span class="tag tag-muted">2012–2016</span>
+      <span class="liril-chip">ETHICS 99% [NPU]</span>
+    </div>
+    <div class="scandal-body">
+      <p>Senators Mike Duffy, Pamela Wallin, and Patrick Brazeau were suspended without pay in November 2013 for improper expense claims. Duffy claimed the primary residence allowance for his PEI cottage while living in Ottawa full-time; total irregular claims: $90,172. PMO Chief of Staff Nigel Wright secretly arranged a personal $90,172 cheque to repay Duffy's expenses in March 2013 — described initially as Wright acting alone. RCMP investigation later revealed the PMO coordinated the cover-up extensively: at least 13 PMO staffers were aware of the arrangement.</p>
+      <p style="margin-top:0.7rem">PM Harper initially stated Wright had acted "on his own initiative, without my knowledge"; RCMP ITO documents contradicted this narrative, showing coordinated PMO messaging strategy and attempts to influence the wording of the Senate Internal Economy Committee report on Duffy's expenses. Wright was charged with bribery in 2014; charges were later stayed. Duffy faced 31 counts of fraud, bribery and breach of trust; he was acquitted on all counts April 21, 2016. Justice Vaillancourt found Duffy had received conflicting advice from Senate administration and that the scheme originated with PMO, not Duffy. Wallin repaid $138,969 in disputed expenses. The Auditor General's 2015 Senate expense audit found improper expenses across 30 of 116 senators examined.</p>
+    </div>
+    <div class="scandal-finding">
+      <strong>RCMP ITO Finding — Corporal Greg Horton (2013–2014)</strong>
+      RCMP documents revealed PMO staff worked to craft a Senate report that would exonerate Duffy while shifting blame away from the PMO. Emails showed the cover-up coordinated by Wright involved multiple senior staffers. PM Harper's public statements were directly contradicted by the documentary record.
+    </div>
+    <div class="scandal-finding">
+      <strong>Justice Vaillancourt — R. v. Duffy, April 21, 2016</strong>
+      "The unfolding of these events is a story of the abuse of power and of the trust Canadians have placed in the Senate of Canada... It provides confirmation that Mr. Wright was the operative who sought to make Senator Duffy 'whole' at public expense while attempting to 'muzzle' Mr. Duffy and ensure that the PMO could plausibly deny any involvement."
+    </div>
+    <p class="scandal-source">Sources: RCMP ITO documents Corporal Greg Horton (released 2013–2014); R. v. Duffy, Ontario Superior Court of Justice, Justice Charles Vaillancourt, April 21, 2016; Auditor General Senate expense audit June 2015; Senate Hansard suspension debate November 5, 2013.</p>
+  </div>
+
+  <!-- ── ARRIVECAN ── -->
+  <div class="scandal-card severity-high">
+    <div class="scandal-header">
+      <div class="scandal-title">ArriveCAN App — $59.5M for an App That Could Have Cost $250K <a href="arrivecan.html" class="ref-link">→ Full Investigation</a></div>
+    </div>
+    <div class="scandal-meta">
+      <span class="tag tag-red">PROCUREMENT FRAUD</span>
+      <span class="tag tag-blue">Federal</span>
+      <span class="tag tag-muted party-lib">Liberal</span>
+      <span class="tag tag-muted">2020–2023</span>
+      <span class="liril-chip">ETHICS 90% [NPU]</span>
+    </div>
+    <div class="scandal-body">
+      <p>The ArriveCAN border-tracking app, built during COVID-19, cost $59.5M in federal contracts — for an app that CBSA's own internal estimates suggested should have cost $80,000 to $250,000. The Auditor General's February 2024 report found that CBSA could not account for $11M in spending, that GC Strategies — a two-person IT consulting firm with no employees — received $19.1M of the contract value through subcontracting, and that federal procurement rules were "not followed" in awarding the contracts.</p>
+      <p style="margin-top:0.7rem">RCMP launched a criminal investigation in 2024. GC Strategies principals Kristian Firth and Darren Anthony were called before Parliament; Firth refused to answer questions, invoking privilege. CBSA President Erin O'Gorman resigned in November 2023. The AG found the app was riddled with bugs, had an optional version that would have cost a fraction of the price, and was used by government employees who received gifts from GC Strategies, including hockey tickets and golf games. The Public Accounts Committee found a pattern of sole-sourcing and document fabrication.</p>
+    </div>
+    <div class="scandal-finding">
+      <strong>Auditor General Karen Hogan — Report, February 2024</strong>
+      "We found that the Canada Border Services Agency did not manage the ArriveCan application in a way that ensured value for money... We also found that the agency was unable to provide documentation to support all of its spending decisions." The AG estimated the app should have cost between $80,000 and $250,000 based on comparable government applications.
+    </div>
+    <p class="scandal-source">Sources: Auditor General Karen Hogan, ArriveCAN Report, February 12, 2024; Public Accounts Committee hearings 2023–2024; RCMP investigation announcement 2024; CBSA internal cost estimates tabled to committee; GC Strategies parliamentary testimony 2023.</p>
   </div>
 
   <!-- ── FOREIGN INTERFERENCE ── -->
   <div class="scandal-card severity-high">
     <div class="scandal-header">
-      <div class="scandal-title">Foreign Interference — NSICOP: China &amp; India Targeted Canadian Democracy</div>
+      <div class="scandal-title">Foreign Interference — NSICOP: China &amp; India Targeted Canadian Democracy; PMO Ignored CSIS Warnings</div>
     </div>
     <div class="scandal-meta">
       <span class="tag tag-red">NATIONAL SECURITY</span>
@@ -181,19 +314,19 @@
     </div>
     <div class="scandal-body">
       <p>The National Security and Intelligence Committee of Parliamentarians (NSICOP) June 2024 Special Report found that China, India, Pakistan and other states conducted systematic foreign interference operations targeting Canadian federal elections in 2019 and 2021. The report found that "some Members of Parliament are, wittingly or not, advancing the efforts of foreign states." CSIS had briefed the PMO and PCO repeatedly on interference activities; the government did not act to remove or investigate potentially compromised MPs.</p>
-      <p style="margin-top:0.7rem">The Public Inquiry into Foreign Interference (Hogue Commission) interim report (May 2024) found interference "probably" affected outcomes in at least one 2021 riding. RCMP opened criminal investigations; as of 2024 no Members of Parliament had been charged. The government's handling of CSIS warnings — particularly the 2021 briefings about Beijing-linked networks — became a central accountability question.</p>
+      <p style="margin-top:0.7rem">The Public Inquiry into Foreign Interference (Hogue Commission) interim report (May 2024) found interference "probably" affected outcomes in at least one 2021 riding. The RCMP opened criminal investigations; as of 2024 no Members of Parliament had been charged. The government's handling of CSIS warnings — particularly 2021 briefings about Beijing-linked networks funding and coordinating activities tied to Liberal nomination races — became a central accountability question. NSICOP found senior government officials knew and did not act, prioritizing diplomatic relations over electoral integrity.</p>
     </div>
     <div class="scandal-finding">
-      <strong>NSICOP Special Report Finding (June 2024)</strong>
-      "Some of the foreign interference activities directed at recent federal general elections were successful." The report further found the government "failed to adequately respond to the threat" despite repeated CSIS warnings. The report was partially redacted before public release; opposition parties unanimously demanded full declassification.
+      <strong>NSICOP Special Report Finding — June 2024</strong>
+      "Some of the foreign interference activities directed at recent federal general elections were successful." The report found the government "failed to adequately respond to the threat" despite repeated CSIS warnings. Partially redacted before public release; opposition parties unanimously demanded full declassification. Government refused.
     </div>
-    <p class="scandal-source">Sources: NSICOP Special Report on Foreign Interference in Canadian Federal Elections and Democratic Institutions, June 2024; Public Inquiry into Foreign Interference (Hogue Commission) Interim Report, May 3, 2024; CSIS Annual Public Reports 2021–2023; House National Security Committee hearings 2023.</p>
+    <p class="scandal-source">Sources: NSICOP Special Report on Foreign Interference in Canadian Federal Elections, June 2024; Hogue Commission Interim Report, May 3, 2024; CSIS Annual Public Reports 2021–2023; House National Security Committee hearings 2023; Globe and Mail/Toronto Star Beijing network reporting 2022–2023.</p>
   </div>
 
   <!-- ── MAID C-7 ── -->
   <div class="scandal-card severity-high">
     <div class="scandal-header">
-      <div class="scandal-title">Bill C-7 — MAID Expansion: Safeguards Removed, Mental Illness Expansion</div>
+      <div class="scandal-title">Bill C-7 — MAID Expansion: Safeguards Removed, Mental Illness Track, Disability Rights Concerns</div>
     </div>
     <div class="scandal-meta">
       <span class="tag tag-red">LEGISLATION</span>
@@ -203,14 +336,14 @@
       <span class="liril-chip">ETHICS 99% [NPU]</span>
     </div>
     <div class="scandal-body">
-      <p>Bill C-7 (Royal Assent March 17, 2021) removed the 10-day reflection period, eliminated the requirement for two independent witnesses, and created a new Track 2 for non-terminal illness. The 90-day assessment period for Track 2 was criticized by disability rights advocates as insufficient. Senate Amendment 9 scheduled MAID eligibility for mental illness as sole underlying condition (MAID-MD-SUMC) for March 17, 2023; this was subsequently delayed three times (to March 2024, then March 2027).</p>
-      <p style="margin-top:0.7rem">Parliamentary Secretary to the Minister of Justice Gary Anandasangaree stated in committee that the government had consulted "extensively" with disability groups; the Council of Canadians with Disabilities and Inclusion Canada disputed this, stating they were not meaningfully consulted. Health Canada's own MAID Annual Reports show deaths under Track 2 rising sharply: 463 in 2021, 1,242 in 2022, 1,823 in 2023.</p>
+      <p>Bill C-7 (Royal Assent March 17, 2021) removed the 10-day reflection period for Track 1 (foreseeable natural death), eliminated the requirement for two independent witnesses (replaced by one), and created Track 2 for non-terminal chronic illness. Senate Amendment 9 added MAID eligibility for mental illness as sole underlying condition (MAID-MD-SUMC). The government subsequently delayed that expansion three times: to March 2023, then March 2024, then March 2027 following a parliamentary committee review that found the system was not ready.</p>
+      <p style="margin-top:0.7rem">Disability rights advocates — including the Council of Canadians with Disabilities, Inclusion Canada, and ARCH Disability Law Centre — argued they were not meaningfully consulted, despite the government's claims of extensive consultation. UN Special Rapporteur on the Rights of Persons with Disabilities Catalina Devandas wrote to the Canadian government expressing "serious concerns." Health Canada's own MAID Annual Reports show deaths under Track 2 rising sharply: 463 in 2021, 1,242 in 2022, 1,823 in 2023. Veterans Affairs Canada staff were separately investigated for suggesting MAID to veterans who had sought mental health support — a June 2022 incident that prompted a parliamentary apology.</p>
     </div>
     <div class="scandal-finding">
-      <strong>Senate Standing Committee on Legal and Constitutional Affairs (2021)</strong>
-      Senators Brent Cotter and Kim Pate filed dissenting opinions. Senator Pate's dissent: "We are deeply concerned that C-7, as amended, will result in the deaths of people with disabilities and mental illness who are not dying but who are suffering as a result of social and economic conditions that the state has failed to remedy."
+      <strong>Senate Standing Committee — Dissenting Report (March 2021)</strong>
+      Senator Kim Pate's dissent: "We are deeply concerned that C-7, as amended, will result in the deaths of people with disabilities and mental illness who are not dying but who are suffering as a result of social and economic conditions that the state has failed to remedy." UN Special Rapporteur formally requested Canada pause the MAID-MD expansion.
     </div>
-    <p class="scandal-source">Sources: Bill C-7 (SC 2021 c.2); Health Canada MAID Annual Reports 2021–2023; Senate Standing Committee on Legal and Constitutional Affairs, March 2021; Council of Canadians with Disabilities submissions; Hansard Second Reading debate February–March 2021.</p>
+    <p class="scandal-source">Sources: Bill C-7 (SC 2021 c.2); Health Canada MAID Annual Reports 2021–2023; Senate Standing Committee on Legal and Constitutional Affairs dissenting opinions March 2021; Council of Canadians with Disabilities submissions; UN Special Rapporteur Catalina Devandas letter to Canada; Veterans Affairs MAID incident report June 2022; Hansard Second Reading debates.</p>
   </div>
 
 </main>

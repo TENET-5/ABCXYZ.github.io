@@ -1,4 +1,4 @@
-<!-- ═══════════════════════════════════════════════════════
+﻿<!-- ═══════════════════════════════════════════════════════
      SHARED NAV COMPONENT — include in every page via JS
      Canadian Accountability Project — ABCXYZ.github.io
      ═══════════════════════════════════════════════════════ -->
@@ -11,7 +11,7 @@
     sator_row: 3,
     sator_word: "OPERA",
     last_classify_ts: 1775762162,
-    total_samples_trained: 9514,
+    total_samples_trained: 5003,
     gpu0_util: 44,
     gpu1_util: 26,
     nats_status: "connected",
@@ -46,7 +46,7 @@
       <a href="/senate-expenses.html"            id="nav-senate">Senate</a>
       <a href="/ag-findings.html"                id="nav-ag">AG Findings</a>
       <a href="/phoenix-pay.html"                id="nav-phoenix">Phoenix Pay</a>
-      <a href="/foreign-interference.html"       id="nav-foreign">Foreign Interference</a>
+      <a href="/foreign-interference.html"       id="nav-foreign">Foreign Interference</a>`n      <a href="/carney-conflicts.html"          id="nav-carney">Carney Conflicts</a>
       <a href="/liril-analysis.html"             id="nav-liril">LIRIL Analysis</a>
     </nav>
     <div class="liril-status-pill" title="LIRIL NPU — Local inference, no external API">
@@ -76,7 +76,7 @@
         <li><a href="/senate-expenses.html">Senate Expenses Scandal</a></li>
         <li><a href="/ag-findings.html">Auditor General Findings</a></li>
         <li><a href="/phoenix-pay.html">Phoenix Pay Disaster</a></li>
-        <li><a href="/foreign-interference.html">Foreign Interference</a></li>
+        <li><a href="/foreign-interference.html">Foreign Interference</a></li>`n        <li><a href="/carney-conflicts.html">Carney Conflicts</a></li>
       </ul>
     </div>
     <div>

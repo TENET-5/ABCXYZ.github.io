@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050810" />
+  <title>The Senate Expenses Scandal — $2.75 Million in Fraudulent Claims</title>
+  <meta name="description" content="Investigative accountability record of the Canadian Senate expenses scandal: Duffy, Wallin, Brazeau, Harb, the $90K PMO cheque, RCMP investigation, and why nobody was convicted." />
+  <meta property="og:title" content="The Senate Expenses Scandal — $2.75 Million in Fraudulent Claims" />
+  <meta property="og:description" content="How four Canadian senators fraudulently claimed $2.75 million in expenses, how Harper's PMO orchestrated a cover-up with a secret $90,172 cheque, and how every single one escaped prison." />
+  <meta property="og:type" content="article" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Page-specific overrides ── */
+    .lede {
+      font-size: 1.08rem;
+      color: #ccc;
+      font-style: italic;
+      border-left: 4px solid var(--accent);
+      padding-left: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* ── Scandal callout ── */
+    .scandal-callout {
+      background: linear-gradient(135deg, rgba(196,30,58,0.14) 0%, rgba(10,14,22,0.75) 100%);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 2rem 2.2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .scandal-callout .from-label { font-size: 0.75rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
+    .scandal-callout .big-num    { font-size: 3.4rem; font-weight: 900; color: var(--accent); line-height: 1.1; }
+    .scandal-callout .sub-label  { font-size: 0.88rem; color: var(--gold); margin-top: 0.5rem; letter-spacing: 0.08em; }
+
+    /* ── Senator profile cards ── */
+    .senator-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin: 1.5rem 0 2rem; }
+    .senator-card {
+      background: rgba(10,14,22,0.75);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+    }
+    .senator-card.red    { border-color: rgba(196,30,58,0.5); background: rgba(196,30,58,0.06); }
+    .senator-card.gold   { border-color: rgba(250,204,21,0.35); background: rgba(250,204,21,0.04); }
+    .senator-card.purple { border-color: rgba(192,132,252,0.35); background: rgba(192,132,252,0.04); }
+    .senator-card.blue   { border-color: rgba(96,165,250,0.35); background: rgba(96,165,250,0.04); }
+    .senator-card .sn-name { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 0.2rem; }
+    .senator-card .sn-role { font-size: 0.76rem; color: var(--gold); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .senator-card .sn-amount { font-size: 1.5rem; font-weight: 900; color: var(--accent); line-height: 1.1; margin-bottom: 0.5rem; }
+    .senator-card p { font-size: 0.86rem; color: var(--text2); margin-bottom: 0.4rem; }
+    .senator-card .sn-outcome { font-size: 0.78rem; color: var(--muted); border-top: 1px solid rgba(255,255,255,0.06); margin-top: 0.7rem; padding-top: 0.6rem; }
+    .status-badge {
+      display: inline-block;
+      font-size: 0.69rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 3px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.7rem;
+    }
+    .badge-acquitted { background: #001a0a; color: var(--green); border: 1px solid var(--green); }
+    .badge-charges   { background: #1a0000; color: var(--accent); border: 1px solid var(--accent); }
+    .badge-settled   { background: #1a1000; color: var(--gold); border: 1px solid var(--gold); }
+    .badge-resigned  { background: #0a001a; color: var(--purple); border: 1px solid var(--purple); }
+
+    /* ── Timeline ── */
+    .timeline { list-style: none; padding: 0; margin: 1.5rem 0 2rem; position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,0.07); }
+    .timeline li { display: flex; gap: 1.2rem; padding: 0.9rem 0; position: relative; }
+    .timeline .tl-dot { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 800; margin-top: 0.1rem; z-index: 1; }
+    .tl-dot.red    { background: var(--accent); color: #fff; }
+    .tl-dot.gold   { background: var(--gold); color: #111; }
+    .tl-dot.purple { background: var(--purple); color: #fff; }
+    .tl-dot.green  { background: #1a3a1a; color: var(--green); border: 1px solid var(--green); }
+    .tl-dot.blue   { background: #0a1a2a; color: var(--blue); border: 1px solid var(--blue); }
+    .timeline .tl-date  { font-size: 0.78rem; color: var(--gold); font-weight: 700; min-width: 90px; padding-top: 0.1rem; }
+    .timeline .tl-body  { flex: 1; }
+    .timeline .tl-title { font-size: 0.93rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+    .timeline .tl-desc  { font-size: 0.85rem; color: var(--text2); }
+
+    /* ── Expense breakdown table ── */
+    .expense-table { width: 100%; border-collapse: collapse; margin: 1.2rem 0 2rem; font-size: 0.88rem; }
+    .expense-table th { background: rgba(255,255,255,0.04); color: var(--muted); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.7rem 1rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .expense-table td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text2); vertical-align: top; }
+    .expense-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .expense-table .col-name   { color: #fff; font-weight: 700; }
+    .expense-table .col-amount { color: var(--accent); font-weight: 700; white-space: nowrap; }
+    .expense-table .col-charged { color: var(--warn); }
+    .verdict-acq   { color: var(--green); font-weight: 700; }
+    .verdict-rep   { color: var(--gold); font-weight: 700; }
+    .verdict-res   { color: var(--purple); font-weight: 700; }
+
+    /* ── Blockquote ── */
+    .pull-quote {
+      background: rgba(15,20,32,0.85);
+      border-left: 5px solid var(--purple);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.4rem 1.6rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text2);
+      font-size: 0.95rem;
+    }
+    .pull-quote .cite { font-style: normal; font-size: 0.78rem; color: var(--muted); margin-top: 0.8rem; display: block; }
+    .pull-quote strong { color: #fff; font-style: normal; }
+    .pull-quote.gold { border-left-color: var(--gold); }
+    .pull-quote.red  { border-left-color: var(--accent); }
+
+    /* ── Finding list ── */
+    .finding-list { list-style: none; padding: 0; margin: 1rem 0 1.8rem; }
+    .finding-list li { display: flex; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; align-items: flex-start; }
+    .finding-list li:last-child { border-bottom: none; }
+    .finding-list .fi-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .finding-list .fi-text { color: var(--text2); flex: 1; }
+    .finding-list .fi-text strong { color: #fff; }
+
+    /* ── Cheque visual ── */
+    .cheque-box {
+      background: linear-gradient(135deg, rgba(250,204,21,0.08) 0%, rgba(10,14,22,0.8) 100%);
+      border: 2px solid rgba(250,204,21,0.4);
+      border-radius: var(--radius);
+      padding: 1.8rem 2rem;
+      margin: 1.5rem 0;
+    }
+    .cheque-box .ch-header { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .cheque-box .ch-amount { font-size: 2.6rem; font-weight: 900; color: var(--gold); letter-spacing: -0.02em; }
+    .cheque-box .ch-payee  { font-size: 0.95rem; color: var(--text2); margin-top: 0.4rem; }
+    .cheque-box .ch-payee span { color: #fff; font-weight: 700; }
+    .cheque-box .ch-from   { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+    .cheque-box .ch-from span  { color: var(--accent); font-weight: 700; }
+    .cheque-box .ch-note   { font-size: 0.78rem; color: rgba(250,204,21,0.7); margin-top: 0.9rem; padding-top: 0.7rem; border-top: 1px dashed rgba(250,204,21,0.2); }
+
+    /* ── PMO coordination box ── */
+    .pmo-box { background: rgba(196,30,58,0.07); border: 1px solid rgba(196,30,58,0.3); border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.2rem 0; }
+    .pmo-box h4 { color: var(--accent); font-size: 0.9rem; margin: 0 0 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .pmo-box p  { font-size: 0.88rem; color: var(--text2); margin-bottom: 0.4rem; }
+    .pmo-box p:last-child { margin-bottom: 0; }
+
+    /* ── Section number badge ── */
+    .section-num-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      margin-right: 0.6rem;
+      vertical-align: middle;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CTA grid ── */
+    .cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin: 1.5rem 0 2rem; }
+    .cta-card { background: rgba(10,14,22,0.75); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 1.4rem; text-align: center; }
+    .cta-card .cta-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+    .cta-card h4 { font-size: 0.9rem; color: #fff; margin: 0 0 0.5rem; font-weight: 800; }
+    .cta-card p  { font-size: 0.82rem; color: var(--text2); margin: 0; }
+    .cta-card a  { color: var(--blue); text-decoration: none; }
+    .cta-card a:hover { text-decoration: underline; }
+    .cta-primary { border-color: var(--accent) !important; }
+
+    /* ── Pattern analysis rows ── */
+    .pattern-row { display: flex; gap: 1.2rem; padding: 0.9rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); align-items: flex-start; }
+    .pattern-row:last-child { border-bottom: none; }
+    .pattern-row .pr-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; min-width: 2rem; text-align: center; }
+    .pattern-row .pr-label { font-size: 0.78rem; font-weight: 800; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.2rem; }
+    .pattern-row .pr-text  { font-size: 0.87rem; color: var(--text2); }
+    .pattern-row .pr-text strong { color: #fff; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .senator-grid { grid-template-columns: 1fr; }
+      .scandal-callout .big-num { font-size: 2.4rem; }
+      .cheque-box .ch-amount { font-size: 1.9rem; }
+      .expense-table th, .expense-table td { padding: 0.6rem 0.5rem; }
+      .cta-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="page-header-placeholder"></div>
+
+<div class="meta-bar">
+  <span><span class="tag">INVESTIGATION</span></span>
+  <span>&#128197; Updated: May 2025</span>
+  <span>&#127963; Federal &#8212; Senate of Canada / PMO</span>
+  <span>Category: Fraud, Breach of Trust &amp; Cover-Up</span>
+</div>
+
+<main>
+
+  <!-- ── EDITORIAL NOTICE ─────────────────────────────── -->
+  <div class="opinion-banner">
+    <strong>INVESTIGATIVE RECORD NOTICE:</strong> All figures, charges, and findings on this page are drawn exclusively
+    from official sources: Deloitte audit reports commissioned by the Senate, Senate Internal Economy Committee proceedings,
+    RCMP court filings and affidavits, Ontario Superior Court of Justice records in <em>R. v. Duffy</em>,
+    and the Office of the Auditor General of Canada&#8217;s 2015 Senate Expenses Report. No charges against the
+    primary actors resulted in conviction. Readers are strongly encouraged to consult primary court and audit documents directly.
+  </div>
+
+  <!-- ── LEDE ─────────────────────────────────────────── -->
+  <p class="lede">
+    Between 2009 and 2013, a Deloitte audit commissioned by the Senate of Canada identified $2.75&nbsp;million in
+    irregular or improper expenses claimed by senators across the country. Four senators faced the most scrutiny:
+    Mike Duffy ($90,172), Pamela Wallin ($138,969), Patrick Brazeau ($48,745), and Mac Harb ($231,649).
+    What followed was not accountability &#8212; it was cover-up. The Prime Minister&#8217;s Office secretly arranged
+    payment of Duffy&#8217;s debt, wiretaps revealed coordination between the PMO and Senate leadership to suppress
+    audit findings, and every senator either escaped conviction or avoided charges entirely.
+    This is the documented record.
+  </p>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 1 — KEY STATS
+  ══════════════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">01</span>By The Numbers</h2>
+
+  <div class="glass-stat-grid" style="margin-bottom:1.5rem;">
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--accent);">$2.75M</div>
+      <div class="stat-label">Total Irregular Spending</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">Deloitte audit, Senate-wide</div>
+    </div>
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--gold);">4</div>
+      <div class="stat-label">Senators Publicly Named</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">Duffy, Wallin, Brazeau, Harb</div>
+    </div>
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--purple);">31</div>
+      <div class="stat-label">Charges Against Duffy</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">Fraud, breach of trust, bribery</div>
+    </div>
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--green);">0</div>
+      <div class="stat-label">Criminal Convictions</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">All charges withdrawn or acquitted</div>
+    </div>
+  </div>
+
+  <div class="glass-stat-grid">
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--blue);">$90,172</div>
+      <div class="stat-label">PMO Cheque &#8212; Nigel Wright</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">Personal funds paid to cover Duffy</div>
+    </div>
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--accent);">2013</div>
+      <div class="stat-label">RCMP Investigation Launched</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">Wiretaps placed on PMO officials</div>
+    </div>
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--warn);">0</div>
+      <div class="stat-label">Senators Expelled</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">Senate rules did not allow it</div>
+    </div>
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--gold);">2016</div>
+      <div class="stat-label">Duffy Acquitted</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">Judge found Senate rules &#8220;a sham&#8221;</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 2 — THE DUFFY AFFAIR
+  ══════════════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">02</span>The Duffy Affair &#8212; The $90,172 PMO Cheque</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    Senator Mike Duffy was appointed to represent Prince Edward Island despite spending most of his time in Ottawa.
+    He claimed a Senate living allowance by designating a modest PEI cottage as his &#8220;primary residence,&#8221;
+    while his true primary home was his Kanata, Ontario house where he lived year-round. When Deloitte&#8217;s 2012
+    audit flagged $90,172 in improper claims, the fallout reached all the way into the Prime Minister&#8217;s Office
+    &#8212; and what happened next became one of the worst political scandals in modern Canadian history.
+  </p>
+
+  <div class="cheque-box">
+    <div class="ch-header">&#128196; PERSONAL CHEQUE &#8212; VERIFIED BY RCMP COURT DOCUMENTS</div>
+    <div class="ch-amount">$90,172.24</div>
+    <div class="ch-payee">Pay to: <span>Senator Mike Duffy (via lawyer&#8217;s trust account)</span></div>
+    <div class="ch-from">Signed by: <span>Nigel Wright</span> &#8212; Chief of Staff to Prime Minister Stephen Harper</div>
+    <div class="ch-note">
+      &#9888; This cheque was written from Wright&#8217;s personal funds to cover Duffy&#8217;s outstanding Senate
+      expense repayment obligation. The transaction was concealed from caucus, the public, and &#8212; according to
+      Harper &#8212; the Prime Minister himself. RCMP confirmed the transfer. Wright was not charged.
+      Harper denied all knowledge.
+    </div>
+  </div>
+
+  <h3 style="color:var(--text);font-size:1rem;margin-top:2rem;">Timeline of the Duffy Affair</h3>
+  <ul class="timeline">
+    <li>
+      <div class="tl-dot gold">&#9679;</div>
+      <div class="tl-date">2009</div>
+      <div class="tl-body">
+        <div class="tl-title">Duffy Appointed to Senate</div>
+        <div class="tl-desc">Stephen Harper appoints Mike Duffy to represent PEI. Duffy lists a PEI cottage as primary residence to qualify for the Ottawa living allowance, despite living primarily in his Kanata, Ontario home.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot red">&#9679;</div>
+      <div class="tl-date">Late 2012</div>
+      <div class="tl-body">
+        <div class="tl-title">Deloitte Audit Flags Duffy</div>
+        <div class="tl-desc">The Senate Internal Economy Committee commissions Deloitte to audit senator expenses. Duffy&#8217;s primary residence claim is identified as improper. Total: $90,172 in irregular housing and travel claims.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot red">&#9679;</div>
+      <div class="tl-date">Feb 2013</div>
+      <div class="tl-body">
+        <div class="tl-title">PMO Negotiations Begin</div>
+        <div class="tl-desc">Nigel Wright (PMO Chief of Staff) begins negotiations with Duffy and his lawyer to arrange repayment and suppress the audit&#8217;s public scope. Emails later revealed in court show PMO staff discussing how to &#8220;manage&#8221; Duffy.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot gold">&#9679;</div>
+      <div class="tl-date">Mar 26, 2013</div>
+      <div class="tl-body">
+        <div class="tl-title">Wright Writes the Cheque</div>
+        <div class="tl-desc">Nigel Wright transfers $90,172.24 from his personal funds to Duffy&#8217;s lawyer&#8217;s trust account. The purpose: allow Duffy to &#8220;repay&#8221; the Senate and receive a public statement of vindication. The transfer is not disclosed to the public or to caucus.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot red">&#9679;</div>
+      <div class="tl-date">May 15, 2013</div>
+      <div class="tl-body">
+        <div class="tl-title">The Secret Breaks</div>
+        <div class="tl-desc">The Globe and Mail reports that Wright personally paid Duffy&#8217;s expenses. Wright resigns. Harper tells the House of Commons he is &#8220;shocked&#8221; and had no knowledge of the arrangement.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot purple">&#9679;</div>
+      <div class="tl-date">Nov 2013</div>
+      <div class="tl-body">
+        <div class="tl-title">Senate Suspends Three Senators</div>
+        <div class="tl-desc">Duffy, Wallin, and Brazeau are suspended from the Senate without pay &#8212; an unprecedented step. The Conservative majority votes for suspension despite procedural objections. Mac Harb had already resigned in August 2013.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot blue">&#9679;</div>
+      <div class="tl-date">Jul 17, 2014</div>
+      <div class="tl-body">
+        <div class="tl-title">31 Criminal Charges Against Duffy</div>
+        <div class="tl-desc">RCMP charges Senator Duffy with 31 counts including fraud, breach of trust, and bribery in relation to the $90,172 cheque from Nigel Wright and other improper expense claims. Trial set for 2015.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot green">&#9679;</div>
+      <div class="tl-date">Apr 21, 2016</div>
+      <div class="tl-body">
+        <div class="tl-title">Duffy Acquitted on All 31 Counts</div>
+        <div class="tl-desc">Justice Charles Vaillancourt acquits Duffy on all charges, finding the Senate&#8217;s expense rules were so vague that Duffy could not be found to have acted dishonestly within their meaning. The judge also condemned the PMO&#8217;s conduct in extensive written reasons.</div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="pull-quote gold">
+    <strong>&#8220;The actions of certain PMO officials in this matter were, at minimum, unethical and improper
+    and were, at worst, tantamount to bribery.&#8221;</strong>
+    <span class="cite">&#8212; Justice Charles Vaillancourt, Ontario Superior Court of Justice,
+    <em>R. v. Duffy</em>, April 21, 2016 (acquitting Duffy while condemning PMO behaviour)</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 3 — SENATOR-BY-SENATOR BREAKDOWN
+  ══════════════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">03</span>Senator-by-Senator Breakdown</h2>
+
+  <div class="senator-grid">
+
+    <article class="senator-card red">
+      <div class="sn-name">&#127794; Mike Duffy</div>
+      <div class="sn-role">Conservative &#8212; Prince Edward Island</div>
+      <div class="sn-amount">$90,172</div>
+      <span class="status-badge badge-acquitted">ACQUITTED 2016</span>
+      <p><strong>Fraud type:</strong> Primary residence fraud &#8212; claimed PEI cottage as primary residence to collect the Ottawa living allowance while living full-time in Kanata, Ontario.</p>
+      <p><strong>PMO connection:</strong> Nigel Wright wrote a personal cheque for the full amount to cover Duffy&#8217;s repayment obligation and secure a clean audit result.</p>
+      <p><strong>Charges:</strong> 31 counts &#8212; fraud, breach of trust (&times;31), bribery. Charged July 2014.</p>
+      <div class="sn-outcome">
+        <strong>Outcome:</strong> Acquitted April 21, 2016. Justice Vaillancourt ruled Senate rules too vague for criminal conviction. Duffy continued as senator and received back-pay for his suspension period.
+      </div>
+    </article>
+
+    <article class="senator-card gold">
+      <div class="sn-name">&#9992; Pamela Wallin</div>
+      <div class="sn-role">Conservative &#8212; Saskatchewan</div>
+      <div class="sn-amount">$138,969</div>
+      <span class="status-badge badge-settled">REPAID &#8212; NO CHARGES</span>
+      <p><strong>Fraud type:</strong> Travel expense fraud &#8212; claimed travel to Saskatchewan for &#8220;Senate business&#8221; when Deloitte found the trips did not qualify. Declared Saskatchewan as primary residence while residing in Toronto.</p>
+      <p><strong>Senate audit:</strong> Deloitte identified $138,969 in improper travel claims. Wallin contested the findings publicly but ultimately repaid the amount after the Senate&#8217;s own review confirmed irregularities.</p>
+      <div class="sn-outcome">
+        <strong>Outcome:</strong> Repaid $138,969. Suspended November 2013 without pay. RCMP investigated but no charges were laid. Resigned from Conservative caucus; sat as independent.
+      </div>
+    </article>
+
+    <article class="senator-card purple">
+      <div class="sn-name">&#127968; Patrick Brazeau</div>
+      <div class="sn-role">Conservative &#8212; Quebec</div>
+      <div class="sn-amount">$48,745</div>
+      <span class="status-badge badge-charges">CHARGES &#8212; STAYED</span>
+      <p><strong>Fraud type:</strong> Housing allowance fraud &#8212; claimed a Gatineau, QC address as primary residence to collect the Ottawa living allowance, despite evidence he resided primarily in the Ottawa area.</p>
+      <p><strong>Additional issues:</strong> Also faced separate criminal charges (assault, sexual assault) unrelated to the expense matter, further complicating his Senate status.</p>
+      <div class="sn-outcome">
+        <strong>Outcome:</strong> Expense-related fraud and breach of trust charges were stayed. Suspended November 2013. Expense repayment negotiated. Returned to Senate as an independent.
+      </div>
+    </article>
+
+    <article class="senator-card blue">
+      <div class="sn-name">&#127968; Mac Harb</div>
+      <div class="sn-role">Liberal &#8212; Ontario</div>
+      <div class="sn-amount">$231,649</div>
+      <span class="status-badge badge-resigned">RESIGNED &#8212; REPAID</span>
+      <p><strong>Fraud type:</strong> Housing allowance fraud &#8212; claimed a rural Ontario property as primary residence to collect the Ottawa living allowance, while evidence showed he lived in Ottawa. Highest single-senator improper claim in the audit.</p>
+      <p><strong>RCMP:</strong> Charged with fraud and breach of trust in June 2014. Harb contested charges, then negotiated settlement.</p>
+      <div class="sn-outcome">
+        <strong>Outcome:</strong> Resigned August 2013. Repaid $231,649 in improper claims. Criminal charges stayed after repayment. No conviction. The largest individual expense repayment in the scandal.
+      </div>
+    </article>
+
+  </div>
+
+  <!-- ── Full Data Table ── -->
+  <h3 style="color:var(--text);font-size:1rem;margin-top:1.5rem;">Complete Expense Audit Record</h3>
+  <div style="overflow-x:auto;">
+    <table class="expense-table">
+      <thead>
+        <tr>
+          <th>Senator</th>
+          <th>Province / Party</th>
+          <th>Improper Amount</th>
+          <th>Type of Fraud</th>
+          <th>Charges Laid</th>
+          <th>Outcome</th>
+          <th>Repaid?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-name">Mike Duffy</td>
+          <td>PEI / Conservative</td>
+          <td class="col-amount">$90,172</td>
+          <td>Primary residence + housing allowance fraud; bribery (PMO cheque)</td>
+          <td class="col-charged">31 counts: fraud, breach of trust, bribery</td>
+          <td><span class="verdict-acq">Acquitted 2016</span></td>
+          <td>PMO paid via Wright</td>
+        </tr>
+        <tr>
+          <td class="col-name">Mac Harb</td>
+          <td>Ontario / Liberal</td>
+          <td class="col-amount">$231,649</td>
+          <td>Primary residence fraud &#8212; housing allowance claimed on rural property</td>
+          <td class="col-charged">Fraud, breach of trust (2014)</td>
+          <td><span class="verdict-rep">Charges stayed after repayment</span></td>
+          <td><span style="color:var(--green);">Yes &#8212; full amount</span></td>
+        </tr>
+        <tr>
+          <td class="col-name">Pamela Wallin</td>
+          <td>Saskatchewan / Conservative</td>
+          <td class="col-amount">$138,969</td>
+          <td>Travel expense fraud &#8212; non-qualifying Senate business travel claimed</td>
+          <td class="col-charged">None &#8212; RCMP investigated, no charges laid</td>
+          <td><span class="verdict-rep">Repaid; suspended without pay</span></td>
+          <td><span style="color:var(--green);">Yes &#8212; full amount</span></td>
+        </tr>
+        <tr>
+          <td class="col-name">Patrick Brazeau</td>
+          <td>Quebec / Conservative</td>
+          <td class="col-amount">$48,745</td>
+          <td>Primary residence fraud &#8212; housing allowance for Gatineau property</td>
+          <td class="col-charged">Fraud, breach of trust</td>
+          <td><span class="verdict-res">Charges stayed / settled</span></td>
+          <td>Partial repayment negotiated</td>
+        </tr>
+        <tr>
+          <td class="col-name">Raymond Lavigne</td>
+          <td>Quebec / Liberal</td>
+          <td style="color:var(--warn);font-weight:700;">Undisclosed</td>
+          <td>Expense misuse; directing staff to perform personal tasks on public time</td>
+          <td class="col-charged">Fraud, breach of trust (charged 2009)</td>
+          <td><span style="color:var(--accent);font-weight:700;">Convicted 2011 &#8212; only conviction in era</span></td>
+          <td>N/A &#8212; sentenced 6 months house arrest + 6 months probation</td>
+        </tr>
+        <tr>
+          <td class="col-name">Multiple Other Senators</td>
+          <td>Various</td>
+          <td class="col-amount">~$2.04M balance</td>
+          <td>Various irregularities identified in Deloitte Senate-wide audit</td>
+          <td class="col-charged">None publicly announced</td>
+          <td><span class="verdict-rep">Repaid or unresolved</span></td>
+          <td>Varies by senator</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:0.78rem;color:var(--muted);margin-top:-1rem;">
+    &#9432; Raymond Lavigne predates the main 2012&#8211;2013 audit wave and is included for completeness &#8212;
+    he is the only senator of the era to receive a criminal conviction. Sources: Deloitte audit (2012&#8211;2013),
+    RCMP court filings, Ontario Superior Court of Justice records.
+  </p>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 4 — PMO COORDINATION
+  ══════════════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">04</span>The PMO Coordination &#8212; How the Cover-Up Worked</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    Court documents from <em>R. v. Duffy</em> &#8212; including thousands of emails entered as exhibits &#8212; revealed
+    systematic coordination between senior PMO officials and Senate leadership to manage audit findings, shape the
+    public narrative, and protect the government. This was not the independent Senate oversight it was presented as.
+  </p>
+
+  <div class="pmo-box">
+    <h4>&#9888; Key PMO Actors Identified in Court Record</h4>
+    <p><strong>Nigel Wright</strong> &#8212; PMO Chief of Staff. Wrote the $90,172 cheque from personal funds. Resigned May 15, 2013. Not charged by RCMP (&#8220;good faith / public interest&#8221; finding).</p>
+    <p><strong>Benjamin Perrin</strong> &#8212; PMO Legal Counsel. Participated in email chain arranging the Duffy deal. Testified at trial against Duffy.</p>
+    <p><strong>Ray Novak</strong> &#8212; Principal Secretary to PM Harper. Emails showed he was copied on communications about the Wright deal. Denied advance knowledge; the question was not definitively resolved at trial.</p>
+    <p><strong>Senator Irving Gerstein</strong> &#8212; Chair, Conservative Fund Canada. Approached about using Conservative Party funds to cover Duffy&#8217;s expenses before Wright wrote his personal cheque. Declined when Deloitte indicated it would not limit audit scope.</p>
+    <p><strong>Senator Carolyn Stewart Olsen &amp; Senator Don Tkachuk</strong> &#8212; Chairs of the Senate Internal Economy Committee. Court evidence indicated coordination with PMO to soften and manage the public release of the Deloitte audit findings on Duffy.</p>
+  </div>
+
+  <ul class="finding-list">
+    <li>
+      <span class="fi-icon">&#128196;</span>
+      <span class="fi-text"><strong>The deal was coordinated via email.</strong> RCMP obtained and tendered thousands of PMO emails showing Nigel Wright, Duffy&#8217;s lawyer Janice Payne, and PMO staff negotiating the terms: Duffy repays, receives a clean audit statement, and publicly claims he was &#8220;doing the right thing.&#8221;</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#128373;</span>
+      <span class="fi-text"><strong>The Senate audit was suppressed and softened.</strong> Court records revealed the Senate Internal Economy Committee worked with PMO contacts to ensure the Deloitte report on Duffy was softened before public release. A harsher version of the report existed; the published version was altered.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#128267;</span>
+      <span class="fi-text"><strong>Conservative Party funds were considered first.</strong> Before Wright&#8217;s personal cheque, Senator Gerstein explored whether the Conservative Fund Canada could pay Duffy&#8217;s debt. This plan was abandoned when Deloitte signalled it would not limit its audit scope to just Duffy&#8217;s housing claims.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#127381;</span>
+      <span class="fi-text"><strong>Harper claimed zero knowledge.</strong> Stephen Harper repeatedly told Parliament and the public that he knew nothing of the Wright payment until it became public. The court record shows PMO staff extensively discussing the arrangement &#8212; but no email directly to or from Harper surfaced regarding the payment. Whether this reflects genuine insulation or deliberate avoidance of written records was never resolved.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#128202;</span>
+      <span class="fi-text"><strong>Senate rules were weaponized, then used as a shield.</strong> The same Senate rules that allowed senators to self-declare primary residences (enabling the fraud) also meant courts found those rules too vague to support criminal convictions. The institution that created the fraud-enabling rules was also the institution responsible for enforcing them.</span>
+    </li>
+  </ul>
+
+  <div class="pull-quote red">
+    <strong>&#8220;The entire enterprise was one that required deception of the Canadian public, deception of
+    the Conservative caucus, deception of the Senate, and deception of members of the PMO itself.&#8221;</strong>
+    <span class="cite">&#8212; Justice Charles Vaillancourt, <em>R. v. Duffy</em>, 2016 &#8212; describing PMO conduct
+    while simultaneously acquitting the senator the PMO was trying to protect</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 5 — RCMP INVESTIGATION
+  ══════════════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">05</span>The RCMP Investigation &#8212; Wiretaps &amp; Court Documents</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    In June 2013, the RCMP launched a formal criminal investigation. What made this investigation remarkable &#8212;
+    and unprecedented in Canadian political history &#8212; was the use of wiretaps on PMO officials and the release
+    of extensive court documents that exposed the inner workings of the Prime Minister&#8217;s Office in real time.
+  </p>
+
+  <ul class="timeline">
+    <li>
+      <div class="tl-dot red">&#9679;</div>
+      <div class="tl-date">Jun 2013</div>
+      <div class="tl-body">
+        <div class="tl-title">RCMP Opens Formal Criminal Investigation</div>
+        <div class="tl-desc">RCMP confirms investigation into the Wright-Duffy payment. Investigation scope quickly expands beyond Duffy to examine Senate expense practices broadly and PMO involvement in the audit suppression.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot gold">&#9679;</div>
+      <div class="tl-date">Aug 2013</div>
+      <div class="tl-body">
+        <div class="tl-title">95-Page ITO (Information to Obtain) Made Public</div>
+        <div class="tl-desc">RCMP files a 95-page ITO for a search warrant that becomes partially public through court proceedings. Document reveals PMO email contents, the mechanics of the cheque arrangement, and names multiple PMO officials as participants in the cover-up scheme.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot purple">&#9679;</div>
+      <div class="tl-date">2013&#8211;2014</div>
+      <div class="tl-body">
+        <div class="tl-title">Wiretap Evidence and Extended ITO Documents Released</div>
+        <div class="tl-desc">RCMP court filings reference interceptions of private communications involving PMO officials. Subsequent ITO filings (totalling hundreds of pages) are released publicly, showing the RCMP had built an extensive record of PMO coordination. Documents referenced communications between Wright, Perrin, Novak, and others.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot blue">&#9679;</div>
+      <div class="tl-date">Jul 17, 2014</div>
+      <div class="tl-body">
+        <div class="tl-title">Duffy Charged &#8212; Wright Is Not</div>
+        <div class="tl-desc">RCMP charges Duffy with 31 counts but does not charge Nigel Wright. RCMP states Wright acted in the &#8220;public interest&#8221; and in &#8220;good faith.&#8221; The decision not to charge Wright despite evidence he arranged an undisclosed payment to a sitting senator is widely criticized by legal scholars.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot red">&#9679;</div>
+      <div class="tl-date">Jun 2014</div>
+      <div class="tl-body">
+        <div class="tl-title">Mac Harb Separately Charged</div>
+        <div class="tl-desc">RCMP charges Mac Harb with fraud and breach of trust relating to $231,649 in improper housing claims. Charges are ultimately stayed after Harb repays the full amount.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot green">&#9679;</div>
+      <div class="tl-date">2015&#8211;2016</div>
+      <div class="tl-body">
+        <div class="tl-title">Duffy Trial &#8212; 41 Days of Testimony, Full PMO Record Exposed</div>
+        <div class="tl-desc">Trial runs 41 hearing days over two years. The RCMP&#8217;s collected evidence &#8212; thousands of PMO emails, testimony from Perrin and others &#8212; enters the public record in full. Despite the comprehensive evidence of PMO misconduct, Duffy is acquitted on all 31 counts on April 21, 2016.</div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="pull-quote">
+    <strong>&#8220;[Nigel Wright] believed he was doing the right thing for his country, his party,
+    and for Senator Duffy by personally providing the funds.&#8221;</strong>
+    <span class="cite">&#8212; RCMP statement explaining why Wright was not charged, July 2014 &#8212;
+    a rationale widely criticized by legal scholars as inconsistent with standard bribery prosecution principles
+    under s. 119 of the Criminal Code of Canada</span>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 6 — WHY NOBODY WENT TO PRISON
+  ══════════════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">06</span>Why Nobody Went to Prison</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    The Senate expenses scandal involved documented fraudulent claims, a secret payment by a senior government official
+    to cover a senator&#8217;s debts, coordinated suppression of an audit, and years of RCMP investigation.
+    Yet the final tally was zero convictions for the primary actors. Here is how each escape route worked.
+  </p>
+
+  <div class="glass-card" style="margin:1.5rem 0;padding:1.4rem 1.6rem;">
+
+    <div class="pattern-row">
+      <div class="pr-icon">&#9878;</div>
+      <div>
+        <div class="pr-label">The Vague Rules Defence</div>
+        <div class="pr-text">
+          Justice Vaillancourt&#8217;s acquittal of Duffy turned on the finding that the Senate&#8217;s own
+          expense rules were <strong>&#8220;a sham&#8221;</strong> &#8212; so poorly defined that a senator
+          could not be found to have acted dishonestly within their meaning. The rules allowed senators to
+          self-declare their primary residence with minimal documentation. The Senate&#8217;s failure to
+          define &#8220;primary residence&#8221; unambiguously created the legal loophole that made
+          conviction impossible.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pr-icon">&#128200;</div>
+      <div>
+        <div class="pr-label">The Repayment Escape</div>
+        <div class="pr-text">
+          For Mac Harb and Patrick Brazeau, repaying the money &#8212; or negotiating repayment &#8212;
+          effectively ended criminal exposure. Crown prosecutors stayed charges after full repayment.
+          <strong>This creates a perverse incentive:</strong> fraudulently claim expenses for years,
+          get caught, repay, walk free. The &#8220;interest-free loan&#8221; problem: senators benefited
+          from the money during the period they held it, with no criminal penalty as long as they
+          eventually repaid. Parliament has not legislated to close this gap.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pr-icon">&#128373;</div>
+      <div>
+        <div class="pr-label">The Good Faith Exemption (Wright)</div>
+        <div class="pr-text">
+          The RCMP declined to charge Nigel Wright, stating he acted in &#8220;good faith&#8221; and the
+          &#8220;public interest.&#8221; Legal observers noted this was a novel application of the public
+          interest exemption. <strong>Wright arranged an undisclosed payment to a sitting senator in exchange
+          for that senator publicly claiming to repay his own debts</strong> &#8212; a transaction that critics
+          argued met the definition of bribery under s. 119 of the Criminal Code regardless of personal motive.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pr-icon">&#9878;</div>
+      <div>
+        <div class="pr-label">The &#8220;No Direct Evidence on Harper&#8221; Shield</div>
+        <div class="pr-text">
+          Despite thousands of PMO emails being entered as evidence, no email to or from Stephen Harper
+          directly referenced the Wright payment or the audit suppression strategy. Harper&#8217;s personal
+          legal exposure was eliminated by what legal experts described as &#8220;careful insulation&#8221;
+          &#8212; senior staff handled the mechanics while Harper maintained plausible deniability.
+          Whether deliberate or coincidental remains uninvestigated.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pr-icon">&#127963;</div>
+      <div>
+        <div class="pr-label">Parliamentary Privilege and Senate Independence</div>
+        <div class="pr-text">
+          The Senate&#8217;s constitutional independence means it sets its own expense rules, audits itself,
+          and cannot be expelled by the Crown. No senator was expelled. The three suspended senators were
+          eventually reinstated or retired. <strong>The institution that enabled the fraud was also the
+          institution responsible for investigating and punishing it &#8212; and it did neither
+          effectively.</strong>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 7 — SENATE REFORM: WHAT CHANGED?
+  ══════════════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">07</span>Senate Reform &#8212; What Actually Changed?</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    The scandal generated enormous political pressure for Senate reform and produced a number of procedural and
+    structural changes. The question is whether those changes address root causes or merely paper over them.
+  </p>
+
+  <ul class="finding-list">
+    <li>
+      <span class="fi-icon">&#10004;</span>
+      <span class="fi-text"><strong>Tighter expense rules adopted (2014&#8211;2015):</strong> The Senate Internal Economy Committee adopted clearer rules for primary residence declarations, requiring documentary evidence. Rules are still self-administered and self-audited.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#10004;</span>
+      <span class="fi-text"><strong>Public quarterly expense disclosure:</strong> All senator expenses are now published online on a quarterly basis, replacing the previous opacity. An independent audit process replaced the partisan Internal Economy Committee as the primary expense auditor.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#10004;</span>
+      <span class="fi-text"><strong>Trudeau&#8217;s independent Senate appointments:</strong> Justin Trudeau ejected Liberal senators from caucus in 2014 and established an Independent Advisory Board for Senate Appointments. New senators sit as independents, reducing the direct PMO patronage pipeline &#8212; though appointments remain at the PM&#8217;s discretion.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#9888;</span>
+      <span class="fi-text"><strong>No constitutional amendment to allow expulsion:</strong> Expelling a senator for misconduct would require a constitutional amendment requiring agreement from at least 7 provinces representing 50% of the population. This has not happened. Senators still cannot be removed for misconduct short of criminal conviction.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#9888;</span>
+      <span class="fi-text"><strong>No independent oversight body with enforcement powers:</strong> The Senate Ethics Officer has no power to impose financial penalties or recommend criminal charges. Findings remain advisory only. The Senate polices itself.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#9888;</span>
+      <span class="fi-text"><strong>No law closing the repayment-stays-charges loophole:</strong> Parliament has not legislated a regime requiring restitution plus criminal penalty for public official expense fraud. The repay-and-walk outcome remains legally available for any future cases.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#10008;</span>
+      <span class="fi-text"><strong>Root cause unaddressed &#8212; patronage appointment structure:</strong> The Senate remains an appointed body with no democratic accountability. Senators serve until age 75 with full salary and benefits. The fundamental accountability gap is structural and has not been resolved.</span>
+    </li>
+  </ul>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 8 — PATTERN ANALYSIS
+  ══════════════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">08</span>Pattern Analysis &#8212; This Is Systemic</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    The Senate expenses scandal was not a collection of isolated individual failures. The pattern of conduct &#8212;
+    across senators, staff, and officials &#8212; reflects structural features of how Canadian political institutions
+    handle public accountability when power is concentrated and self-oversight is the norm.
+  </p>
+
+  <div class="glass-card" style="margin:1.5rem 0;padding:1.6rem;">
+
+    <div class="pattern-row">
+      <div class="pr-icon">&#128200;</div>
+      <div>
+        <div class="pr-label">Pattern 1: Primary Residence Fraud as Standard Practice</div>
+        <div class="pr-text">
+          All four major cases involved the same mechanism: <strong>fraudulently designating a distant property
+          as &#8220;primary residence&#8221;</strong> to qualify for the Ottawa living allowance while actually
+          residing in Ottawa. This was not unique to one senator &#8212; Deloitte flagged it across multiple
+          individuals. The rule existed to compensate senators who truly lived far from Ottawa, and it was
+          systematically abused by people who did not.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pr-icon">&#128373;</div>
+      <div>
+        <div class="pr-label">Pattern 2: Institutional Cover-Up Over Accountability</div>
+        <div class="pr-text">
+          When Deloitte audit findings became available, the Senate&#8217;s Internal Economy Committee &#8212;
+          dominated by government allies &#8212; moved to soften the reports and suppress their scope. Court
+          evidence confirmed that <strong>PMO staff coordinated with Senate leadership to manage the audit
+          narrative.</strong> This pattern is consistent with findings in the ArriveCAN procurement scandal,
+          the SNC-Lavalin affair, and the WE Charity contract: institutions protecting themselves over transparency.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pr-icon">&#127381;</div>
+      <div>
+        <div class="pr-label">Pattern 3: Partisan Appointment = Compromised Oversight</div>
+        <div class="pr-text">
+          The senators involved in the audit cover-up &#8212; Stewart Olsen, Tkachuk &#8212; were Harper
+          appointees chairing the committee responsible for overseeing the audit. <strong>The people responsible
+          for accountability were the same people with political reasons to suppress it.</strong> Procedural
+          reforms cannot fully resolve this without removing partisan appointment from the equation entirely.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pr-icon">&#9878;</div>
+      <div>
+        <div class="pr-label">Pattern 4: Ambiguous Rules Create Deniability</div>
+        <div class="pr-text">
+          Justice Vaillancourt&#8217;s finding that Senate rules were a &#8220;sham&#8221; was not accidental
+          &#8212; the rules were written by senators, for senators, with minimal external input.
+          <strong>Ambiguous rules create deniability.</strong> When caught, public officials can argue the
+          rules were unclear. This pattern repeats across Canadian public institution expense scandals:
+          federal ministers, MPs, and officials routinely benefit from self-written rules with inadequate
+          external enforcement.
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-row">
+      <div class="pr-icon">&#128200;</div>
+      <div>
+        <div class="pr-label">Pattern 5: Repayment Launders the Crime</div>
+        <div class="pr-text">
+          The &#8220;repay and charges are stayed&#8221; outcome in Harb and Brazeau creates a system where
+          public officials <strong>can fraudulently claim expenses risk-free</strong> as long as they can
+          repay if caught. Interest-free use of public funds for years, then repayment to avoid prison.
+          In private sector fraud, repayment does not eliminate criminal liability. Parliament has not acted
+          to close this gap for public officials.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       SECTION 9 — CALL TO ACTION
+  ══════════════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">09</span>What You Can Do</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    Accountability requires more than documentation. The Senate expenses scandal produced modest reforms &#8212;
+    but not the structural changes needed to prevent recurrence. Citizens can push for more.
+  </p>
+
+  <div class="cta-grid">
+    <div class="cta-card cta-primary">
+      <div class="cta-icon">&#128196;</div>
+      <h4>Read the Primary Documents</h4>
+      <p>The full <em>R. v. Duffy</em> judgment is a comprehensive account of PMO conduct &#8212; written by a judge who read every email.
+        <a href="https://www.canlii.org/en/on/onsc/doc/2016/2016onsc2774/2016onsc2774.html" target="_blank" rel="noopener noreferrer">Read R. v. Duffy (CanLII) &#8599;</a>
+      </p>
+    </div>
+    <div class="cta-card">
+      <div class="cta-icon">&#128202;</div>
+      <h4>Track Current Senate Expenses</h4>
+      <p>All senator expenses are published quarterly. Review them. Compare travel claims against Senate sitting records.
+        <a href="https://sencanada.ca/en/senators/expenses/" target="_blank" rel="noopener noreferrer">Senate of Canada &#8212; Expenses &#8599;</a>
+      </p>
+    </div>
+    <div class="cta-card">
+      <div class="cta-icon">&#128394;</div>
+      <h4>Demand Legislative Reform</h4>
+      <p>Contact your MP. Push for: (1) eliminate the repayment-stays-charges loophole; (2) create an independent Senate oversight body with real enforcement powers; (3) end patronage Senate appointments entirely.</p>
+    </div>
+    <div class="cta-card">
+      <div class="cta-icon">&#128270;</div>
+      <h4>File Access to Information Requests</h4>
+      <p>Many PMO records remain sealed. File ATI requests for PMO correspondence and Senate Internal Economy Committee records through the
+        <a href="https://www.canada.ca/en/treasury-board-secretariat/services/access-information-privacy.html" target="_blank" rel="noopener noreferrer">Canada ATI Portal &#8599;</a>.
+      </p>
+    </div>
+  </div>
+
+  <!-- ── SOURCE NOTE ─────────────────────────────────── -->
+  <div class="glass-panel" style="margin-top:3rem;padding:1.4rem 1.6rem;">
+    <h3 style="color:var(--text);font-size:0.9rem;margin-top:0;letter-spacing:0.06em;text-transform:uppercase;">&#128196; Sources &amp; Verification</h3>
+    <ul style="list-style:none;padding:0;margin:0;font-size:0.82rem;color:var(--text2);">
+      <li style="padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">&#9658; <strong style="color:#fff;">Deloitte LLP</strong> &#8212; Audit reports commissioned by the Senate Internal Economy Committee, 2012&#8211;2013 (individual senator audits)</li>
+      <li style="padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">&#9658; <strong style="color:#fff;">Office of the Auditor General of Canada</strong> &#8212; 2015 Spring Report, Chapter 6: Senate Expenses (Senate-wide irregularity findings)</li>
+      <li style="padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">&#9658; <strong style="color:#fff;">R. v. Duffy, 2016 ONSC 2774</strong> &#8212; Ontario Superior Court of Justice, Justice Charles Vaillancourt, April 21, 2016 (308-paragraph judgment, full text on CanLII)</li>
+      <li style="padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">&#9658; <strong style="color:#fff;">RCMP Information to Obtain (ITO) Documents</strong> &#8212; Filed 2013&#8211;2014; partially released publicly through court proceedings in Ottawa</li>
+      <li style="padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">&#9658; <strong style="color:#fff;">House of Commons Debates (Hansard)</strong> &#8212; 41st Parliament, 1st &amp; 2nd Sessions, 2013&#8211;2014; Senate suspension debates and PMO statements under oath</li>
+      <li style="padding:0.4rem 0;">&#9658; <strong style="color:#fff;">Senate of Canada</strong> &#8212; Public expense disclosures and Internal Economy Committee proceedings, 2012&#8211;present; <a href="https://sencanada.ca" target="_blank" rel="noopener noreferrer" style="color:var(--blue);">sencanada.ca &#8599;</a></li>
+    </ul>
+  </div>
+
+  <p style="font-size:0.78rem;color:var(--muted);text-align:center;margin-top:2rem;padding-bottom:1rem;">
+    Canadian Accountability Project &#8212; Senate Expenses Scandal Record &#8212; Last updated May 2025<br>
+    All figures drawn from official audit, court, and parliamentary records.
+    No charges against the primary actors named resulted in criminal conviction.
+  </p>
+
+</main>
+
+<script src="nav.js"></script>
+</body>
+</html>

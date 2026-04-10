@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CI/CD Status — Canadian Accountability Project</title>
+  <meta name="theme-color" content="#050810"/>
+  <title>CI/CD Status ΓÇö Canadian Accountability Project</title>
   <link rel="stylesheet" href="styles.css"/>
   <style>
     .phase-row { display:flex; align-items:center; gap:1rem; padding:0.7rem 1rem; border-bottom:1px solid var(--border); font-size:0.88rem; font-family:Arial,sans-serif; }
@@ -23,7 +24,7 @@
     .test-box .tb-num.fail { color:var(--accent2); }
     .test-box .tb-num.warn { color:var(--warn); }
     .test-box .tb-label { font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; font-family:Arial,sans-serif; margin-top:0.3rem; }
-    .test-detail { font-family:monospace; font-size:0.78rem; background:#0a0a0a; border:1px solid var(--border); border-radius:6px; padding:1rem; max-height:240px; overflow-y:auto; color:#005577; }
+    .test-detail { font-family:monospace; font-size:0.78rem; background:#0a0a0a; border:1px solid var(--border); border-radius:6px; padding:1rem; max-height:240px; overflow-y:auto; color:rgba(0,150,190,0.5); }
     .test-detail .td-ok   { color:#226633; }
     .test-detail .td-fail { color:#662222; }
     .test-detail .td-warn { color:#664400; }
@@ -33,24 +34,24 @@
     .security-item .si-icon { font-size:1.1rem; flex-shrink:0; }
     .security-item .si-title { font-weight:700; color:#fff; font-size:0.88rem; }
     .security-item .si-desc  { font-size:0.82rem; color:var(--muted); margin-top:0.2rem; }
-    .security-item.ok   .si-icon::before { content:"✅"; }
-    .security-item.warn .si-icon::before { content:"⚠️"; }
-    .security-item.fail .si-icon::before { content:"❌"; }
-    .security-item.info .si-icon::before { content:"ℹ️"; }
+    .security-item.ok   .si-icon::before { content:"Γ£à"; }
+    .security-item.warn .si-icon::before { content:"ΓÜá∩╕Å"; }
+    .security-item.fail .si-icon::before { content:"Γ¥î"; }
+    .security-item.info .si-icon::before { content:"Γä╣∩╕Å"; }
   </style>
 </head>
 <body>
 <div id="page-header-placeholder"></div>
 
 <section class="page-hero">
-  <div class="hero-tag">⚙️ Website CI/CD Status</div>
+  <div class="hero-tag">ΓÜÖ∩╕Å Website CI/CD Status</div>
   <h1>Build &amp; Test Dashboard</h1>
-  <p class="hero-sub">Automated validation of all pages, links, content integrity, and LIRIL analysis pipeline. Run locally — no CI cloud service, no external dependencies.</p>
+  <p class="hero-sub">Automated validation of all pages, links, content integrity, and LIRIL analysis pipeline. Run locally ΓÇö no CI cloud service, no external dependencies.</p>
 </section>
 <div class="meta-bar">
-  <span>🔧 Test runner: Python (local)</span>
-  <span>🤖 LIRIL security advice: "Run audit before deploying"</span>
-  <span>⚡ NATS: 4223 | GPUs: RTX 5070 Ti ×2</span>
+  <span>≡ƒöº Test runner: Python (local)</span>
+  <span>≡ƒñû LIRIL security advice: "Run audit before deploying"</span>
+  <span>ΓÜí NATS: 4223 | GPUs: RTX 5070 Ti ├ù2</span>
 </div>
 
 <main class="container" style="padding-top:2rem;">
@@ -68,10 +69,10 @@
   <!-- LIRIL security recommendation panel -->
   <div class="liril-panel" style="margin-bottom:2rem;">
     <div class="liril-panel-header">
-      <div class="liril-icon">🔒</div>
+      <div class="liril-icon">≡ƒöÆ</div>
       <div>
-        <div class="liril-title">LIRIL ADVISE — Security Audit Recommendations</div>
-        <div style="font-size:0.7rem;color:#005577;font-family:monospace;">liril_ask.py advise | domain=ETHICS | conf=0.71 | nats_connections=21</div>
+        <div class="liril-title">LIRIL ADVISE ΓÇö Security Audit Recommendations</div>
+        <div style="font-size:0.7rem;color:rgba(0,180,210,0.55);font-family:monospace;">liril_ask.py advise | domain=ETHICS | conf=0.71 | nats_connections=21</div>
       </div>
     </div>
     <div class="liril-panel-body">
@@ -81,11 +82,11 @@
       </div>
       <div class="security-item ok">
         <div class="si-icon"></div>
-        <div><div class="si-title">No Secrets in Source</div><div class="si-desc">LIRIL SEED (118400) is a public deterministic value — not a secret. No API keys, tokens, or credentials in HTML/JS/CSS.</div></div>
+        <div><div class="si-title">No Secrets in Source</div><div class="si-desc">LIRIL SEED (118400) is a public deterministic value ΓÇö not a secret. No API keys, tokens, or credentials in HTML/JS/CSS.</div></div>
       </div>
       <div class="security-item ok">
         <div class="si-icon"></div>
-        <div><div class="si-title">Static Site — No Server-Side Code</div><div class="si-desc">Pure HTML/CSS/JS. No PHP, no Node.js, no database queries from browser. Zero attack surface for injection.</div></div>
+        <div><div class="si-title">Static Site ΓÇö No Server-Side Code</div><div class="si-desc">Pure HTML/CSS/JS. No PHP, no Node.js, no database queries from browser. Zero attack surface for injection.</div></div>
       </div>
       <div class="security-item warn">
         <div class="si-icon"></div>
@@ -114,7 +115,7 @@
     <div class="phase-row">
       <span class="phase-num">02</span>
       <span class="phase-name">Shared CSS Framework</span>
-      <span class="phase-detail">styles.css: 20,661 chars — all pages linked correctly</span>
+      <span class="phase-detail">styles.css: 20,661 chars ΓÇö all pages linked correctly</span>
       <span class="phase-status ok">PASS</span>
     </div>
     <div class="phase-row">
@@ -126,13 +127,13 @@
     <div class="phase-row">
       <span class="phase-num">04</span>
       <span class="phase-name">Internal Link Integrity</span>
-      <span class="phase-detail">index ↔ records ↔ maid ↔ rcmp ↔ liril ↔ cicd — all exist</span>
+      <span class="phase-detail">index Γåö records Γåö maid Γåö rcmp Γåö liril Γåö cicd ΓÇö all exist</span>
       <span class="phase-status ok">PASS</span>
     </div>
     <div class="phase-row">
       <span class="phase-num">05</span>
       <span class="phase-name">LIRIL NPU Classification</span>
-      <span class="phase-detail">5 probes run | 4/4 content → ETHICS | seed=118400</span>
+      <span class="phase-detail">5 probes run | 4/4 content ΓåÆ ETHICS | seed=118400</span>
       <span class="phase-status ok">PASS</span>
     </div>
     <div class="phase-row">
@@ -150,19 +151,19 @@
     <div class="phase-row">
       <span class="phase-num">08</span>
       <span class="phase-name">NemoClaw mercury.infer</span>
-      <span class="phase-detail">No responders — bridge not subscribed to NATS currently</span>
+      <span class="phase-detail">No responders ΓÇö bridge not subscribed to NATS currently</span>
       <span class="phase-status warn">OFFLINE</span>
     </div>
     <div class="phase-row">
       <span class="phase-num">09</span>
       <span class="phase-name">GPU Hardware Check</span>
-      <span class="phase-detail">GPU0: RTX 5070 Ti 44% 15243/16303MB 60°C | GPU1: 26% 15975/16303MB 55°C</span>
+      <span class="phase-detail">GPU0: RTX 5070 Ti 44% 15243/16303MB 60┬░C | GPU1: 26% 15975/16303MB 55┬░C</span>
       <span class="phase-status ok">LIVE</span>
     </div>
     <div class="phase-row">
       <span class="phase-num">10</span>
       <span class="phase-name">Zero External API Check</span>
-      <span class="phase-detail">grep external fetch/xhr/import in all pages → 0 results</span>
+      <span class="phase-detail">grep external fetch/xhr/import in all pages ΓåÆ 0 results</span>
       <span class="phase-status ok">CLEAN</span>
     </div>
     <div class="phase-row">
@@ -174,7 +175,7 @@
     <div class="phase-row">
       <span class="phase-num">12</span>
       <span class="phase-name">LIRIL Security Advise</span>
-      <span class="phase-detail">conf=0.71 | recs: security audit ✓ | workspace isolation → TENET5 scope</span>
+      <span class="phase-detail">conf=0.71 | recs: security audit Γ£ô | workspace isolation ΓåÆ TENET5 scope</span>
       <span class="phase-status ok">DONE</span>
     </div>
   </div>
@@ -191,7 +192,7 @@
   </div>
 
   <div class="test-detail">
-    <div class="td-info">[WEBSITE CI/CD] Canadian Accountability Project — build validation</div>
+    <div class="td-info">[WEBSITE CI/CD] Canadian Accountability Project ΓÇö build validation</div>
     <div class="td-info">[SEED] 118400 | [TICK] 118.4Hz | [SATOR] OPERA row 3</div>
     <div class="td-ok"  >[01] HTML: index.html ............... PASS (valid structure)</div>
     <div class="td-ok"  >[01] HTML: maid-accountability.html . PASS</div>
@@ -203,30 +204,30 @@
     <div class="td-ok"  >[02] CSS: styles.css linked in all 7 pages .......... PASS</div>
     <div class="td-ok"  >[03] JS: nav.js loaded in all 7 pages ............... PASS</div>
     <div class="td-ok"  >[03] JS: LIRIL_SITE_DATA baked into nav.js ........... PASS</div>
-    <div class="td-ok"  >[04] LINKS: index → records.html .................... FOUND</div>
-    <div class="td-ok"  >[04] LINKS: index → maid-accountability.html ......... FOUND</div>
-    <div class="td-ok"  >[04] LINKS: index → rcmp-commissioners.html .......... FOUND</div>
-    <div class="td-ok"  >[04] LINKS: index → liril-analysis.html .............. FOUND</div>
-    <div class="td-ok"  >[04] LINKS: index → cicd-status.html ................. FOUND</div>
-    <div class="td-ok"  >[05] LIRIL classify: "RCMP accountability MAID" → ETHICS 99% NPU ... PASS</div>
-    <div class="td-ok"  >[05] LIRIL classify: "political corruption" → ETHICS 75% CPU ..... PASS</div>
-    <div class="td-ok"  >[05] LIRIL classify: "disability rights euthanasia" → ETHICS 99% . PASS</div>
-    <div class="td-ok"  >[05] LIRIL classify: "criminal code charter rights" → ETHICS 80% . PASS</div>
+    <div class="td-ok"  >[04] LINKS: index ΓåÆ records.html .................... FOUND</div>
+    <div class="td-ok"  >[04] LINKS: index ΓåÆ maid-accountability.html ......... FOUND</div>
+    <div class="td-ok"  >[04] LINKS: index ΓåÆ rcmp-commissioners.html .......... FOUND</div>
+    <div class="td-ok"  >[04] LINKS: index ΓåÆ liril-analysis.html .............. FOUND</div>
+    <div class="td-ok"  >[04] LINKS: index ΓåÆ cicd-status.html ................. FOUND</div>
+    <div class="td-ok"  >[05] LIRIL classify: "RCMP accountability MAID" ΓåÆ ETHICS 99% NPU ... PASS</div>
+    <div class="td-ok"  >[05] LIRIL classify: "political corruption" ΓåÆ ETHICS 75% CPU ..... PASS</div>
+    <div class="td-ok"  >[05] LIRIL classify: "disability rights euthanasia" ΓåÆ ETHICS 99% . PASS</div>
+    <div class="td-ok"  >[05] LIRIL classify: "criminal code charter rights" ΓåÆ ETHICS 80% . PASS</div>
     <div class="td-warn ">[06] LIRIL train: sample 1 rate_limited (cooldown) .............. WARN</div>
     <div class="td-ok"  >[06] LIRIL train: samples 2-8 accepted (total=1564) ............. PASS</div>
     <div class="td-ok"  >[07] NATS: 127.0.0.1:4223 TCP connect .......................... PASS</div>
     <div class="td-ok"  >[07] NATS: version=2.10.24 connections=21 subs=59 ............... PASS</div>
-    <div class="td-warn ">[08] NemoClaw: mercury.infer → NoRespondersError (bridge offline). WARN</div>
-    <div class="td-ok"  >[09] GPU0: NVIDIA RTX 5070 Ti | 44% | 15243MB | 60°C ............ LIVE</div>
-    <div class="td-ok"  >[09] GPU1: NVIDIA RTX 5070 Ti | 26% | 15975MB | 55°C ............ LIVE</div>
-    <div class="td-ok"  >[10] SECURITY: grep fetch|XMLHttpRequest|import('http → 0 hits ... CLEAN</div>
-    <div class="td-ok"  >[10] SECURITY: grep cdn.|googleapis|cloudflare → 0 hits ......... CLEAN</div>
+    <div class="td-warn ">[08] NemoClaw: mercury.infer ΓåÆ NoRespondersError (bridge offline). WARN</div>
+    <div class="td-ok"  >[09] GPU0: NVIDIA RTX 5070 Ti | 44% | 15243MB | 60┬░C ............ LIVE</div>
+    <div class="td-ok"  >[09] GPU1: NVIDIA RTX 5070 Ti | 26% | 15975MB | 55┬░C ............ LIVE</div>
+    <div class="td-ok"  >[10] SECURITY: grep fetch|XMLHttpRequest|import('http ΓåÆ 0 hits ... CLEAN</div>
+    <div class="td-ok"  >[10] SECURITY: grep cdn.|googleapis|cloudflare ΓåÆ 0 hits ......... CLEAN</div>
     <div class="td-ok"  >[11] SOURCES: records.html has sources-box with 18 citations ..... PASS</div>
-    <div class="td-ok"  >[12] LIRIL ADVISE: security audit recommended → executed ......... DONE</div>
-    <div class="td-info">─────────────────────────────────────────────────────────────────</div>
-    <div class="td-ok"  >[SUMMARY] 10 PASS | 2 WARN | 0 FAIL | pipeline GREEN ✓</div>
+    <div class="td-ok"  >[12] LIRIL ADVISE: security audit recommended ΓåÆ executed ......... DONE</div>
+    <div class="td-info">ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ</div>
+    <div class="td-ok"  >[SUMMARY] 10 PASS | 2 WARN | 0 FAIL | pipeline GREEN Γ£ô</div>
     <div class="td-warn ">[WARN-1]  LIRIL training rate limit on first sample (expected)</div>
-    <div class="td-warn ">[WARN-2]  NemoClaw mercury.infer offline — LIRIL CLI fallback active</div>
+    <div class="td-warn ">[WARN-2]  NemoClaw mercury.infer offline ΓÇö LIRIL CLI fallback active</div>
     <div class="td-info">[ACTION]  Start mercury_bridge.py to enable NemoClaw NATS inference</div>
   </div>
 
@@ -242,7 +243,7 @@
       <div>python ABCXYZ.github.io/test_website.py --nats    # include NATS health check</div>
       <div>python ABCXYZ.github.io/test_website.py --verbose # full output</div>
     </div>
-    <p class="text-sm text-muted">Tests are pure Python stdlib — no pip installs required for core validation. LIRIL/NATS tests use the tenet5 venv.</p>
+    <p class="text-sm text-muted">Tests are pure Python stdlib ΓÇö no pip installs required for core validation. LIRIL/NATS tests use the tenet5 venv.</p>
   </div>
 
 </main>
@@ -250,3 +251,4 @@
 <script src="nav.js"></script>
 </body>
 </html>
+

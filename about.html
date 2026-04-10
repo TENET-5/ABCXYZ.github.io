@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#050810" />
+  <title>About — Canadian Accountability Project</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+<div id="page-header-placeholder"></div>
+
+<section class="page-hero">
+  <div class="hero-tag">ℹ️ About This Project</div>
+  <h1>Why This Site Exists</h1>
+  <p class="hero-sub">A record of what actually happened — not what the press release said.</p>
+</section>
+
+<main class="container-narrow" style="padding-top:2rem;">
+
+  <div class="card card-liril" style="margin-bottom:2rem;">
+    <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:1rem;">
+      <div style="width:32px;height:32px;background:linear-gradient(135deg,var(--liril-core),#0088aa);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:0.8rem;color:#000;flex-shrink:0;">AI</div>
+      <div>
+        <div style="font-family:monospace;font-size:0.82rem;color:var(--liril-core);font-weight:700;">LIRIL NPU — About Page Classification</div>
+        <div style="font-family:monospace;font-size:0.7rem;color:rgba(0,212,255,0.5);">domain=ETHICS | seed=118400 | device=NPU | no external API</div>
+      </div>
+    </div>
+    <p class="text-sm" style="color:var(--muted);">This site's content was classified by LIRIL's NPU as <strong style="color:var(--liril-core)">ETHICS domain (88–99% confidence)</strong> across all probes. LIRIL routed this to SATOR row 3 (OPERA) → NemoClaw GPU inference. All AI analysis is local — no data leaves this machine, no cloud services involved.</p>
+  </div>
+
+  <h2 style="margin-bottom:1rem;">The Project</h2>
+  <p>The Canadian Accountability Project is a public documentation effort. Every record on this site is drawn from:</p>
+  <ul style="margin-bottom:1.5rem;">
+    <li><strong>Auditor General reports</strong> — the AG is an Officer of Parliament with full audit access to federal departments</li>
+    <li><strong>Hansard</strong> — the official verbatim record of parliamentary proceedings</li>
+    <li><strong>Commission of Inquiry reports</strong> — O'Connor, Mass Casualty Commission, etc.</li>
+    <li><strong>Court documents</strong> — Supreme Court decisions, Federal Court filings</li>
+    <li><strong>Official Health Canada data</strong> — annual MAID reports</li>
+    <li><strong>United Nations communications</strong> — formal letters and concluding observations to Canada</li>
+  </ul>
+
+  <p>No anonymous sources. No speculation. If it's on this site, a primary source document supports it — and that source is cited.</p>
+
+  <hr/>
+
+  <h2 style="margin:1.5rem 0 1rem;">The AI Infrastructure</h2>
+  <p>This site uses <strong>LIRIL</strong> — a local NPU-based classifier and router — to analyze and categorize all content. LIRIL runs on this machine and communicates via NATS message bus. There is no connection to any external AI service, no API key, no cloud processing.</p>
+
+  <div class="grid-2" style="gap:1rem;margin:1.5rem 0;">
+    <div class="card card-liril">
+      <h4 style="color:var(--liril-core);margin-bottom:0.5rem;">LIRIL NPU</h4>
+      <p class="text-sm">Multi-probe hash classifier running on NPU. Classifies content into 6 ARTSTEM domains. SEED: 118400. TICK: 118.4Hz. 16,998 classifications, 1,564 training samples.</p>
+    </div>
+    <div class="card" style="border-color:#330055;">
+      <h4 style="color:var(--nemo-core);margin-bottom:0.5rem;">NemoClaw GPU</h4>
+      <p class="text-sm">Dual RTX 5070 Ti. GPU0: Nemotron-Nano-9B (reasoning). GPU1: Mistral-Nemo-12B (complex analysis). Both with Llama-3B speculative decoding. Accessible via NATS mercury.infer.</p>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--gold);margin-bottom:0.5rem;">SATOR Grid</h4>
+      <p class="text-sm">5×5 palindromic routing grid. All accountability content routes to row 3 (OPERA) → NemoClaw. Each row corresponds to a domain: ART, TECHNOLOGY, SCIENCE, ETHICS (OPERA), MATHEMATICS.</p>
+    </div>
+    <div class="card">
+      <h4 style="color:var(--teal);margin-bottom:0.5rem;">NATS Mesh</h4>
+      <p class="text-sm">All agent communication via NATS at 127.0.0.1:4223. 21 active connections. LAN-accessible at 0.0.0.0:4223. Monitoring at 127.0.0.1:18222.</p>
+    </div>
+  </div>
+
+  <hr/>
+
+  <h2 style="margin:1.5rem 0 1rem;">Editorial Principles</h2>
+  <ol style="margin-bottom:1.5rem;">
+    <li><strong>Primary sources only.</strong> Every claim has a cited official document.</li>
+    <li><strong>No anonymous attribution.</strong> Named individuals are named because official public records name them.</li>
+    <li><strong>Opinion is labelled.</strong> Investigative analysis is marked as opinion/analysis. Factual records are documented findings.</li>
+    <li><strong>No external dependencies.</strong> No tracker, no analytics, no CDN, no API. The site is fully self-contained.</li>
+    <li><strong>LIRIL analysis is transparent.</strong> Every AI classification result is shown with its confidence score, device (NPU/CPU), and method. Nothing is hidden.</li>
+  </ol>
+
+  <hr/>
+
+  <h2 style="margin:1.5rem 0 1rem;">What This Site Is Not</h2>
+  <p>This is not legal advice. This is not a criminal complaint. This is not a demand for any specific action. It is a documented record, assembled from public sources, organized so that Canadians can review the evidence and draw their own conclusions about what their institutions did and did not do.</p>
+
+  <div class="card card-accent" style="margin-top:2rem;">
+    <p style="margin:0;font-style:italic;color:#cc9999;">“Democracy requires an informed citizenry. An informed citizenry requires accessible, documented records. This site is an attempt to build one.”</p>
+  </div>
+
+</main>
+<div id="page-footer-placeholder"></div>
+<script src="nav.js"></script>
+</body>
+</html>

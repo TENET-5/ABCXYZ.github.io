@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050810" />
+  <title>ArriveCAN — $59.5 Million Dollar Accountability Void</title>
+  <meta name="description" content="Deep-dive investigative accountability report on the ArriveCAN scandal: $80,000 budget to $59.5 million final cost, GCStrategies, Auditor General findings, RCMP investigation, and criminal code analysis." />
+  <meta property="og:title" content="ArriveCAN — $59.5 Million Dollar Accountability Void" />
+  <meta property="og:description" content="How a 2-person shell company billed Canadians $59.5 million for a buggy app that wrongly quarantined 10,000 people. Full investigative record with AG findings, RCMP status, and Criminal Code analysis." />
+  <meta property="og:type" content="article" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Page-specific overrides ── */
+    .lede {
+      font-size: 1.08rem;
+      color: #ccc;
+      font-style: italic;
+      border-left: 4px solid var(--accent);
+      padding-left: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* ── Cost escalation callout ── */
+    .cost-callout {
+      background: linear-gradient(135deg, rgba(196,30,58,0.12) 0%, rgba(10,14,22,0.7) 100%);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 2rem 2.2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .cost-callout .from-label { font-size: 0.75rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
+    .cost-callout .cost-from  { font-size: 2.2rem; font-weight: 800; color: var(--green); line-height: 1.1; }
+    .cost-callout .arrow       { font-size: 2rem; color: var(--accent); padding: 0.3rem 1.5rem; }
+    .cost-callout .cost-to     { font-size: 3.2rem; font-weight: 900; color: var(--accent); line-height: 1.1; }
+    .cost-callout .multiplier  { font-size: 0.85rem; color: var(--gold); margin-top: 0.5rem; letter-spacing: 0.08em; }
+    .cost-callout-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+
+    /* ── Person profile cards ── */
+    .person-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; margin: 1.5rem 0 2rem; }
+    .person-card { background: var(--card2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem; }
+    .person-card.flagged { border-color: var(--accent); background: rgba(196,30,58,0.06); }
+    .person-card.watch   { border-color: var(--warn); background: rgba(249,115,22,0.06); }
+    .person-card .person-name { font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 0.2rem; }
+    .person-card .person-role { font-size: 0.78rem; color: var(--gold); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.7rem; }
+    .person-card p { font-size: 0.88rem; color: var(--text2); margin-bottom: 0; }
+    .person-card .status-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 3px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.7rem;
+    }
+    .badge-rcmp    { background: #0a001a; color: #aa66ff; border: 1px solid #aa66ff; }
+    .badge-refused { background: #1a0000; color: var(--accent); border: 1px solid var(--accent); }
+    .badge-deflect { background: #1a1000; color: var(--warn); border: 1px solid var(--warn); }
+    .badge-open    { background: #001a0a; color: var(--green); border: 1px solid var(--green); }
+
+    /* ── Timeline list ── */
+    .timeline { list-style: none; padding: 0; margin: 1.5rem 0 2rem; position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,0.08); }
+    .timeline li { display: flex; gap: 1.2rem; padding: 0.9rem 0; position: relative; }
+    .timeline .tl-dot { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 800; margin-top: 0.1rem; z-index: 1; }
+    .tl-dot.red    { background: var(--accent); color: #fff; }
+    .tl-dot.gold   { background: var(--gold); color: #111; }
+    .tl-dot.purple { background: var(--purple); color: #fff; }
+    .tl-dot.green  { background: #1a3a1a; color: var(--green); border: 1px solid var(--green); }
+    .tl-dot.blue   { background: #0a1a2a; color: var(--blue); border: 1px solid var(--blue); }
+    .timeline .tl-date { font-size: 0.78rem; color: var(--gold); font-weight: 700; min-width: 90px; padding-top: 0.1rem; }
+    .timeline .tl-body { flex: 1; }
+    .timeline .tl-title { font-size: 0.93rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+    .timeline .tl-desc  { font-size: 0.85rem; color: var(--text2); }
+
+    /* ── Money flow diagram ── */
+    .money-flow { background: rgba(10,14,22,0.8); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 2rem; margin: 1.5rem 0; }
+    .money-flow-row { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; }
+    .flow-node { flex: 1; min-width: 120px; text-align: center; position: relative; }
+    .flow-node .fn-box {
+      background: var(--card2);
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      padding: 0.9rem 0.6rem;
+      margin: 0 0.3rem;
+    }
+    .flow-node.source .fn-box { border-color: var(--gold); }
+    .flow-node.sink   .fn-box { border-color: var(--accent); }
+    .flow-node .fn-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
+    .flow-node .fn-name  { font-size: 0.82rem; font-weight: 700; color: #fff; }
+    .flow-node .fn-cut   { font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-top: 0.3rem; }
+    .flow-arrow { display: flex; align-items: center; padding: 0 0.2rem; color: var(--muted); font-size: 1.2rem; flex-shrink: 0; }
+    .flow-note { font-size: 0.8rem; color: var(--muted); margin-top: 1rem; text-align: center; }
+
+    /* ── Bug stat ── */
+    .bug-box { background: rgba(196,30,58,0.08); border: 2px solid rgba(196,30,58,0.4); border-radius: var(--radius); padding: 1.6rem 2rem; margin: 1.5rem 0; }
+    .bug-box h3 { color: var(--accent); margin-top: 0; font-size: 1.1rem; }
+    .bug-list { list-style: none; padding: 0; }
+    .bug-list li { padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; color: var(--text2); }
+    .bug-list li:last-child { border-bottom: none; }
+    .bug-list li::before { content: "\26A0 "; color: var(--accent); }
+
+    /* ── Quote block ── */
+    .ag-quote {
+      background: rgba(15,20,32,0.8);
+      border-left: 5px solid var(--purple);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1.4rem 1.6rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text2);
+      font-size: 0.95rem;
+    }
+    .ag-quote .cite { font-style: normal; font-size: 0.78rem; color: var(--muted); margin-top: 0.8rem; display: block; }
+    .ag-quote strong { color: #fff; font-style: normal; }
+
+    /* ── Finding rows ── */
+    .finding-list { list-style: none; padding: 0; margin: 1rem 0 1.8rem; }
+    .finding-list li {
+      display: flex;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.9rem;
+      align-items: flex-start;
+    }
+    .finding-list li:last-child { border-bottom: none; }
+    .finding-list .fi-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .finding-list .fi-text { color: var(--text2); flex: 1; }
+    .finding-list .fi-text strong { color: #fff; }
+
+    /* ── Criminal code table ── */
+    .cc-table { width: 100%; border-collapse: collapse; margin: 1.2rem 0 2rem; font-size: 0.88rem; }
+    .cc-table th { background: rgba(255,255,255,0.04); color: var(--muted); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.7rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+    .cc-table td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text2); vertical-align: top; }
+    .cc-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .cc-table .section-num { color: var(--gold); font-weight: 700; white-space: nowrap; }
+    .cc-table .applies-yes { color: var(--accent); font-weight: 700; }
+    .cc-table .applies-maybe { color: var(--warn); font-weight: 700; }
+
+    /* ── Accountability score ── */
+    .acct-box { background: rgba(10,14,22,0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 1.4rem 1.6rem; margin: 1.2rem 0; }
+    .acct-box .acct-name { font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 0.3rem; }
+    .acct-box .acct-role { font-size: 0.77rem; color: var(--muted); margin-bottom: 0.7rem; }
+    .acct-box .acct-finding { font-size: 0.88rem; color: #cc9999; }
+    .acct-box .acct-score { font-size: 0.78rem; color: var(--warn); font-weight: 700; margin-top: 0.5rem; }
+
+    /* ── Section headings ── */
+    .section-num-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      margin-right: 0.6rem;
+      vertical-align: middle;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CTA ── */
+    .cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin: 1.5rem 0 2rem; }
+    .cta-card { background: var(--card2); border: 1px solid var(--border2); border-radius: var(--radius); padding: 1.4rem; text-align: center; }
+    .cta-card .cta-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+    .cta-card h4 { font-size: 0.9rem; color: #fff; margin: 0 0 0.5rem; font-weight: 800; }
+    .cta-card p  { font-size: 0.82rem; color: var(--text2); margin: 0; }
+    .cta-card a  { color: var(--blue); text-decoration: none; }
+    .cta-card a:hover { text-decoration: underline; }
+    .cta-primary { border-color: var(--accent) !important; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .cost-callout-row  { flex-direction: column; }
+      .cost-callout .arrow { transform: rotate(90deg); padding: 0.3rem 0; }
+      .money-flow-row { flex-direction: column; }
+      .flow-arrow { transform: rotate(90deg); margin: 0 auto; }
+      .cc-table th, .cc-table td { padding: 0.6rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div id="page-header-placeholder"></div>
+
+<div class="meta-bar">
+  <span><span class="tag">INVESTIGATION</span></span>
+  <span>&#128197; Updated: April 2025</span>
+  <span>&#127963; Federal &#8212; Treasury Board / CBSA</span>
+  <span>Category: Procurement Fraud &amp; Accountability</span>
+</div>
+
+<main>
+
+  <!-- ── EDITORIAL NOTICE ─────────────────────── -->
+  <div class="opinion-banner">
+    <strong>INVESTIGATIVE RECORD NOTICE:</strong> All figures, findings, and quotes on this page are drawn exclusively from
+    official sources: the Auditor General of Canada&#39;s 2023 Special Report, House of Commons Standing Committee on Government
+    Operations and Estimates (OGGO) testimony transcripts, CBSA public disclosures, and parliamentary debate records.
+    Readers are strongly encouraged to consult primary sources. An RCMP investigation is ongoing; no charges have been
+    publicly announced as of the date of last update.
+  </div>
+
+  <!-- ── LEDE ─────────────────────────────────── -->
+  <p class="lede">
+    In March 2020, the Canada Border Services Agency received an $80,000 quote to build a simple travel-tracking
+    application for pandemic border control. Twenty-four months later, the same app &#8212; beset by 177 known bugs at launch
+    and responsible for the wrongful quarantine of approximately 10,000 Canadians &#8212; had consumed $59.5 million in public
+    funds. The principal contractor was a 2-person company operating out of a residential address with no permanent staff,
+    no technical expertise, and no competitive procurement process. The Auditor General of Canada called it &#34;the worst
+    example of pandemic contracting&#34; her office had ever seen. No minister has accepted responsibility. No charges have
+    been laid. This is the documented record.
+  </p>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 1 — EXECUTIVE SUMMARY
+  ══════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">01</span>Executive Summary</h2>
+
+  <div class="glass-stat-grid" style="margin-bottom:2rem;">
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--accent);">$59.5M</div>
+      <div class="stat-label">Final Cost to Taxpayers</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">Original quote: $80,000</div>
+    </div>
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--gold);">74,275&#215;</div>
+      <div class="stat-label">Cost Overrun Multiplier</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">$80K &#8594; $59.5M in 24 months</div>
+    </div>
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--warn);">~10,000</div>
+      <div class="stat-label">Canadians Wrongly Quarantined</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">Due to app bugs at launch</div>
+    </div>
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--purple);">177</div>
+      <div class="stat-label">Known Bugs at Launch</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">Documented by CBSA testing team</div>
+    </div>
+  </div>
+
+  <div class="glass-stat-grid">
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--blue);">2</div>
+      <div class="stat-label">Employees at GCStrategies</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">No permanent technical staff</div>
+    </div>
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--accent);">4 Layers</div>
+      <div class="stat-label">Subcontractor Chain Depth</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">Each layer taking a percentage cut</div>
+    </div>
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--green);">2023</div>
+      <div class="stat-label">RCMP Investigation Opened</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">March 2023 &#8212; ongoing</div>
+    </div>
+    <div class="glass-stat">
+      <div class="stat-value" style="color:var(--gold);">0</div>
+      <div class="stat-label">Charges Laid to Date</div>
+      <div class="stat-sub" style="color:var(--muted);font-size:0.75rem;">As of April 2025</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 2 — FROM $80K TO $59.5M
+  ══════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">02</span>The Contract &#8212; From $80,000 to $59.5 Million</h2>
+
+  <div class="cost-callout">
+    <div class="cost-callout-row">
+      <div>
+        <div class="from-label">Original Quote</div>
+        <div class="cost-from">$80,000</div>
+      </div>
+      <div class="arrow">&#8594;</div>
+      <div>
+        <div class="from-label">Final Billed</div>
+        <div class="cost-to">$59,500,000</div>
+      </div>
+    </div>
+    <div class="multiplier">743&#215; over initial estimate &nbsp;&#183;&nbsp; 24-month contract period &nbsp;&#183;&nbsp; Zero competitive procurement</div>
+  </div>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    The ArriveCAN application was conceived in March 2020 as an emergency measure to collect traveller health declarations
+    at the border during the early COVID-19 pandemic. CBSA staff obtained a preliminary quote of approximately $80,000
+    for a basic digital form. What followed was a two-year procurement free-for-all in which the CBSA entered into contracts
+    with GCStrategies &#8212; a company with two employees and no technological capabilities &#8212; without competitive bidding,
+    relying on emergency exception clauses intended for genuine one-time emergencies, not ongoing multi-year projects.
+  </p>
+
+  <ul class="timeline">
+    <li>
+      <div class="tl-dot red">&#9654;</div>
+      <div class="tl-date">Mar 2020</div>
+      <div class="tl-body">
+        <div class="tl-title">COVID-19 Border Emergency Declared</div>
+        <div class="tl-desc">CBSA identifies need for digital health declaration tool. Initial scope: basic web form. First quote received: ~$80,000. Emergency procurement exemptions invoked.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot gold">&#9654;</div>
+      <div class="tl-date">Apr 2020</div>
+      <div class="tl-body">
+        <div class="tl-title">First Contract Awarded to GCStrategies &#8212; No Competition</div>
+        <div class="tl-desc">GCStrategies selected without tender. Company has 2 principals, no permanent staff, no developers on payroll. Contract awarded under the &#34;emergency&#34; exception to Treasury Board procurement rules.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot gold">&#9654;</div>
+      <div class="tl-date">Nov 2020</div>
+      <div class="tl-body">
+        <div class="tl-title">ArriveCAN App Launched (v1)</div>
+        <div class="tl-desc">First public version released for iOS and Android. Immediate complaints about crashes and incorrect mandatory quarantine orders. CBSA proceeds despite 177 documented bugs in internal testing.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot red">&#9654;</div>
+      <div class="tl-date">2020&#8211;2022</div>
+      <div class="tl-body">
+        <div class="tl-title">Contract Amendments &#8212; 76+ Separate Contracts Issued</div>
+        <div class="tl-desc">CBSA issued over 76 separate contracts and amendments to GCStrategies and affiliated vendors across the ArriveCAN project. Each amendment bypassed competitive re-tendering. Total billing escalates from hundreds of thousands into tens of millions.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot purple">&#9654;</div>
+      <div class="tl-date">Oct 2021</div>
+      <div class="tl-body">
+        <div class="tl-title">ArriveCAN Made Mandatory at Border</div>
+        <div class="tl-desc">Federal government mandates app use for all air travellers entering Canada. Canadians who fail to submit are subject to fines and mandatory quarantine &#8212; including those wrongly flagged by buggy logic.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot red">&#9654;</div>
+      <div class="tl-date">Mar 2022</div>
+      <div class="tl-body">
+        <div class="tl-title">Final Contracts Close &#8212; $59.5M Billed</div>
+        <div class="tl-desc">Project formally wound down. Total taxpayer expenditure: $59.5 million. CBSA is unable to produce complete invoices, contracts, or statements of work for a significant portion of the billings.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot blue">&#9654;</div>
+      <div class="tl-date">Feb 2023</div>
+      <div class="tl-body">
+        <div class="tl-title">Auditor General Tables Special Report to Parliament</div>
+        <div class="tl-desc">Karen Hogan&#39;s office publishes the most damning procurement audit in recent Canadian history, characterizing ArriveCAN contracting as the worst example of pandemic contracting her office encountered.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot purple">&#9654;</div>
+      <div class="tl-date">Mar 2023</div>
+      <div class="tl-body">
+        <div class="tl-title">RCMP Opens Criminal Investigation</div>
+        <div class="tl-desc">Royal Canadian Mounted Police confirms it has opened a criminal investigation into the ArriveCAN contracting process. Investigation is ongoing with no public charges as of April 2025.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot green">&#9654;</div>
+      <div class="tl-date">2023&#8211;2024</div>
+      <div class="tl-body">
+        <div class="tl-title">Parliamentary OGGO Hearings &#8212; Testimony Refusals</div>
+        <div class="tl-desc">House of Commons Standing Committee on Government Operations and Estimates (OGGO) summons GCStrategies principals and CBSA officials. Multiple witnesses refuse to name subcontractors. Ministers claim no knowledge.</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 3 — GCSTRATEGIES
+  ══════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">03</span>GCStrategies &#8212; Who Are They?</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    GCStrategies is a small Ottawa-based consulting firm incorporated in 2015. At the time of the ArriveCAN contracts,
+    it employed exactly two people: co-founders Kristian Firth and Darren Anthony. The company had no software
+    developers, no engineers, no quality assurance staff, and no office beyond a residential address. Its business model
+    was explicitly intermediary: match government contracts to subcontractors, take a management fee from the top.
+    What distinguished GCStrategies in the ArriveCAN scandal was the scale at which this model was applied &#8212; and the
+    absence of any due diligence by CBSA in awarding it tens of millions of public dollars.
+  </p>
+
+  <div class="person-grid">
+    <div class="person-card flagged">
+      <div class="person-name">Kristian Firth</div>
+      <div class="person-role">Co-Founder &amp; Principal, GCStrategies</div>
+      <span class="status-badge badge-refused">REFUSED TESTIMONY</span>
+      <p>
+        Firth appeared before the OGGO parliamentary committee in 2023 and repeatedly invoked his right not to
+        answer questions about the identities of subcontractors used in ArriveCAN. He confirmed GCStrategies had
+        no technical staff and that the company&#39;s role was to &#34;manage the talent.&#34; He acknowledged the company
+        kept a commission on billings but declined to specify the rate. Was found in contempt of Parliament
+        following continued non-compliance with committee orders to produce documents.
+      </p>
+    </div>
+    <div class="person-card flagged">
+      <div class="person-name">Darren Anthony</div>
+      <div class="person-role">Co-Founder &amp; Principal, GCStrategies</div>
+      <span class="status-badge badge-refused">REFUSED TESTIMONY</span>
+      <p>
+        Anthony co-appeared at committee hearings alongside Firth and similarly refused to provide full
+        disclosure of the subcontractor chain. Both principals initially declined to appear when first
+        summoned. When they did appear, their answers were characterized by MPs as evasive and
+        non-responsive. Anthony, like Firth, maintained that the company provided legitimate
+        talent-matching services to the government.
+      </p>
+    </div>
+    <div class="person-card watch">
+      <div class="person-name">CBSA Contracting Officers</div>
+      <div class="person-role">Canada Border Services Agency</div>
+      <span class="status-badge badge-deflect">DOCUMENTATION FAILURES</span>
+      <p>
+        Auditor General findings revealed that CBSA contracting officers approved payments without adequate
+        supporting documentation. In numerous cases, CBSA could not produce invoices, statements of work,
+        or deliverable records to justify payments already made. The AG found inadequate management and
+        oversight throughout the contracting lifecycle.
+      </p>
+    </div>
+    <div class="person-card watch">
+      <div class="person-name">Erin O&#39;Gorman</div>
+      <div class="person-role">President, Canada Border Services Agency</div>
+      <span class="status-badge badge-deflect">MINISTERIAL DEFLECTION</span>
+      <p>
+        O&#39;Gorman became CBSA President in 2022 and appeared before OGGO to answer for ArriveCAN. She
+        acknowledged systemic oversight failures within CBSA but maintained that corrective actions
+        were underway. Critics noted that her testimony offered little accountability for the officials
+        who approved the contracts, many of whom remained employed by the agency.
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 4 — THE SUBCONTRACTOR MAZE
+  ══════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">04</span>The Subcontractor Maze</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    GCStrategies did not build the ArriveCAN app. It subcontracted the actual work to other firms and individuals,
+    who in turn subcontracted to others &#8212; creating chains of up to four layers deep before public money reached
+    an actual developer. At each layer, a percentage was retained as a management or brokering fee. The Auditor
+    General found that this layered structure made it impossible to fully audit the use of public funds.
+  </p>
+
+  <div class="money-flow">
+    <div style="font-size:0.75rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;">Money Flow &#8212; ArriveCAN Contract Chain</div>
+    <div class="money-flow-row">
+      <div class="flow-node source">
+        <div class="fn-box">
+          <div class="fn-label">Taxpayer</div>
+          <div class="fn-name">Government of Canada</div>
+          <div class="fn-cut" style="color:var(--gold);">$59.5M total</div>
+        </div>
+      </div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">
+        <div class="fn-box">
+          <div class="fn-label">Layer 1</div>
+          <div class="fn-name">GCStrategies</div>
+          <div class="fn-cut">~15&#8211;20% cut</div>
+        </div>
+      </div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">
+        <div class="fn-box">
+          <div class="fn-label">Layer 2</div>
+          <div class="fn-name">Named Subcontractors</div>
+          <div class="fn-cut">~10&#8211;15% cut</div>
+        </div>
+      </div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node">
+        <div class="fn-box">
+          <div class="fn-label">Layer 3</div>
+          <div class="fn-name">Sub-subcontractors</div>
+          <div class="fn-cut">~10% cut</div>
+        </div>
+      </div>
+      <div class="flow-arrow">&#8594;</div>
+      <div class="flow-node sink">
+        <div class="fn-box" style="border-color:var(--accent);">
+          <div class="fn-label">Layer 4</div>
+          <div class="fn-name">Actual Developers</div>
+          <div class="fn-cut" style="color:var(--accent);">Fraction of billed rate</div>
+        </div>
+      </div>
+    </div>
+    <div class="flow-note">
+      &#9888; GCStrategies principals refused to identify Layer 2 and beyond under parliamentary oath.<br>
+      CBSA could not produce documentation for substantial portions of the chain.
+    </div>
+  </div>
+
+  <ul class="finding-list">
+    <li>
+      <span class="fi-icon">&#128279;</span>
+      <span class="fi-text"><strong>No competitive subcontracting:</strong> GCStrategies selected subcontractors without a competitive process, contrary to Treasury Board guidelines for government-funded projects at this scale.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#128279;</span>
+      <span class="fi-text"><strong>Identity concealment:</strong> GCStrategies principals refused in parliamentary testimony to name the individuals and companies who received public money as sub and sub-subcontractors.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#128279;</span>
+      <span class="fi-text"><strong>Rate markup undisclosed:</strong> The actual markup percentage retained at each layer was not disclosed to Parliament or the Auditor General with full transparency. AG analysis suggests management fees consumed a significant portion of each contract value.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#128279;</span>
+      <span class="fi-text"><strong>Accenture involvement:</strong> Parliamentary testimony revealed that Accenture &#8212; a major IT consulting firm &#8212; was also involved in ArriveCAN development, receiving contracts directly and through intermediaries. The full scope of Accenture&#39;s billings drew separate scrutiny from the committee.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#128279;</span>
+      <span class="fi-text"><strong>Phantom deliverables:</strong> CBSA paid for work it could not document as received. The AG found cases where payments were made without statements of work defining what was to be delivered.</span>
+    </li>
+  </ul>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 5 — APP FAILURES
+  ══════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">05</span>The App Failures &#8212; 177 Bugs, 10,000 False Quarantines</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    For an app that cost $59.5 million and was backed by the coercive power of federal border enforcement &#8212; including
+    mandatory fines and quarantine orders &#8212; ArriveCAN was functionally defective from the moment of its public release.
+    CBSA&#39;s own internal testing team documented 177 known bugs before launch. The government deployed it anyway.
+    The consequences were not abstract: real Canadians were subjected to mandatory quarantine orders they should not have received.
+  </p>
+
+  <div class="bug-box">
+    <h3>Documented Defects &#8212; ArriveCAN at Launch</h3>
+    <ul class="bug-list">
+      <li><strong>177 known bugs</strong> documented by CBSA testing team prior to mandatory enforcement launch &#8212; app deployed regardless.</li>
+      <li><strong>~10,000 travellers</strong> incorrectly ordered into mandatory quarantine due to app logic errors. Many had complied with all requirements; the app erroneously flagged them as non-compliant.</li>
+      <li><strong>Vaccination status errors:</strong> App failed to correctly recognize or retain vaccination certificate data for some users, triggering false non-compliance flags.</li>
+      <li><strong>Session timeout data loss:</strong> Users who took too long to complete submission lost all entered data and received error responses that could be mistaken for compliance failures.</li>
+      <li><strong>Platform-specific failures:</strong> Certain Android versions and older iOS versions experienced submission failures with no clear error messaging, leaving users unaware their submission had not registered.</li>
+      <li><strong>Mandatory use while broken:</strong> The federal government maintained mandatory use requirements and enforced fines even as the app malfunctioned, placing the compliance burden on travellers rather than the defective tool.</li>
+      <li><strong>No accessible alternative:</strong> Travellers without smartphones or with disabilities faced disproportionate enforcement hardship. Accommodation processes were inconsistent across border points of entry.</li>
+    </ul>
+  </div>
+
+  <p style="color:var(--text2);font-size:0.9rem;">
+    The approximately 10,000 wrongful quarantine orders represent a concrete harm to Canadians traceable directly to the
+    failure to adequately test and quality-assure a product before deploying it with legal enforcement teeth. No official
+    has faced consequences for this decision. No compensation mechanism was established for affected travellers.
+    The Auditor General&#39;s report notes that CBSA lacked adequate processes to track, document, and remediate these cases.
+  </p>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 6 — AUDITOR GENERAL FINDINGS
+  ══════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">06</span>Auditor General Findings &#8212; 2023 Special Report</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    In February 2023, Auditor General Karen Hogan tabled a Special Examination report on ArriveCAN before Parliament.
+    The report was the product of a targeted audit of CBSA&#39;s pandemic contracting for the application. Its findings
+    were unambiguous: systemic procurement failures, missing documentation, and a contracting approach that violated
+    Treasury Board policies throughout.
+  </p>
+
+  <div class="ag-quote">
+    <strong>&#8220;This is the most glaring example of a lack of documentation, a lack of due diligence, a lack of
+    oversight that I have ever seen.&#8221;</strong>
+    <span class="cite">&#8212; Auditor General Karen Hogan, testimony before the House of Commons Standing Committee on
+    Government Operations and Estimates (OGGO), March 2023</span>
+  </div>
+
+  <div class="ag-quote">
+    <strong>&#8220;We found that the Canada Border Services Agency could not demonstrate that it received value for money
+    for the ArriveCAN application. CBSA provided insufficient documentation to support millions of dollars in contracts.&#8221;</strong>
+    <span class="cite">&#8212; Report of the Auditor General of Canada to the House of Commons &#8212; ArriveCAN Application, 2023, para. 5</span>
+  </div>
+
+  <div class="ag-quote">
+    <strong>&#8220;The contracting practices we observed for ArriveCAN were not consistent with federal procurement policies.
+    In particular, we found that contracts were awarded without a competitive process even when doing so was not justified
+    by emergency circumstances.&#8221;</strong>
+    <span class="cite">&#8212; Report of the Auditor General of Canada, 2023 &#8212; Key Finding on Procurement Process</span>
+  </div>
+
+  <h3 style="color:#fff;font-size:1rem;margin:1.8rem 0 0.8rem;">Key AG Findings &#8212; Summary</h3>
+  <ul class="finding-list">
+    <li>
+      <span class="fi-icon">&#128203;</span>
+      <span class="fi-text"><strong>Missing contracts and invoices:</strong> CBSA could not produce complete contracts, invoices, or statements of work for a material portion of the $59.5M billed. Payments were approved without adequate supporting documentation.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#128203;</span>
+      <span class="fi-text"><strong>No competitive process &#8212; unjustified:</strong> The emergency exception to competitive bidding was invoked well beyond its legitimate scope. Most of the contracting period was not a genuine emergency precluding competition.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#128203;</span>
+      <span class="fi-text"><strong>Value for money undemonstrable:</strong> CBSA was unable to demonstrate that the public received fair value for the $59.5M expended. Cost benchmarks, deliverable records, and performance metrics were absent or inadequate.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#128203;</span>
+      <span class="fi-text"><strong>CBSA management failures:</strong> Senior management oversight of the contract was inadequate. Risk management practices were not applied. The contracting environment allowed significant irregularities to persist without correction.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#128203;</span>
+      <span class="fi-text"><strong>App could have cost far less:</strong> The AG noted that the application was not technically complex and that international comparisons suggested far lower costs were achievable for equivalent functionality.</span>
+    </li>
+    <li>
+      <span class="fi-icon">&#128203;</span>
+      <span class="fi-text"><strong>Treasury Board policy violations:</strong> Multiple Treasury Board Secretariat procurement policies were violated throughout the contracting lifecycle, including policies on documentation, competition, and oversight.</span>
+    </li>
+  </ul>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 7 — PARLIAMENTARY ACCOUNTABILITY
+  ══════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">07</span>Parliamentary Accountability Failures</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    In a functional democracy, parliamentary committees serve as the primary accountability mechanism for executive
+    branch conduct between elections. In the ArriveCAN scandal, the system was tested &#8212; and found to fall short.
+    Witnesses refused to answer questions under oath. Ministers claimed ignorance. The committee was forced to
+    pursue contempt proceedings against witnesses who stonewalled. Meanwhile, the officials most directly
+    responsible remained employed within the public service.
+  </p>
+
+  <div class="acct-box" style="border-color:var(--accent);">
+    <div class="acct-name">Kristian Firth &amp; Darren Anthony &#8212; GCStrategies</div>
+    <div class="acct-role">Primary contractors &#8212; summoned to OGGO committee multiple times</div>
+    <div class="acct-finding">Repeatedly declined to identify the subcontractors who received public money. Invoked privacy concerns and potential RCMP investigation interference as justifications for non-disclosure. Initially declined to appear; when they did appear, answers were characterized by MPs across party lines as evasive and insufficient. Both were subsequently found in contempt of Parliament for failing to comply with committee orders to produce documents.</div>
+    <div class="acct-score">&#128308; CONTEMPT OF PARLIAMENT &#8212; document orders not fully complied with</div>
+  </div>
+
+  <div class="acct-box" style="border-color:var(--warn);">
+    <div class="acct-name">Bill Blair</div>
+    <div class="acct-role">Minister of Public Safety (2019&#8211;2023), responsible for CBSA</div>
+    <div class="acct-finding">Blair served as the minister responsible for CBSA during the bulk of the ArriveCAN contracting period. In parliamentary testimony and media appearances, he maintained he had no knowledge of the specific contracting irregularities identified by the Auditor General and that the contracting was handled at the operational level. He did not resign. No finding of personal misconduct was made against him by the AG; the AG&#39;s findings were directed at CBSA institutional failures.</div>
+    <div class="acct-score">&#9888; MINISTERIAL DEFLECTION &#8212; no resignation, no finding of personal misconduct</div>
+  </div>
+
+  <div class="acct-box" style="border-color:var(--warn);">
+    <div class="acct-name">Jean-Yves Duclos</div>
+    <div class="acct-role">President of the Treasury Board (2021&#8211;2023)</div>
+    <div class="acct-finding">Treasury Board Secretariat policies were the primary rules violated throughout ArriveCAN contracting. Duclos, as Treasury Board President, is responsible for enforcement of those policies across the public service. His office issued statements indicating the government took the AG&#39;s findings seriously and had implemented corrective measures. He did not accept ministerial responsibility for the failures that occurred under the policies his department administers.</div>
+    <div class="acct-score">&#9888; MINISTERIAL DEFLECTION &#8212; systemic failures under policies his department administers</div>
+  </div>
+
+  <div class="acct-box" style="border-color:var(--warn);">
+    <div class="acct-name">Erin O&#39;Gorman</div>
+    <div class="acct-role">President, Canada Border Services Agency (2022&#8211;present)</div>
+    <div class="acct-finding">O&#39;Gorman appeared before OGGO after the AG report and acknowledged institutional failures. She committed to improvements in CBSA procurement practices. Critics noted her testimony placed the accountability narrative on process improvement rather than individual accountability for the officials who approved the contracts and waived documentation requirements. The CBSA officials most directly involved have not been publicly named or disciplined.</div>
+    <div class="acct-score">&#9888; INSTITUTIONAL ACKNOWLEDGMENT &#8212; no individual accountability announced</div>
+  </div>
+
+  <div class="acct-box">
+    <div class="acct-name">Cameron MacDonald</div>
+    <div class="acct-role">Former CBSA VP of Information, Science &amp; Technology</div>
+    <div class="acct-finding">MacDonald oversaw the branch responsible for ArriveCAN during much of the contracting period. He was placed on administrative leave in November 2023 pending review &#8212; the first senior CBSA official to face any official consequence. His case was referred to the RCMP as part of the broader criminal investigation. He has denied wrongdoing.</div>
+    <div class="acct-score">&#128308; ADMINISTRATIVE LEAVE &#8212; referred to RCMP</div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 8 — RCMP INVESTIGATION
+  ══════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">08</span>RCMP Investigation Status</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    In March 2023, the Royal Canadian Mounted Police confirmed it had opened a criminal investigation into the ArriveCAN
+    contracting process. This followed referrals from the Auditor General&#39;s findings and parliamentary committee
+    pressure. As of April 2025, the investigation remains open with no publicly announced charges.
+  </p>
+
+  <ul class="timeline">
+    <li>
+      <div class="tl-dot red">&#9654;</div>
+      <div class="tl-date">Feb 2023</div>
+      <div class="tl-body">
+        <div class="tl-title">Auditor General Report Tables &#8212; Triggers Formal Review</div>
+        <div class="tl-desc">AG Karen Hogan tables the ArriveCAN Special Examination. Parliamentarians and the public call for criminal investigation. Opposition parties formally request RCMP referral.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot purple">&#9654;</div>
+      <div class="tl-date">Mar 2023</div>
+      <div class="tl-body">
+        <div class="tl-title">RCMP Confirms Criminal Investigation Opened</div>
+        <div class="tl-desc">RCMP publicly confirms an investigation is underway. The RCMP does not name subjects of the investigation or specify which criminal provisions are being examined.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot gold">&#9654;</div>
+      <div class="tl-date">Nov 2023</div>
+      <div class="tl-body">
+        <div class="tl-title">CBSA VP Cameron MacDonald Placed on Administrative Leave</div>
+        <div class="tl-desc">CBSA discloses that a senior executive has been placed on administrative leave in connection with the ArriveCAN review. MacDonald is subsequently identified publicly and his case referred to RCMP.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot blue">&#9654;</div>
+      <div class="tl-date">2024</div>
+      <div class="tl-body">
+        <div class="tl-title">Parliamentary Contempt Proceedings Against GCStrategies Principals</div>
+        <div class="tl-desc">Following persistent refusals to comply with committee orders, Kristian Firth and Darren Anthony are found in contempt of Parliament. Contempt findings are referred; criminal obstruction implications assessed.</div>
+      </div>
+    </li>
+    <li>
+      <div class="tl-dot green">&#9654;</div>
+      <div class="tl-date">2025</div>
+      <div class="tl-body">
+        <div class="tl-title">Investigation Continues &#8212; No Charges Publicly Announced</div>
+        <div class="tl-desc">As of April 2025, the RCMP investigation remains active. No charges have been publicly announced. The timeline for completion is not publicly known. RCMP investigations of this complexity typically take multiple years.</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 9 — CRIMINAL CODE ANALYSIS
+  ══════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">09</span>Criminal Code Analysis</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    The following is an analysis of Criminal Code of Canada provisions potentially applicable to the ArriveCAN
+    contracting conduct as documented by the Auditor General and parliamentary committees. This is analytical
+    opinion based on documented facts &#8212; not legal advice, and not an assertion that any specific individual
+    will be or should be charged. The RCMP investigation will determine whether charges are warranted.
+  </p>
+
+  <table class="cc-table">
+    <thead>
+      <tr>
+        <th>Section</th>
+        <th>Offence</th>
+        <th>Potentially Applicable Conduct</th>
+        <th>Applies?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="section-num">s. 380(1)</td>
+        <td style="color:#fff;">Fraud Over $5,000</td>
+        <td>Billing for undocumented or non-existent deliverables; obtaining public money by false pretences through inflated invoices or phantom work.</td>
+        <td class="applies-yes">POTENTIALLY YES</td>
+      </tr>
+      <tr>
+        <td class="section-num">s. 121(1)(a)</td>
+        <td style="color:#fff;">Fraud on the Government</td>
+        <td>Obtaining a benefit from the government through corruption or collusion; contractor conduct in obtaining contracts without fair competition through improper relationships with public servants.</td>
+        <td class="applies-yes">POTENTIALLY YES</td>
+      </tr>
+      <tr>
+        <td class="section-num">s. 122</td>
+        <td style="color:#fff;">Breach of Trust by Public Officer</td>
+        <td>Public servants who approved payments without documentation, waived procurement requirements without authority, or approved contracts in violation of known policies. Requires proof of wilful breach.</td>
+        <td class="applies-yes">POTENTIALLY YES</td>
+      </tr>
+      <tr>
+        <td class="section-num">s. 139(2)</td>
+        <td style="color:#fff;">Obstruct Justice</td>
+        <td>Refusal to comply with parliamentary committee orders to produce documents; concealment of subcontractor identities potentially relevant to a criminal investigation; contempt findings as predicate conduct.</td>
+        <td class="applies-maybe">UNDER REVIEW</td>
+      </tr>
+      <tr>
+        <td class="section-num">s. 380(2)</td>
+        <td style="color:#fff;">Fraud Affecting the Public Market</td>
+        <td>Where false or misleading representations were made to affect the public procurement market &#8212; for example, misrepresenting company capabilities to secure contracts.</td>
+        <td class="applies-maybe">POSSIBLY</td>
+      </tr>
+      <tr>
+        <td class="section-num">s. 426</td>
+        <td style="color:#fff;">Secret Commissions</td>
+        <td>Payment or acceptance of commissions from parties with an interest in a contract, without disclosure to the principal &#8212; potentially relevant to multi-layer fee arrangements undisclosed to CBSA.</td>
+        <td class="applies-maybe">POSSIBLY</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="glass-card" style="padding:1.4rem 1.6rem;margin:1.5rem 0;">
+    <div style="color:var(--muted);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.7rem;">&#9878; Legal Analysis Note</div>
+    <p style="color:var(--text2);font-size:0.88rem;margin-bottom:0.5rem;">
+      Proving criminal fraud on the government (s.121) requires establishing: (1) a benefit was obtained, (2) by or
+      through a public servant, (3) that was corruptly given or received. The AG&#39;s documentation of systematic
+      procurement policy violations &#8212; while serious &#8212; does not automatically constitute criminal conduct. The RCMP
+      must establish criminal intent (<em>mens rea</em>) beyond the institutional negligence the AG documented.
+    </p>
+    <p style="color:var(--text2);font-size:0.88rem;margin-bottom:0;">
+      Breach of trust (s.122) is highly fact-specific. Courts have found that simple administrative incompetence
+      does not meet the threshold; wilful and deliberate abuse of a position of trust is required. The line
+      between gross negligence and criminal breach of trust is exactly what the RCMP investigation must establish.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 10 — CALL TO ACTION
+  ══════════════════════════════════════════════ -->
+  <h2 class="red-rule"><span class="section-num-badge">10</span>Call to Action &#8212; Demand Accountability</h2>
+
+  <p style="color:var(--text2);font-size:0.93rem;">
+    The ArriveCAN scandal is not a closed chapter. The RCMP investigation is ongoing. Parliamentary accountability
+    remains incomplete. No minister has resigned. The public servants who approved payments for undocumented work
+    remain unnamed in official records. Accountability requires continued public pressure, transparent journalism,
+    and citizens who refuse to accept institutional silence as an answer.
+  </p>
+
+  <div class="cta-grid">
+    <div class="cta-card cta-primary">
+      <div class="cta-icon">&#128233;</div>
+      <h4>Contact Your MP</h4>
+      <p>Write to your Member of Parliament demanding a full public accounting of ArriveCAN expenditures, named individual accountability, and a status update on the RCMP investigation.<br><br>
+      <a href="https://www.ourcommons.ca/Members/en/search" rel="noopener noreferrer">Find Your MP &#8594;</a></p>
+    </div>
+    <div class="cta-card">
+      <div class="cta-icon">&#128196;</div>
+      <h4>Read the AG Report</h4>
+      <p>The Auditor General&#39;s 2023 ArriveCAN Special Examination is the primary source. Read it directly &#8212; the full text is public and free.<br><br>
+      <a href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_202302_02_e_44427.html" rel="noopener noreferrer">OAG Report &#8212; ArriveCAN &#8594;</a></p>
+    </div>
+    <div class="cta-card">
+      <div class="cta-icon">&#127963;</div>
+      <h4>Read OGGO Transcripts</h4>
+      <p>The Standing Committee on Government Operations hearings are public record. Read the testimony directly &#8212; including the evasions.<br><br>
+      <a href="https://www.ourcommons.ca/Committees/en/OGGO" rel="noopener noreferrer">OGGO Committee Records &#8594;</a></p>
+    </div>
+    <div class="cta-card">
+      <div class="cta-icon">&#128225;</div>
+      <h4>Share This Page</h4>
+      <p>Public accountability depends on public awareness. Share this investigation with colleagues, journalists, and anyone who believes $59.5 million of public money deserves a full accounting.</p>
+    </div>
+  </div>
+
+  <!-- ── FOOTER SOURCES ──────────────────────── -->
+  <div class="glass-card" style="padding:1.5rem 1.8rem;margin:2.5rem 0 1rem;">
+    <div style="color:var(--muted);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;">&#128218; Primary Sources &amp; References</div>
+    <ul style="list-style:none;padding:0;margin:0;font-size:0.83rem;color:var(--text2);">
+      <li style="padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <strong style="color:#fff;">Auditor General of Canada</strong> &#8212; Special Examination Report: ArriveCAN Application (February 2023)
+        &#8212; <a href="https://www.oag-bvg.gc.ca/internet/English/parl_oag_202302_02_e_44427.html" rel="noopener noreferrer" style="color:var(--blue);">oag-bvg.gc.ca</a>
+      </li>
+      <li style="padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <strong style="color:#fff;">House of Commons OGGO Committee</strong> &#8212; Evidence transcripts, meetings 2023&#8211;2024
+        &#8212; <a href="https://www.ourcommons.ca/Committees/en/OGGO/StudyActivity?studyActivityId=11906927" rel="noopener noreferrer" style="color:var(--blue);">ourcommons.ca</a>
+      </li>
+      <li style="padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <strong style="color:#fff;">Treasury Board of Canada Secretariat</strong> &#8212; Government Contracts Regulations and Contracting Policy
+        &#8212; <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=14494" rel="noopener noreferrer" style="color:var(--blue);">tbs-sct.canada.ca</a>
+      </li>
+      <li style="padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <strong style="color:#fff;">Canada Border Services Agency</strong> &#8212; ArriveCAN proactive disclosure and contract listings
+        &#8212; <a href="https://www.cbsa-asfc.gc.ca/transparency-transparence/menu-eng.html" rel="noopener noreferrer" style="color:var(--blue);">cbsa-asfc.gc.ca</a>
+      </li>
+      <li style="padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+        <strong style="color:#fff;">Criminal Code of Canada</strong> &#8212; RSC 1985, c C-46, ss. 121, 122, 139, 380, 426
+        &#8212; <a href="https://laws-lois.justice.gc.ca/eng/acts/C-46/" rel="noopener noreferrer" style="color:var(--blue);">laws-lois.justice.gc.ca</a>
+      </li>
+      <li style="padding:0.4rem 0;">
+        <strong style="color:#fff;">RCMP</strong> &#8212; Public communications confirming criminal investigation into ArriveCAN contracting (March 2023)
+        &#8212; <a href="https://www.rcmp-grc.gc.ca/en/news" rel="noopener noreferrer" style="color:var(--blue);">rcmp-grc.gc.ca</a>
+      </li>
+    </ul>
+  </div>
+
+  <div style="text-align:center;padding:1.5rem 0 0.5rem;color:var(--muted);font-size:0.77rem;letter-spacing:0.06em;">
+    LIRIL&#183;NPU &nbsp;&#183;&nbsp; DOMAIN:ETHICS &nbsp;&#183;&nbsp; CONFIDENCE:0.99 &nbsp;&#183;&nbsp; DEVICE:NPU &nbsp;&#183;&nbsp; METHOD:keyword-decisive &nbsp;&#183;&nbsp; SEED:118400
+  </div>
+
+</main>
+
+<div id="page-footer-placeholder"></div>
+<script src="nav.js"></script>
+</body>
+</html>
